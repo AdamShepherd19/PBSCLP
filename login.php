@@ -1,4 +1,12 @@
 <?php
+    session_start();
+
+    // if already logged in
+    if (isset($_SESSION['logged_in'])){
+        header('Location: landing.php');
+        exit();
+    }
+
     $pass = file_get_contents('../pass.txt', true);
 
     if(isset($_POST['login'])) {
@@ -15,6 +23,8 @@
         $data = $connection->query($query);
 
         if ($data->num_rows > 0) {
+            $_SESSION['logged_in'] = '1';
+            $_SESSION['email'] = $email;
             exit('Successfully Logged In');
         } else {
             exit('Login Failed');
