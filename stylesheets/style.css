@@ -1,2 +1,7 @@
 /* Global stylesheet */
 
+* {
+    --pbs-green: #A5C72B;
+    --pbs-blue: #42B8B2;
+    --pbs-grey: #878787;
+}
