@@ -35,7 +35,7 @@
             $_SESSION['email'] = $email;
             // print_r($data);
 
-            exit('Login success');
+            exit('Login');
         } else {
             exit('Login failed');
         }
