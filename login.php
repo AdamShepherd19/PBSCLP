@@ -29,13 +29,13 @@
         //check if login details provided match a user profile in the db
         if ($data->num_rows > 0) {
             $row = $data->fetch_assoc();
-            echo $row['user_id'];
+
             //store session variables
             $_SESSION['logged_in'] = True;
             $_SESSION['email'] = $email;
-            // print_r($data);
+            $_SESSION['user_id'] = $row['user_id'];
 
-            exit('Login');
+            exit('Login success');
         } else {
             exit('Login failed');
         }
