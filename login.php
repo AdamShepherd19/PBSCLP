@@ -1,6 +1,6 @@
 <?php
     if(isset($_POST['login'])) {
-        $connection = new mysqli('localhost', 'pbsclp', '', 'pbsclp_pbsclp');
+        $connection = new mysqli('localhost', 'pbsclp', 'Rig+Frixion32', 'pbsclp_pbsclp');
 
         $email = $_POST['emailPHP'];
         $password = $_POST['passwordPHP'];
