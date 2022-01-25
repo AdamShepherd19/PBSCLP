@@ -10,21 +10,29 @@
     $pass = file_get_contents('../pass.txt', true);
 
     if(isset($_POST['login'])) {
+        //connect to database
         $connection = new mysqli('localhost', 'pbsclp', $pass, 'pbsclp_pbsclp');
 
-        $email = $_POST['emailPHP'];
-        $password = md5($_POST['passwordPHP']);
-        echo $password;
+        //check db connection
         if ($conn->connect_error) {
             exit("Connection failed: " . $conn->connect_error);
         }
 
+        //retrieve email and password from form
+        $email = $_POST['emailPHP'];
+        $password = md5($_POST['passwordPHP']);
+        
+        //query db for user login details provided
         $query = "SELECT user_id FROM users WHERE email='" . $email . "' AND password='" . $password . "'";
         $data = $connection->query($query);
 
+        //check if login details provided match a user profile in the db
         if ($data->num_rows > 0) {
-            $_SESSION['logged_in'] = '1';
+            //store session variables
+            $_SESSION['logged_in'] = True;
             $_SESSION['email'] = $email;
+            $_SESSION['user_id'] = $data[0];
+
             exit('Successfully Logged In');
         } else {
             exit('Login Failed');
