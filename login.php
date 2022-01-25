@@ -1,4 +1,8 @@
 <?php
+    $pass = file_get_contents('../pass.txt', true);
+    echo $pass;
+
+
     if(isset($_POST['login'])) {
         $connection = new mysqli('localhost', 'pbsclp', 'Rig+Frixion32', 'pbsclp_pbsclp');
 
