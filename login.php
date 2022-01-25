@@ -2,10 +2,10 @@
     session_start();
 
     // if already logged in
-    // if (isset($_SESSION['logged_in'] && $_SESSION['logged_in'] == True)){
-    //     header('Location: landing.php');
-    //     exit();
-    // }
+    if (isset($_SESSION['logged_in'])){
+        header('Location: landing.php');
+        exit();
+    }
 
     $pass = file_get_contents('../pass.txt', true);
 
