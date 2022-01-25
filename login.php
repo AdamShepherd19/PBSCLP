@@ -45,19 +45,19 @@
                     };
 
                     console.log(email + password);
-                });
 
-                $.ajax({
-                    url: "login.php",
-                    data: {
-                        login: 1,
-                        emailPHP: email,
-                        passwordPHP: password
-                    },
-                    success: function (response) {
-                        console.log(response);
-                    },
-                    datatype: 'text'
+                    $.ajax({
+                        url: "login.php",
+                        data: {
+                            login: 1,
+                            emailPHP: email,
+                            passwordPHP: password
+                        },
+                        success: function (response) {
+                            console.log(response);
+                        },
+                        datatype: 'text'
+                    });
                 });
             });
         </script>
