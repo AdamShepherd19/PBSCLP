@@ -2,8 +2,8 @@
     if(isset($_POST['login'])) {
         $connection = new mysqli('localhost', 'pbsclp', '', 'pbsclp_pbsclp');
 
-        $email = $connection->mysqli_real_escape_string($_POST['emailPHP']);
-        $password = $connection->mysqli_real_escape_string($_POST['passwordPHP']);
+        $email = $_POST['emailPHP'];
+        $password = $_POST['passwordPHP'];
 
         if ($conn->connect_error) {
             exit("Connection failed: " . $conn->connect_error);
