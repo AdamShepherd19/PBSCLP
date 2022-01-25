@@ -1,5 +1,10 @@
 <?php
     session_start();
+
+    if(!isset($_SESSION['logged_in']) || $_SESSION['logged_in']) != True){
+        header('Location: login.php');
+        exit();
+    }
 ?>
 
 <!DOCTYPE html>
@@ -31,6 +36,8 @@
             <h1 style="color:white; padding:20px 0 0 100px;font-size:5em;"> Landing Page </h1>
             <h2 style="color:white; padding:0 0 0 100px;font-size:2em;">Website coming soon...</h2>
         </div>
+
+        <button></button>
             
     </body>
     

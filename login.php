@@ -33,9 +33,9 @@
             $_SESSION['email'] = $email;
             $_SESSION['user_id'] = $data[0];
 
-            exit('Successfully Logged In');
+            exit('Login success');
         } else {
-            exit('Login Failed');
+            exit('Login failed');
         }
     }
 ?>

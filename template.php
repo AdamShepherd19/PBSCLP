@@ -1,9 +1,8 @@
 <?php
     session_start();
 
-    // if already logged in
-    if (isset($_SESSION['logged_in'])){
-        header('Location: landing.php');
+    if(!isset($_SESSION['logged_in']) || $_SESSION['logged_in']) != True){
+        header('Location: login.php');
         exit();
     }
 ?>
