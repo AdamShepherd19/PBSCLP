@@ -58,7 +58,7 @@
                         console.log(response);
                     },
                     datatype: 'text'
-                });
+                })
             });
         </script>
     </body>
