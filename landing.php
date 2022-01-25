@@ -38,6 +38,8 @@
 
         <div id="pbs-nav-bar"></div>
 
+        <h1>Announcements</h1>
+
         <div class="main-content">
             <div class="announcement-wrapper">
 
@@ -72,12 +74,6 @@
                 <input type="button" id="profile" class="pbs-button pbs-button-white" value="Profile"> <br />
             </div>
 
-        </div>
-
-
-        <div>
-            <h1 style="color:white; padding:20px 0 0 100px;font-size:5em;"> Landing Page </h1>
-            <h2 style="color:white; padding:0 0 0 100px;font-size:2em;">Website coming soon...</h2>
         </div>
         
 
