@@ -36,7 +36,13 @@
         <script type="text/javascript">
             $(document).ready(function () {
 
-                console.log("Page Ready");
+                $("#login").on('click', function(){
+                    var email = $("#email").val();
+                    var password = $('#password').val();
+
+                    console.log(email + password);
+                });
+                
 
             });
         </script>
