@@ -9,8 +9,10 @@
             exit("Connection failed: " . $conn->connect_error);
         }
         // exit($email . ' + ' . $password);
-        $data = $connection->query("SELECT user_id FROM users WHERE email=" . $email . " AND password=" . $password);
-        // SELECT user_id FROM users WHERE email='bob@email.com' AND password='pass123'
+        $query = "SELECT user_id FROM users WHERE email='" . $email . "' AND password='" . $password . "'";
+        echo $query;
+
+        $data = $connection->query($query);
 
         if ($data->num_rows > 0) {
             exit('success');
