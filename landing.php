@@ -1,11 +1,5 @@
 <?php
     session_start();
-
-    // if already logged in
-    if (isset($_SESSION['logged_in'])){
-        header('Location: landing.php');
-        exit();
-    }
 ?>
 
 <!DOCTYPE html>
