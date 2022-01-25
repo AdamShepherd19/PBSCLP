@@ -1,15 +1,53 @@
-/* Global stylesheet */
-
-* {
+:root {
     --pbs-green: #A5C72B;
     --pbs-blue: #42B8B2;
     --pbs-grey: #878787;
-}
-
-h1 {
-    font-size: 72px;
-}
-
-h2 {
-    font-size: 60px;
-}
+    @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+    font-family: 'Quicksand', sans-serif;
+  }
+  
+  h1 {
+      font-size: 72px;
+  }
+  
+  h2 {
+      font-size: 60px;
+  }
+  
+  .pbs-button {
+      width: 80px;
+      height: 35px;
+      border-radius: 5px;
+      border: none;
+      box-shadow: 1px 1px 2px var(--pbs-grey);
+  }
+  
+  .pbs-button-white {
+      background-color: white;
+      color: var(--pbs-grey);
+  }
+  
+  .pbs-button-green {
+      background-color: var(--pbs-green);
+      color: white;
+  }
+  
+  .pbs-button-grey {
+      background-color: var(--pbs-grey);
+      color: white;
+  }
+  
+  .pbs-button-blue {
+      background-color: var(--pbs-blue);
+      color: white;
+  }
+  
+  .pbs-form-text-box {
+      margin: 10px 0;
+      border-radius: 5px;
+      width: 12em;
+      height: 2em;
+      border: none;
+      color: var(--pbs-grey);
+      padding: 10px;
+  }
