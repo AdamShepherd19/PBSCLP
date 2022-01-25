@@ -38,6 +38,43 @@
 
         <div id="pbs-nav-bar"></div>
 
+        <div class="main-content">
+            <div class="announcement-wrapper">
+
+                <div class="card">
+                    <div class="card-header">
+                        Announcement 1
+                    </div>
+                    <div class="card-body">
+                        <blockquote class="blockquote mb-0">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                        <footer class="blockquote-footer">Firstname Surname</footer>
+                        </blockquote>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        Announcement 2
+                    </div>
+                    <div class="card-body">
+                        <blockquote class="blockquote mb-0">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                        <footer class="blockquote-footer">Firstname Surname</footer>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+
+            <div class="landing-nav-box-wrapper">
+                <input type="button" id="forum" class="pbs-button pbs-button-white" value="Forum"> <br />
+                <input type="button" id="resource-bank" class="pbs-button pbs-button-white" value="Resource Bank"> <br />
+                <input type="button" id="profile" class="pbs-button pbs-button-white" value="Profile"> <br />
+            </div>
+
+        </div>
+
+
         <div>
             <h1 style="color:white; padding:20px 0 0 100px;font-size:5em;"> Landing Page </h1>
             <h2 style="color:white; padding:0 0 0 100px;font-size:2em;">Website coming soon...</h2>
@@ -49,6 +86,18 @@
                 $(function(){
                     $("#pbs-nav-bar").load("nav-bar.html"); 
                 });
+
+                $("#forum").on('click', function(){
+                    window.location.replace('forum.php');
+                }
+
+                $("#resource-bank").on('click', function(){
+                    window.location.replace('resource_bank.php');
+                }
+
+                $("#profile").on('click', function(){
+                    window.location.replace('profile.php');
+                }
             });
         </script>
             
