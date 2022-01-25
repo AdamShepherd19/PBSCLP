@@ -69,7 +69,7 @@
 
     <body>
         <div class="login-container">
-            
+
             <div class="login-header">
                 <h1>PBSuk Collaboration and Learning Hub</h1>
             </div>
@@ -78,9 +78,11 @@
                 <h2>Login</h2>
 
                 <form action="login.php" method="post">
-                    <input type="text" id="email" placeholder="Email...">
-                    <input type="text" id="password" placeholder="Password...">
-                    <input type="button" id="login" value="Log In">
+                    <label for="email">Email Address: </label>
+                    <input type="text" id="email" class="pbs-form-text-box" placeholder="Email..."> <br/>
+                    <label for="password">Password: </label>
+                    <input type="text" id="password" class="pbs-form-text-box" placeholder="Password..."> <br />
+                    <input type="button" id="login" class="pbs-button pbs-button-white" value="Log In"> <br />
                 </form>
 
                 <p id="login-response"></p>
