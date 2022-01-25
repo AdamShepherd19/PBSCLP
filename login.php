@@ -31,7 +31,7 @@
             //store session variables
             $_SESSION['logged_in'] = True;
             $_SESSION['email'] = $email;
-            $_SESSION['user_id'] = $data[0];
+            // $_SESSION['user_id'] = $data[0];
 
             exit('Login success');
         } else {
@@ -98,9 +98,9 @@
                             success: function (response) {
                                 $('#login-response').html(response);
 
-                                // if (response.includes("success")){
-                                //     window.location.replace('landing.php');
-                                // }
+                                if (response.includes("success")){
+                                    window.location.replace('landing.php');
+                                }
                             },
                             datatype: 'text'
                         });
