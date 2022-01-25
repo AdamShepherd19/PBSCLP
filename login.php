@@ -2,7 +2,7 @@
     session_start();
 
     // if already logged in
-    if (isset($_SESSION['logged_in'])){
+    if (isset($_SESSION['logged_in'] && $_SESSION['logged_in'] == True)){
         header('Location: landing.php');
         exit();
     }
