@@ -1,0 +1,21 @@
+.main-content {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 5rem;
+    margin: 0 10%;
+  }
+  
+  .announcement-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 600px;
+  }
+  
+  .landing-nav-box-wrapper {
+    background-color: var(--pbs-green);
+    max-height: 200px;
+    padding: 5px;
+    border-radius: 10px;
+  }
