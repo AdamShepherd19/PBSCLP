@@ -30,7 +30,7 @@
         <form action="login.php" method="post">
             <input type="text" id="email" placeholder="Email...">
             <input type="text" id="password" placeholder="Password...">
-            <input type="submit" id="login" value="Log In">
+            <input type="button" id="login" value="Log In">
         </form>
             
         <script type="text/javascript">
@@ -39,6 +39,10 @@
                 $("#login").on('click', function(){
                     var email = $("#email").val();
                     var password = $('#password').val();
+
+                    if(email == "" || password == ""){
+                        alert("Please enter a username and password");
+                    }
 
                     console.log(email + password);
                 });
