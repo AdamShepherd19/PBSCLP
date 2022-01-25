@@ -60,24 +60,33 @@
         <!-- include jQuery -->
         <script src="includes/jquery.js"></script>
 
+        <link rel="stylesheet" href="stylesheets/style.css">
+        <link rel="stylesheet" href="stylesheets/login.css">
 
         <title>Login</title>
         
     </head>
 
     <body>
+        <div class="login-container">
+            
+            <div class="login-header">
+                <h1>PBSuk Collaboration and Learning Hub</h1>
+            </div>
 
-        <div>
-            <h1>PBSCLP Login</h1>
+            <div class="login-form-container">
+                <h2>Login</h2>
+
+                <form action="login.php" method="post">
+                    <input type="text" id="email" placeholder="Email...">
+                    <input type="text" id="password" placeholder="Password...">
+                    <input type="button" id="login" value="Log In">
+                </form>
+
+                <p id="login-response"></p>
+
+            </div>
         </div>
-
-        <form action="login.php" method="post">
-            <input type="text" id="email" placeholder="Email...">
-            <input type="text" id="password" placeholder="Password...">
-            <input type="button" id="login" value="Log In">
-        </form>
-
-        <p id="login-response"></p>
             
         <script type="text/javascript">
             $(document).ready(function () {
