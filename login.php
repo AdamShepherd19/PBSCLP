@@ -47,20 +47,18 @@
                     console.log(email + password);
                 });
 
-                $.$.ajax({
+                $.ajax({
                     url: "login.php",
-                    data: [
+                    data: {
                         login: 1,
                         emailPHP: email,
                         passwordPHP: password
-                    ],
+                    },
                     success: function (response) {
                         console.log(response);
                     },
                     datatype: 'text'
                 });
-                
-
             });
         </script>
     </body>
