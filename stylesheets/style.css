@@ -22,7 +22,7 @@ h2 {
     border: none;
     box-shadow: 1px 1px 2px var(--pbs-grey);
     margin: 10px;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
 }
 
 .pbs-button-white {
@@ -57,7 +57,7 @@ h2 {
 
 .nav-item {
   padding: 0 40px;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
 }
 
 .navbar-wrapper {
