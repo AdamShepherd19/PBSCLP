@@ -28,7 +28,8 @@
         <!-- include jQuery -->
         <script src="includes/jquery.js"></script>
 
-
+        <link rel="stylesheet" href="stylesheets/login.css">
+        
         <title>Reset Password</title>
         
     </head>

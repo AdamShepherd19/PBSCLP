@@ -28,7 +28,7 @@
         <script src="includes/jquery.js"></script>
 
         <link rel="stylesheet" href="stylesheets/style.css">
-        <!-- <link rel="stylesheet" href="stylesheets/login.css"> -->
+        <link rel="stylesheet" href="stylesheets/landing.css">
 
         <title>Landing Page</title>
         
