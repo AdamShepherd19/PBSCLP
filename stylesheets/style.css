@@ -68,3 +68,7 @@ h2 {
     background-color: white;
     border-bottom: 1px solid var(--pbs-grey);
 }
+
+.current-nav {
+    color: var(--pbs-green);
+}
