@@ -15,9 +15,9 @@
         $data = $connection->query($query);
 
         if ($data->num_rows > 0) {
-            exit('success');
+            exit('Successfully Logged In');
         } else {
-            exit('failed');
+            exit('Login Failed');
         }
     }
 ?>
@@ -41,7 +41,7 @@
         <script src="includes/jquery.js"></script>
 
 
-        <title>TITLE</title>
+        <title>Login</title>
         
     </head>
 
@@ -56,6 +56,8 @@
             <input type="text" id="password" placeholder="Password...">
             <input type="button" id="login" value="Log In">
         </form>
+
+        <p id="login-response"></p>
             
         <script type="text/javascript">
             $(document).ready(function () {
@@ -76,7 +78,7 @@
                                 passwordPHP: password
                             },
                             success: function (response) {
-                                console.log(response);
+                                $('#login-response').html(response);
                             },
                             datatype: 'text'
                         });
