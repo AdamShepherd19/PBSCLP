@@ -89,15 +89,15 @@
 
                 $("#forum").on('click', function(){
                     window.location.replace('forum.php');
-                }
+                };
 
                 $("#resource-bank").on('click', function(){
                     window.location.replace('resource_bank.php');
-                }
+                };
 
                 $("#profile").on('click', function(){
                     window.location.replace('profile.php');
-                }
+                };
             });
         </script>
             
