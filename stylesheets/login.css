@@ -3,9 +3,13 @@
 }
 
 .login-header {
-
+    flex: 2;
+    order: 2;
 }
 
 .login-form-container {
-    
+    flex: 1;
+    order: 1;
+    border-radius: 5px;
+    background-color: var(--pbs-green);
 }
