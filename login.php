@@ -98,7 +98,7 @@
                             success: function (response) {
                                 $('#login-response').html(response);
 
-                                if (response.indexOf('success') >= 0){
+                                if (response.includes('success')){
                                     window.location.href = 'landing.php';
                                 }
                             },
