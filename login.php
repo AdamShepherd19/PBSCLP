@@ -5,7 +5,7 @@
         $connection = new mysqli('localhost', 'pbsclp', $pass, 'pbsclp_pbsclp');
 
         $email = $_POST['emailPHP'];
-        $password = password_hash($_POST['passwordPHP'], PASSWORD_DEFAULT);
+        $password = md5($_POST['passwordPHP']);
         echo $password;
         if ($conn->connect_error) {
             exit("Connection failed: " . $conn->connect_error);
