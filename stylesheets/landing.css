@@ -4,29 +4,41 @@
     max-width: 90vw;
   }
   
-  .announcement-wrapper {
+.announcement-wrapper {
     flex: 3;
     display: flex;
     flex-direction: column;
     gap: 20px;
     max-height: 70vh;
     overflow-y: scroll;
-  }
+}
   
-  .landing-nav-box-wrapper {
+.landing-nav-box-wrapper {
     background-color: var(--pbs-green);
     max-height: 220px;
     border-radius: 10px;
     padding: 18px;
-  }
+}
   
-  .left-space {
+.left-space {
     flex: 1;
-  }
+}
   
-  .page-header {
+.page-header {
     display: flex;
     justify-content: center;
     margin: 40px;
     color: var(--pbs-grey);
-  }
+}
+
+.card-header {
+    font-size: 18px;
+}
+
+.card-body {
+    font-size: 12px;
+}
+
+.blockquote-footer {
+    font-size: 14px;
+}
