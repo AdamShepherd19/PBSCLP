@@ -98,9 +98,9 @@
                             success: function (response) {
                                 $('#login-response').html(response);
 
-                                if (response.includes("success")){
-                                    window.location.replace('landing.php');
-                                }
+                                // if (response.includes("success")){
+                                //     window.location.replace('landing.php');
+                                // }
                             },
                             datatype: 'text'
                         });
