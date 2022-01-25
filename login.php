@@ -47,6 +47,7 @@
                     console.log(email + password);
 
                     $.ajax({
+                        method: 'POST',
                         url: "login.php",
                         data: {
                             login: 1,
