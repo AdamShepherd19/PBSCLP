@@ -34,7 +34,7 @@
         
     </head>
 
-    <body style="background-image:url(images/dog.jpg); background-size:cover; background-repeat: no-repeat;">
+    <body>
 
         <div id="pbs-nav-bar"></div>
 
@@ -42,7 +42,7 @@
 
         <div class="main-content">
             <div class="left-space"></div>
-            
+
             <div class="announcement-wrapper">
 
                 <div class="card">
