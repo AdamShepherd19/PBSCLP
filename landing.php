@@ -41,6 +41,8 @@
         <h1 class="page-header">Announcements</h1>
 
         <div class="main-content">
+            <div class="left-space"></div>
+            
             <div class="announcement-wrapper">
 
                 <div class="card">
