@@ -21,6 +21,10 @@
     color: white;
 }
 
+.login-form-container label, h2 {
+    color: white;
+}
+
 .logo-banner {
     display: flex;
     margin: 5% 10%;
