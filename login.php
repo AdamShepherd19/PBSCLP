@@ -1,10 +1,8 @@
 <?php
     $pass = file_get_contents('../pass.txt', true);
-    echo $pass;
-
 
     if(isset($_POST['login'])) {
-        $connection = new mysqli('localhost', 'pbsclp', 'Rig+Frixion32', 'pbsclp_pbsclp');
+        $connection = new mysqli('localhost', 'pbsclp', $pass, 'pbsclp_pbsclp');
 
         $email = $_POST['emailPHP'];
         $password = $_POST['passwordPHP'];
@@ -12,10 +10,8 @@
         if ($conn->connect_error) {
             exit("Connection failed: " . $conn->connect_error);
         }
-        // exit($email . ' + ' . $password);
-        $query = "SELECT user_id FROM users WHERE email='" . $email . "' AND password='" . $password . "'";
-        echo $query;
 
+        $query = "SELECT user_id FROM users WHERE email='" . $email . "' AND password='" . $password . "'";
         $data = $connection->query($query);
 
         if ($data->num_rows > 0) {
