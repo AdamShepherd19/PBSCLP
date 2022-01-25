@@ -68,6 +68,10 @@
     </head>
 
     <body>
+        <div class="logo-banner">
+            <img src="images/pbslogo.png" alt="PBSuk Logo">
+        </div>
+        
         <div class="login-container">
 
             <div class="login-header">
