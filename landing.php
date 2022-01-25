@@ -36,7 +36,7 @@
 
     <body style="background-image:url(images/dog.jpg); background-size:cover; background-repeat: no-repeat;">
 
-        <div id="included-content"></div>
+        <div id="pbs-nav-bar"></div>
 
         <div>
             <h1 style="color:white; padding:20px 0 0 100px;font-size:5em;"> Landing Page </h1>
@@ -52,7 +52,7 @@
         <script type="text/javascript">
             $(document).ready(function () {
                 $(function(){
-                    $("#included-content").load("nav-bar.html"); 
+                    $("#pbs-nav-bar").load("nav-bar.html"); 
                 });
             });
         </script>
