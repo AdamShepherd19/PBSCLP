@@ -5,14 +5,13 @@
         $email = $connection->real_escape_string($_POST['emailPHP']);
         $password = $connection->real_escape_string($_POST['passwordPHP']);
 
-        if ($conn->connect_error) {
-            echo 'connection failed';
-            die("Connection failed: " . $conn->connect_error);
-        }
-        
-        echo 'success';
+        $data = $connection->query("SELECT id FROM users WHERE email='$email' AND password='$password'");
 
-        exit($email . " = " . $password);
+        if ($data->num_rows > 0) {
+            exit('success');
+        } else {
+            exit('failed');
+        }
     }
 ?>
 
