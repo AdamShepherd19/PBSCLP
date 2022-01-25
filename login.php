@@ -21,13 +21,25 @@
         
     </head>
 
-    <body style="background-image:url(images/dog.jpg); background-size:cover; background-repeat: no-repeat;">
+    <body>
 
         <div>
-            <h1 style="color:white; padding:20px 0 0 100px;font-size:5em;"> </h1>
-            <h2 style="color:white; padding:0 0 0 100px;font-size:2em;">Website coming soon...</h2>
+            <h1>PBSCLP Login</h1>
         </div>
+
+        <form action="login.php" method="post">
+            <input type="text" id="email" placeholder="Email...">
+            <input type="text" id="password" placeholder="Password...">
+            <input type="submit" id="login" value="Log In">
+        </form>
             
+        <script type="text/javascript">
+            $(document).ready(function () {
+
+                console.log("Page Ready");
+
+            });
+        </script>
     </body>
     
 </html>
