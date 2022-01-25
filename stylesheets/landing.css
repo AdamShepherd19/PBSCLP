@@ -31,14 +31,14 @@
     color: var(--pbs-grey);
 }
 
-.card-header {
-    font-size: 18px;
+.announcement-header {
+    font-size: 20px;
 }
 
-.card-body {
-    font-size: 12px;
+.card-body p {
+    font-size: 14px;
 }
 
 .blockquote-footer {
-    font-size: 14px;
+    font-size: 16px;
 }

@@ -47,7 +47,7 @@
 
                 <div class="card">
                     <div class="card-header">
-                        Announcement 1
+                        <span class="announcement-header">Announcement 1 </span>
                     </div>
                     <div class="card-body">
                         <blockquote class="blockquote mb-0">
@@ -59,7 +59,7 @@
 
                 <div class="card">
                     <div class="card-header">
-                        Announcement 2
+                        <span class="announcement-header">Announcement 2 </span>
                     </div>
                     <div class="card-body">
                         <blockquote class="blockquote mb-0">
@@ -71,7 +71,7 @@
 
                 <div class="card">
                     <div class="card-header">
-                        Announcement 3
+                        <span class="announcement-header">Announcement 3 </span>
                     </div>
                     <div class="card-body">
                         <blockquote class="blockquote mb-0">
@@ -83,7 +83,7 @@
 
                 <div class="card">
                     <div class="card-header">
-                        Announcement 4
+                    <span class="announcement-header">Announcement 4 </span>
                     </div>
                     <div class="card-body">
                         <blockquote class="blockquote mb-0">
