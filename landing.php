@@ -37,16 +37,19 @@
             <h2 style="color:white; padding:0 0 0 100px;font-size:2em;">Website coming soon...</h2>
         </div>
 
-        <input type = "button" id="logout"> Log Out </input>
+        <form action="logout.php">
+            <input type="submit" id="logout" value="Log Out">
+        </form>
+        
 
 
-        <script type="text/javascript">
+        <!-- <script type="text/javascript">
             $(document).ready(function () {
                 $("#logout").on('click', function(){
                     window.location.replace('logout.php');
                 };
             });
-        </script>
+        </script> -->
             
     </body>
     
