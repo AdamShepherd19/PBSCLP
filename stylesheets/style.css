@@ -5,3 +5,11 @@
     --pbs-blue: #42B8B2;
     --pbs-grey: #878787;
 }
+
+h1 {
+    font-size: 72px;
+}
+
+h2 {
+    font-size: 60px;
+}
