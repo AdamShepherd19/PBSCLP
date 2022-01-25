@@ -1,11 +1,13 @@
 .login-container {
     display: flex;
     margin: 20px;
+    justify-content: center;
 }
 
 .login-header {
     flex: 2;
     order: 1;
+    padding: 20px;
 }
 
 .login-form-container {
