@@ -98,9 +98,9 @@
                             success: function (response) {
                                 $('#login-response').html(response);
 
-                                if (response.indexOf('success') >= 0){
-                                    window.location = 'landing.php';
-                                }
+                                // if (response.indexOf('success') >= 0){
+                                //     window.location = 'landing.php';
+                                // }
                             },
                             datatype: 'text'
                         });
