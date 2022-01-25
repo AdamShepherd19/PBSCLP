@@ -99,7 +99,7 @@
                                 $('#login-response').html(response);
 
                                 if (response.indexOf('success') >= 0){
-                                    window.location = 'landing.php';
+                                    window.location.href = 'landing.php';
                                 }
                             },
                             datatype: 'text'
