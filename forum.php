@@ -27,7 +27,7 @@
         <!-- include jQuery -->
         <script src="includes/jquery.js"></script>
 
-        <link rel="stylesheet" href="stylesheets/login.css">
+        <link rel="stylesheet" href="stylesheets/style.css">
 
         <title>Forum</title>
         
