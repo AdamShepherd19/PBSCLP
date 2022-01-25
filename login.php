@@ -42,7 +42,7 @@
 
                     if(email == "" || password == ""){
                         alert("Please enter a username and password");
-                    }
+                    };
 
                     console.log(email + password);
                 });
@@ -58,7 +58,7 @@
                         console.log(response);
                     },
                     datatype: 'text'
-                })
+                });
             });
         </script>
     </body>
