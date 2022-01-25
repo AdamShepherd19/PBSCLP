@@ -32,6 +32,7 @@
             $_SESSION['logged_in'] = True;
             $_SESSION['email'] = $email;
             // $_SESSION['user_id'] = $data[0];
+            echo $data;
 
             exit('Login success');
         } else {
