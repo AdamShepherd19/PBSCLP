@@ -6,9 +6,12 @@
         $password = $connection->real_escape_string($_POST['passwordPHP']);
 
         if ($conn->connect_error) {
+            echo 'connection failed';
             die("Connection failed: " . $conn->connect_error);
         }
         
+        echo 'success';
+
         exit($email . " = " . $password);
     }
 ?>
