@@ -99,7 +99,7 @@
                                 $('#login-response').html(response);
 
                                 if (response.includes("success")){
-                                    window.location.replace = 'landing.php';
+                                    window.location.replace('landing.php');
                                 }
                             },
                             datatype: 'text'
