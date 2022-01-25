@@ -1,11 +1,6 @@
 <?php
     if(isset($_POST['login'])) {
-        $connection = new mysqli(
-            host: 'localhost',
-            username: 'pbsclp',
-            passwd: '',
-            dbname: 'pbsclp_pbsclp'
-        );
+        $connection = new mysqli('localhost', 'pbsclp', '', 'pbsclp_pbsclp');
 
         $email = $connection->real_escape_string($_POST['emailPHP']);
         $password = $connection->real_escape_string($_POST['passwordPHP']);
