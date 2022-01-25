@@ -106,11 +106,11 @@
         <script type="text/javascript">
             $(document).ready(function () {
 
-                var current_title = $(document).attr('title');
-                $(".current-nav").removeClass("current-nav");
-                if(current_title == "Landing Page") {
-                    $("#nav-landing").addClass("current-nav");
-                }
+                // var current_title = $(document).attr('title');
+                // $(".current-nav").removeClass("current-nav");
+                // if(current_title == "Landing Page") {
+                //     $("#nav-landing").addClass("current-nav");
+                // }
 
                 $(function(){
                     $("#pbs-nav-bar").load("nav-bar.html"); 
