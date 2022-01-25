@@ -54,5 +54,9 @@ h2 {
 }
 
 .nav-item {
-    padding: 0 40px;
+  padding: 0 40px;
+}
+
+.navbar-wrapper {
+    padding: 0 50px;
 }
