@@ -37,7 +37,7 @@
             <h2 style="color:white; padding:0 0 0 100px;font-size:2em;">Website coming soon...</h2>
         </div>
 
-        <button id="logout"> Log Out </button>
+        <button type = "button" id="logout"> Log Out </button>
 
 
         <script type="text/javascript">
