@@ -2,8 +2,8 @@
     if(isset($_POST['login'])) {
         $connection = new mysqli('localhost', 'pbsclp', '', 'pbsclp_pbsclp');
 
-        $email = $connection->mysqli_real_escape_string($_POST['emailPHP']);
-        $password = $connection->mysqli_real_escape_string($_POST['passwordPHP']);
+        $email = $connection->$mysqli->real_escape_string($_POST['emailPHP']);
+        $password = $connection->$mysqli->real_escape_string($_POST['passwordPHP']);
 
         exit($email . ' + ' . $password);
         // $data = $connection->query("SELECT id FROM users WHERE email='$email' AND password='$password'");
