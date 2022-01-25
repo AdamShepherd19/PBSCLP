@@ -8,14 +8,14 @@
         if ($conn->connect_error) {
             exit("Connection failed: " . $conn->connect_error);
         }
-        exit($email . ' + ' . $password);
-        // $data = $connection->query("SELECT id FROM users WHERE email='$email' AND password='$password'");
+        // exit($email . ' + ' . $password);
+        $data = $connection->query("SELECT id FROM users WHERE email='$email' AND password='$password'");
 
-        // if ($data->num_rows > 0) {
-        //     exit('success');
-        // } else {
-        //     exit('failed');
-        // }
+        if ($data->num_rows > 0) {
+            exit('success');
+        } else {
+            exit('failed');
+        }
     }
 ?>
 
