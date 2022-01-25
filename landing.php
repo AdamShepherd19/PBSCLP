@@ -96,8 +96,8 @@
 
             <div class="landing-nav-box-wrapper">
                 <input type="button" id="forum" class="pbs-button pbs-button-white" value="Forum"> <br />
-                <input type="button" id="resource-bank" class="pbs-button pbs-button-white" value="Resource Bank"> <br />
-                <input type="button" id="profile" class="pbs-button pbs-button-white" value="Profile"> <br />
+                <input type="button" id="resource-bank" class="pbs-button pbs-button-blue" value="Resource Bank"> <br />
+                <input type="button" id="profile" class="pbs-button pbs-button-grey" value="Profile"> <br />
             </div>
 
         </div>

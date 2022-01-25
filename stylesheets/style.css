@@ -6,6 +6,10 @@
     font-family: 'Quicksand', sans-serif;
 }
 
+* {
+    color: var(--pbs-grey);
+}
+
 h1 {
     font-size: 3rem;
 }
@@ -62,4 +66,5 @@ h2 {
 .navbar-wrapper {
     padding: 0 50px;
     background-color: white;
+    border-bottom: 1px solid var(--pbs-grey);
 }
