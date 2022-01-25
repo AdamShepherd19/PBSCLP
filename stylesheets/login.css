@@ -2,6 +2,7 @@
     display: flex;
     margin: 5% 10% 0 10%;
     justify-content: center;
+  border: 1px solid red;
 }
 
 .login-header {
@@ -22,11 +23,16 @@
 }
 
 .logo-banner {
-    display: flex;
-    margin: 5% 10%;
-    padding-left: 50px;
+  display: flex;
+  margin: 5% 10%;
+  padding-left: 50px;
+  border: 1px solid red;
 }
 
 .logo-banner img {
-    width: 250px;
+  width: 250px;
+}
+
+#forgot-password {
+  color: white;
 }

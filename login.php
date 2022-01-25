@@ -71,7 +71,7 @@
         <div class="logo-banner">
             <img src="images/pbslogo.png" alt="PBSuk Logo">
         </div>
-        
+
         <div class="login-container">
 
             <div class="login-header">
@@ -86,6 +86,7 @@
                     <input type="text" id="email" class="pbs-form-text-box" placeholder="Email..."> <br/>
                     <label for="password">Password: </label>
                     <input type="text" id="password" class="pbs-form-text-box" placeholder="Password..."> <br />
+                    <a href="password_reset.php" id="forgot-password">Reset password</a>
                     <input type="button" id="login" class="pbs-button pbs-button-white" value="Log In"> <br />
                 </form>
 
