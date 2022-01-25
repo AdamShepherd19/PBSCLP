@@ -31,8 +31,7 @@
             //store session variables
             $_SESSION['logged_in'] = True;
             $_SESSION['email'] = $email;
-            // $_SESSION['user_id'] = $data[0];
-            echo $data;
+            $data->fprintf();
 
             exit('Login success');
         } else {
