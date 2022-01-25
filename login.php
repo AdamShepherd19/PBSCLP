@@ -1,3 +1,12 @@
+<?php
+    if(isset($_POST['login'])) {
+        $email = $_POST['emailPHP'];
+        $password = $_POST['passwordPHP'];
+
+        exit($email . " = " . $password);
+    }
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -42,23 +51,21 @@
 
                     if(email == "" || password == ""){
                         alert("Please enter a username and password");
+                    } else {
+                        $.ajax({
+                            method: 'POST',
+                            url: "login.php",
+                            data: {
+                                login: 1,
+                                emailPHP: email,
+                                passwordPHP: password
+                            },
+                            success: function (response) {
+                                console.log(response);
+                            },
+                            datatype: 'text'
+                        });
                     };
-
-                    console.log(email + password);
-
-                    $.ajax({
-                        method: 'POST',
-                        url: "login.php",
-                        data: {
-                            login: 1,
-                            emailPHP: email,
-                            passwordPHP: password
-                        },
-                        success: function (response) {
-                            console.log(response);
-                        },
-                        datatype: 'text'
-                    });
                 });
             });
         </script>
