@@ -27,7 +27,7 @@
         while($row = $result->fetch_assoc()) {
             echo "- Title: " . $row["title"]. "<br>- Content: " . $row["content"]. "<br>- Author" . $row["author"]. "<br><br>";
             $data[] = $row;
-            echo json_encode($data);
+            exit(json_encode($data));
         }
     } else {
         echo "0 results";
