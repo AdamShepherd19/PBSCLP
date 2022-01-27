@@ -39,6 +39,9 @@
         } else {
             exit('Login failed');
         }
+
+        mysqli_close($connection);
+        
     }
 ?>
 
