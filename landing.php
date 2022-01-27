@@ -25,13 +25,14 @@
     if ($result->num_rows > 0) {
         // output data of each row
         while($row = $result->fetch_assoc()) {
-            echo "- Title: " . $row["title"]. "<br>- Content: " . $row["content"]. "<br>- Author" . $row["author"]. "<br><br>";
+            // echo "- Title: " . $row["title"]. "<br>- Content: " . $row["content"]. "<br>- Author" . $row["author"]. "<br><br>";
             $data[] = $row;
-            exit(json_encode($data));
         }
     } else {
         echo "0 results";
     }
+
+    exit(json_encode($data));
 
     $connection->close();
 
