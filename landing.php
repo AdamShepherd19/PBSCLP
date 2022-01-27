@@ -45,7 +45,7 @@
 
             <div class="announcement-wrapper" id="announcement-wrapper">
 
-                <div class="card">
+                <!-- <div class="card">
                     <div class="card-header">
                         <span class="announcement-header">Announcement 1 </span>
                     </div>
@@ -92,7 +92,7 @@
                         </blockquote>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <div class="landing-nav-box-wrapper">
                 <input type="button" id="forum" class="pbs-button pbs-button-white" value="Forum"> <br />
@@ -145,6 +145,7 @@
                                     "</blockquote>" +
                             "</div></div></div>";
 
+                            console.log(announcement);
                             $("#announcement-wrapper").append(announcement);
                             
                         }
