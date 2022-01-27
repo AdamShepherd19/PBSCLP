@@ -134,6 +134,7 @@
                     type: 'get',
                     dataType: 'JSON',
                     success: function(response) {
+                        console.log("test");
                         for(var x = 0; x < response.length; x++) {
                             var announcement = "<div class='card'>" +
                             "<div class='card-header'>" +
