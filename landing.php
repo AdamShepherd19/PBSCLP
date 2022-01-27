@@ -5,37 +5,6 @@
         header('Location: login.php');
         exit();
     }
-
-    $pass = file_get_contents('../pass.txt', true);
-
-    //connect to database
-    $connection = new mysqli('localhost', 'pbsclp', $pass, 'pbsclp_pbsclp');
-
-    //check db connection
-    if ($connection->connect_error) {
-        exit("Connection failed: " . $connection->connect_error);
-    }
-
-    //perform query
-    $query = "SELECT * FROM `announcements`";
-    $result = $connection->query($query);
-
-    $data = array();
-
-    if ($result->num_rows > 0) {
-        // output data of each row
-        while($row = $result->fetch_assoc()) {
-            // echo "- Title: " . $row["title"]. "<br>- Content: " . $row["content"]. "<br>- Author" . $row["author"]. "<br><br>";
-            $data[] = $row;
-        }
-    } else {
-        echo "0 results";
-    }
-
-    echo json_encode($data);
-
-    $connection->close();
-
 ?>
 
 <!DOCTYPE html>
@@ -159,26 +128,15 @@
                     window.location.replace('profile.php');
                 });
 
-                // ==================================================
-                // https://www.youtube.com/watch?v=crtwSmleWMA&t=367s
 
-                var ajax = new XMLHttpRequest();
-                var method = "GET";
-                var url = "landing.php";
-                var asynchronous = true;
-
-                ajax.open(method, url, asynchronous);
-                ajax.send();
-
-                ajax.onreadystatechange = function() {
-                    if (this.readyState == 4 && this.status == 200){
-                        var data = JSON.parse(this.responseText);
-                        console.log(data);
+                $.ajax( {
+                    url: 'get_announcements.php',
+                    type: 'get',
+                    dataType: 'JSON',
+                    success: function(response) {
+                        console.log(response);
                     }
-                }
-
-                // ==================================================
-
+                })
 
             });
         </script>
