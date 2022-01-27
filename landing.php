@@ -18,7 +18,7 @@
 
     //perform query
     $query = "SELECT * FROM 'announcements'";
-    $data = $connection->query($query);
+    $result = $connection->query($query);
 
     if ($result->num_rows > 0) {
         // output data of each row
