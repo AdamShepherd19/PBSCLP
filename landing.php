@@ -24,6 +24,8 @@
         // output data of each row
         while($row = $result->fetch_assoc()) {
             echo "- Title: " . $row["title"]. "<br>- Content: " . $row["content"]. "<br>- Author" . $row["author"]. "<br><br>";
+            $data[] = $row;
+            exit(json_encode($data));
         }
     } else {
         echo "0 results";
@@ -154,9 +156,27 @@
                     window.location.replace('profile.php');
                 });
 
-                // $(function(){
-                //     $("#announcement-wrapper").append("common/announcement_structure.php"); 
-                // });
+                // ==================================================
+                // https://www.youtube.com/watch?v=crtwSmleWMA&t=367s
+
+                var ajax = new XMLHttpRequest();
+                var method = "GET";
+                var url = "landing.php";
+                var asynchronous = true;
+
+                ajax.open(method, url, asynchronous);
+                ajax.send();
+
+                ajax.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200){
+                        var data = JSON.parse(this.responseText);
+                        console.log(data);
+                    }
+                }
+                
+                // ==================================================
+
+
             });
         </script>
             
