@@ -32,7 +32,7 @@
         echo "0 results";
     }
 
-    exit(json_encode($data));
+    echo json_encode($data);
 
     $connection->close();
 
