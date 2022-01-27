@@ -44,7 +44,7 @@
             <div class="left-space"></div>
 
             <div class="announcement-wrapper" id="announcement-wrapper">
-
+<!-- 
                 <div class="card">
                     <div class="card-header">
                         <span class="announcement-header">Announcement 1 </span>
@@ -56,7 +56,7 @@
                         </blockquote>
                     </div>
                 </div>
-<!-- 
+
                 <div class="card">
                     <div class="card-header">
                         <span class="announcement-header">Announcement 2 </span>
@@ -143,7 +143,7 @@
                                         "<p>" + response[x].content + "</p>" +
                                         "<footer class='blockquote-footer'>" + response[x].author + "</footer>" +
                                     "</blockquote>" +
-                            "</div></div></div>";
+                            "</div></div>";
 
                             $("#announcement-wrapper").append(announcement);
                         }
