@@ -14,8 +14,8 @@
         $connection = new mysqli('localhost', 'pbsclp', $pass, 'pbsclp_pbsclp');
 
         //check db connection
-        if ($conn->connect_error) {
-            exit("Connection failed: " . $conn->connect_error);
+        if ($connection->connect_error) {
+            exit("Connection failed: " . $connection->connect_error);
         }
 
         //retrieve email and password from form
@@ -41,7 +41,7 @@
         }
 
         mysqli_close($connection);
-        
+
     }
 ?>
 
