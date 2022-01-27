@@ -150,7 +150,7 @@
                             $("#announcement-wrapper").append(announcement);
                             
                         }
-                    }
+                    };
                 })
 
             });
