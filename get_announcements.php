@@ -1,6 +1,5 @@
-<!-- https://makitweb.com/return-json-response-ajax-using-jquery-php -->
-
 <?php
+    // https://makitweb.com/return-json-response-ajax-using-jquery-php
     $pass = file_get_contents('../pass.txt', true);
 
     //connect to database
