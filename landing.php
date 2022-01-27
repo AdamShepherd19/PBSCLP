@@ -91,8 +91,8 @@
                         <footer class="blockquote-footer">Firstname Surname</footer>
                         </blockquote>
                     </div>
-                </div>
-            </div> -->
+                </div> -->
+            </div>
 
             <div class="landing-nav-box-wrapper">
                 <input type="button" id="forum" class="pbs-button pbs-button-white" value="Forum"> <br />
