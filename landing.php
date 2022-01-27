@@ -129,30 +129,30 @@
                 });
 
                 //https://makitweb.com/return-json-response-ajax-using-jquery-php/
-                $.ajax( {
+                $.ajax({
                     url: 'get_announcements.php',
                     type: 'get',
                     dataType: 'JSON',
                     success: function(response) {
                         console.log("test");
-                        for(var x = 0; x < response.length; x++) {
-                            var announcement = "<div class='card'>" +
-                            "<div class='card-header'>" +
-                                "<span class='announcement-header'>" + response[x].title + "</span>" +
-                                "<div class='card-body'>" +
-                                    "<blockquote class='blockquote mb-0'>" +
-                                        "<p>" + response[x].content + "</p>" +
-                                        "<footer class='blockquote-footer'>" + response[x].author + "</footer>" +
-                                    "</blockquote>" +
-                            "</div></div></div>";
-
-                            console.log(announcement);
-                            $("#announcement-wrapper").append(announcement);
+                        // for(var x = 0; x < response.length; x++) {
                             
-                        }
+                        //     var announcement = "<div class='card'>" +
+                        //     "<div class='card-header'>" +
+                        //         "<span class='announcement-header'>" + response[x].title + "</span>" +
+                        //         "<div class='card-body'>" +
+                        //             "<blockquote class='blockquote mb-0'>" +
+                        //                 "<p>" + response[x].content + "</p>" +
+                        //                 "<footer class='blockquote-footer'>" + response[x].author + "</footer>" +
+                        //             "</blockquote>" +
+                        //     "</div></div></div>";
+
+                        //     console.log(announcement);
+                        //     $("#announcement-wrapper").append(announcement);
+                            
+                        // }
                     }
                 });
-
             });
         </script>
             
