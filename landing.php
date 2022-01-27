@@ -154,25 +154,9 @@
                     window.location.replace('profile.php');
                 });
 
-                $.ajax({
-                    method: 'POST',
-                    url: "landing.php",
-                    data: {
-                        
-                    },
-                    success: function (response) {
-                        $('#login-response').html(response);
-
-                        if (response.includes("success")){
-                            window.location.replace('landing.php');
-                        }
-                    },
-                    datatype: 'text'
-                });
-
-                $(function(){
-                    $("#announcement-wrapper").append("common/announcement_structure.php"); 
-                });
+                // $(function(){
+                //     $("#announcement-wrapper").append("common/announcement_structure.php"); 
+                // });
             });
         </script>
             
