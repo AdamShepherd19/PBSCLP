@@ -5,6 +5,32 @@
         header('Location: login.php');
         exit();
     }
+
+    $pass = file_get_contents('../pass.txt', true);
+
+    //connect to database
+    $connection = new mysqli('localhost', 'pbsclp', $pass, 'pbsclp_pbsclp');
+
+    //check db connection
+    if ($connection->connect_error) {
+        exit("Connection failed: " . $connection->connect_error);
+    }
+
+    //perform query
+    $query = "SELECT * FROM announcements";
+    $data = $connection->query($query);
+
+    if ($result->num_rows > 0) {
+        // output data of each row
+        while($row = $result->fetch_assoc()) {
+            echo "- Title: " . $row["title"]. "<br>- Content: " . $row["content"]. "<br>- Author" . $row["author"]. "<br><br>";
+        }
+    } else {
+        echo "0 results";
+    }
+
+    $connection->close();
+
 ?>
 
 <!DOCTYPE html>
@@ -43,7 +69,7 @@
         <div class="main-content">
             <div class="left-space"></div>
 
-            <div class="announcement-wrapper">
+            <div class="announcement-wrapper" id="announcement-wrapper">
 
                 <div class="card">
                     <div class="card-header">
@@ -126,6 +152,26 @@
 
                 $("#profile").on('click', function(){
                     window.location.replace('profile.php');
+                });
+
+                $.ajax({
+                    method: 'POST',
+                    url: "landing.php",
+                    data: {
+                        
+                    },
+                    success: function (response) {
+                        $('#login-response').html(response);
+
+                        if (response.includes("success")){
+                            window.location.replace('landing.php');
+                        }
+                    },
+                    datatype: 'text'
+                });
+
+                $(function(){
+                    $("#announcement-wrapper").append("common/announcement_structure.php"); 
                 });
             });
         </script>

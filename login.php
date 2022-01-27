@@ -40,7 +40,7 @@
             exit('Login failed');
         }
 
-        mysqli_close($connection);
+        $connection->close();
 
     }
 ?>
