@@ -25,7 +25,7 @@
         while($row = $result->fetch_assoc()) {
             echo "- Title: " . $row["title"]. "<br>- Content: " . $row["content"]. "<br>- Author" . $row["author"]. "<br><br>";
             $data[] = $row;
-            exit(json_encode($data));
+            echo json_encode($data));
         }
     } else {
         echo "0 results";
@@ -169,11 +169,12 @@
 
                 ajax.onreadystatechange = function() {
                     if (this.readyState == 4 && this.status == 200){
-                        var data = JSON.parse(this.responseText);
-                        console.log(data);
+                        // var data = JSON.parse(this.responseText);
+                        // console.log(data);
+                        console.log(this.responseText);
                     }
                 }
-                
+
                 // ==================================================
 
 
