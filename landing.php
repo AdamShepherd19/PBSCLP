@@ -24,15 +24,15 @@
 
     if ($result->num_rows > 0) {
         // output data of each row
-        while($row = $result->fetch_assoc()) {
+        while($row = mysqli_fetch_assoc($result)) {
             // echo "- Title: " . $row["title"]. "<br>- Content: " . $row["content"]. "<br>- Author" . $row["author"]. "<br><br>";
-            $data[] = $row;
+            $data.append($row);
         }
     } else {
         echo "0 results";
     }
 
-    echo json_encode($data);
+    exit(json_encode($data));
 
     $connection->close();
 
