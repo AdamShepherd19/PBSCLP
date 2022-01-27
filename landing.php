@@ -150,8 +150,8 @@
                             $("#announcement-wrapper").append(announcement);
                             
                         }
-                    };
-                })
+                    }
+                });
 
             });
         </script>
