@@ -128,13 +128,26 @@
                     window.location.replace('profile.php');
                 });
 
-
+                //https://makitweb.com/return-json-response-ajax-using-jquery-php/
                 $.ajax( {
                     url: 'get_announcements.php',
                     type: 'get',
                     dataType: 'JSON',
                     success: function(response) {
-                        console.log(response);
+                        for(var x = 0; x < response.length; x++) {
+                            var announcement = "<div class='card'>" +
+                            "<div class='card-header'>" +
+                                "<span class='announcement-header'>" + response[x].title + "</span>" +
+                                "<div class='card-body'>" +
+                                    "<blockquote class='blockquote mb-0'>" +
+                                        "<p>" + response[x].content + "</p>" +
+                                        "<footer class='blockquote-footer'>" + response[x].author + "</footer>" +
+                                    "</blockquote>" +
+                            "</div></div></div>";
+
+                            $("#announcement-wrapper").append(announcement);
+                            
+                        }
                     }
                 })
 
