@@ -19,13 +19,14 @@ h2 {
 }
 
 .pbs-button {
-    width: 100px;
-    height: 42px;
+    width: 125px;
+    height: 60px;
     border-radius: 5px;
     border: none;
     box-shadow: 1px 1px 2px var(--pbs-grey);
     margin: 10px;
-    font-size: 1.2rem;
+    font-size: 1rem;
+    white-space: normal;
 }
 
 .pbs-button-white {
