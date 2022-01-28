@@ -93,7 +93,7 @@
                     window.location.replace('profile.php');
                 });
 
-                $("#profile").on('click', function(){
+                $("#new-announcement").on('click', function(){
                     window.location.replace('new_announcement.php');
                 });
 
