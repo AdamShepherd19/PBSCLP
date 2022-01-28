@@ -113,6 +113,7 @@
                     if(title == "" || content == ""){
                         alert("Please fill out the information in the form");
                     } else {
+                        alert("This works 1");
                         $.ajax({
                             method: 'POST',
                             url: "new_announcement.php",
@@ -122,6 +123,7 @@
                                 contentPHP: content
                             },
                             success: function (response) {
+                                alert("This works");
                                 $('#main-content').html(response);
 
                                 if (response.includes("success")){
