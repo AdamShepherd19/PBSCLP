@@ -2,7 +2,7 @@
     session_start();
 
     if(!isset($_SESSION['logged_in'])){
-        header('Location: pages/login.php');
+        header('Location: www.pbsclp.info');
         exit();
     }
 ?>

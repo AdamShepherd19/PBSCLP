@@ -3,7 +3,7 @@
 
     // if already logged in
     if (isset($_SESSION['logged_in'])){
-        header('Location: pages/landing.php');
+        header('Location: www.pbsclp.info');
         exit();
     }
 ?>
