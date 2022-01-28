@@ -121,14 +121,13 @@
                                 contentPHP: content
                             },
                             success: function (response) {
-                                console.log(response);
                                 if (response.includes("success")){
-                                    var successHTML = "<h3>Your post was created succesfully. Please click the button below to return to the landing page.<br> " +
+                                    var successHTML = "<h3>Your post was created succesfully. Please click the button below to return to the landing page.</h3><br> " +
                                         "<input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>";
-                                    console.log(successHTML);
-                                    $('#main-content').html(successHTML);
+
+                                    $('.main-content').html(successHTML);
                                 } else {
-                                    $('#main-content').html("<h3> There was an error processing your request. Please try again </h3><br>Error" + response);
+                                    $('.main-content').html("<h3> There was an error processing your request. Please try again </h3><br>Error" + response);
                                 }
                             },
                             datatype: 'text'
