@@ -7,7 +7,7 @@
     }
 
     $pass = file_get_contents('../../pass.txt', true);
-
+    echo "test1";
     if(isset($_POST['titlePHP'])) {
         //connect to database
         $connection = new mysqli('localhost', 'pbsclp', $pass, 'pbsclp_pbsclp');
@@ -16,6 +16,8 @@
         if ($connection->connect_error) {
             exit("Connection failed: " . $connection->connect_error);
         }
+
+        echo "test2";
 
         //retrieve email and password from form
         $title = $_POST['titlePHP'];
@@ -27,8 +29,10 @@
 
         //check if login details provided match a user profile in the db
         if ($connection->query(query) === TRUE) {
+            echo "test3";
             exit('success');
         } else {
+            echo "test4"
             exit('Error: ' . $connection->error);
         }
 
