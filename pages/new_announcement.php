@@ -66,7 +66,7 @@
                     $("#pbs-nav-bar").load("../common/nav-bar.html"); 
                 });
 
-                $("#announcement-post").on('click', function(){
+                $("#announcement-cancel").on('click', function(){
                     window.location.replace('landing.php');
                 });
 
