@@ -32,7 +32,7 @@
             echo "test3";
             exit('success');
         } else {
-            echo "test4"
+            echo "test4";
             exit('Error: ' . $connection->error);
         }
 
