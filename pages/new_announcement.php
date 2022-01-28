@@ -8,7 +8,7 @@
 
     $pass = file_get_contents('../../pass.txt', true);
     echo "test 1";
-    if(isset($_POST['titlePHP'])) {
+    if(isset($_POST['posted'])) {
         //connect to database
         $connection = new mysqli('localhost', 'pbsclp', $pass, 'pbsclp_pbsclp');
 
@@ -117,6 +117,7 @@
                             method: 'POST',
                             url: "new_announcement.php",
                             data: {
+                                posted: 1,
                                 titlePHP: title,
                                 contentPHP: content
                             },
@@ -125,7 +126,7 @@
 
                                 if (response.includes("success")){
                                     var successHTML = "<h3>Your post was created succesfully. Please click the button below to return to the landing page.<br> " +
-                                    '<input type="button" id="return" class="pbs-button pbs-button-green" value="Confirm">';
+                                        '<input type="button" id="return" class="pbs-button pbs-button-green" value="Confirm">';
 
                                     $('#main-content').html(successHTML);
                                 } else {
