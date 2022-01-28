@@ -38,21 +38,27 @@
 
         <div id="pbs-nav-bar"></div>
 
+        <div class="page-header">
+            <h1>New Announcement</h1>
+        </div>
+
         <div class="main-content">
-            <h2>New Announcement</h2>
+            <div class="form-wrapper">
+                <form action="login.php" method="post">
+                    
+                    <label for="title">Title: </label>
+                    <input type="text" id="title" class="pbs-form-text-box" placeholder="Enter post title..."> <br/>
 
-            <form action="login.php" method="post">
-                <label for="title">Title: </label>
-                <input type="title" id="title" class="pbs-form-text-box" placeholder="Enter post title..."> <br/>
-                <label for="content">Content: </label>
-                <input type="content" id="content" class="pbs-form-text-box" placeholder="Enter post content..."> <br />
-                
-                <input type="button" id="announcement-cancel" class="pbs-button pbs-button-red" value="Cancel"> <br />
-                <input type="button" id="announcement-post" class="pbs-button pbs-button-green" value="Post"> <br />
-            </form>
+                    <label for="content">Content: </label>
+                    <textarea id="content" class="pbs-form-text-box" placeholder="Enter post content..."></textarea> <br />
+                    
+                    <div class="button-wrapper">
+                        <input type="button" id="announcement-cancel" class="pbs-button pbs-button-red" value="Cancel"> <br />
+                        <input type="button" id="announcement-post" class="pbs-button pbs-button-green" value="Post"> <br />
+                    </div>
+                </form>
+            </div>
 
-            <p id="login-response"></p>
-            
         </div>
 
         
