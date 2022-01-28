@@ -46,7 +46,7 @@
         <script type="text/javascript">
             $(document).ready(function () {
                 $(function(){
-                    $("#pbs-nav-bar").load("nav-bar.html"); 
+                    $("#pbs-nav-bar").load("../common/nav-bar.html"); 
                 });
             });
         </script>
