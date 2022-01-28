@@ -103,7 +103,7 @@
                     type: 'get',
                     dataType: 'JSON',
                     success: function(response) {
-                        if (response.contains("no responses")) {
+                        if (response[0].contains("no responses")) {
                             $("#announcement-wrapper").html("<h3> There are no new announcements! </h3>");
                         } else {
                             for(var x = 0; x < response.length; x++) {
