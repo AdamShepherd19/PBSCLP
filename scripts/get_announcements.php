@@ -41,7 +41,7 @@
         echo json_encode($data);
 
     } else {
-        echo "0 results";
+        echo "There are no announcements yet!";
     }
 
     $connection->close();

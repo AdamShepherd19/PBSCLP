@@ -103,19 +103,24 @@
                     type: 'get',
                     dataType: 'JSON',
                     success: function(response) {
-                        for(var x = 0; x < response.length; x++) {
-                            var announcement = "<div class='card'>" +
-                            "<div class='card-header'>" +
-                                "<span class='announcement-header'>" + response[x].title + "</span></div>" +
-                            "<div class='card-body'>" +
-                                "<blockquote class='blockquote mb-0'>" +
-                                    "<p>" + response[x].content + "</p>" +
-                                    "<footer class='blockquote-footer'>" + response[x].author + "</footer>" +
-                                "</blockquote>" +
-                            "</div></div>";
+                        if (response.contains("no responses")) {
+                            $("#announcement-wrapper").html("<h3> There are no new announcements! </h3>");
+                        } else {
+                            for(var x = 0; x < response.length; x++) {
+                                var announcement = "<div class='card'>" +
+                                "<div class='card-header'>" +
+                                    "<span class='announcement-header'>" + response[x].title + "</span></div>" +
+                                "<div class='card-body'>" +
+                                    "<blockquote class='blockquote mb-0'>" +
+                                        "<p>" + response[x].content + "</p>" +
+                                        "<footer class='blockquote-footer'>" + response[x].author + "</footer>" +
+                                    "</blockquote>" +
+                                "</div></div>";
 
-                            $("#announcement-wrapper").append(announcement);
+                                $("#announcement-wrapper").append(announcement);
+                            }
                         }
+
                     }
                 });
 
