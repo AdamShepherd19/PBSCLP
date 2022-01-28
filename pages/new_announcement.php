@@ -45,9 +45,9 @@
         <div class="main-content">
             <div class="form-wrapper">
                 <form action="login.php" method="post">
-                    <label for="title">Title: </label><br /><br />
+                    <label for="title">Title: </label><br />
                     <input type="text" id="title" class="pbs-form-text-box" placeholder="Enter post title..."><br /><br />
-                    <label for="content">Content: </label><br /><br />
+                    <label for="content">Content: </label><br />
                     <textarea id="content" class="pbs-form-text-box" placeholder="Enter post content..."></textarea><br />
                     
                     <div class="button-wrapper">
