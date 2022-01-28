@@ -103,8 +103,9 @@
                     type: 'get',
                     dataType: 'JSON',
                     success: function(response) {
+                        console.log(response);
                         if (response.contains("no announcements")) {
-                            console.log(response);
+                            
                             $("#announcement-wrapper").html(response);
                         } else {
                             for(var x = 0; x < response.length; x++) {
