@@ -10,22 +10,25 @@
         exit("Connection failed: " . $connection->connect_error);
     }
 
-    //perform query
+    //perform query and sort into newest first
     $query = "SELECT * FROM `announcements` ORDER BY announcement_id DESC";
     $result = $connection->query($query);
 
+    //check that there were announcements to show
     if ($result->num_rows > 0) {
 
+        //initialise array
         $data = array();
 
         // output data of each row
         while($row = $result->fetch_assoc()) {
-            // echo "- Title: " . $row["title"]. "<br>- Content: " . $row["content"]. "<br>- Author" . $row["author"]. "<br><br>";
+            //retrieve data from query
             $id = $row['announcement_id'];
             $title = $row['title'];
             $content = $row['content'];
             $author = $row['author'];
             
+            //add data into array
             $data[] = array(
                 "id" => $id,
                 "title" => $title,
@@ -34,6 +37,7 @@
             );
         }
 
+        //encode the array into jason
         echo json_encode($data);
 
     } else {

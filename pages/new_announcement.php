@@ -8,7 +8,7 @@
 
     $pass = file_get_contents('../../pass.txt', true);
     
-    if(isset($_POST['posted'])) {
+    if(isset($_POST['titlePHP'])) {
         //connect to database
         $connection = new mysqli('localhost', 'pbsclp', $pass, 'pbsclp_pbsclp');
 
@@ -17,16 +17,15 @@
             exit("Connection failed: " . $connection->connect_error);
         }
 
-        //retrieve email and password from form
+        //retrieve title, content and author for the new post
         $title = $_POST['titlePHP'];
         $content = $_POST['contentPHP'];
-        // $author = "adam shep";
-        $author = $_SESSION['firstname'] . " " .$_SESSION['lastname'];
+        $author = $_SESSION['firstname'] . " " . $_SESSION['lastname'];
 
-        //query db for user login details provided
-        // $query = "INSERT INTO `announcements` (`announcement_id`, `title`, `content`, `author`) VALUES (NULL, `" . $title . "`, `" . $content . "`, `" . $author . "`);";
+        // query database and insert the new announcement into the announcements table
         $query = "INSERT INTO announcements (title, content, author) VALUES ('" . $title . "', '" . $content . "', '" . $author . "');";
-        //check if login details provided match a user profile in the db
+        
+        //check to see if the insert was successful
         if ($connection->query($query) === TRUE) {
             exit('success');
         } else {
@@ -62,7 +61,7 @@
         <link rel="stylesheet" href="../stylesheets/style.css">
         <link rel="stylesheet" href="../stylesheets/new_announcement.css">
 
-        <title>TITLE</title>
+        <title>New Announcement</title>
         
     </head>
 
@@ -94,41 +93,52 @@
         
         <script type="text/javascript">
             $(document).ready(function () {
+
+                // load in the nav bar
                 $(function(){
                     $("#pbs-nav-bar").load("../common/nav-bar.html"); 
                 });
 
+                //onclick function for the cancel button
                 $("#announcement-cancel").on('click', function(){
                     window.location.replace('landing.php');
                 });
 
+                // onclick function for the post announcement button
                 $("#announcement-post").on('click', function(){
+                    //retrieve data from form
                     var title = $("#title").val();
                     var content = $('#content').val();
 
+                    //check data not empty
                     if(title == "" || content == ""){
+                        //prompt user to fill in all data
                         alert("Please fill out the information in the form");
                     } else {
+                        //send data to php
                         $.ajax({
                             method: 'POST',
                             url: "new_announcement.php",
                             data: {
-                                posted: 1,
                                 titlePHP: title,
                                 contentPHP: content
                             },
                             success: function (response) {
+                                //check if the php execution was successful and the data was added to the db
                                 if (response.includes("success")){
+                                    //replace html with success message and button to return to landing page
                                     var successHTML = "<h3>Your post was created succesfully. Please click the button below to return to the landing page.</h3><br> " +
                                         "<input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>";
 
                                     $('.main-content').html(successHTML);
 
+                                    // onclick function for new button to return to landing page
                                     $("#return").on('click', function(){
                                         window.location.replace('landing.php');
                                     });
 
                                 } else {
+                                    //display error message if the php could not be executed
                                     $('.main-content').html("<h3> There was an error processing your request. Please try again </h3><br>Error" + response);
                                 }
                             },
