@@ -124,16 +124,17 @@
                             },
                             success: function (response) {
                                 alert("This works");
-                                $('#main-content').html(response);
+                                alert(response);
+                                // $('#main-content').html(response);
 
-                                if (response.includes("success")){
-                                    var successHTML = "<h3>Your post was created succesfully. Please click the button below to return to the landing page.<br> " +
-                                        '<input type="button" id="return" class="pbs-button pbs-button-green" value="Confirm">';
+                                // if (response.includes("success")){
+                                //     var successHTML = "<h3>Your post was created succesfully. Please click the button below to return to the landing page.<br> " +
+                                //         '<input type="button" id="return" class="pbs-button pbs-button-green" value="Confirm">';
 
-                                    $('#main-content').html(successHTML);
-                                } else {
-                                    $('#main-content').html("<h3> There was an error processing your request. Please try again </h3><br>Error" + response);
-                                }
+                                //     $('#main-content').html(successHTML);
+                                // } else {
+                                //     $('#main-content').html("<h3> There was an error processing your request. Please try again </h3><br>Error" + response);
+                                // }
                             },
                             datatype: 'text'
                         });
