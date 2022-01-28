@@ -106,7 +106,7 @@
                     var title = $("#title").val();
                     var content = $('#content').val();
 
-                    if(email == "" || password == ""){
+                    if(title == "" || content == ""){
                         alert("Please fill out the information in the form");
                     } else {
                         $.ajax({
