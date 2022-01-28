@@ -99,7 +99,7 @@
 
                 //https://makitweb.com/return-json-response-ajax-using-jquery-php/
                 $.ajax({
-                    url: 'get_announcements.php',
+                    url: '../scripts/get_announcements.php',
                     type: 'get',
                     dataType: 'JSON',
                     success: function(response) {
