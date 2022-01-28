@@ -23,6 +23,9 @@
         $title = $_POST['titlePHP'];
         $content = $_POST['contentPHP'];
         $author = "adam shep";
+
+        echo $title;
+        echo $content;
         
         //query db for user login details provided
         $query = "INSERT INTO `announcements` (`announcement_id`, `title`, `content`, `author`) VALUES (NULL, `" . $title . "`, `" . $content . "`, `" . $author . "`);";
