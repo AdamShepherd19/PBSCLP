@@ -2,7 +2,7 @@
     session_start();
 
     if(!isset($_SESSION['logged_in'])){
-        header('Location: login.php');
+        header('Location: pages/login.php');
         exit();
     }
 ?>
@@ -45,7 +45,7 @@
         <div class="main-content">
             <div class="form-wrapper">
                 <form action="login.php" method="post">
-                    
+
                     <label for="title">Title: </label>
                     <input type="text" id="title" class="pbs-form-text-box" placeholder="Enter post title..."> <br/>
 

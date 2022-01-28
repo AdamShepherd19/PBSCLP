@@ -3,7 +3,7 @@
 
     // if already logged in
     if (isset($_SESSION['logged_in'])){
-        header('Location: landing.php');
+        header('Location: pages/landing.php');
         exit();
     }
 ?>
