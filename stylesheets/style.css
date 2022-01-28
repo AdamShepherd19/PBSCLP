@@ -49,6 +49,11 @@ h2 {
     color: white;
 }
 
+.pbs-button-red {
+    background-color: red;
+    color: white;
+}
+
 .pbs-form-text-box {
     margin: 10px 0;
     border-radius: 5px;
