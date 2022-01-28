@@ -120,7 +120,7 @@
                                 titlePHP: title,
                                 contentPHP: content
                             },
-                            success: function (response) {l(response);
+                            success: function (response) {
                                 if (response.includes("success")){
                                     var successHTML = "<h3>Your post was created succesfully. Please click the button below to return to the landing page.<br> " +
                                         '<input type="button" id="return" class="pbs-button pbs-button-green" value="Confirm">';
