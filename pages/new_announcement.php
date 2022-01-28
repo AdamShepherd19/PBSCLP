@@ -37,9 +37,21 @@
 
         <div id="pbs-nav-bar"></div>
 
-        <div>
-            <h1 style="color:white; padding:20px 0 0 100px;font-size:5em;"> </h1>
-            <h2 style="color:white; padding:0 0 0 100px;font-size:2em;">Website coming soon...</h2>
+        <div class="main-content">
+            <h2>Login</h2>
+
+            <form action="login.php" method="post">
+                <label for="title">Title: </label>
+                <input type="title" id="title" class="pbs-form-text-box" placeholder="Enter post title..."> <br/>
+                <label for="content">Content: </label>
+                <input type="content" id="content" class="pbs-form-text-box" placeholder="Enter post content..."> <br />
+                
+                <input type="button" id="announcement-cancel" class="pbs-button pbs-button-red" value="Cancel"> <br />
+                <input type="button" id="announcement-post" class="pbs-button pbs-button-white" value="Post"> <br />
+            </form>
+
+            <p id="login-response"></p>
+            
         </div>
 
         
