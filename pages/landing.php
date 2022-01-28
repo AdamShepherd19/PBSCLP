@@ -103,10 +103,8 @@
                     type: 'get',
                     dataType: 'JSON',
                     success: function(response) {
-                        console.log(response);
-                        if (response.contains("no announcements")) {
-                            
-                            $("#announcement-wrapper").html(response);
+                        if (response.includes("no announcements")) {
+                            $("#announcement-wrapper").html("<h3> There are no announcements yet! </h3>");
                         } else {
                             for(var x = 0; x < response.length; x++) {
                                 var announcement = "<div class='card'>" +
