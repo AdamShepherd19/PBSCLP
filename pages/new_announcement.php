@@ -5,6 +5,38 @@
         header('Location: https://pbsclp.info');
         exit();
     }
+
+    $pass = file_get_contents('../../pass.txt', true);
+
+    if(isset($_POST['title'])) {
+        //connect to database
+        $connection = new mysqli('localhost', 'pbsclp', $pass, 'pbsclp_pbsclp');
+
+        //check db connection
+        if ($connection->connect_error) {
+            exit("Connection failed: " . $connection->connect_error);
+        }
+
+        //retrieve email and password from form
+        $title = $_POST['titlePHP'];
+        $content = $_POST['contentPHP'];
+        $author = "adam shep";
+        
+        //query db for user login details provided
+        $query = "INSERT INTO `announcements` (`announcement_id`, `title`, `content`, `author`) VALUES (NULL, '" . $title . "', '" . $content . "', '" . $author . "');";
+
+        //check if login details provided match a user profile in the db
+        if ($connection->query(query) === TRUE) {
+            exit('success');
+        } else {
+            exit('Error: ' . $connection->error);
+        }
+
+        $connection->close();
+
+    }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -74,29 +106,31 @@
                     var title = $("#title").val();
                     var content = $('#content').val();
 
-                    alert(title + " : " + content);
+                    if(email == "" || password == ""){
+                        alert("Please fill out the information in the form");
+                    } else {
+                        $.ajax({
+                            method: 'POST',
+                            url: "new_announcement.php",
+                            data: {
+                                titlePHP: title,
+                                contentPHP: content
+                            },
+                            success: function (response) {
+                                $('#main-content').html(response);
 
-                    // if(email == "" || password == ""){
-                    //     alert("Please enter a username and password");
-                    // } else {
-                    //     $.ajax({
-                    //         method: 'POST',
-                    //         url: "login.php",
-                    //         data: {
-                    //             login: 1,
-                    //             emailPHP: email,
-                    //             passwordPHP: password
-                    //         },
-                    //         success: function (response) {
-                    //             $('#login-response').html(response);
+                                if (response.includes("success")){
+                                    var successHTML = "<h3>Your post was created succesfully. Please click the button below to return to the landing page.<br> " +
+                                    '<input type="button" id="return" class="pbs-button pbs-button-green" value="Confirm">';
 
-                    //             if (response.includes("success")){
-                    //                 window.location.replace('landing.php');
-                    //             }
-                    //         },
-                    //         datatype: 'text'
-                    //     });
-                    // };
+                                    $('#main-content').html(successHTML);
+                                } else {
+                                    $('#main-content').html("<h3> There was an error processing your request. Please try again </h3><br>Error" + response);
+                                }
+                            },
+                            datatype: 'text'
+                        });
+                    };
                 });
 
 
