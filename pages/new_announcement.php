@@ -101,10 +101,6 @@
                     window.location.replace('landing.php');
                 });
 
-                $("#return").on('click', function(){
-                    window.location.replace('landing.php');
-                });
-
                 $("#announcement-post").on('click', function(){
                     var title = $("#title").val();
                     var content = $('#content').val();
@@ -124,6 +120,10 @@
                                 if (response.includes("success")){
                                     var successHTML = "<h3>Your post was created succesfully. Please click the button below to return to the landing page.</h3><br> " +
                                         "<input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>";
+
+                                    $("#return").on('click', function(){
+                                        window.location.replace('landing.php');
+                                    });
 
                                     $('.main-content').html(successHTML);
                                 } else {
