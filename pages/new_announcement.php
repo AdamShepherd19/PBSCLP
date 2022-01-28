@@ -24,7 +24,7 @@
 
         //query db for user login details provided
         // $query = "INSERT INTO `announcements` (`announcement_id`, `title`, `content`, `author`) VALUES (NULL, `" . $title . "`, `" . $content . "`, `" . $author . "`);";
-        $query = "INSERT INTO announcements (title, content, author) VALUES ('" . $title . "`, `" . $content . "`, `" . $author . "');";
+        $query = "INSERT INTO announcements (title, content, author) VALUES ('" . $title . "', '" . $content . "', '" . $author . "');";
         //check if login details provided match a user profile in the db
         if ($connection->query($query) === TRUE) {
             exit('success');
