@@ -121,11 +121,12 @@
                                     var successHTML = "<h3>Your post was created succesfully. Please click the button below to return to the landing page.</h3><br> " +
                                         "<input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>";
 
+                                    $('.main-content').html(successHTML);
+
                                     $("#return").on('click', function(){
                                         window.location.replace('landing.php');
                                     });
-
-                                    $('.main-content').html(successHTML);
+                                    
                                 } else {
                                     $('.main-content').html("<h3> There was an error processing your request. Please try again </h3><br>Error" + response);
                                 }
