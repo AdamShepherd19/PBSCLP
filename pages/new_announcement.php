@@ -7,7 +7,7 @@
     }
 
     $pass = file_get_contents('../../pass.txt', true);
-    echo "test 1";
+    
     if(isset($_POST['posted'])) {
         //connect to database
         $connection = new mysqli('localhost', 'pbsclp', $pass, 'pbsclp_pbsclp');
@@ -17,32 +17,24 @@
             exit("Connection failed: " . $connection->connect_error);
         }
 
-        echo "test2";
-
         //retrieve email and password from form
         $title = $_POST['titlePHP'];
         $content = $_POST['contentPHP'];
         $author = "adam shep";
 
-        echo $title;
-        echo $content;
-        
         //query db for user login details provided
         // $query = "INSERT INTO `announcements` (`announcement_id`, `title`, `content`, `author`) VALUES (NULL, `" . $title . "`, `" . $content . "`, `" . $author . "`);";
-        $query = "INSERT INTO announcements (title, content, author) VALUES ('testTitle2', 'testContent2', 'testAuthor2');";
+        $query = "INSERT INTO announcements (title, content, author) VALUES ('" . $title . "`, `" . $content . "`, `" . $author . "');";
         //check if login details provided match a user profile in the db
         if ($connection->query($query) === TRUE) {
-            echo "test3";
             exit('success');
         } else {
-            echo "test4";
             exit('Error: ' . $connection->error);
         }
 
         $connection->close();
 
     }
-
 
 ?>
 
@@ -116,7 +108,6 @@
                     if(title == "" || content == ""){
                         alert("Please fill out the information in the form");
                     } else {
-                        alert("This works 1");
                         $.ajax({
                             method: 'POST',
                             url: "new_announcement.php",
@@ -125,27 +116,20 @@
                                 titlePHP: title,
                                 contentPHP: content
                             },
-                            success: function (response) {
-                                alert("This works");
-                                alert(response);
-                                // $('#main-content').html(response);
+                            success: function (response) {l(response);
+                                if (response.includes("success")){
+                                    var successHTML = "<h3>Your post was created succesfully. Please click the button below to return to the landing page.<br> " +
+                                        '<input type="button" id="return" class="pbs-button pbs-button-green" value="Confirm">';
 
-                                // if (response.includes("success")){
-                                //     var successHTML = "<h3>Your post was created succesfully. Please click the button below to return to the landing page.<br> " +
-                                //         '<input type="button" id="return" class="pbs-button pbs-button-green" value="Confirm">';
-
-                                //     $('#main-content').html(successHTML);
-                                // } else {
-                                //     $('#main-content').html("<h3> There was an error processing your request. Please try again </h3><br>Error" + response);
-                                // }
+                                    $('#main-content').html(successHTML);
+                                } else {
+                                    $('#main-content').html("<h3> There was an error processing your request. Please try again </h3><br>Error" + response);
+                                }
                             },
                             datatype: 'text'
                         });
                     };
                 });
-
-
-
             });
         </script>
         
