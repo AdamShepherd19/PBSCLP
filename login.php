@@ -33,8 +33,8 @@
             //store session variables
             $_SESSION['logged_in'] = True;
             $_SESSION['email'] = $email;
-            $_SESSION['user_id'] = $row['user_id'];
-            $_SESSION['account_type'] = $row['account_type'];
+            $_SESSION['user_id'] = $row['user_id'][0];
+            $_SESSION['account_type'] = $row['account_type'][0];
 
             exit('Login success');
         } else {
