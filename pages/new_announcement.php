@@ -28,8 +28,8 @@
         echo $content;
         
         //query db for user login details provided
-        $query = "INSERT INTO `announcements` (`announcement_id`, `title`, `content`, `author`) VALUES (NULL, `" . $title . "`, `" . $content . "`, `" . $author . "`);";
-
+        // $query = "INSERT INTO `announcements` (`announcement_id`, `title`, `content`, `author`) VALUES (NULL, `" . $title . "`, `" . $content . "`, `" . $author . "`);";
+        $query = "INSERT INTO `announcements` (`announcement_id`, `title`, `content`, `author`) VALUES (NULL, `testTitle`, `testContent`, `testAuthor`);";
         //check if login details provided match a user profile in the db
         if ($connection->query(query) === TRUE) {
             echo "test3";
