@@ -152,6 +152,9 @@
                 });
 
                 var accountType = '<?php echo $_SESSION['account_type']; ?>';
+                if (accountType != 'administrator') {
+                    $('#new-announcement').hide();
+                }
             });
         </script>
             
