@@ -68,7 +68,7 @@
 
                 $("#announcement-post").on('click', function(){
                     window.location.replace('landing.php');
-                };
+                });
 
                 $("#announcement-post").on('click', function(){
                     var title = $("#title").val();
