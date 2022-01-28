@@ -36,8 +36,6 @@
             $_SESSION['user_id'] = $row['user_id'];
             $_SESSION['account_type'] = $row['account_type'];
 
-            print_r($row);
-
             exit('Login success');
         } else {
             exit('Login failed');

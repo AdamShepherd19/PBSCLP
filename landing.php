@@ -152,7 +152,6 @@
                 });
 
                 var accountType = '<?php echo $_SESSION['account_type']; ?>';
-                alert(accountType);
             });
         </script>
             
