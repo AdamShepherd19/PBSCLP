@@ -93,6 +93,10 @@
                     window.location.replace('profile.php');
                 });
 
+                $("#profile").on('click', function(){
+                    window.location.replace('new_announcement.php');
+                });
+
                 //https://makitweb.com/return-json-response-ajax-using-jquery-php/
                 $.ajax({
                     url: 'get_announcements.php',
