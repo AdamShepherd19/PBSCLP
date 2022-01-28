@@ -1,6 +1,6 @@
 <?php
     // https://makitweb.com/return-json-response-ajax-using-jquery-php
-    $pass = file_get_contents('../pass.txt', true);
+    $pass = file_get_contents('../../pass.txt', true);
 
     //connect to database
     $connection = new mysqli('localhost', 'pbsclp', $pass, 'pbsclp_pbsclp');

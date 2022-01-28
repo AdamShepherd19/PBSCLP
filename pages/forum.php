@@ -25,15 +25,15 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
         <!-- include jQuery -->
-        <script src="includes/jquery.js"></script>
+        <script src="../includes/jquery.js"></script>
 
-        <link rel="stylesheet" href="stylesheets/style.css">
+        <link rel="stylesheet" href="../stylesheets/style.css">
 
         <title>Forum</title>
         
     </head>
 
-    <body style="background-image:url(images/dog.jpg); background-size:cover; background-repeat: no-repeat;">
+    <body style="background-image:url(../images/dog.jpg); background-size:cover; background-repeat: no-repeat;">
 
         <div id="pbs-nav-bar"></div>
 

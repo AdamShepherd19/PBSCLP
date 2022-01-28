@@ -25,10 +25,10 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         
         <!-- include jQuery -->
-        <script src="includes/jquery.js"></script>
+        <script src="../includes/jquery.js"></script>
 
-        <link rel="stylesheet" href="stylesheets/style.css">
-        <link rel="stylesheet" href="stylesheets/landing.css">
+        <link rel="stylesheet" href="../stylesheets/style.css">
+        <link rel="stylesheet" href="../stylesheets/landing.css">
 
         <title>Landing Page</title>
         
@@ -44,46 +44,10 @@
             <div class="left-space"></div>
 
             <div class="announcement-wrapper" id="announcement-wrapper">
-<!-- 
+                <!-- 
                 <div class="card">
                     <div class="card-header">
                         <span class="announcement-header">Announcement 1 </span>
-                    </div>
-                    <div class="card-body">
-                        <blockquote class="blockquote mb-0">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                        <footer class="blockquote-footer">Firstname Surname</footer>
-                        </blockquote>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <span class="announcement-header">Announcement 2 </span>
-                    </div>
-                    <div class="card-body">
-                        <blockquote class="blockquote mb-0">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                        <footer class="blockquote-footer">Firstname Surname</footer>
-                        </blockquote>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <span class="announcement-header">Announcement 3 </span>
-                    </div>
-                    <div class="card-body">
-                        <blockquote class="blockquote mb-0">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                        <footer class="blockquote-footer">Firstname Surname</footer>
-                        </blockquote>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                    <span class="announcement-header">Announcement 4 </span>
                     </div>
                     <div class="card-body">
                         <blockquote class="blockquote mb-0">
@@ -114,7 +78,7 @@
                 // }
 
                 $(function(){
-                    $("#pbs-nav-bar").load("nav-bar.html"); 
+                    $("#pbs-nav-bar").load("../common/nav-bar.html"); 
                 });
 
                 $("#forum").on('click', function(){
