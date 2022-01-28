@@ -105,7 +105,7 @@
                     success: function(response) {
                         if (response.includes("no announcements")) {
                             $("#announcement-wrapper").hide();
-                            $(".left-space").after("<h3 style='display: flex; align-items: center;'> There are no announcements yet! </h3>");
+                            $(".left-space").after("<h3 style='display: flex; flex-direction: row; align-items: center;'> There are no announcements yet! </h3>");
                             // $("#announcement-wrapper").html("<h3> There are no announcements yet! </h3>");
                         } else {
                             for(var x = 0; x < response.length; x++) {
