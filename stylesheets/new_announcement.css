@@ -2,18 +2,18 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-  
-  .pbs-form-text-box {
+}
+
+.pbs-form-text-box {
     min-width: 60vw;
-  }
-  
-  #content {
+}
+
+#content {
     min-height: 30vh;
-  }
-  
-  .button-wrapper {
+}
+
+.button-wrapper {
     display: flex;
     flex-direction: row;
     float: right;
-  }
+}

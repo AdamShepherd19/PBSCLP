@@ -45,16 +45,14 @@
         <div class="main-content">
             <div class="form-wrapper">
                 <form action="login.php" method="post">
-
-                    <label for="title">Title: </label>
-                    <input type="text" id="title" class="pbs-form-text-box" placeholder="Enter post title..."> <br/>
-
-                    <label for="content">Content: </label>
-                    <textarea id="content" class="pbs-form-text-box" placeholder="Enter post content..."></textarea> <br />
+                    <label for="title">Title: </label><br /><br />
+                    <input type="text" id="title" class="pbs-form-text-box" placeholder="Enter post title..."><br /><br />
+                    <label for="content">Content: </label><br /><br />
+                    <textarea id="content" class="pbs-form-text-box" placeholder="Enter post content..."></textarea><br />
                     
                     <div class="button-wrapper">
-                        <input type="button" id="announcement-cancel" class="pbs-button pbs-button-red" value="Cancel"> <br />
-                        <input type="button" id="announcement-post" class="pbs-button pbs-button-green" value="Post"> <br />
+                        <input type="button" id="announcement-cancel" class="pbs-button pbs-button-red" value="Cancel"> 
+                        <input type="button" id="announcement-post" class="pbs-button pbs-button-green" value="Post">
                     </div>
                 </form>
             </div>
