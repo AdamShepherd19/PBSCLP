@@ -65,6 +65,42 @@
                 $(function(){
                     $("#pbs-nav-bar").load("../common/nav-bar.html"); 
                 });
+
+                $("#announcement-post").on('click', function(){
+                    window.location.replace('landing.php');
+                };
+
+                $("#announcement-post").on('click', function(){
+                    var title = $("#title").val();
+                    var content = $('#content').val();
+
+                    alert(title + " : " + content);
+
+                    // if(email == "" || password == ""){
+                    //     alert("Please enter a username and password");
+                    // } else {
+                    //     $.ajax({
+                    //         method: 'POST',
+                    //         url: "login.php",
+                    //         data: {
+                    //             login: 1,
+                    //             emailPHP: email,
+                    //             passwordPHP: password
+                    //         },
+                    //         success: function (response) {
+                    //             $('#login-response').html(response);
+
+                    //             if (response.includes("success")){
+                    //                 window.location.replace('landing.php');
+                    //             }
+                    //         },
+                    //         datatype: 'text'
+                    //     });
+                    // };
+                });
+
+
+
             });
         </script>
         
