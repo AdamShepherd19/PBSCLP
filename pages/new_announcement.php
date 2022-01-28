@@ -28,6 +28,7 @@
         <script src="../includes/jquery.js"></script>
 
         <link rel="stylesheet" href="../stylesheets/style.css">
+        <link rel="stylesheet" href="../stylesheets/new_announcement.css">
 
         <title>TITLE</title>
         
@@ -38,7 +39,7 @@
         <div id="pbs-nav-bar"></div>
 
         <div class="main-content">
-            <h2>Login</h2>
+            <h2>New Announcement</h2>
 
             <form action="login.php" method="post">
                 <label for="title">Title: </label>
@@ -47,7 +48,7 @@
                 <input type="content" id="content" class="pbs-form-text-box" placeholder="Enter post content..."> <br />
                 
                 <input type="button" id="announcement-cancel" class="pbs-button pbs-button-red" value="Cancel"> <br />
-                <input type="button" id="announcement-post" class="pbs-button pbs-button-white" value="Post"> <br />
+                <input type="button" id="announcement-post" class="pbs-button pbs-button-green" value="Post"> <br />
             </form>
 
             <p id="login-response"></p>
