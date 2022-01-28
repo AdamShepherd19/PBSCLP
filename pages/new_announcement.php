@@ -20,7 +20,8 @@
         //retrieve email and password from form
         $title = $_POST['titlePHP'];
         $content = $_POST['contentPHP'];
-        $author = "adam shep";
+        // $author = "adam shep";
+        $author = $_SESSION['firstname'] . " " .$_SESSION['lastname'];
 
         //query db for user login details provided
         // $query = "INSERT INTO `announcements` (`announcement_id`, `title`, `content`, `author`) VALUES (NULL, `" . $title . "`, `" . $content . "`, `" . $author . "`);";
@@ -126,7 +127,7 @@
                                     $("#return").on('click', function(){
                                         window.location.replace('landing.php');
                                     });
-                                    
+
                                 } else {
                                     $('.main-content').html("<h3> There was an error processing your request. Please try again </h3><br>Error" + response);
                                 }
