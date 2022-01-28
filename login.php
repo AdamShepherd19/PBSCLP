@@ -35,7 +35,6 @@
             $_SESSION['email'] = $email;
             $_SESSION['user_id'] = $row['user_id'];
             $_SESSION['account_type'] = $row['account_type'];
-            echo $_SESSION['account_type'];
 
             exit('Login success');
         } else {
