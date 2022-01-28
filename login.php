@@ -23,7 +23,7 @@
         $password = md5($_POST['passwordPHP']);
         
         //query db for user login details provided
-        $query = "SELECT user_id FROM users WHERE email='" . $email . "' AND password='" . $password . "'";
+        $query = "SELECT user_id, account_type FROM users WHERE email='" . $email . "' AND password='" . $password . "'";
         $data = $connection->query($query);
 
         //check if login details provided match a user profile in the db
@@ -34,6 +34,7 @@
             $_SESSION['logged_in'] = True;
             $_SESSION['email'] = $email;
             $_SESSION['user_id'] = $row['user_id'];
+            $_SESSION['account_type'] = $row['account_type'];
 
             exit('Login success');
         } else {
