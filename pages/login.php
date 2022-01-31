@@ -18,31 +18,12 @@
             exit("Connection failed: " . $connection->connect_error);
         }
 
-        // $email = $_POST['emailPHP'];
-        // $password = md5($_POST['passwordPHP']);
-
-        //query db for user login details provided
-        // $query = "SELECT user_id, account_type, firstname, lastname FROM users WHERE email='" . $email . "' AND password='" . $password . "'";
-        
-        //preparing query to protect from SQL injection
-        // https://phpdelusions.net/mysqli_examples/prepared_select
-                
-        //retrieve email and password from form
         $email = $_POST['emailPHP'];
         $password = md5($_POST['passwordPHP']);
-        
-        // $query = "SELECT user_id, account_type, firstname, lastname FROM users WHERE email = ? AND password = ?";
-        
-        $sql = mysqli_stmt_prepare($connection);
-        mysqli_stml_prepare($sql, "SELECT user_id, account_type, firstname, lastname FROM users WHERE email = ? AND password = ?");
-        mysqli_stmt_bind_param($sql, 'ss', $email, $password);
 
-        mysqli_stmt_execute($sql);
-        $data = mysqli_stmt_get_result($sql);
-
-
-
-        // $data = $connection->query($query);
+        //query db for user login details provided
+        $query = "SELECT user_id, account_type, firstname, lastname FROM users WHERE email='" . $email . "' AND password='" . $password . "'";
+        $data = $connection->query($query);
 
         //check if login details provided match a user profile in the db
         if ($data->num_rows > 0) {
