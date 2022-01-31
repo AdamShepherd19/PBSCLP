@@ -76,9 +76,6 @@
             
             $(document).ready(function () {
 
-                // $("#pbs-nav-bar").load("../common/nav-bar.html");
-
-
                 $("#forum").on('click', function(){
                     window.location.href = 'forum.php';
                 });

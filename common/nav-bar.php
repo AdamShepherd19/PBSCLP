@@ -46,7 +46,7 @@
     </nav>
 </div>
 
-<script>
+<!-- <script>
     $(document).ready(function () {
         var accountType;
         if (accountType != 'administrator') {
@@ -55,4 +55,4 @@
             $('.admin-only').show();
         }
     });
-</script>
+</script> -->
