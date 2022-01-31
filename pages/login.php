@@ -32,6 +32,7 @@
 
             //store session variables
             $_SESSION['logged_in'] = True;
+            $_SESSION['user_id'] = $row['user_id'];
             $_SESSION['email'] = $email;
             $_SESSION['account_type'] = $row['account_type'];
             $_SESSION['firstname'] = $row['firstname'];

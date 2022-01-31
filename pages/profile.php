@@ -5,6 +5,8 @@
         header('Location: https://pbsclp.info');
         exit();
     }
+
+    
 ?>
 
 <!DOCTYPE html>
