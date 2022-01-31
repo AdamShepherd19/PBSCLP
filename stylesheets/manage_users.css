@@ -1,9 +1,47 @@
 .main-content {
-    display: flex;
-    max-width: 90vw;
+    /* display: flex; */
+    max-width: 70vw;
+    border: 1px solid red;
+    align-content: center;
+    margin: auto;
   }
   
-.announcement-wrapper {
-    max-height: 60vh;
+.account-wrapper {
     overflow-y: scroll;
+    width: 100%;
+    height: 80vh;
+    border: 1px solid red;
+}
+
+.user-account {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    border: 1px solid var(--pbs-grey);
+    border-radius: 30px;
+    height: 250px;
+}
+
+.account-header {
+    width: 100%;
+    border: 1px solid red;
+    text-align: center;
+}
+
+.account-main {
+    order: 2;
+    display: flex;
+    border: 1px solid red;
+}
+
+.account-details {
+    width: 60%;
+    border: 1px solid red;
+    height: 200px;
+}
+
+.button-wrapper {
+    width: 40%;
+    border: 1px solid red;
+  height: 200px;
 }

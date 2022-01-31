@@ -70,7 +70,7 @@
                         </div>
 
                         <div class="button-wrapper">
-                            <input type="button" id="edit-profile" class="pbs-button pbs-button-orange table-button" value="Edit">
+                            <input type="button" id="edit-profile" class="pbs-button pbs-button-orange table-button" value="Edit"> <br />
                             <input type="button" id="lock-profile" class="pbs-button pbs-button-yellow table-button" value="Lock">
                             <input type="button" id="remove-profile" class="pbs-button pbs-button-red table-button" value="Remove">
                         </div>
