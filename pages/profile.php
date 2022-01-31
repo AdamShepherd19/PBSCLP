@@ -95,10 +95,10 @@
                     $("#cancel-profile").show();
                     $("#save-profile").show();
 
-                    $("#name").html('<input type="text" id="new-name" class="pbs-form-text-box" text="' + $("#name").text() + '"/>');
-                    $("#email-address").html('<input type="text" id="new-email" class="pbs-form-text-box" text="' + $("#email-address").text() + '"/>');
-                    $("#contact-number").html('<input type="text" id="new-contact-number" class="pbs-form-text-box" text="' + $("#contact-number").text() + '"/>');
-                    $("#organisation").html('<input type="text" id="new-organisation" class="pbs-form-text-box" text="' + $("#organisation").text() + '"/>');
+                    $("#name").html('<input type="text" id="new-name" class="pbs-form-text-box" value="' + $("#name").text() + '"/>');
+                    $("#email-address").html('<input type="text" id="new-email" class="pbs-form-text-box" value="' + $("#email-address").text() + '"/>');
+                    $("#contact-number").html('<input type="text" id="new-contact-number" class="pbs-form-text-box" value="' + $("#contact-number").text() + '"/>');
+                    $("#organisation").html('<input type="text" id="new-organisation" class="pbs-form-text-box" value="' + $("#organisation").text() + '"/>');
                 });
 
                 $("#cancel-profile").on('click', function() {
