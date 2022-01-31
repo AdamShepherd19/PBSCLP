@@ -129,7 +129,12 @@
 
                     }
                 });
+            });
+        </script>
 
+
+        <script>
+            $(document).ready(function () {
                 var accountType = '<?php echo $_SESSION['account_type']; ?>';
                 if (accountType != 'administrator') {
                     $('.admin-only').hide();
