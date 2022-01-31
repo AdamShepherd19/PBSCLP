@@ -1,0 +1,40 @@
+.login-container {
+    display: flex;
+    margin: 5% 10% 0 10%;
+    justify-content: center;
+}
+
+.login-header {
+    flex: 2;
+    order: 1;
+    padding: 50px;
+    color: var(--pbs-grey);
+}
+
+.login-form-container {
+    flex: 1;
+    order: 2;
+    border-radius: 25px;
+    background-color: var(--pbs-green);
+    padding: 50px;
+    text-align: right;
+    color: white;
+}
+
+.login-form-container label, h2 {
+    color: white;
+}
+
+.logo-banner {
+    display: flex;
+    margin: 5% 10%;
+    padding-left: 50px;
+}
+
+.logo-banner img {
+    width: 250px;
+}
+
+#forgot-password {
+    color: white;
+}

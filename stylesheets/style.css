@@ -1,0 +1,87 @@
+:root {
+    --pbs-green: #A5C72B;
+    --pbs-blue: #42B8B2;
+    --pbs-grey: #878787;
+    @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+    font-family: 'Quicksand', sans-serif;
+}
+
+* {
+    color: var(--pbs-grey);
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+.pbs-button {
+    width: 125px;
+    height: 60px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 1px 1px 2px var(--pbs-grey);
+    margin: 10px;
+    font-size: 1rem;
+    white-space: normal;
+}
+
+.pbs-button-white {
+    background-color: white;
+    color: var(--pbs-grey);
+}
+
+.pbs-button-green {
+    background-color: var(--pbs-green);
+    color: white;
+}
+
+.pbs-button-grey {
+    background-color: var(--pbs-grey);
+    color: white;
+}
+
+.pbs-button-blue {
+    background-color: var(--pbs-blue);
+    color: white;
+}
+
+.pbs-button-red {
+    background-color: red;
+    color: white;
+}
+
+.pbs-form-text-box {
+    margin: 10px 0;
+    border-radius: 5px;
+    width: 12rem;
+    height: 2rem;
+    border: 1px solid var(--pbs-grey);
+    color: var(--pbs-grey);
+    padding: 10px;
+}
+
+.nav-item {
+  padding: 0 40px;
+  font-size: 1.2em;
+}
+
+.navbar-wrapper {
+    padding: 0 50px;
+    background-color: white;
+    border-bottom: 1px solid var(--pbs-grey);
+}
+
+.current-nav {
+    color: var(--pbs-green);
+}
+
+.page-header {
+    display: flex;
+    justify-content: center;
+    margin: 40px;
+    color: var(--pbs-grey);
+}
