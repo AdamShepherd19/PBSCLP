@@ -37,6 +37,7 @@
     <body>
 
         <div id="pbs-nav-bar"></div>
+        <script>$("#pbs-nav-bar").load("../common/nav-bar.html");</script>
 
         <h1 class="page-header">Announcements</h1>
 
