@@ -92,7 +92,7 @@
                             console.log('No user found...')
                         } else {
                             $('#name').text(response[0].name);
-                            $('#email').text(response[0].email);
+                            $('#email-address').text(response[0].email);
                             $('#contact-number').text(response[0].contact_number);
                             $('#organisation').text(response[0].organisation);
                         }
