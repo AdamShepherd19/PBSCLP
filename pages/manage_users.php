@@ -44,18 +44,39 @@
 
         <div class="main-content">
             <div class="account-wrapper">
-                <!-- 
-                <div class="card">
-                    <div class="card-header">
-                        <span class="announcement-header">Announcement 1 </span>
+                <div class="user-account">
+                    <div class="account-header">
+                        <h3 class="account-name">Firstname Lastname</h3>
                     </div>
-                    <div class="card-body">
-                        <blockquote class="blockquote mb-0">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                        <footer class="blockquote-footer">Firstname Surname</footer>
-                        </blockquote>
+
+                    <div class="account-main">
+                        <div class="account-details">
+                            <table>
+                                <tr>
+                                    <td>Email Address:</td>
+                                    <td></td>
+                                </tr>
+
+                                <tr>
+                                    <td>Contact Number:</td>
+                                    <td></td>
+                                </tr>
+
+                                <tr>
+                                    <td>Organisation:</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="button-wrapper">
+                            <input type="button" id="edit-profile" class="pbs-button pbs-button-orange table-button" value="Edit">
+                            <input type="button" id="lock-profile" class="pbs-button pbs-button-yellow table-button" value="Lock">
+                            <input type="button" id="remove-profile" class="pbs-button pbs-button-red table-button" value="Remove">
+                        </div>
+
                     </div>
-                </div> -->
+                </div>
             </div>
         </div>
         
