@@ -31,7 +31,7 @@
         $email = $_POST['emailPHP'];
         $password = md5($_POST['passwordPHP']);
         
-        $query = "SELECT user_id, account_type, firstname, lastname FROM users WHERE email=? AND password=?";
+        $query = "SELECT user_id, account_type, firstname, lastname FROM users WHERE email = ? AND password = ?";
         $prepared_query = $connection->prepare($query);
         $prepared_query->bind_param("ss", $email, $password);
 
@@ -59,6 +59,8 @@
         } else {
             exit('Login failed');
         }
+
+        $prepared_query->close();
 
         $connection->close();
 
