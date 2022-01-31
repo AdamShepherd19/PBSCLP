@@ -69,6 +69,8 @@
         
 
         <script type="text/javascript">
+            $("#pbs-nav-bar").load("../common/nav-bar.html");
+
             $(document).ready(function () {
 
                 // var current_title = $(document).attr('title');
@@ -76,10 +78,6 @@
                 // if(current_title == "Landing Page") {
                 //     $("#nav-landing").addClass("current-nav");
                 // }
-
-                // $(function(){
-                $("#pbs-nav-bar").load("../common/nav-bar.html"); 
-                // });
 
                 $("#forum").on('click', function(){
                     window.location.href = 'forum.php';
