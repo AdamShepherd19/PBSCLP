@@ -28,21 +28,24 @@
         <script src="../includes/jquery.js"></script>
 
         <link rel="stylesheet" href="../stylesheets/style.css">
+        <link rel="stylesheet" href="../stylesheets/profile.css">
 
         <title>Profile</title>
         
     </head>
 
-    <body style="background-image:url(../images/dog.jpg); background-size:cover; background-repeat: no-repeat;">
+    <body>
 
         <div id="pbs-nav-bar"></div>
 
-        <div>
-            <h1 style="color:white; padding:20px 0 0 100px;font-size:5em;"> Profile </h1>
-            <h2 style="color:white; padding:0 0 0 100px;font-size:2em;">Website coming soon...</h2>
+        <h1 class="page-header">Profile</h1>
+
+        <div class="main-content">
+            
         </div>
 
-        
+
+
         <script type="text/javascript">
             $(document).ready(function () {
                 $(function(){
