@@ -132,9 +132,9 @@
 
                 var accountType = '<?php echo $_SESSION['account_type']; ?>';
                 if (accountType != 'administrator') {
-                    $('.admin-only').hide();
+                    $('.admin-only').children().hide();
                 } else {
-                    $('.admin-only').show();
+                    $('.admin-only').children().show();
                 }
             });
         </script>
