@@ -78,7 +78,7 @@
                 // }
 
                 $(function(){
-                    $("#pbs-nav-bar").load("../common/nav-bar.html"); 
+                    $("#pbs-nav-bar").load("../common/nav-bar.php"); 
                 });
 
                 $("#forum").on('click', function(){
