@@ -61,7 +61,7 @@
             exit('Login failed');
         }
 
-        $prepared_query->close();
+        // $prepared_query->close();
 
         $connection->close();
 
