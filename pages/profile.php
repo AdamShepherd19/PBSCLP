@@ -127,6 +127,8 @@
                     var firstname = new_name.slice(index + 1);
                     var lastname = new_name.substring(0, index);
 
+                    console.log(firstname + " " + lastname);
+
                     $.ajax({
                         method: 'POST',
                         url: "../scripts/update_profile.php",
