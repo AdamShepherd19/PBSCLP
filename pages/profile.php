@@ -68,7 +68,7 @@
                     
                     <tr>
                         <td></td>
-                        <td><input type="button" id="edit-profile" class="pbs-button pbs-button-green" value="Edit"></td>
+                        <td id="buttons"><input type="button" id="edit-profile" class="pbs-button pbs-button-green" value="Edit"></td>
                     </tr>
                 </table>
               
@@ -81,6 +81,15 @@
             $(document).ready(function () {
                 $(function(){
                     $("#pbs-nav-bar").load("../common/nav-bar.html"); 
+                });
+
+                $("#edit-profile").on('click', function(){
+                    $("#edit-profile").hide();
+                    $("#buttons").append(
+                        '<input type="button" id="save-profile" class="pbs-button pbs-button-green" value="Save">' +
+                        '<input type="button" id="cancel-profile" class="pbs-button pbs-button-red" value="Cancel">');
+                    
+                    
                 });
 
                 $.ajax({
