@@ -27,5 +27,6 @@ td {
 }
 
 #buttons {
-    float: right;
+    display: flex;
+    align-items: flex-end;
 }
