@@ -106,7 +106,7 @@
                         if (response.includes("*warning_no_announcements_found*")) {
                             var announcement = "<div class='card'>" +
                                 "<div class='card-header'>" +
-                                    "<span class='announcement-header'> There are no announcements! </span></div>" +
+                                    "<span class='announcement-header' style='text-align: center'> There are no announcements! </span></div>" +
                                 "</div>";
 
                                 $("#announcement-wrapper").append(announcement);
