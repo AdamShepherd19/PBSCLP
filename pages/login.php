@@ -31,14 +31,15 @@
         $email = $_POST['emailPHP'];
         $password = md5($_POST['passwordPHP']);
         
-        $query = "SELECT user_id, account_type, firstname, lastname FROM users WHERE email = ? AND password = ?";
-        $prepared_query = $connection->prepare($query);
-        $prepared_query->bind_param("ss", $email, $password);
+        // $query = "SELECT user_id, account_type, firstname, lastname FROM users WHERE email = ? AND password = ?";
+        
+        $sql = mysqli_stmt_prepare($connection);
+        mysqli_stml_prepare($sql, "SELECT user_id, account_type, firstname, lastname FROM users WHERE email = ? AND password = ?");
+        mysqli_stmt_bind_param($sql, 'ss', $email, $password);
 
+        mysqli_stmt_execute($sql);
+        $data = mysqli_stmt_get_result($sql);
 
-
-        $prepared_query->execute();
-        $data = $prepared_query->get_result();
 
 
         // $data = $connection->query($query);
