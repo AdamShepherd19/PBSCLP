@@ -26,7 +26,9 @@
         
         //preparing query to protect from SQL injection
         // https://phpdelusions.net/mysqli_examples/prepared_select
-        $prepared_query = $connection->prepare("SELECT user_id, account_type, firstname, lastname FROM users WHERE email=? AND password=?");
+        
+        $query = "SELECT user_id, account_type, firstname, lastname FROM users WHERE email=? AND password=?";
+        $prepared_query = $connection->prepare($query);
         $prepared_query->bind_param("ss", $email, $password);
 
         //retrieve email and password from form
