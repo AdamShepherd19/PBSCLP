@@ -36,7 +36,11 @@
 
     <body>
 
-        <div id="pbs-nav-bar"></div>
+        <div id="pbs-nav-bar">
+            <?php
+                include "../common/nav-bar.php";
+            ?>
+        </div>
 
         <h1 class="page-header">Announcements</h1>
 
@@ -72,7 +76,7 @@
             
             $(document).ready(function () {
 
-                $("#pbs-nav-bar").load("../common/nav-bar.html");
+                // $("#pbs-nav-bar").load("../common/nav-bar.html");
 
 
                 $("#forum").on('click', function(){
