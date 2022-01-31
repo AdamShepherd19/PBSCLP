@@ -89,7 +89,12 @@
                         '<input type="button" id="cancel-profile" class="pbs-button pbs-button-red" value="Cancel">' +
                         '<input type="button" id="save-profile" class="pbs-button pbs-button-green" value="Save">');
                     
-                    
+                });
+
+                $("#cancel-profile").on('click', function() {
+                    $("#cancel-profile").hide();
+                    $("#save-profile").hide();
+                    $("#edit-profile").show();
                 });
 
                 $.ajax({
