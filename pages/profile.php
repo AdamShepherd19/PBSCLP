@@ -86,8 +86,8 @@
                 $("#edit-profile").on('click', function(){
                     $("#edit-profile").hide();
                     $("#buttons").append(
-                        '<input type="button" id="save-profile" class="pbs-button pbs-button-green" value="Save">' +
-                        '<input type="button" id="cancel-profile" class="pbs-button pbs-button-red" value="Cancel">');
+                        '<input type="button" id="cancel-profile" class="pbs-button pbs-button-red" value="Cancel">' +
+                        '<input type="button" id="save-profile" class="pbs-button pbs-button-green" value="Save">');
                     
                     
                 });

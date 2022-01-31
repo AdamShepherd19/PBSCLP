@@ -17,7 +17,7 @@ table {
 
 td {
     width: 50%;
-    height: 40px;
+    min-height: 40px;
     padding: 2%;
     font-size: 1.2em;
 }
@@ -29,4 +29,5 @@ td {
 #buttons {
     display: flex;
     align-items: flex-end;
+    width: 100%;
 }
