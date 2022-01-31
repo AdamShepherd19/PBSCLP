@@ -59,7 +59,7 @@
             </div>
 
             <div class="landing-nav-box-wrapper">
-                <input type="button" id="new-announcement" class="pbs-button pbs-button-blue" value="New Announcement"> <br/>
+                <input type="button" id="new-announcement" class="pbs-button pbs-button-blue admin-only" value="New Announcement"> <br/>
                 <input type="button" id="forum" class="pbs-button pbs-button-white" value="Forum"> <br />
                 <input type="button" id="resource-bank" class="pbs-button pbs-button-blue" value="Resource Bank"> <br />
                 <input type="button" id="profile" class="pbs-button pbs-button-grey" value="Profile"> <br />
@@ -131,9 +131,9 @@
 
                 var accountType = '<?php echo $_SESSION['account_type']; ?>';
                 if (accountType != 'administrator') {
-                    $('#new-announcement').hide();
+                    $('.admin-only').hide();
                 } else {
-                    $('#new-announcement').show();
+                    $('.admin-only').show();
                 }
             });
         </script>
