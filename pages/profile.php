@@ -94,6 +94,9 @@
                     $("#edit-profile").hide();
                     $("#cancel-profile").show();
                     $("#save-profile").show();
+
+                    $("#name").html('<input type="text" id="new-name" class="pbs-form-text-box" placeholder="' + $("#name").text() + '"/>')
+
                 });
 
                 $("#cancel-profile").on('click', function() {
