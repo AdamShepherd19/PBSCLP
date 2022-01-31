@@ -6,7 +6,7 @@
         exit();
     }
 
-    
+
 ?>
 
 <!DOCTYPE html>
@@ -82,6 +82,22 @@
                 $(function(){
                     $("#pbs-nav-bar").load("../common/nav-bar.html"); 
                 });
+
+                $.ajax({
+                    url: '../scripts/get_profile.php',
+                    type: 'get',
+                    dataType: 'JSON',
+                    success: function(response) {
+                        if (response.includes("*warning_no_user_found*")) {
+                            console.log('No user found...')
+                        } else {
+                            // $('#name').html($response.name);
+                            console.log(response.name);
+                        }
+
+                    }
+                });
+
             });
         </script>
         
