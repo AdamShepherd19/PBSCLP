@@ -91,10 +91,10 @@
                         if (response.includes("*warning_no_user_found*")) {
                             console.log('No user found...')
                         } else {
-                            $('#name').html($response[0].name);
-                            $('#email').html($response[0].email);
-                            $('#contact-number').html($response[0].contact_number);
-                            $('#organisation').html($response[0].organisation);
+                            $('#name').text(response[0].name);
+                            $('#email').text(response[0].email);
+                            $('#contact-number').text(response[0].contact_number);
+                            $('#organisation').text(response[0].organisation);
                         }
 
                     }
