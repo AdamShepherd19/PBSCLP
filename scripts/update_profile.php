@@ -3,7 +3,7 @@
 
     $pass = file_get_contents('../../pass.txt', true);
     
-    if(isset($_POST['titlePHP'])) {
+    if(isset($_POST['namePHP'])) {
         //connect to database
         $connection = new mysqli('localhost', 'pbsclp', $pass, 'pbsclp_pbsclp');
 
