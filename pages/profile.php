@@ -117,10 +117,10 @@
                 });
 
                 $("#save-profile").on('click', function() {
-                    var new_name = $("#new-name").text();
-                    var new_email = $("#new-email-address").text();
-                    var new_contact_number = $("#new-contact-number").text();
-                    var new_organisation = $("#new-organisation").text();
+                    var new_name = $("#new-name").val();
+                    var new_email = $("#new-email-address").val();
+                    var new_contact_number = $("#new-contact-number").val();
+                    var new_organisation = $("#new-organisation").val();
 
 
                     $.ajax({
