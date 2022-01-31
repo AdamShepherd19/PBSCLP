@@ -41,7 +41,36 @@
         <h1 class="page-header">Profile</h1>
 
         <div class="main-content">
-            
+            <div class="profile-wrapper">
+              
+                <table>
+                    <tr>
+                        <td class="caption">Name:</td>
+                        <td id="name">Firstname Surname </td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="caption">Email Address:</td>
+                        <td id="email-address">firstnamesurname@email.com</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="caption">Contact Number:</td>
+                        <td id="contact-number">asdf</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="caption">Organisation:</td>
+                        <td id="organisation">asdf</td>
+                    </tr>
+                    
+                    <tr>
+                        <td></td>
+                        <td><input type="button" id="edit-profile" class="pbs-button pbs-button-green" value="Edit"></td>
+                    </tr>
+                </table>
+              
+            </div>
         </div>
 
 

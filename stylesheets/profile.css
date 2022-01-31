@@ -1,5 +1,27 @@
 .main-content {
     display: flex;
-    gap: 5rem;
-    max-width: 90vw;
-  }
+    width: 60vw;
+    margin: auto;
+}
+
+.profile-wrapper {
+    width: 100%;
+    border: 1px solid var(--pbs-blue);
+    border-radius: 20px;
+    padding: 20px;
+}
+
+td {
+    width: 50%;
+    height: 40px;
+    padding: 2%;
+    font-size: 1.2em;
+}
+
+.caption {
+    text-align: right;
+}
+
+#edit-profile {
+    float: right;
+}
