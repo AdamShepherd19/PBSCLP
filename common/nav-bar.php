@@ -29,7 +29,7 @@
                     <a class="nav-link" href="profile.php">Profile</a>
                 </li>
 
-                <li class="nav-item" id="nav-resource-bank">
+                <li class="nav-item admin-only" id="nav-resource-bank">
                     <a class="nav-link" href="manage_users.php">Manage Users</a>
                 </li>
 
@@ -46,3 +46,14 @@
         </div>
     </nav>
 </div>
+
+<script>
+    $(document).ready(function () {
+        var accountType = '<?php echo $_SESSION['account_type']; ?>';
+        if (accountType != 'administrator') {
+            $('.admin-only').hide();
+        } else {
+            $('.admin-only').show();
+        }
+    });
+</script>
