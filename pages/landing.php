@@ -103,10 +103,15 @@
                     type: 'get',
                     dataType: 'JSON',
                     success: function(response) {
-                        if (response.includes("no announcements")) {
-                            $("#announcement-wrapper").hide();
+                        if (response.includes("*warning_no_announcements_found*")) {
                             $(".left-space").after("<h3> There are no announcements yet! </h3>");
                             // $("#announcement-wrapper").html("<h3> There are no announcements yet! </h3>");
+                            var announcement = "<div class='card'>" +
+                                "<div class='card-header'>" +
+                                    "<span class='announcement-header'> There are no announcements! </span></div>" +
+                                "</div>";
+
+                                $("#announcement-wrapper").append(announcement);
                         } else {
                             for(var x = 0; x < response.length; x++) {
                                 var announcement = "<div class='card'>" +

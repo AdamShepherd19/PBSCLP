@@ -41,7 +41,7 @@
         echo json_encode($data);
 
     } else {
-        echo json_encode("There are no announcements yet!");
+        echo json_encode("*warning_no_announcements_found*");
     }
 
     $connection->close();
