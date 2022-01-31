@@ -114,7 +114,8 @@
                             for(var x = 0; x < response.length; x++) {
                                 var announcement = "<div class='card'>" +
                                 "<div class='card-header'>" +
-                                    "<span class='announcement-header'>" + response[x].title + "</span></div>" +
+                                    "<span class='announcement-header'>" + response[x].title + "</span>" + 
+                                    "</div>" +
                                 "<div class='card-body'>" +
                                     "<blockquote class='blockquote mb-0'>" +
                                         "<p>" + response[x].content + "</p>" +
