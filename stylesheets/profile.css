@@ -11,6 +11,10 @@
     padding: 20px;
 }
 
+table {
+    width: 100%;
+}
+
 td {
     width: 50%;
     height: 40px;
