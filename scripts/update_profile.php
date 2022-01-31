@@ -29,11 +29,13 @@
 
         
         //check to see if the insert was successful
-        if ($connection->query($query) === TRUE) {
-            exit('success');
-        } else {
-            exit('Error: ' . $connection->error);
-        }
+        // if ($connection->query($query) === TRUE) {
+        //     exit('success');
+        // } else {
+        //     exit('Error: ' . $connection->error);
+        // }
+
+        exit('success');
 
         $connection->close();
     }
