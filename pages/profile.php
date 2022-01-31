@@ -118,7 +118,7 @@
 
                 $("#save-profile").on('click', function() {
                     var new_name = $("#new-name").val();
-                    var new_email = $("#new-email-address").val();
+                    var new_email = $("#new-email").val();
                     var new_contact_number = $("#new-contact-number").val();
                     var new_organisation = $("#new-organisation").val();
                     
