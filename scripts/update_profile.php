@@ -19,14 +19,13 @@
         $organisation = $_POST['organisationPHP'];
 
 
-        // $pieces = preg_split(' ', $name);
-        // $firstname = $pieces[0];
-        // $lastname = $pieces[1];
-        // print_r($pieces);
+        $pieces = preg_split(' ', $name);
+        $firstname = $pieces[0];
+        $lastname = $pieces[1];
 
         // query database and insert the new announcement into the announcements table
-        // $query = "UPDATE users SET firstname='" . $firstname. "', lastname='" . $lastname . "', email='" . $email . "', organisation='" . $organisation . "', contact_number='" . $contact_number . "' WHERE user_id='" . $_SESSION['user_id'] . "'";
-        $query = "UPDATE users SET firstname='jeff' WHERE user_id='" . $_SESSION['user_id'] . "'";
+        $query = "UPDATE users SET firstname='" . $firstname. "', lastname='" . $lastname . "', email='" . $email . "', organisation='" . $organisation . "', contact_number='" . $contact_number . "' WHERE user_id='" . $_SESSION['user_id'] . "'";
+
         
         //check to see if the insert was successful
         if ($connection->query($query) === TRUE) {
