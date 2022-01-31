@@ -87,24 +87,37 @@
                     $("#pbs-nav-bar").load("../common/nav-bar.html"); 
                 });
 
+                // hide save and cancel edit profile buttons
                 $("#cancel-profile").hide();
                 $("#save-profile").hide();
+
+                // store existing profile details
+                var name = $("#name").text();
+                var email = $("#email-address").text();
+                var contact_number = $("#contact-number").text();
+                var organisation = $("#organisation").text();
 
                 $("#edit-profile").on('click', function(){
                     $("#edit-profile").hide();
                     $("#cancel-profile").show();
                     $("#save-profile").show();
-
-                    $("#name").html('<input type="text" id="new-name" class="pbs-form-text-box" value="' + $("#name").text() + '"/>');
-                    $("#email-address").html('<input type="text" id="new-email" class="pbs-form-text-box" value="' + $("#email-address").text() + '"/>');
-                    $("#contact-number").html('<input type="text" id="new-contact-number" class="pbs-form-text-box" value="' + $("#contact-number").text() + '"/>');
-                    $("#organisation").html('<input type="text" id="new-organisation" class="pbs-form-text-box" value="' + $("#organisation").text() + '"/>');
+                    
+                    $("#name").html('<input type="text" id="new-name" class="pbs-form-text-box" value="' + name + '"/>');
+                    $("#email-address").html('<input type="text" id="new-email" class="pbs-form-text-box" value="' + email + '"/>');
+                    $("#contact-number").html('<input type="text" id="new-contact-number" class="pbs-form-text-box" value="' + contact_number + '"/>');
+                    $("#organisation").html('<input type="text" id="new-organisation" class="pbs-form-text-box" value="' + organisation + '"/>');
                 });
 
                 $("#cancel-profile").on('click', function() {
                     $("#cancel-profile").hide();
                     $("#save-profile").hide();
                     $("#edit-profile").show();
+
+                    $("#name").html(name);
+                    $("#email-address").html(email);
+                    $("#contact-number").html(contact_number);
+                    $("#organisation").html(organisation);
+
                 });
 
                 
