@@ -26,14 +26,16 @@
         
         //preparing query to protect from SQL injection
         // https://phpdelusions.net/mysqli_examples/prepared_select
+                
+        //retrieve email and password from form
+        $email = $_POST['emailPHP'];
+        $password = md5($_POST['passwordPHP']);
         
         $query = "SELECT user_id, account_type, firstname, lastname FROM users WHERE email=? AND password=?";
         $prepared_query = $connection->prepare($query);
         $prepared_query->bind_param("ss", $email, $password);
 
-        //retrieve email and password from form
-        $email = $_POST['emailPHP'];
-        $password = md5($_POST['passwordPHP']);
+
 
         $prepared_query->execute();
         $data = $prepared_query->get_result();
