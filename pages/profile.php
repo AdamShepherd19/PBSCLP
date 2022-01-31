@@ -68,7 +68,11 @@
                     
                     <tr>
                         <td></td>
-                        <td id="buttons"><input type="button" id="edit-profile" class="pbs-button pbs-button-green table-button" value="Edit"></td>
+                        <td id="buttons">
+                            <input type="button" id="edit-profile" class="pbs-button pbs-button-green table-button" value="Edit">
+                            <input type="button" id="save-profile" class="pbs-button pbs-button-green" value="Save">
+                            <input type="button" id="cancel-profile" class="pbs-button pbs-button-red" value="Cancel">
+                        </td>
                     </tr>
                 </table>
               
@@ -83,17 +87,19 @@
                     $("#pbs-nav-bar").load("../common/nav-bar.html"); 
                 });
 
+                $("#cancel-profile").hide();
+                $("#save-profile").hide();
+
                 $("#edit-profile").on('click', function(){
                     $("#edit-profile").hide();
-                    $("#buttons").append(
-                        '<input type="button" id="cancel-profile" class="pbs-button pbs-button-red" value="Cancel">' +
-                        '<input type="button" id="save-profile" class="pbs-button pbs-button-green" value="Save">');
-                    
-                    $("#cancel-profile").on('click', function() {
-                        $("#cancel-profile").hide();
-                        $("#save-profile").hide();
-                        $("#edit-profile").show();
-                    });
+                    $("#cancel-profile").show();
+                    $("#save-profile").show();
+                });
+
+                $("#cancel-profile").on('click', function() {
+                    $("#cancel-profile").hide();
+                    $("#save-profile").hide();
+                    $("#edit-profile").show();
                 });
 
                 
