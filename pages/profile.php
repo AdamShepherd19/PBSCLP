@@ -121,13 +121,18 @@
                     var new_email = $("#new-email-address").val();
                     var new_contact_number = $("#new-contact-number").val();
                     var new_organisation = $("#new-organisation").val();
+                    
 
+                    var index = str.lastIndexOf(" ");
+                    var firstname = new_name.slice(index + 1);
+                    var lastname = new_name.substring(0, index);
 
                     $.ajax({
                         method: 'POST',
                         url: "../scripts/update_profile.php",
                         data: {
-                            namePHP: new_name,
+                            firstnamePHP: firstname,
+                            lastnamePHP: lastname,
                             emailPHP: new_email,
                             contact_numberPHP: new_contact_number,
                             organisationPHP: new_organisation
