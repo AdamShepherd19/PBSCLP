@@ -126,8 +126,7 @@
 
                 var accountType = '<?php echo $_SESSION['account_type']; ?>';
                 if (accountType != 'administrator') {
-                    $('.admin-only').hide();
-                    $('#nav-manage-users').hide();
+                    $('.admin-only').remove();
                 } else {
                     $('.admin-only').show();
                 }
