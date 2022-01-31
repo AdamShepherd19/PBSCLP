@@ -83,6 +83,8 @@
 
         <script type="text/javascript">
             $(document).ready(function () {
+                var name, email, contact_number, organisation;
+
                 $(function(){
                     $("#pbs-nav-bar").load("../common/nav-bar.html"); 
                 });
@@ -90,12 +92,6 @@
                 // hide save and cancel edit profile buttons
                 $("#cancel-profile").hide();
                 $("#save-profile").hide();
-
-                // store existing profile details
-                var name = $("#name").text();
-                var email = $("#email-address").text();
-                var contact_number = $("#contact-number").text();
-                var organisation = $("#organisation").text();
 
                 $("#edit-profile").on('click', function(){
                     $("#edit-profile").hide();
@@ -130,15 +126,19 @@
                         if (response.includes("*warning_no_user_found*")) {
                             console.log('No user found...')
                         } else {
-                            $('#name').text(response[0].name);
-                            $('#email-address').text(response[0].email);
-                            $('#contact-number').text(response[0].contact_number);
-                            $('#organisation').text(response[0].organisation);
+                            name = response[0].name;
+                            email = response[0].email;
+                            contact_number = response[0].contact_number;
+                            organisation = response[0].organisation;
+
+                            $('#name').text(name);
+                            $('#email-address').text(email);
+                            $('#contact-number').text(contact_number);
+                            $('#organisation').text(organisation);
                         }
 
                     }
                 });
-
             });
         </script>
         
