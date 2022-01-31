@@ -130,7 +130,7 @@
                 } else {
                     $('.admin-only').show();
                     $("#nav-options").append('<li class="nav-item admin-only" id="nav-manage-users">' +
-                        '<a class="nav-link" href="manage_users.php">Manage Users</a></li>'' )';
+                        '<a class="nav-link" href="manage_users.php">Manage Users</a></li>' );
                 }
             });
         </script>
