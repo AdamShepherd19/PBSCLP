@@ -45,14 +45,3 @@
         </div>
     </nav>
 </div>
-
-<!-- <script>
-    $(document).ready(function () {
-        var accountType;
-        if (accountType != 'administrator') {
-            $('.admin-only').hide();
-        } else {
-            $('.admin-only').show();
-        }
-    });
-</script> -->
