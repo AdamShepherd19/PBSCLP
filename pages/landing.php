@@ -82,19 +82,19 @@
                 });
 
                 $("#forum").on('click', function(){
-                    window.location.href('forum.php');
+                    window.location.href = 'forum.php';
                 });
 
                 $("#resource-bank").on('click', function(){
-                    window.location.href('resource_bank.php');
+                    window.location.href = 'resource_bank.php';
                 });
 
                 $("#profile").on('click', function(){
-                    window.location.href('profile.php');
+                    window.location.href = 'profile.php';
                 });
 
                 $("#new-announcement").on('click', function(){
-                    window.location.href('new_announcement.php');
+                    window.location.href = 'new_announcement.php';
                 });
 
                 //https://makitweb.com/return-json-response-ajax-using-jquery-php/
