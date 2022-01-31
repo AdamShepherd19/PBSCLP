@@ -68,7 +68,7 @@
                     
                     <tr>
                         <td></td>
-                        <td id="buttons"><input type="button" id="edit-profile" class="pbs-button pbs-button-green table-button" value="Edit"></td>
+                        <td><input type="button" id="edit-profile" class="pbs-button pbs-button-green table-button" value="Edit"></td>
                     </tr>
                 </table>
               
