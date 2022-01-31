@@ -67,7 +67,11 @@
 
     <body>
 
-        <div id="pbs-nav-bar"></div>
+        <div id="pbs-nav-bar">
+            <?php
+                include "../common/nav-bar.php";
+            ?>
+        </div>
 
         <div class="page-header">
             <h1>New Announcement</h1>
@@ -93,12 +97,7 @@
         
         <script type="text/javascript">
             $(document).ready(function () {
-
-                // load in the nav bar
-                $(function(){
-                    $("#pbs-nav-bar").load("../common/nav-bar.html"); 
-                });
-
+                
                 //onclick function for the cancel button
                 $("#announcement-cancel").on('click', function(){
                     window.location.replace('landing.php');

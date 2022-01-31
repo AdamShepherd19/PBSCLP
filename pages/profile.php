@@ -38,7 +38,11 @@
 
     <body>
 
-        <div id="pbs-nav-bar"></div>
+        <div id="pbs-nav-bar">
+            <?php
+                include "../common/nav-bar.php";
+            ?>
+        </div>
 
         <h1 class="page-header">Profile</h1>
 
@@ -84,11 +88,7 @@
         <script type="text/javascript">
             $(document).ready(function () {
                 var name, email, contact_number, organisation;
-
-                $(function(){
-                    $("#pbs-nav-bar").load("../common/nav-bar.html"); 
-                });
-
+                
                 // hide save and cancel edit profile buttons
                 $("#cancel-profile").hide();
                 $("#save-profile").hide();
