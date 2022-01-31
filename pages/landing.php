@@ -78,7 +78,7 @@
                 // }
 
                 $(function(){
-                    $("#pbs-nav-bar").load("../common/nav-bar.php"); 
+                    $("#pbs-nav-bar").load("../common/nav-bar.html"); 
                 });
 
                 $("#forum").on('click', function(){
@@ -129,6 +129,13 @@
 
                     }
                 });
+
+                var accountType = '<?php echo $_SESSION['account_type']; ?>';
+                if (accountType != 'administrator') {
+                    $('.admin-only').hide();
+                } else {
+                    $('.admin-only').show();
+                }
             });
         </script>
             
