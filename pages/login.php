@@ -18,10 +18,9 @@
             exit("Connection failed: " . $connection->connect_error);
         }
 
-        //retrieve email and password from form
         $email = $_POST['emailPHP'];
         $password = md5($_POST['passwordPHP']);
-        
+
         //query db for user login details provided
         $query = "SELECT user_id, account_type, firstname, lastname FROM users WHERE email='" . $email . "' AND password='" . $password . "'";
         $data = $connection->query($query);
@@ -32,6 +31,7 @@
 
             //store session variables
             $_SESSION['logged_in'] = True;
+            $_SESSION['user_id'] = $row['user_id'];
             $_SESSION['email'] = $email;
             $_SESSION['account_type'] = $row['account_type'];
             $_SESSION['firstname'] = $row['firstname'];
@@ -41,6 +41,8 @@
         } else {
             exit('Login failed');
         }
+
+        // $prepared_query->close();
 
         $connection->close();
 
