@@ -125,7 +125,7 @@
 
                     $.ajax({
                         method: 'POST',
-                        url: "update_profile.php",
+                        url: "../scripts/update_profile.php",
                         data: {
                             namePHP: new_name,
                             emailPHP: new_email,
