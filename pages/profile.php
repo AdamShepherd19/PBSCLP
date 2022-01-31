@@ -48,22 +48,22 @@
                 <table>
                     <tr>
                         <td class="caption">Name:</td>
-                        <td id="name">Firstname Surname </td>
+                        <td id="name"></td>
                     </tr>
                     
                     <tr>
                         <td class="caption">Email Address:</td>
-                        <td id="email-address">firstnamesurname@email.com</td>
+                        <td id="email-address"></td>
                     </tr>
                     
                     <tr>
                         <td class="caption">Contact Number:</td>
-                        <td id="contact-number">asdf</td>
+                        <td id="contact-number"></td>
                     </tr>
                     
                     <tr>
                         <td class="caption">Organisation:</td>
-                        <td id="organisation">asdf</td>
+                        <td id="organisation"></td>
                     </tr>
                     
                     <tr>
@@ -91,8 +91,10 @@
                         if (response.includes("*warning_no_user_found*")) {
                             console.log('No user found...')
                         } else {
-                            // $('#name').html($response.name);
-                            console.log(response.name);
+                            $('#name').html($response[0].name);
+                            $('#email').html($response[0].email);
+                            $('#contact-number').html($response[0].contact_number);
+                            $('#organisation').html($response[0].organisation);
                         }
 
                     }

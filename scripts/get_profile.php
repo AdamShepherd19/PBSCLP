@@ -1,6 +1,6 @@
 <?php
     session_start();
-    
+
     // https://makitweb.com/return-json-response-ajax-using-jquery-php
     $pass = file_get_contents('../../pass.txt', true);
 
@@ -13,7 +13,7 @@
     }
 
     //perform query and sort into newest first
-    $query = "SELECT firstname, lastname, email, organisation FROM users WHERE user_id='" . $_SESSION['user_id'] . "'";
+    $query = "SELECT firstname, lastname, email, organisation, contact_number FROM users WHERE user_id='" . $_SESSION['user_id'] . "'";
     $result = $connection->query($query);
 
     //check that there were announcements to show
@@ -28,12 +28,14 @@
             $name = $row['firstname'] . " " . $row['lastname'];;
             $email = $row['email'];
             $organisation = $row['organisation'];
+            $contact_number = $row['contact_number'];
             
             //add data into array
             $data[] = array(
                 "name" => $name,
                 "email" => $email,
-                "organisation" => $organisation
+                "organisation" => $organisation,
+                "contact_number" => $contact_number
             );
         }
 
