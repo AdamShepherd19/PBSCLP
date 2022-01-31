@@ -28,6 +28,7 @@
         <script src="../includes/jquery.js"></script>
 
         <link rel="stylesheet" href="../stylesheets/style.css">
+        <link rel="stylesheet" href="../stylesheets/manage_users.css">
 
         <title>Manage Users</title>
         
@@ -41,11 +42,22 @@
             ?>
         </div>
 
-        <div>
-            <h1 style="color:white; padding:20px 0 0 100px;font-size:5em;"> </h1>
-            <h2 style="color:white; padding:0 0 0 100px;font-size:2em;">Website coming soon...</h2>
+        <div class="main-content">
+            <div class="account-wrapper">
+                <!-- 
+                <div class="card">
+                    <div class="card-header">
+                        <span class="announcement-header">Announcement 1 </span>
+                    </div>
+                    <div class="card-body">
+                        <blockquote class="blockquote mb-0">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                        <footer class="blockquote-footer">Firstname Surname</footer>
+                        </blockquote>
+                    </div>
+                </div> -->
+            </div>
         </div>
-
         
         <script type="text/javascript">
             $(document).ready(function () {

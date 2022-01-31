@@ -1,0 +1,9 @@
+.main-content {
+    display: flex;
+    max-width: 90vw;
+  }
+  
+.announcement-wrapper {
+    max-height: 60vh;
+    overflow-y: scroll;
+}
