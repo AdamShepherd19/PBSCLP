@@ -42,6 +42,10 @@
             ?>
         </div>
 
+        <div class="page-header">
+            <h1>New Announcement</h1>
+        </div>
+
         <div class="main-content">
             <div class="account-wrapper">
                 <div class="card">
