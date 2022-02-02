@@ -45,33 +45,93 @@
         <div class="main-content">
             <div class="account-wrapper">
                 <div class="card">
-                  <h4 class="card-header">Firstname Surname</h4>
-                  <div class="card-body">
-                    <div class="text-wrapper">
-                      <table>
-                        <tr>
-                          <td class="table-labels">Email Address:</td>
-                          <td>email@email.com</td>
-                        </tr>
-                  
-                        <tr>
-                          <td class="table-labels">Contact Number:</td>
-                          <td>071234567890</td>
-                        </tr>
-                  
-                         <tr>
-                           <td class="table-labels">Organisation:</td>
-                           <td>Organisation</td>
-                         </tr>
-                      </table>
+                    <h4 class="card-header">Firstname Surname</h4>
+                    <div class="card-body">
+                        <div class="text-wrapper">
+                            <table>
+                                <tr>
+                                    <td class="table-labels">Email Address:</td>
+                                    <td>email@email.com</td>
+                                </tr>
+                        
+                                <tr>
+                                    <td class="table-labels">Contact Number:</td>
+                                    <td>071234567890</td>
+                                </tr>
+                        
+                                <tr>
+                                    <td class="table-labels">Organisation:</td>
+                                    <td>Organisation</td>
+                                </tr>
+                            </table>
+                        </div>
+                        
+                        <div class="button-wrapper">
+                            <input type="button" id="edit-profile" class="pbs-button pbs-button-orange table-button" value="Edit"> <br />
+                            <input type="button" id="lock-profile" class="pbs-button pbs-button-yellow table-button" value="Lock">
+                            <input type="button" id="remove-profile" class="pbs-button pbs-button-red table-button" value="Remove">
+                        </div>
                     </div>
-                    
-                    <div class="button-wrapper">
-                        <input type="button" id="edit-profile" class="pbs-button pbs-button-orange table-button" value="Edit"> <br />
-                        <input type="button" id="lock-profile" class="pbs-button pbs-button-yellow table-button" value="Lock">
-                        <input type="button" id="remove-profile" class="pbs-button pbs-button-red table-button" value="Remove">
-                     </div>
-                  </div>
+                </div>
+
+                <div class="card">
+                    <h4 class="card-header">Firstname Surname</h4>
+                    <div class="card-body">
+                        <div class="text-wrapper">
+                            <table>
+                                <tr>
+                                    <td class="table-labels">Email Address:</td>
+                                    <td>email@email.com</td>
+                                </tr>
+                        
+                                <tr>
+                                    <td class="table-labels">Contact Number:</td>
+                                    <td>071234567890</td>
+                                </tr>
+                        
+                                <tr>
+                                    <td class="table-labels">Organisation:</td>
+                                    <td>Organisation</td>
+                                </tr>
+                            </table>
+                        </div>
+                        
+                        <div class="button-wrapper">
+                            <input type="button" id="edit-profile" class="pbs-button pbs-button-orange table-button" value="Edit"> <br />
+                            <input type="button" id="lock-profile" class="pbs-button pbs-button-yellow table-button" value="Lock">
+                            <input type="button" id="remove-profile" class="pbs-button pbs-button-red table-button" value="Remove">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4 class="card-header">Firstname Surname</h4>
+                    <div class="card-body">
+                        <div class="text-wrapper">
+                            <table>
+                                <tr>
+                                    <td class="table-labels">Email Address:</td>
+                                    <td>email@email.com</td>
+                                </tr>
+                        
+                                <tr>
+                                    <td class="table-labels">Contact Number:</td>
+                                    <td>071234567890</td>
+                                </tr>
+                        
+                                <tr>
+                                    <td class="table-labels">Organisation:</td>
+                                    <td>Organisation</td>
+                                </tr>
+                            </table>
+                        </div>
+                        
+                        <div class="button-wrapper">
+                            <input type="button" id="edit-profile" class="pbs-button pbs-button-orange table-button" value="Edit"> <br />
+                            <input type="button" id="lock-profile" class="pbs-button pbs-button-yellow table-button" value="Lock">
+                            <input type="button" id="remove-profile" class="pbs-button pbs-button-red table-button" value="Remove">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
