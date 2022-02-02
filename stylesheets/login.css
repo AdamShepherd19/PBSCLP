@@ -38,3 +38,7 @@
 #forgot-password {
     color: white;
 }
+
+#login-response {
+    color: red;
+}
