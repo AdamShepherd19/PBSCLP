@@ -126,6 +126,10 @@
                                 '</div></div></div>';
 
                                 $(".account-wrapper").append(message);
+
+                                if(response[x].admin_locked == true) {
+                                    $('#lock-profile').val('Un-Lock');
+                                }
                             }
                         }
 
