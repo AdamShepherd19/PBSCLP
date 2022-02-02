@@ -129,7 +129,7 @@
                             },
                             success: function (response) {
                                 if (response.includes("*login_success*")){
-                                    window.location.replace('landing.php');
+                                    window.location.href = 'landing.php';
                                 } else if (response.includes("*account_locked_by_administrator*")) {
                                     $('#login-response').html("Your account has been suspended. Please contact an adminstrator.");
                                 } else if (response.includes("*login_failed*")) {
