@@ -106,6 +106,12 @@
                             $(".account-wrapper").append(message);
                         } else {
                             for(var x = 0; x < response.length; x++) {
+                                if (response[x].admin_locked == true){
+                                    $lock_unlock_button = '<input type="button" id="lock-profile" class="pbs-button pbs-button-yellow table-button" value="Un-Lock">';
+                                } else {
+                                    $lock_unlock_button = '<input type="button" id="lock-profile" class="pbs-button pbs-button-yellow table-button" value="Lock">'
+                                }
+
                                 var message = '<div class="card">'+
                                 '<h4 class="card-header">' + response[x].firstname + ' ' + response[x].lastname + '</h4>'+
                                 '<div class="card-body">'+
@@ -121,15 +127,15 @@
                                     
                                     '<div class="button-wrapper">'+
                                         '<input type="button" id="edit-profile" class="pbs-button pbs-button-orange table-button" value="Edit"> <br />'+
-                                        '<input type="button" id="lock-profile" class="pbs-button pbs-button-yellow table-button" value="Lock">'+
+                                        $lock_unlock_button +
                                         '<input type="button" id="remove-profile" class="pbs-button pbs-button-red table-button" value="Remove">'+
                                 '</div></div></div>';
 
                                 $(".account-wrapper").append(message);
 
-                                if(response[x].admin_locked == true) {
-                                    $('#lock-profile').val('Un-Lock');
-                                }
+                                // if(response[x].admin_locked == true) {
+                                //     $('#lock-profile').val('Un-Lock');
+                                // }
                             }
                         }
 
