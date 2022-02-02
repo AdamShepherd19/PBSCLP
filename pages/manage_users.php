@@ -5,6 +5,11 @@
         header('Location: login.php');
         exit();
     }
+
+    if($_SESSION['account_type'] != 'administrator'){
+        header('Location: landing.php');
+        exit();
+    }
 ?>
 
 <!DOCTYPE html>
