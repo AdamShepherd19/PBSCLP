@@ -22,24 +22,29 @@
         $password = md5($_POST['passwordPHP']);
 
         //query db for user login details provided
-        $query = "SELECT user_id, account_type, firstname, lastname FROM users WHERE email='" . $email . "' AND password='" . $password . "'";
+        $query = "SELECT user_id, account_type, firstname, lastname, admin_locked FROM users WHERE email='" . $email . "' AND password='" . $password . "'";
         $data = $connection->query($query);
 
         //check if login details provided match a user profile in the db
         if ($data->num_rows > 0) {
             $row = $data->fetch_assoc();
 
-            //store session variables
-            $_SESSION['logged_in'] = True;
-            $_SESSION['user_id'] = $row['user_id'];
-            $_SESSION['email'] = $email;
-            $_SESSION['account_type'] = $row['account_type'];
-            $_SESSION['firstname'] = $row['firstname'];
-            $_SESSION['lastname'] = $row['lastname'];
+            if ($row['admin_locked'] == 1) {
+                exit("account_locked_by_administrator*");
+            } else {
+                //store session variables
+                $_SESSION['logged_in'] = True;
+                $_SESSION['user_id'] = $row['user_id'];
+                $_SESSION['email'] = $email;
+                $_SESSION['account_type'] = $row['account_type'];
+                $_SESSION['firstname'] = $row['firstname'];
+                $_SESSION['lastname'] = $row['lastname'];
 
-            exit('Login success');
+                exit('*login_success*');
+            }
+            
         } else {
-            exit('Login failed');
+            exit('*login_failed*');
         }
 
         // $prepared_query->close();
@@ -123,10 +128,12 @@
                                 passwordPHP: password
                             },
                             success: function (response) {
-                                $('#login-response').html(response);
-
-                                if (response.includes("success")){
+                                if (response.includes("*login_success*")){
                                     window.location.replace('landing.php');
+                                } else if (response.includes("*account_locked_by_administrator*")) {
+                                    $('#login-response').html("Your account has been suspended. Please contact an adminstrator.");
+                                } else if (response.includes("*login_failed*")) {
+                                    $('#login-response').html("Login Failed. Please try again.");
                                 }
                             },
                             datatype: 'text'
