@@ -30,7 +30,7 @@
             $row = $data->fetch_assoc();
 
             if ($row['admin_locked'] == true) {
-                exit("account_locked_by_administrator*");
+                exit("*account_locked_by_administrator*");
             } else {
                 //store session variables
                 $_SESSION['logged_in'] = True;
