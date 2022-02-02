@@ -132,10 +132,6 @@
                                 '</div></div></div>';
 
                                 $(".account-wrapper").append(message);
-
-                                // if(response[x].admin_locked == true) {
-                                //     $('#lock-profile').val('Un-Lock');
-                                // }
                             }
                         }
 
@@ -143,6 +139,7 @@
                 });
 
 
+                
 
 
                 // only show administrator content if an admin logged in
