@@ -185,6 +185,14 @@
 
                     }
                 });
+
+                // only show administrator content if an admin logged in
+                var accountType = '<?php echo $_SESSION['account_type']; ?>';
+                if (accountType != 'administrator') {
+                    $('.admin-only').hide();
+                } else {
+                    $('.admin-only').show();
+                }
             });
         </script>
         
