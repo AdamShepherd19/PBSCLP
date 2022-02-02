@@ -49,7 +49,7 @@
         <div class="main-content">
             <div class="search-wrapper">
                 <input type="search" class="pbs-form-text-box" placeholder="search">
-                <input type="button" id="search" class="pbs-button pbs-button-green" value="Search">
+                <input type="button" id="search" class="pbs-button pbs-search-button pbs-button-green" value="Search">
             </div>
 
         
