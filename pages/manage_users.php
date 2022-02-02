@@ -59,7 +59,7 @@
             </div>
         
             <div class="account-wrapper">
-                <div class="card">
+                <!-- <div class="card">
                     <h4 class="card-header">Firstname Surname</h4>
                     <div class="card-body">
                         <div class="text-wrapper">
@@ -87,7 +87,8 @@
                             <input type="button" id="remove-profile" class="pbs-button pbs-button-red table-button" value="Remove">
                         </div>
                     </div>
-                </div>
+                </div> -->
+
             </div>
         </div>
         
@@ -99,7 +100,7 @@
                     type: 'get',
                     dataType: 'JSON',
                     success: function(response) {
-                        if (response.includes("*warning_no_announcements_found*")) {
+                        if (response.includes("*warning_no_users_found*")) {
                             var message = "<div class='card'><h4 class='card-header'> There are no user accounts!</div>"
 
                             $(".account-wrapper").append(message);
@@ -124,7 +125,7 @@
                                         '<input type="button" id="remove-profile" class="pbs-button pbs-button-red table-button" value="Remove">'+
                                 '</div></div></div>';
 
-                                $("#account-wrapper").append(message);
+                                $(".account-wrapper").append(message);
                             }
                         }
 
