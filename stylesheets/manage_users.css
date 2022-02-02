@@ -39,3 +39,7 @@ td {
 .card-body {
     display: flex;
 }
+
+.search-wrapper {
+    float: right;
+}
