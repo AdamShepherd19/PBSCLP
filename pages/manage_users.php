@@ -115,7 +115,7 @@
 
                                             '<tr><td class="table-labels">Contact Number:</td><td id="contact-number-content">' + response[x].contact_number + '</td></tr>'+
                                     
-                                            '<tr><td class="table-labels">Organisation:</td><tdi d="organisation-content">' + response[x].organisation + '</td></tr>'+
+                                            '<tr><td class="table-labels">Organisation:</td><td id="organisation-content">' + response[x].organisation + '</td></tr>'+
                                         '</table>'+
                                     '</div>'+
                                     
