@@ -43,3 +43,7 @@ td {
 .search-wrapper {
     float: right;
 }
+
+#search-input {
+    width: 250px;
+}
