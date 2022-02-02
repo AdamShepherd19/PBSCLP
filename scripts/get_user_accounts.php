@@ -31,6 +31,7 @@
             $email = $row['email'];
             $contact_number = $row['contact_number'];
             $organisation = $row['organisation'];
+            $admin_locked = $row['admin_locked'];
             
             //add data into array
             $data[] = array(
@@ -38,7 +39,8 @@
                 "lastname" => $lastname,
                 "email" => $email,
                 "contact_number" => $contact_number,
-                "organisation" => $organisation
+                "organisation" => $organisation,
+                "admin_locked" => $admin_locked
             );
         }
 
