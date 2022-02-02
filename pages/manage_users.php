@@ -43,7 +43,7 @@
         </div>
 
         <div class="page-header">
-            <h1>New Announcement</h1>
+            <h1>Manage Users</h1>
         </div>
 
         <div class="main-content">
