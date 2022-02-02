@@ -1,7 +1,7 @@
 <?php
 
     session_start();
-    
+
     // https://makitweb.com/return-json-response-ajax-using-jquery-php
     $pass = file_get_contents('../../pass.txt', true);
 
@@ -14,7 +14,7 @@
     }
 
     //perform query and sort into newest first
-    $query = "SELECT firstname, lastname, email, contact_number, organisation FROM `users` WHERE user_id != " . $_SESSION['user_id'] . "ORDER BY firstname ASC";
+    $query = "SELECT firstname, lastname, email, contact_number, organisation FROM `users` WHERE user_id <> " . $_SESSION['user_id'] . "ORDER BY firstname ASC";
     $result = $connection->query($query);
 
     //check that there were announcements to show
