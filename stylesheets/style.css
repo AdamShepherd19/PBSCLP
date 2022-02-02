@@ -55,7 +55,7 @@ h2 {
 }
 
 .pbs-button-yellow {
-    background-color: rgb(206, 206, 14);
+    background-color: yellow;
     color: var(--pbs-grey);
 }
 
