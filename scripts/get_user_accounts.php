@@ -14,7 +14,7 @@
     }
 
     //perform query and sort into newest first
-    $query = "SELECT firstname, lastname, email, contact_number, organisation, admin_locked FROM `users` WHERE user_id<>'" . $_SESSION['user_id'] . "' ORDER BY firstname ASC";
+    $query = "SELECT user_id, firstname, lastname, email, contact_number, organisation, admin_locked FROM `users` WHERE user_id<>'" . $_SESSION['user_id'] . "' ORDER BY firstname ASC";
     $result = $connection->query($query);
 
     //check that there were announcements to show
@@ -26,6 +26,7 @@
         // output data of each row
         while($row = $result->fetch_assoc()) {
             //retrieve data from query
+            $user_id = $row['user_id'];
             $firstname = $row['firstname'];
             $lastname = $row['lastname'];
             $email = $row['email'];
@@ -35,6 +36,7 @@
             
             //add data into array
             $data[] = array(
+                "user_id" => $user_id,
                 "firstname" => $firstname,
                 "lastname" => $lastname,
                 "email" => $email,
