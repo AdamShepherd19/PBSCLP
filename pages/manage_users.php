@@ -139,7 +139,9 @@
                 });
 
 
-                
+                $(".lock-button").on('click', function(event){
+                    alert(event.target.id);
+                });
 
 
                 // only show administrator content if an admin logged in
