@@ -139,10 +139,10 @@
                 });
 
 
-                $(".lock-button").click(function(event){
-                    console.log("test");
-                    // console.log($(this.id));
-                });
+                // $(".lock-button").click(function(event){
+                //     console.log("test");
+                //     // console.log($(this.id));
+                // });
 
 
                 // only show administrator content if an admin logged in
