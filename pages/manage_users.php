@@ -107,9 +107,9 @@
                         } else {
                             for(var x = 0; x < response.length; x++) {
                                 if (response[x].admin_locked == true){
-                                    $lock_unlock_button = '<input type="button" id="lock-profile' + response[x].user_id + '" class="pbs-button pbs-button-yellow table-button lock-button" value="Un-Lock">';
+                                    $lock_unlock_button = '<input type="button" id="lock-profile-id:' + response[x].user_id + '" class="pbs-button pbs-button-yellow table-button lock-button" value="Un-Lock">';
                                 } else {
-                                    $lock_unlock_button = '<input type="button" id="lock-profile' + response[x].user_id + '" class="pbs-button pbs-button-yellow table-button lock-button" value="Lock">'
+                                    $lock_unlock_button = '<input type="button" id="lock-profile-id:' + response[x].user_id + '" class="pbs-button pbs-button-yellow table-button lock-button" value="Lock">'
                                 }
 
                                 var message = '<div class="card">'+
