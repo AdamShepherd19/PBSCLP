@@ -140,7 +140,8 @@
 
 
                 $(".lock-button").on('click', function(event){
-                    alert(event.target.id);
+                    console.log("test");
+                    // console.log($(this.id));
                 });
 
 
