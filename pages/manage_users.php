@@ -139,7 +139,7 @@
                 });
 
 
-                $(".lock-button").on('click', function(event){
+                $(".lock-button").click(function(event){
                     console.log("test");
                     // console.log($(this.id));
                 });
