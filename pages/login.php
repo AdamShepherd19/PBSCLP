@@ -45,8 +45,6 @@
             }
         } 
 
-        // $prepared_query->close();
-
         $connection->close();
 
     }
