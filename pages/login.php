@@ -22,8 +22,15 @@
         $password = $_POST['passwordPHP'];
 
         //query db for user login details provided
-        $query = "SELECT user_id, account_type, firstname, lastname, password FROM users WHERE email='" . $email . "'";
-        $data = $connection->query($query);
+        // $query = "SELECT user_id, account_type, firstname, lastname, password FROM users WHERE email='" . $email . "'";
+        // $data = $connection->query($query);
+
+        $sql = "SELECT user_id, account_type, firstname, lastname, password FROM users WHERE email=?";
+        $stmt = $connection->prepare($sql);
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $data = $stmt->get_result();
+
 
         //check if login details provided match a user profile in the db
         if ($data->num_rows > 0) {
