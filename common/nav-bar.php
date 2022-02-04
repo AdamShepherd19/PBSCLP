@@ -25,10 +25,13 @@
                     <a class="nav-link" href="resource_bank.php">Resource Bank</a>
                 </li>
 
-                <li class="nav-item" id="nav-resource-bank">
+                <li class="nav-item" id="nav-profile">
                     <a class="nav-link" href="profile.php">Profile</a>
                 </li>
 
+                <li class="nav-item admin-only" id="nav-manage-users">
+                    <a class="nav-link" href="manage_users.php">Manage Users</a>
+                </li>
             </ul>
 
             <span class="navbar-text">

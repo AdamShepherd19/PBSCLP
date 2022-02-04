@@ -6,6 +6,11 @@
         exit();
     }
 
+    if($_SESSION['account_type'] != 'administrator'){
+        header('Location: landing.php');
+        exit();
+    }
+
     $pass = file_get_contents('../../pass.txt', true);
     
     if(isset($_POST['titlePHP'])) {
@@ -67,7 +72,11 @@
 
     <body>
 
-        <div id="pbs-nav-bar"></div>
+        <div id="pbs-nav-bar">
+            <?php
+                include "../common/nav-bar.php";
+            ?>
+        </div>
 
         <div class="page-header">
             <h1>New Announcement</h1>
@@ -93,12 +102,7 @@
         
         <script type="text/javascript">
             $(document).ready(function () {
-
-                // load in the nav bar
-                $(function(){
-                    $("#pbs-nav-bar").load("../common/nav-bar.html"); 
-                });
-
+                
                 //onclick function for the cancel button
                 $("#announcement-cancel").on('click', function(){
                     window.location.replace('landing.php');
@@ -146,6 +150,14 @@
                         });
                     };
                 });
+
+                // only show administrator content if an admin logged in
+                var accountType = '<?php echo $_SESSION['account_type']; ?>';
+                if (accountType != 'administrator') {
+                    $('.admin-only').hide();
+                } else {
+                    $('.admin-only').show();
+                }
             });
         </script>
         

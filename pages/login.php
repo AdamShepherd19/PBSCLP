@@ -20,7 +20,7 @@
 
         $email = $_POST['emailPHP'];
         $password = $_POST['passwordPHP'];
-
+ 
         $sql = "SELECT user_id, account_type, firstname, lastname, password FROM users WHERE email=?";
         $stmt = $connectionPDO->prepare($sql);
         $stmt->execute([$email]);
@@ -28,18 +28,21 @@
 
         //check if login details provided match a user profile in the db
         if ($data && password_verify($password, $data['password'])){
+            if ($data['admin_locked'] == true) {
+                exit("*account_locked_by_administrator*");
+            } else {
+                //store session variables
+                $_SESSION['logged_in'] = True;
+                $_SESSION['user_id'] = $data['user_id'];
+                $_SESSION['email'] = $email;
+                $_SESSION['account_type'] = $data['account_type'];
+                $_SESSION['firstname'] = $data['firstname'];
+                $_SESSION['lastname'] = $data['lastname'];
 
-            //store session variables
-            $_SESSION['logged_in'] = True;
-            $_SESSION['user_id'] = $data['user_id'];
-            $_SESSION['email'] = $email;
-            $_SESSION['account_type'] = $data['account_type'];
-            $_SESSION['firstname'] = $data['firstname'];
-            $_SESSION['lastname'] = $data['lastname'];
-
-            exit('Login success');
+                exit('*login_success*');
+            }
         } else {
-            exit('Login failed');
+            exit('*login_failed*');
         }
 
         // close connection to db
@@ -122,12 +125,14 @@
                                 passwordPHP: password
                             },
                             success: function (response) {
-                                $('#login-response').html(response);
-
-                                if (response.includes("success")){
-                                    window.location.replace('landing.php');
-                                } else if(response.includes("*database_connection_error*")) {
-                                    alert("There was an issue connecting to the server. Please try again or contact a system administrator.")
+                                if (response.includes("*login_success*")){
+                                    window.location.href = 'landing.php';
+                                } else if (response.includes("*account_locked_by_administrator*")) {
+                                    $('#login-response').html("Your account has been suspended. Please contact an adminstrator.");
+                                } else if (response.includes("*login_failed*")) {
+                                    $('#login-response').html("Login Failed. Please try again.");
+                                } else if (response.includes("*database_connection_error*")) {
+                                    alert("There was an issue connecting to the server. Please try again or contact a system administrator.");
                                 }
                             },
                             datatype: 'text'
