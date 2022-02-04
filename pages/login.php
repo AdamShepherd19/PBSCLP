@@ -11,46 +11,43 @@
 
     if(isset($_POST['login'])) {
         //connect to database
-        $connection = new mysqli('localhost', 'pbsclp', $pass, 'pbsclp_pbsclp');
-
-        //check db connection
-        if ($connection->connect_error) {
-            exit("Connection failed: " . $connection->connect_error);
+        try {
+            $connectionPDO = new PDO('mysql:host=localhost;dbname=pbsclp_pbsclp', 'pbsclp', $pass);
+            $connectionPDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch(PDOException $e) {
+            exit('*database_connection_error*');
         }
 
         $email = $_POST['emailPHP'];
-        $password = md5($_POST['passwordPHP']);
-
-        //query db for user login details provided
-        $query = "SELECT user_id, account_type, firstname, lastname, admin_locked FROM users WHERE email='" . $email . "' AND password='" . $password . "'";
-        $data = $connection->query($query);
+        $password = $_POST['passwordPHP'];
+ 
+        $sql = "SELECT user_id, account_type, firstname, lastname, password FROM users WHERE email=?";
+        $stmt = $connectionPDO->prepare($sql);
+        $stmt->execute([$email]);
+        $data = $stmt->fetch();
 
         //check if login details provided match a user profile in the db
-        if ($data->num_rows > 0) {
-            $row = $data->fetch_assoc();
-
-            if ($row['admin_locked'] == true) {
+        if ($data && password_verify($password, $data['password'])){
+            if ($data['admin_locked'] == true) {
                 exit("*account_locked_by_administrator*");
             } else {
                 //store session variables
                 $_SESSION['logged_in'] = True;
-                $_SESSION['user_id'] = $row['user_id'];
+                $_SESSION['user_id'] = $data['user_id'];
                 $_SESSION['email'] = $email;
-                $_SESSION['account_type'] = $row['account_type'];
-                $_SESSION['firstname'] = $row['firstname'];
-                $_SESSION['lastname'] = $row['lastname'];
+                $_SESSION['account_type'] = $data['account_type'];
+                $_SESSION['firstname'] = $data['firstname'];
+                $_SESSION['lastname'] = $data['lastname'];
 
                 exit('*login_success*');
             }
-            
         } else {
             exit('*login_failed*');
         }
 
-        // $prepared_query->close();
-
-        $connection->close();
-
+        // close connection to db
+        $stmt = null;
+        $connectionPDO = null;
     }
 ?>
 
@@ -134,6 +131,8 @@
                                     $('#login-response').html("Your account has been suspended. Please contact an adminstrator.");
                                 } else if (response.includes("*login_failed*")) {
                                     $('#login-response').html("Login Failed. Please try again.");
+                                } else if (response.includes("*database_connection_error*")) {
+                                    alert("There was an issue connecting to the server. Please try again or contact a system administrator.");
                                 }
                             },
                             datatype: 'text'
