@@ -15,11 +15,11 @@
     
     if(isset($_POST['titlePHP'])) {
         //connect to database
-        $connection = new mysqli('localhost', 'pbsclp', $pass, 'pbsclp_pbsclp');
-
-        //check db connection
-        if ($connection->connect_error) {
-            exit("Connection failed: " . $connection->connect_error);
+        try {
+            $connectionPDO = new PDO('mysql:host=localhost;dbname=pbsclp_pbsclp', 'pbsclp', $pass);
+            $connectionPDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch(PDOException $e) {
+            exit('*database_connection_error*');
         }
 
         //retrieve title, content and author for the new post
@@ -28,16 +28,18 @@
         $author = $_SESSION['firstname'] . " " . $_SESSION['lastname'];
 
         // query database and insert the new announcement into the announcements table
-        $query = "INSERT INTO announcements (title, content, author) VALUES ('" . $title . "', '" . $content . "', '" . $author . "');";
+        $sql = "INSERT INTO announcements (title, content, author) VALUES (:title, :content, :author);";
+        $stmt = $connectionPDO->prepare($sql);
         
         //check to see if the insert was successful
-        if ($connection->query($query) === TRUE) {
+        if ($stmt->execute(['title' => $title, 'content' => $content, 'author' => $author])) {
             exit('success');
         } else {
-            exit('Error: ' . $connection->error);
+            exit('Error: ' . $connectionPDO->error);
         }
 
-        $connection->close();
+        $stmt = null;
+        $connectionPDO = null;
 
     }
 
