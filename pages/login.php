@@ -15,7 +15,7 @@
             $connectionPDO = new PDO('mysql:host=localhost;dbname=pbsclp_pbsclp', 'pbsclp', "testPass");
             $connectionPDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch(PDOException $e) {
-            echo $e->getMessage();
+            exit('*database_connection_error*');
         }
 
         $email = $_POST['emailPHP'];
@@ -126,6 +126,8 @@
 
                                 if (response.includes("success")){
                                     window.location.replace('landing.php');
+                                } else if(response.includes("*database_connection_error*")) {
+                                    alert("There was an issue connecting to the server. Please try again or contact a system administrator.")
                                 }
                             },
                             datatype: 'text'
