@@ -40,10 +40,10 @@
                 $_SESSION['lastname'] = $row['lastname'];
 
                 exit('Login success');
+            } else {
+                exit('Login failed');
             }
-        } else {
-            exit('Login failed');
-        }
+        } 
 
         // $prepared_query->close();
 
