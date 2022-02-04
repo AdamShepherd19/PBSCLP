@@ -11,7 +11,12 @@
 
     if(isset($_POST['login'])) {
         //connect to database
-        $connectionPDO = new PDO('mysql:host=localhost;dbname=pbsclp_pbsclp', 'pbsclp', $pass);
+        try {
+            $connectionPDO = new PDO('mysql:host=localhost;dbname=pbsclp_pbsclp', 'pbsclp', "testPass");
+            $connectionPDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch(PDOException $e) {
+            echo $e->getMessage();
+        }
 
         $email = $_POST['emailPHP'];
         $password = $_POST['passwordPHP'];
