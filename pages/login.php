@@ -11,41 +11,40 @@
 
     if(isset($_POST['login'])) {
         //connect to database
-        $connection = new mysqli('localhost', 'pbsclp', $pass, 'pbsclp_pbsclp');
-
-        //check db connection
-        if ($connection->connect_error) {
-            exit("Connection failed: " . $connection->connect_error);
+        try {
+            $connectionPDO = new PDO('mysql:host=localhost;dbname=pbsclp_pbsclp', 'pbsclp', $pass);
+            $connectionPDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch(PDOException $e) {
+            exit('*database_connection_error*');
         }
 
         $email = $_POST['emailPHP'];
-        $password = md5($_POST['passwordPHP']);
+        $password = $_POST['passwordPHP'];
 
-        //query db for user login details provided
-        $query = "SELECT user_id, account_type, firstname, lastname FROM users WHERE email='" . $email . "' AND password='" . $password . "'";
-        $data = $connection->query($query);
+        $sql = "SELECT user_id, account_type, firstname, lastname, password FROM users WHERE email=?";
+        $stmt = $connectionPDO->prepare($sql);
+        $stmt->execute([$email]);
+        $data = $stmt->fetch();
 
         //check if login details provided match a user profile in the db
-        if ($data->num_rows > 0) {
-            $row = $data->fetch_assoc();
+        if ($data && password_verify($password, $data['password'])){
 
             //store session variables
             $_SESSION['logged_in'] = True;
-            $_SESSION['user_id'] = $row['user_id'];
+            $_SESSION['user_id'] = $data['user_id'];
             $_SESSION['email'] = $email;
-            $_SESSION['account_type'] = $row['account_type'];
-            $_SESSION['firstname'] = $row['firstname'];
-            $_SESSION['lastname'] = $row['lastname'];
+            $_SESSION['account_type'] = $data['account_type'];
+            $_SESSION['firstname'] = $data['firstname'];
+            $_SESSION['lastname'] = $data['lastname'];
 
             exit('Login success');
         } else {
             exit('Login failed');
         }
 
-        // $prepared_query->close();
-
-        $connection->close();
-
+        // close connection to db
+        $stmt = null;
+        $connectionPDO = null;
     }
 ?>
 
@@ -127,6 +126,8 @@
 
                                 if (response.includes("success")){
                                     window.location.replace('landing.php');
+                                } else if(response.includes("*database_connection_error*")) {
+                                    alert("There was an issue connecting to the server. Please try again or contact a system administrator.")
                                 }
                             },
                             datatype: 'text'
