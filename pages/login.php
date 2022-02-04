@@ -19,15 +19,17 @@
         }
 
         $email = $_POST['emailPHP'];
-        $password = md5($_POST['passwordPHP']);
+        $password = $_POST['passwordPHP'];
 
         //query db for user login details provided
-        $query = "SELECT user_id, account_type, firstname, lastname FROM users WHERE email='" . $email . "' AND password='" . $password . "'";
+        $query = "SELECT user_id, account_type, firstname, lastname, password FROM users WHERE email='" . $email . "'";
         $data = $connection->query($query);
 
         //check if login details provided match a user profile in the db
         if ($data->num_rows > 0) {
             $row = $data->fetch_assoc();
+
+            if (password_verify($password, $row['password'])){
 
             //store session variables
             $_SESSION['logged_in'] = True;
