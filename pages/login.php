@@ -11,30 +11,17 @@
 
     if(isset($_POST['login'])) {
         //connect to database
-        // $connection = new mysqli('localhost', 'pbsclp', $pass, 'pbsclp_pbsclp');
         $connectionPDO = new PDO('mysql:host=localhost;dbname=pbsclp_pbsclp', 'pbsclp', $pass);
-
-        //check db connection
-        // if ($connection->connect_error) {
-        //     exit("Connection failed: " . $connection->connect_error);
-        // }
 
         $email = $_POST['emailPHP'];
         $password = $_POST['passwordPHP'];
 
-        //query db for user login details provided
-        // $query = "SELECT user_id, account_type, firstname, lastname, password FROM users WHERE email='" . $email . "'";
-        // $data = $connection->query($query);
-
         $sql = "SELECT user_id, account_type, firstname, lastname, password FROM users WHERE email=?";
         $stmt = $connectionPDO->prepare($sql);
-        // $stmt->bind_param('s', $email);
         $stmt->execute([$email]);
         $data = $stmt->fetch();
 
-
         //check if login details provided match a user profile in the db
-
         if ($data && password_verify($password, $data['password'])){
 
             //store session variables
@@ -50,9 +37,9 @@
             exit('Login failed');
         }
 
+        // close connection to db
         $stmt = null;
         $connectionPDO = null;
-
     }
 ?>
 
