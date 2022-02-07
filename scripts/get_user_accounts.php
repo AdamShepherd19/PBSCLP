@@ -14,7 +14,7 @@
     }
 
     //perform query and sort into newest first
-    $sql = "SELECT user_id, firstname, lastname, email, contact_number, organisation, admin_locked FROM `users` WHERE user_id<> ? ORDER BY firstname ASC";
+    $sql = "SELECT user_id, firstname, lastname, email, contact_number, organisation, admin_locked FROM `users` WHERE user_id<>? ORDER BY firstname ASC";
     
     $stmt = $connectionPDO->prepare($sql);
     $stmt->execute($_SESSION['user_id']);
