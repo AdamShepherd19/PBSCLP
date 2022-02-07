@@ -28,6 +28,7 @@
         <script src="../includes/jquery.js"></script>
 
         <link rel="stylesheet" href="../stylesheets/style.css">
+        <link rel="stylesheet" href="../stylesheets/add_new_user.css">
 
         <title>Add New User</title>
         
