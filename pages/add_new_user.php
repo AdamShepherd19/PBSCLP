@@ -41,6 +41,10 @@
             ?>
         </div>
 
+        <div class="page-header">
+            <h1>Add New User</h1>
+        </div>
+
         <div class="main-content">
             <div class="form-wrapper">
                 <table>
