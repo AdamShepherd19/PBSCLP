@@ -20,7 +20,7 @@
         
 
         // query database and insert the new announcement into the announcements table
-        $sql = "INSERT INTO users (firstname, lastname, email, contact_number, email, organisation, account_type) VALUES (:firstname, :lastname, :email, :contact_number, :organisation, :account_type);";
+        $sql = "INSERT INTO users (firstname, lastname, email, contact_number, organisation, account_type) VALUES (:firstname, :lastname, :email, :contact_number, :organisation, :account_type);";
         $stmt = $connectionPDO->prepare($sql);
         
         //check to see if the insert was successful
@@ -34,5 +34,5 @@
         $connectionPDO = null;
 
     }
-    
+
 ?>
