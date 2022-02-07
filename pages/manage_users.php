@@ -96,6 +96,10 @@
         <script type="text/javascript">
             $(document).ready(function () {
 
+                $("#new-user-button").on('click', function(){
+                    window.location.href = 'add_new_user.php';
+                });
+
                 $.ajax({
                     url: '../scripts/get_user_accounts.php',
                     type: 'get',
