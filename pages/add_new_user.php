@@ -201,7 +201,7 @@
                                     });
 
                                 } else {
-                                    prompt("That email address is already in use. Please enter another.");
+                                    alert("That email address is already in use. Please enter another.");
                                 }
                             },
                             datatype: 'text'
