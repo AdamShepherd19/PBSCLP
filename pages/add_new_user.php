@@ -33,8 +33,7 @@
         
     </head>
 
-    <body style="background-image:url(../images/dog.jpg); background-size:cover; background-repeat: no-repeat;">
-
+    <body>
         <div id="pbs-nav-bar">
             <?php
                 include "../common/nav-bar.php";
