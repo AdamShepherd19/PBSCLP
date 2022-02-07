@@ -10,6 +10,43 @@
         header('Location: landing.php');
         exit();
     }
+
+    $pass = file_get_contents('../../pass.txt', true);
+
+    //connect to database
+    try {
+        $connectionPDO = new PDO('mysql:host=localhost;dbname=pbsclp_pbsclp', 'pbsclp', $pass);
+        $connectionPDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    } catch(PDOException $e) {
+        exit('*database_connection_error*');
+    }
+
+    $new_email = $_POST['email'];
+
+    //perform query
+    $sql = "SELECT email FROM users";
+    $stmt = $connectionPDO->prepare($sql);
+    $stmt->execute();
+    $result = $stmt->fetchAll();
+
+    if ($result){
+        //initialise array
+        $data = array();
+
+        // output data of each row
+        foreach($result as $row) {
+            //retrieve data from query
+            if ($new_email == $row['email']){
+                exit("*account_already_exists*");
+            }
+        }
+    } else {
+        exit("*no_existing_accounts*");
+    }
+
+    // close connection to db
+    $stmt = null;
+    $connectionPDO = null;
 ?>
 
 <!DOCTYPE html>
@@ -113,48 +150,62 @@
                     var organisation = $('#organisation').val();
                     var account_type = $('#account-type').val();
 
-                    // alert(firstname + lastname + email + contact_number + organisation + account_type);
-                    
                     //check data not empty
                     if(firstname == "" || lastname == "" || email == "" || contact_number == "" || organisation == ""){
                         //prompt user to fill in all data
                         alert("Please fill out all the fields in the form.");
                     } else {
-                        //send data to php
+
+                        //check if new email exists in db
                         $.ajax({
                             method: 'POST',
-                            url: "../scripts/insert_new_user.php",
+                            url: "add_new_user.php",
                             data: {
-                                firstnamePHP: firstname,
-                                lastnamePHP: lastname,
-                                emailPHP: email,
-                                contact_numberPHP: contact_number,
-                                organisationPHP: organisation,
-                                account_typePHP: account_type
+                                email: email,
                             },
                             success: function (response) {
                                 //check if the php execution was successful and the data was added to the db
-                                if (response.includes("*user_added_successfully*")){
-                                    //replace html with success message and button to return to landing page
-                                    var successHTML = "<h3>The new user was added succesfully. Please click the button below to return to the landing page.</h3><br> " +
-                                        "<input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>";
+                                if (response.includes("*no_existing_accounts*")){
+                                    $.ajax({
+                                        method: 'POST',
+                                        url: "../scripts/insert_new_user.php",
+                                        data: {
+                                            firstnamePHP: firstname,
+                                            lastnamePHP: lastname,
+                                            emailPHP: email,
+                                            contact_numberPHP: contact_number,
+                                            organisationPHP: organisation,
+                                            account_typePHP: account_type
+                                        },
+                                        success: function (response) {
+                                            //check if the php execution was successful and the data was added to the db
+                                            if (response.includes("*user_added_successfully*")){
+                                                //replace html with success message and button to return to landing page
+                                                var successHTML = "<h3>The new user was added succesfully. Please click the button below to return to the landing page.</h3><br> " +
+                                                    "<input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>";
 
-                                    $('.main-content').html(successHTML);
+                                                $('.main-content').html(successHTML);
+
+                                            } else {
+                                                //display error message if the php could not be executed
+                                                $('.main-content').html("<h3> There was an error processing your request. Please try again </h3><br>Error" + response +
+                                                    "<br><input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>");
+                                            }
+
+                                            // onclick function for new button to return to landing page
+                                            $("#return").on('click', function(){
+                                                window.location.replace('manage_users.php');
+                                            });
+                                        },
+                                        datatype: 'text'
+                                    });
 
                                 } else {
-                                    //display error message if the php could not be executed
-                                    $('.main-content').html("<h3> There was an error processing your request. Please try again </h3><br>Error" + response +
-                                        "<br><input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>");
+                                    prompt("That email address is already in use. Please enter another.");
                                 }
-
-                                // onclick function for new button to return to landing page
-                                $("#return").on('click', function(){
-                                    window.location.replace('manage_users.php');
-                                });
                             },
                             datatype: 'text'
                         });
-                        // alert(firstname + lastname + email + contact_number + organisation + account_type);
                     };
                 });
             });
