@@ -56,6 +56,7 @@
             <div class="search-wrapper">
                 <input type="search" class="pbs-form-text-box" id="search-input" placeholder="search">
                 <input type="button" id="search-button" class="pbs-button pbs-search-button pbs-button-green" value="Search">
+                <input type="button" id="new-user-button" class="pbs-button pbs-button-green" value="New User">
             </div>
         
             <div class="account-wrapper">
