@@ -86,7 +86,7 @@
 
         <div class="main-content">
             <div class="form-wrapper">
-                <form action="login.php" method="post">
+                <form>
                     <label for="title">Title: </label><br />
                     <input type="text" id="title" class="pbs-form-text-box" placeholder="Enter post title..."><br /><br />
                     <label for="content">Content: </label><br />
