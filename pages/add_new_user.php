@@ -130,7 +130,7 @@
                                 emailPHP: email,
                                 contact_numberPHP: contact_number,
                                 organisationPHP: organisation,
-                                account_typePHP, account_type
+                                account_typePHP: account_type
                             },
                             success: function (response) {
                                 //check if the php execution was successful and the data was added to the db
