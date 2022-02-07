@@ -121,35 +121,39 @@
                         alert("Please fill out all the fields in the form.");
                     } else {
                         //send data to php
-                        // $.ajax({
-                        //     method: 'POST',
-                        //     url: "new_announcement.php",
-                        //     data: {
-                        //         titlePHP: title,
-                        //         contentPHP: content
-                        //     },
-                        //     success: function (response) {
-                        //         //check if the php execution was successful and the data was added to the db
-                        //         if (response.includes("success")){
-                        //             //replace html with success message and button to return to landing page
-                        //             var successHTML = "<h3>Your post was created succesfully. Please click the button below to return to the landing page.</h3><br> " +
-                        //                 "<input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>";
+                        $.ajax({
+                            method: 'POST',
+                            url: "insert_new_user.php",
+                            data: {
+                                firstnamePHP: firstname,
+                                lastnamePHP: lastname,
+                                emailPHP: email,
+                                contact_numberPHP: contact_number,
+                                organisationPHP: organisation,
+                                account_typePHP, account_type
+                            },
+                            success: function (response) {
+                                //check if the php execution was successful and the data was added to the db
+                                if (response.includes("*user_added_successfully*")){
+                                    //replace html with success message and button to return to landing page
+                                    var successHTML = "<h3>The new user was added succesfully. Please click the button below to return to the landing page.</h3><br> " +
+                                        "<input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>";
 
-                        //             $('.main-content').html(successHTML);
+                                    $('.main-content').html(successHTML);
 
-                        //             // onclick function for new button to return to landing page
-                        //             $("#return").on('click', function(){
-                        //                 window.location.replace('landing.php');
-                        //             });
+                                    // onclick function for new button to return to landing page
+                                    $("#return").on('click', function(){
+                                        window.location.replace('manage_users.php');
+                                    });
 
-                        //         } else {
-                        //             //display error message if the php could not be executed
-                        //             $('.main-content').html("<h3> There was an error processing your request. Please try again </h3><br>Error" + response);
-                        //         }
-                        //     },
-                        //     datatype: 'text'
-                        // });
-                        alert(firstname + lastname + email + contact_number + organisation + account_type);
+                                } else {
+                                    //display error message if the php could not be executed
+                                    $('.main-content').html("<h3> There was an error processing your request. Please try again </h3><br>Error" + response);
+                                }
+                            },
+                            datatype: 'text'
+                        });
+                        // alert(firstname + lastname + email + contact_number + organisation + account_type);
                     };
                 });
             });
