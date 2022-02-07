@@ -6,25 +6,28 @@
     $pass = file_get_contents('../../pass.txt', true);
 
     //connect to database
-    $connection = new mysqli('localhost', 'pbsclp', $pass, 'pbsclp_pbsclp');
-
-    //check db connection
-    if ($connection->connect_error) {
-        exit("Connection failed: " . $connection->connect_error);
+    try {
+        $connectionPDO = new PDO('mysql:host=localhost;dbname=pbsclp_pbsclp', 'pbsclp', $pass);
+        $connectionPDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    } catch(PDOException $e) {
+        exit('*database_connection_error*');
     }
 
     //perform query and sort into newest first
-    $query = "SELECT user_id, firstname, lastname, email, contact_number, organisation, admin_locked FROM `users` WHERE user_id<>'" . $_SESSION['user_id'] . "' ORDER BY firstname ASC";
-    $result = $connection->query($query);
+    $sql = "SELECT user_id, firstname, lastname, email, contact_number, organisation, admin_locked FROM `users` WHERE user_id<> ? ORDER BY firstname ASC";
+    
+    $stmt = $connectionPDO->prepare($sql);
+    $stmt->execute($_SESSION['user_id']);
+    $result = $stmt->fetchAll();
 
     //check that there were announcements to show
-    if ($result->num_rows > 0) {
+    if ($result) {
 
         //initialise array
         $data = array();
 
         // output data of each row
-        while($row = $result->fetch_assoc()) {
+        foreach($result as $row) {
             //retrieve data from query
             $user_id = $row['user_id'];
             $firstname = $row['firstname'];
@@ -53,6 +56,8 @@
         echo json_encode("*warning_no_users_found*");
     }
 
-    $connection->close();
+    // close connection to db
+    $stmt = null;
+    $connectionPDO = null;
 
 ?>
