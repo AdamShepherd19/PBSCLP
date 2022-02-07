@@ -97,7 +97,7 @@
             $(document).ready(function () {
 
                 $("#new-user-button").on('click', function(){
-                    window.location.href = 'add_new_user.php';
+                    window.location.replace('add_new_user.php');
                 });
 
                 $.ajax({

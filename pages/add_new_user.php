@@ -90,8 +90,8 @@
                 </table>
         
                 <div class="button-wrapper">
-                    <input type="button" id="announcement-cancel" class="pbs-button pbs-button-red" value="Cancel">
-                    <input type="button" id="announcement-post" class="pbs-button pbs-button-green" value="Add">
+                    <input type="button" id="cancel" class="pbs-button pbs-button-red" value="Cancel">
+                    <input type="button" id="add-new-user" class="pbs-button pbs-button-green" value="Add">
                 </div>
             </div>
 
@@ -100,7 +100,13 @@
         
         <script type="text/javascript">
             $(document).ready(function () {
-                
+                $("#cancel").on('click', function(){
+                    window.location.replace('manage_users.php');
+                });
+
+                $("#add-new-user").on('click', function(){
+                    //code to add new user to db
+                });
             });
         </script>
         
