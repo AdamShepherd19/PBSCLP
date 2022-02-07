@@ -5,11 +5,11 @@
     
     if(isset($_POST['firstnamePHP'])) {
         //connect to database
-        $connection = new mysqli('localhost', 'pbsclp', $pass, 'pbsclp_pbsclp');
-
-        //check db connection
-        if ($connection->connect_error) {
-            exit("Connection failed: " . $connection->connect_error);
+        try {
+            $connectionPDO = new PDO('mysql:host=localhost;dbname=pbsclp_pbsclp', 'pbsclp', $pass);
+            $connectionPDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch(PDOException $e) {
+            exit('*database_connection_error*');
         }
 
         //retrieve title, content and author for the new post
@@ -20,17 +20,19 @@
         $organisation = $_POST['organisationPHP'];
 
         // query database and insert the new announcement into the announcements table
-        $query = "UPDATE users SET firstname='" . $firstname. "', lastname='" . $lastname . "', email='" . $email . "', organisation='" . $organisation . "', contact_number='" . $contact_number . "' WHERE user_id='" . $_SESSION['user_id'] . "'";
-
+        $sql = "UPDATE users SET firstname=:firstname, lastname=:lastname, email=:email, organisation=:organisation, contact_number=:contact_number WHERE user_id=:user_id";
+        $stmt = $connectionPDO->prepare($sql);
         
         //check to see if the insert was successful
-        if ($connection->query($query) === TRUE) {
+        if ($stmt->execute(['firstname' => $firstname, 'lastname' => $lastname, 'email' => $email, 'organisation' => $organisation, 'contact_number' => $contact_number, 'user_id' => $user_id])) {
             exit('success');
         } else {
             exit('Error: ' . $connection->error);
         }
 
-        $connection->close();
+        //close connection to db
+        $stmt = null;
+        $connectionPDO = null;
     }
 
 ?>
