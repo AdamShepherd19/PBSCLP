@@ -35,19 +35,21 @@
 
     <body style="background-image:url(../images/dog.jpg); background-size:cover; background-repeat: no-repeat;">
 
-        <div id="pbs-nav-bar"></div>
+        <div id="pbs-nav-bar">
+            <?php
+                include "../common/nav-bar.php";
+            ?>
+        </div>
 
         <div>
-            <h1 style="color:white; padding:20px 0 0 100px;font-size:5em;"> </h1>
+            <h1 style="color:white; padding:20px 0 0 100px;font-size:5em;"> Page Header </h1>
             <h2 style="color:white; padding:0 0 0 100px;font-size:2em;">Website coming soon...</h2>
         </div>
 
         
         <script type="text/javascript">
             $(document).ready(function () {
-                $(function(){
-                    $("#pbs-nav-bar").load("../common/nav-bar.html"); 
-                });
+                
             });
         </script>
         
