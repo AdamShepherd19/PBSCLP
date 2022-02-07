@@ -148,15 +148,17 @@
 
                                 $('.main-content').html(successHTML);
 
-                                // onclick function for new button to return to landing page
-                                $("#return").on('click', function(){
-                                    window.location.replace('profile.php');
-                                });
-
                             } else {
                                 //display error message if the php could not be executed
-                                $('.main-content').html("<h3> There was an error processing your request. Please try again </h3><br>Error" + response);
+                                $('.main-content').html("<h3> There was an error processing your request. Please try again </h3><br>Error" + response +
+                                        "<br><input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>");
                             }
+
+                            // onclick function for new button to return to landing page
+                            $("#return").on('click', function(){
+                                window.location.replace('profile.php');
+                            });
+
                         },
                         datatype: 'text'
                     });
