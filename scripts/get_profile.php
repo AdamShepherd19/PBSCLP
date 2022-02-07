@@ -5,39 +5,38 @@
     $pass = file_get_contents('../../pass.txt', true);
 
     //connect to database
-    $connection = new mysqli('localhost', 'pbsclp', $pass, 'pbsclp_pbsclp');
-
-    //check db connection
-    if ($connection->connect_error) {
-        exit("Connection failed: " . $connection->connect_error);
+    try {
+        $connectionPDO = new PDO('mysql:host=localhost;dbname=pbsclp_pbsclp', 'pbsclp', $pass);
+        $connectionPDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    } catch(PDOException $e) {
+        exit('*database_connection_error*');
     }
 
     //perform query and sort into newest first
-    $query = "SELECT firstname, lastname, email, organisation, contact_number FROM users WHERE user_id='" . $_SESSION['user_id'] . "'";
-    $result = $connection->query($query);
+    $sql = "SELECT firstname, lastname, email, organisation, contact_number FROM users WHERE user_id=";
+    $stmt = $connectionPDO->prepare($sql);
+    $stmt->bindParam('s', $_SESSION['user_id']);
+    $stmt->execute();
+    $result = $stmt->fetch();
 
-    //check that there were announcements to show
-    if ($result->num_rows > 0) {
-
+    
+    if ($result) {
         //initialise array
         $data = array();
 
-        // output data of each row
-        while($row = $result->fetch_assoc()) {
-            //retrieve data from query
-            $name = $row['firstname'] . " " . $row['lastname'];;
-            $email = $row['email'];
-            $organisation = $row['organisation'];
-            $contact_number = $row['contact_number'];
-            
-            //add data into array
-            $data[] = array(
-                "name" => $name,
-                "email" => $email,
-                "organisation" => $organisation,
-                "contact_number" => $contact_number
-            );
-        }
+        //retrieve data from query
+        $name = $row['firstname'] . " " . $row['lastname'];;
+        $email = $row['email'];
+        $organisation = $row['organisation'];
+        $contact_number = $row['contact_number'];
+        
+        //add data into array
+        $data[] = array(
+            "name" => $name,
+            "email" => $email,
+            "organisation" => $organisation,
+            "contact_number" => $contact_number
+        );
 
         //encode the array into jason
         echo json_encode($data);
@@ -46,6 +45,8 @@
         echo json_encode("*warning_no_user_found*");
     }
 
-    $connection->close();
+    // close connection to db
+    $stmt = null;
+    $connectionPDO = null;
 
 ?>

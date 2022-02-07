@@ -13,7 +13,6 @@
     //perform query and sort into newest first
     $sql = "SELECT * FROM `announcements` ORDER BY announcement_id DESC";
     $stmt = $connectionPDO->prepare($sql);
-    // $stmt->bindParam();
     $stmt->execute();
     $result = $stmt->fetchAll();
     
