@@ -25,14 +25,10 @@
         $stmt = $connectionPDO->prepare($sql);
         
         //check to see if the insert was successful
-        try{
-            if ($stmt->execute(['firstname' => $firstname, 'lastname' => $lastname, 'email' => $email, 'contact_number' => $contact_number, 'organisation' => $organisation, 'account_type' => $account_type])) {
-                exit('*user_added_successfully*');
-            } else {
-                exit('Error: ' . $connectionPDO->error);
-            }
-        } catch(Exception) {
-            exit('error');
+        if ($stmt->execute(['firstname' => $firstname, 'lastname' => $lastname, 'email' => $email, 'contact_number' => $contact_number, 'organisation' => $organisation, 'account_type' => $account_type])) {
+            exit('*user_added_successfully*');
+        } else {
+            exit('Error: ' . $connectionPDO->error);
         }
 
         $stmt = null;

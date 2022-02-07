@@ -123,7 +123,7 @@
                         //send data to php
                         $.ajax({
                             method: 'POST',
-                            url: "insert_new_user.php",
+                            url: "../scripts/insert_new_user.php",
                             data: {
                                 firstnamePHP: firstname,
                                 lastnamePHP: lastname,
