@@ -25,10 +25,10 @@
         $data = array();
 
         //retrieve data from query
-        $name = $row['firstname'] . " " . $row['lastname'];;
-        $email = $row['email'];
-        $organisation = $row['organisation'];
-        $contact_number = $row['contact_number'];
+        $name = $result['firstname'] . " " . $result['lastname'];;
+        $email = $result['email'];
+        $organisation = $result['organisation'];
+        $contact_number = $result['contact_number'];
         
         //add data into array
         $data[] = array(
