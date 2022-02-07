@@ -13,22 +13,22 @@
     //perform query and sort into newest first
     $sql = "SELECT * FROM `announcements` ORDER BY announcement_id DESC";
     $stmt = $connectionPDO->prepare($sql);
+    // $stmt->bindParam();
     $stmt->execute();
-
-    //check that there were announcements to show
-    if ($stmt->num_rows > 0) {
-
+    $result = $stmt->fetchAll();
+    
+    if ($result){
         //initialise array
         $data = array();
 
         // output data of each row
-        while($row = $stmt->fetch()) {
+        foreach($result as $row) {
             //retrieve data from query
             $id = $row['announcement_id'];
             $title = $row['title'];
             $content = $row['content'];
             $author = $row['author'];
-            
+                
             //add data into array
             $data[] = array(
                 "id" => $id,
@@ -37,14 +37,16 @@
                 "author" => $author
             );
         }
+        
 
         //encode the array into jason
         echo json_encode($data);
-
     } else {
         echo json_encode("*warning_no_announcements_found*");
     }
 
-    $connection->close();
+    // close connection to db
+    $stmt = null;
+    $connectionPDO = null;
 
 ?>
