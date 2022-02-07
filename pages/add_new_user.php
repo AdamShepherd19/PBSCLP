@@ -41,9 +41,51 @@
             ?>
         </div>
 
-        <div>
-            <h1 style="color:white; padding:20px 0 0 100px;font-size:5em;"> Add New User </h1>
-            <h2 style="color:white; padding:0 0 0 100px;font-size:2em;">Website coming soon...</h2>
+        <div class="main-content">
+            <div class="form-wrapper">
+                <table>
+                    <tr>
+                        <td class="caption">First Name(s):</td>
+                        <td><input type="text" id="firstname" class="pbs-form-text-box" placeholder="First Name(s)..."></td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="caption">Last Name:</td>
+                        <td><input type="text" id="lastname" class="pbs-form-text-box" placeholder="Last Name..."></td>
+                    </tr>
+            
+                    <tr>
+                        <td class="caption">Email Address:</td>
+                        <td><input type="text" id="email" class="pbs-form-text-box" placeholder="Email Address..."></td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="caption">Contact Number:</td>
+                        <td><input type="text" id="contact-number" class="pbs-form-text-box" placeholder="Contact Number..."></td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="caption">Organisation:</td>
+                        <td><input type="text" id="organisation" class="pbs-form-text-box" placeholder="Organisation..."></td>
+                    </tr>
+            
+                    <tr>
+                        <td class="caption">Account Type:</td>
+                        <td>
+                            <select id="account-type" name="account-type" class="pbs-form-text-box">
+                                <option value="practitioner">Practitioner</option>
+                                <option value="administrator">Administrator</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+        
+                <div class="button-wrapper">
+                    <input type="button" id="announcement-cancel" class="pbs-button pbs-button-red" value="Cancel">
+                    <input type="button" id="announcement-post" class="pbs-button pbs-button-green" value="Add">
+                </div>
+            </div>
+
         </div>
 
         
