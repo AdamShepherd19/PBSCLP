@@ -113,42 +113,44 @@
                     var organisation = $('#organisation').val();
                     var account_type = $('#account-type').val();
 
-                    alert(firstname + lastname + email + contact_number + organisation + account_type);
+                    // alert(firstname + lastname + email + contact_number + organisation + account_type);
+                    
                     //check data not empty
-                    // if(title == "" || content == ""){
-                    //     //prompt user to fill in all data
-                    //     alert("Please fill out all the fields in the form.");
-                    // } else {
-                    //     //send data to php
-                    //     $.ajax({
-                    //         method: 'POST',
-                    //         url: "new_announcement.php",
-                    //         data: {
-                    //             titlePHP: title,
-                    //             contentPHP: content
-                    //         },
-                    //         success: function (response) {
-                    //             //check if the php execution was successful and the data was added to the db
-                    //             if (response.includes("success")){
-                    //                 //replace html with success message and button to return to landing page
-                    //                 var successHTML = "<h3>Your post was created succesfully. Please click the button below to return to the landing page.</h3><br> " +
-                    //                     "<input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>";
+                    if(firstname == "" || lastname == "" || email == "" || contact_number == "" || organisation == ""){
+                        //prompt user to fill in all data
+                        alert("Please fill out all the fields in the form.");
+                    } else {
+                        //send data to php
+                        // $.ajax({
+                        //     method: 'POST',
+                        //     url: "new_announcement.php",
+                        //     data: {
+                        //         titlePHP: title,
+                        //         contentPHP: content
+                        //     },
+                        //     success: function (response) {
+                        //         //check if the php execution was successful and the data was added to the db
+                        //         if (response.includes("success")){
+                        //             //replace html with success message and button to return to landing page
+                        //             var successHTML = "<h3>Your post was created succesfully. Please click the button below to return to the landing page.</h3><br> " +
+                        //                 "<input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>";
 
-                    //                 $('.main-content').html(successHTML);
+                        //             $('.main-content').html(successHTML);
 
-                    //                 // onclick function for new button to return to landing page
-                    //                 $("#return").on('click', function(){
-                    //                     window.location.replace('landing.php');
-                    //                 });
+                        //             // onclick function for new button to return to landing page
+                        //             $("#return").on('click', function(){
+                        //                 window.location.replace('landing.php');
+                        //             });
 
-                    //             } else {
-                    //                 //display error message if the php could not be executed
-                    //                 $('.main-content').html("<h3> There was an error processing your request. Please try again </h3><br>Error" + response);
-                    //             }
-                    //         },
-                    //         datatype: 'text'
-                    //     });
-                    // };
+                        //         } else {
+                        //             //display error message if the php could not be executed
+                        //             $('.main-content').html("<h3> There was an error processing your request. Please try again </h3><br>Error" + response);
+                        //         }
+                        //     },
+                        //     datatype: 'text'
+                        // });
+                        alert(firstname + lastname + email + contact_number + organisation + account_type);
+                    };
                 });
             });
         </script>
