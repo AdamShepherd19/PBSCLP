@@ -143,19 +143,15 @@
                     }
                 });
 
-
-                // $(".lock-button").click(function(event){
-                //     console.log("test");
-                //     // console.log($(this.id));
-                // });
-
+                // search bar functionality that toggles visibility of user accounts based on the value
+                // entered into the search bar. This looks through any field of the user's information
+                // and displays all the user accounts that contain the search term
                 $("#search-input").on("keyup", function() {
                     var value = $(this).val().toLowerCase();
                     $(".card").filter(function() {
                         $(this).find('*').toggle($(this).text().toLowerCase().indexOf(value) > -1)
                     });
                 });
-
 
                 // only show administrator content if an admin logged in
                 var accountType = '<?php echo $_SESSION['account_type']; ?>';
