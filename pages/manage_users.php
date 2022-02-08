@@ -151,8 +151,8 @@
 
                 $("#search-input").on("keyup", function() {
                     var value = $(this).val().toLowerCase();
-                    $(".card h4").filter(function() {
-                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                    $(".card").filter(function() {
+                        $(this).find('*').toggle($(this).text().toLowerCase().indexOf(value) > -1)
                     });
                 });
 
