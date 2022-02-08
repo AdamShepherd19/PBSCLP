@@ -1,6 +1,4 @@
 <?php
-    session_start();
-
     $pass = file_get_contents('../../pass.txt', true);
     
     if(isset($_POST['firstnamePHP'])) {
@@ -18,21 +16,24 @@
         $email = $_POST['emailPHP'];
         $contact_number = $_POST['contact_numberPHP'];
         $organisation = $_POST['organisationPHP'];
+        $account_type = $_POST['account_typePHP'];
+        
 
         // query database and insert the new announcement into the announcements table
-        $sql = "UPDATE users SET firstname=:firstname, lastname=:lastname, email=:email, organisation=:organisation, contact_number=:contact_number WHERE user_id=:user_id";
+        $sql = "INSERT INTO users (firstname, lastname, email, contact_number, organisation, account_type) VALUES (:firstname, :lastname, :email, :contact_number, :organisation, :account_type);";
+        // INSERT INTO users (firstname, lastname, email, contact_number, organisation, account_type) VALUES ('adam', 'ldf', 'email', '1232', 'ardasf', 'practitioner')
         $stmt = $connectionPDO->prepare($sql);
         
         //check to see if the insert was successful
-        if ($stmt->execute(['firstname' => $firstname, 'lastname' => $lastname, 'email' => $email, 'organisation' => $organisation, 'contact_number' => $contact_number, 'user_id' => $_SESSION['user_id']])) {
-            exit('success');
+        if ($stmt->execute(['firstname' => $firstname, 'lastname' => $lastname, 'email' => $email, 'contact_number' => $contact_number, 'organisation' => $organisation, 'account_type' => $account_type])) {
+            exit('*user_added_successfully*');
         } else {
-            exit('Error: ' . $connection->error);
+            exit('Error: ' . $connectionPDO->error);
         }
 
-        //close connection to db
         $stmt = null;
         $connectionPDO = null;
+
     }
 
 ?>

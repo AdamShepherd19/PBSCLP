@@ -38,7 +38,11 @@
 
     <body>
 
-        <div id="pbs-nav-bar"></div>
+        <div id="pbs-nav-bar">
+            <?php
+                include "../common/nav-bar.php";
+            ?>
+        </div>
 
         <h1 class="page-header">Profile</h1>
 
@@ -84,11 +88,7 @@
         <script type="text/javascript">
             $(document).ready(function () {
                 var name, email, contact_number, organisation;
-
-                $(function(){
-                    $("#pbs-nav-bar").load("../common/nav-bar.html"); 
-                });
-
+                
                 // hide save and cancel edit profile buttons
                 $("#cancel-profile").hide();
                 $("#save-profile").hide();
@@ -143,20 +143,22 @@
                             //check if the php execution was successful and the data was added to the db
                             if (response.includes("success")){
                                 //replace html with success message and button to return to landing page
-                                var successHTML = "<h3>Your post was created succesfully. Please click the button below to return to the landing page.</h3><br> " +
+                                var successHTML = "<h3>Your profile was updated succesfully. Please click the button below to return to the landing page.</h3><br> " +
                                     "<br><input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>";
 
                                 $('.main-content').html(successHTML);
 
-                                // onclick function for new button to return to landing page
-                                $("#return").on('click', function(){
-                                    window.location.replace('profile.php');
-                                });
-
                             } else {
                                 //display error message if the php could not be executed
-                                $('.main-content').html("<h3> There was an error processing your request. Please try again </h3><br>Error" + response);
+                                $('.main-content').html("<h3> There was an error processing your request. Please try again </h3><br>Error" + response +
+                                        "<br><input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>");
                             }
+
+                            // onclick function for new button to return to landing page
+                            $("#return").on('click', function(){
+                                window.location.replace('profile.php');
+                            });
+
                         },
                         datatype: 'text'
                     });
@@ -185,6 +187,14 @@
 
                     }
                 });
+
+                // only show administrator content if an admin logged in
+                var accountType = '<?php echo $_SESSION['account_type']; ?>';
+                if (accountType != 'administrator') {
+                    $('.admin-only').hide();
+                } else {
+                    $('.admin-only').show();
+                }
             });
         </script>
         

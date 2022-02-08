@@ -6,15 +6,20 @@
         exit();
     }
 
+    if($_SESSION['account_type'] != 'administrator'){
+        header('Location: landing.php');
+        exit();
+    }
+
     $pass = file_get_contents('../../pass.txt', true);
     
     if(isset($_POST['titlePHP'])) {
         //connect to database
-        $connection = new mysqli('localhost', 'pbsclp', $pass, 'pbsclp_pbsclp');
-
-        //check db connection
-        if ($connection->connect_error) {
-            exit("Connection failed: " . $connection->connect_error);
+        try {
+            $connectionPDO = new PDO('mysql:host=localhost;dbname=pbsclp_pbsclp', 'pbsclp', $pass);
+            $connectionPDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch(PDOException $e) {
+            exit('*database_connection_error*');
         }
 
         //retrieve title, content and author for the new post
@@ -23,16 +28,18 @@
         $author = $_SESSION['firstname'] . " " . $_SESSION['lastname'];
 
         // query database and insert the new announcement into the announcements table
-        $query = "INSERT INTO announcements (title, content, author) VALUES ('" . $title . "', '" . $content . "', '" . $author . "');";
+        $sql = "INSERT INTO announcements (title, content, author) VALUES (:title, :content, :author);";
+        $stmt = $connectionPDO->prepare($sql);
         
         //check to see if the insert was successful
-        if ($connection->query($query) === TRUE) {
+        if ($stmt->execute(['title' => $title, 'content' => $content, 'author' => $author])) {
             exit('success');
         } else {
-            exit('Error: ' . $connection->error);
+            exit('Error: ' . $connectionPDO->error);
         }
 
-        $connection->close();
+        $stmt = null;
+        $connectionPDO = null;
 
     }
 
@@ -67,7 +74,11 @@
 
     <body>
 
-        <div id="pbs-nav-bar"></div>
+        <div id="pbs-nav-bar">
+            <?php
+                include "../common/nav-bar.php";
+            ?>
+        </div>
 
         <div class="page-header">
             <h1>New Announcement</h1>
@@ -75,7 +86,7 @@
 
         <div class="main-content">
             <div class="form-wrapper">
-                <form action="login.php" method="post">
+                <form>
                     <label for="title">Title: </label><br />
                     <input type="text" id="title" class="pbs-form-text-box" placeholder="Enter post title..."><br /><br />
                     <label for="content">Content: </label><br />
@@ -93,12 +104,7 @@
         
         <script type="text/javascript">
             $(document).ready(function () {
-
-                // load in the nav bar
-                $(function(){
-                    $("#pbs-nav-bar").load("../common/nav-bar.html"); 
-                });
-
+                
                 //onclick function for the cancel button
                 $("#announcement-cancel").on('click', function(){
                     window.location.replace('landing.php');
@@ -132,20 +138,29 @@
 
                                     $('.main-content').html(successHTML);
 
-                                    // onclick function for new button to return to landing page
-                                    $("#return").on('click', function(){
-                                        window.location.replace('landing.php');
-                                    });
-
                                 } else {
                                     //display error message if the php could not be executed
-                                    $('.main-content').html("<h3> There was an error processing your request. Please try again </h3><br>Error" + response);
+                                    $('.main-content').html("<h3> There was an error processing your request. Please try again </h3><br>Error" + response +
+                                        "<br><input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>");
                                 }
+
+                                // onclick function for new button to return to landing page
+                                $("#return").on('click', function(){
+                                    window.location.replace('landing.php');
+                                });
                             },
                             datatype: 'text'
                         });
                     };
                 });
+
+                // only show administrator content if an admin logged in
+                var accountType = '<?php echo $_SESSION['account_type']; ?>';
+                if (accountType != 'administrator') {
+                    $('.admin-only').hide();
+                } else {
+                    $('.admin-only').show();
+                }
             });
         </script>
         

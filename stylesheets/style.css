@@ -29,6 +29,11 @@ h2 {
     white-space: normal;
 }
 
+.pbs-search-button {
+    width: 80px;
+    height: 35px;
+}
+
 .pbs-button-white {
     background-color: white;
     color: var(--pbs-grey);
@@ -51,6 +56,16 @@ h2 {
 
 .pbs-button-red {
     background-color: red;
+    color: white;
+}
+
+.pbs-button-yellow {
+    background-color: yellow;
+    color: var(--pbs-grey);
+}
+
+.pbs-button-orange {
+    background-color: orange;
     color: white;
 }
 

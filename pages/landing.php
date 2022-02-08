@@ -36,7 +36,11 @@
 
     <body>
 
-        <div id="pbs-nav-bar"></div>
+        <div id="pbs-nav-bar">
+            <?php
+                include "../common/nav-bar.php";
+            ?>
+        </div>
 
         <h1 class="page-header">Announcements</h1>
 
@@ -69,17 +73,8 @@
         
 
         <script type="text/javascript">
+            
             $(document).ready(function () {
-
-                // var current_title = $(document).attr('title');
-                // $(".current-nav").removeClass("current-nav");
-                // if(current_title == "Landing Page") {
-                //     $("#nav-landing").addClass("current-nav");
-                // }
-
-                $(function(){
-                    $("#pbs-nav-bar").load("../common/nav-bar.html"); 
-                });
 
                 $("#forum").on('click', function(){
                     window.location.href = 'forum.php';
@@ -130,6 +125,7 @@
                     }
                 });
 
+                // only show administrator content if an admin logged in
                 var accountType = '<?php echo $_SESSION['account_type']; ?>';
                 if (accountType != 'administrator') {
                     $('.admin-only').hide();
@@ -138,7 +134,7 @@
                 }
             });
         </script>
-            
+
     </body>
     
 </html>
