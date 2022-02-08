@@ -149,6 +149,13 @@
                 //     // console.log($(this.id));
                 // });
 
+                $("#search-input").on("keyup", function() {
+                    var value = $(this).val().toLowerCase();
+                    $(".card h4").filter(function() {
+                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                    });
+                });
+
 
                 // only show administrator content if an admin logged in
                 var accountType = '<?php echo $_SESSION['account_type']; ?>';
