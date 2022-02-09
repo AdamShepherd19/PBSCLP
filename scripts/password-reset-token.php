@@ -1,5 +1,9 @@
 <?php
 
+    // Reference Links:
+    // https://laratutorials.com/php-send-reset-password-link-email/
+    // https://github.com/PHPMailer/PHPMailer
+
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\SMTP;
     use PHPMailer\PHPMailer\Exception;
