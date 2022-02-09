@@ -113,7 +113,7 @@
 
             $("#confirm-password").on("keyup", function() {
                 if ($("#confirm-password").val() != $("#new-password").val()) {
-                    $("#password-info").html("<p>Please make sure your passwords match.</p>");
+                    $("#password-info").html("Please make sure your passwords match.");
                 } else {
                     $("#password-info").html("");
                 }
