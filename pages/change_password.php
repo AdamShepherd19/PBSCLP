@@ -89,11 +89,11 @@
                 <p>Please enter and confirm your new password:</p>
 
                 <form>
-                    <label for="new-password"></label>
+                    <label for="new-password">New Password: </label>
                     <input type="text" id="new-password" class="pbs-form-text-box" placeholder="Enter password..."> <br/>
 
-                    <label for="confirm-password"></label>
-                    <input type="text" id="new-password" class="pbs-form-text-box" placeholder="Confirm password..."> <br/>
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="text" id="confirm-password" class="pbs-form-text-box" placeholder="Confirm password..."> <br/>
 
                     <input type="button" id="submit-change-password" class="pbs-button pbs-button-white" value="Confirm"> <br />
                 </form>
