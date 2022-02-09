@@ -97,7 +97,7 @@
 
                     <p id="password-info"></p>
 
-                    <div id="password-strength-indicator" title="Passwords should be 8 characters or more, and must contain at least 1 upper case character, 1 lower case character, 1 number, and a special character"></div> <br>
+                    <div id="password-strength-indicator"></div> <br>
                     
 
                     <input type="button" id="submit-change-password" class="pbs-button pbs-button-white" value="Confirm"> <br />
@@ -145,7 +145,7 @@
                 //Incase a user clears the text, the badge is hidden again
                 if($("#new-password").val().length !== 0){
                     $("#password-strength-indicator").show();
-                    $("#password-strength-indicator").tooltip();
+                    $("#password-strength-indicator").tooltip({ content: "Passwords should be 8 characters or more, and must contain at least 1 upper case character, 1 lower case character, 1 number, and a special character"});
                 } else{
                     $("#password-strength-indicator").hide();
                 }
