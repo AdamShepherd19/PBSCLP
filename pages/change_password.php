@@ -189,10 +189,14 @@
                         },
                         success: function (response) {
                             if (response.includes("*password_updated_successfully*")){
-                                alert("success");
+                                $("#form-container").html("<h4>Your password has been updated successfully! Click the button below to return to the login page. <br><br> <input type='button' id='return-home' class='pbs-button pbs-button-white' value='Home'>");
                             } else {
-                                alert("fail");
+                                $("#form-container").html("<h4>There was an issue updating your password. Click the button below to return to the login page and try again. <br><br> <input type='button' id='return-home' class='pbs-button pbs-button-white' value='Home'>");
                             }
+
+                            $("#return-home").on('click', function(){
+                                window.location.href = "https://pbsclp.info";
+                            });
                         },
                         datatype: 'text'
                     });
