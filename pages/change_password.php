@@ -159,7 +159,7 @@
                     $passwords_match = false;
                 } else {
                     $("#password-info").html("");
-                    $passwords_match = false;
+                    $passwords_match = true;
                 }
             });
 
