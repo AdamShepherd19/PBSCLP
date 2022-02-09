@@ -54,7 +54,7 @@
             // GMAIL username
             $mail->Username = "passwordreset@pbsclp.info";
             // GMAIL password
-            $mail->Password = "T!nOCQ3@sg!a";
+            $mail->Password = "";
             $mail->SMTPSecure = "ssl";  
             // sets GMAIL as the SMTP server
             $mail->Host = "mail.pbsclp.info";
