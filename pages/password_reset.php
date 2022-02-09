@@ -70,7 +70,7 @@
                 } else {
                     $.ajax({
                         method: 'POST',
-                        url: "password-reset-token.php",
+                        url: "../scripts/password-reset-token.php",
                         data: {
                             emailPHP: email
                         },
