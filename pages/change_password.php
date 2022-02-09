@@ -6,7 +6,44 @@
         header('Location: https://pbsclp.info');
         exit();
     }
+
+    if($_GET['key'] && $_GET['token']) {
+        $pass = file_get_contents('../../pass.txt', true);
+
+        //connect to database
+        try {
+            $connectionPDO = new PDO('mysql:host=localhost;dbname=pbsclp_pbsclp', 'pbsclp', $pass);
+            $connectionPDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch(PDOException $e) {
+            exit('*database_connection_error*');
+        }
+
+        $email = $_GET['key'];
+        $token = $_GET['token'];
+        $curDate = date("Y-m-d H:i:s");
+
+        //fix query
+        $sql = "SELECT * FROM users WHERE reset_link_token=:token and email=:email;";
+        $stmt = $connectionPDO->prepare($sql);
+        $stmt->execute(['token' => $token, 'email' => $email]);
+        $data = $stmt->fetch();
+        
+        if ($data) {
+            if($data['exp_date'] < $curDate){
+                header('Location: https://pbsclp.info/pages/reset_password_expired.php');
+            }
+        }
+
+        $stmt = null;
+        $connectionPDO = null;
+
+    } else{
+        header('Location: https://pbsclp.info');
+        exit();
+    }
+
 ?>
+
 
 <!DOCTYPE html>
 <html>
@@ -63,6 +100,7 @@
             </div>
         </div>
     </body>
+    
 
 
     <script type="text/javascript">
