@@ -97,7 +97,8 @@
 
                     <p id="password-info"></p>
 
-                    <span id="password-strength-indicator" class="badge displayBadge">Weak</span>
+                    <div id="password-strength-indicator"></div> <br>
+                    
 
                     <input type="button" id="submit-change-password" class="pbs-button pbs-button-white" value="Confirm"> <br />
                 </form>
@@ -121,13 +122,13 @@
                 // We then change the badge's color and text based on the password strength
                 if(strongPassword.test(PasswordParameter)) {
                     $("#password-strength-indicator").css('backgroundColor', "green");
-                    $("#password-strength-indicator").text('Strong');
+                    $("#password-strength-indicator").html('<p>Strength:  Strong<p>');
                 } else if(mediumPassword.test(PasswordParameter)){
                     $("#password-strength-indicator").css('backgroundColor', 'blue');
-                    $("#password-strength-indicator").text('Medium');
+                    $("#password-strength-indicator").html('<p>Strength:  Medium<p>');
                 } else{
                     $("#password-strength-indicator").css('backgroundColor', 'red');
-                    $("#password-strength-indicator").text('Weak');
+                    $("#password-strength-indicator").html('<p>Strength:  Weak<p>');
                 }
             }
 
