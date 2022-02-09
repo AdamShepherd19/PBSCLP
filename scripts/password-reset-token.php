@@ -62,7 +62,7 @@
             $mail->Port = "465";
             $mail->From='passwordreset@pbsclp.info';
             $mail->FromName='Adam';
-            $mail->AddAddress('passwordreset@pbsclp.info', 'receiver');
+            $mail->AddAddress('shepherd.adam.2000@gmail.com', 'Adam');
             $mail->Subject  =  'Reset Password';
             $mail->IsHTML(true);
             // $mail->Body    = 'Click On This Link to Reset Password '.$link.'';
