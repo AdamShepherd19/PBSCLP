@@ -112,13 +112,12 @@
     <script type="text/javascript">
         // https://www.section.io/engineering-education/password-strength-checker-javascript/
         $(document).ready(function () {
-            
-            // timeout before a callback is called
-            let timeout;
+
+            $("#StrengthDisp").hide();
 
             // traversing the DOM and getting the input and span using their IDs
-            let password = $("#new-password");
-            let strengthBadge = $("#StrengthDisp");
+            // let password = $("#new-password");
+            // let strengthBadge = $("#StrengthDisp");
 
             // The strong and weak password Regex pattern checker
             let strongPassword = new RegExp('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})');
@@ -127,32 +126,31 @@
             function StrengthChecker(PasswordParameter){
                 // We then change the badge's color and text based on the password strength
                 if(strongPassword.test(PasswordParameter)) {
-                    strengthBadge.style.backgroundColor = "green";
-                    strengthBadge.textContent = 'Strong';
+                    $("#StrengthDisp").css('backgroundColor', "green");
+                    $("#StrengthDisp").text('Strong');
                 } else if(mediumPassword.test(PasswordParameter)){
-                    strengthBadge.style.backgroundColor = 'blue';
-                    strengthBadge.textContent = 'Medium';
+                    $("#StrengthDisp").css('backgroundColor', 'blue');
+                    $("#StrengthDisp").text('Medium');
                 } else{
-                    strengthBadge.style.backgroundColor = 'red';
-                    strengthBadge.textContent = 'Weak';
+                    $("#StrengthDisp").css('backgroundColor', 'red');
+                    $("#StrengthDisp").text('Weak');
                 }
             }
 
             // Adding an input event listener when a user types to the  password input 
-            password.addEventListener("input", () => {
+            $("#new-password").on("keyup", function() {
 
                 //The badge is hidden by default, so we show it
-                strengthBadge.style.display= 'block'
-                clearTimeout(timeout);
+                $("#StrengthDisp").show();
 
                 //We then call the StrengChecker function as a callback then pass the typed password to it
-                timeout = setTimeout(() => StrengthChecker(password.value), 500);
+                StrengthChecker($("#new-password").val());
 
                 //Incase a user clears the text, the badge is hidden again
-                if(password.value.length !== 0){
-                    strengthBadge.style.display != 'block'
+                if($("#new-password").val().length !== 0){
+                    $("#StrengthDisp").show();
                 } else{
-                    strengthBadge.style.display = 'none'
+                    $("#StrengthDisp").hide();
                 }
             });
 
