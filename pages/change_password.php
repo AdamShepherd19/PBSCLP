@@ -177,8 +177,8 @@
                     // code to submit new pass to db
 
                     new_password = $("#confirm-password").val();
-                    email = <?php echo $_GET['key'];?>;
-                    token = <?php echo $_GET['token'];?>;
+                    email = '<?php echo $_GET['key'];?>';
+                    token = '<?php echo $_GET['token'];?>';
 
                     $.ajax({
                         method: 'POST',
