@@ -86,7 +86,7 @@
 
             <div class="login-form-container" id="form-container">
                 <h2>Change Password</h2>
-                <p>Please enter and confirm your new password:</p>
+                <p>Please enter and confirm your new password below:</p>
 
                 <form>
                     <label for="new-password">New Password: </label>
@@ -97,7 +97,7 @@
 
                     <p id="password-info"></p>
 
-                    <div id="password-strength-indicator"></div> <br>
+                    <div id="password-strength-indicator" title="Passwords should be 8 characters or more, and must contain at least 1 upper case character, 1 lower case character, 1 number, and a special character"></div> <br>
                     
 
                     <input type="button" id="submit-change-password" class="pbs-button pbs-button-white" value="Confirm"> <br />
@@ -109,6 +109,8 @@
 
 
     <script type="text/javascript">
+        $(document).tooltip();
+        
         // https://www.section.io/engineering-education/password-strength-checker-javascript/
         $(document).ready(function () {
 
