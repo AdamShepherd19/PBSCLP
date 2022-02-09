@@ -67,29 +67,7 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
-            $("#submit-reset-password").on('click', function(){
-                var email = $("#reset-password-email").val();
-
-                if(email == ""){
-                    alert("Please enter an email address.");
-                } else {
-                    $.ajax({
-                        method: 'POST',
-                        url: "../scripts/password-reset-token.php",
-                        data: {
-                            emailPHP: email
-                        },
-                        success: function (response) {
-                            if (response.includes("*email_sent_successfully*")){
-                                $('#form-container').html("<h4 style='text-align: left'>A password reset email has been sent to your inbox. Please follow the instructions in the email to reset your password.</h4>");
-                            } else if (response.includes("*email_failed*")) {
-                                $('#form-container').html("<h4 style='text-align: left'>An error occurred while sending the password reset email. Please try again later.</h4>");
-                            }
-                        },
-                        datatype: 'text'
-                    });
-                };
-            });
+            
         });
     </script>
     
