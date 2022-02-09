@@ -39,10 +39,14 @@
     color: white;
 }
 
-#login-response, #password-info {
+#login-response {
     color: red;
 }
 
 #reset-password-email {
     width: 20rem;
+}
+
+#password-info {
+    color: red;
 }
