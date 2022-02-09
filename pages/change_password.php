@@ -109,8 +109,7 @@
 
 
     <script type="text/javascript">
-        $(document).tooltip();
-        
+
         // https://www.section.io/engineering-education/password-strength-checker-javascript/
         $(document).ready(function () {
 
@@ -146,6 +145,7 @@
                 //Incase a user clears the text, the badge is hidden again
                 if($("#new-password").val().length !== 0){
                     $("#password-strength-indicator").show();
+                    $("#password-strength-indicator").tooltip();
                 } else{
                     $("#password-strength-indicator").hide();
                 }
