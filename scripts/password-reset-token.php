@@ -57,7 +57,7 @@
             $mail->Password = "T!nOCQ3@sg!a";
             $mail->SMTPSecure = "ssl";  
             // sets GMAIL as the SMTP server
-            $mail->Host = "smtp.pbsclp.info";
+            $mail->Host = "mail.pbsclp.info";
             // set the SMTP port for the GMAIL server
             $mail->Port = "465";
             $mail->From='passwordreset@pbsclp.info';
