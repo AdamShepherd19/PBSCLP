@@ -114,6 +114,10 @@
         // https://www.section.io/engineering-education/password-strength-checker-javascript/
         $(document).ready(function () {
 
+            $(function () {
+                $('[data-toggle="tooltip"]').tooltip()
+            })
+
             $("#password-strength-indicator").hide();
 
             // The strong and weak password Regex pattern checker
