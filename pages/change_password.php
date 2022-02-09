@@ -173,7 +173,31 @@
 
             $("#submit-change-password").on('click', function(){
                 if ($password_strong_enough && CheckPassMatch()) {
-                    alert("Passed")
+                    alert("Passed");
+                    // code to submit new pass to db
+
+                    new_password = $("#confirm-password").val();
+                    email = <?php echo $_GET['key'];?>;
+                    token = <?php echo $_GET['token'];?>;
+
+                    $.ajax({
+                        method: 'POST',
+                        url: "../scripts/update_password.php",
+                        data: {
+                            new_passwordPHP: new_password,
+                            emailPHP: email
+                        },
+                        success: function (response) {
+                            if (response.includes("*password_updated_successfully*")){
+                                alert("success");
+                            } else {
+                                alert("fail");
+                            }
+                        },
+                        datatype: 'text'
+                    });
+
+
                 } else if (!CheckPassMatch()) {
                     alert("Please make sure the passwords match.");
                 } else if (!$password_strong_enough) {
