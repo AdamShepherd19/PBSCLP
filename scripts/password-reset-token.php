@@ -52,7 +52,7 @@
             // enable SMTP authentication
             $mail->SMTPAuth = true;                  
             // GMAIL username
-            $mail->Username = "passwordreset.pbsclp.info";
+            $mail->Username = "passwordreset@pbsclp.info";
             // GMAIL password
             $mail->Password = "T!nOCQ3@sg!a";
             $mail->SMTPSecure = "ssl";  
@@ -60,9 +60,9 @@
             $mail->Host = "smtp.pbsclp.info";
             // set the SMTP port for the GMAIL server
             $mail->Port = "465";
-            $mail->From='passwordreset.pbsclp.info';
+            $mail->From='passwordreset@pbsclp.info';
             $mail->FromName='Adam';
-            $mail->AddAddress('passwordreset.pbsclp.info', 'receiver');
+            $mail->AddAddress('passwordreset@pbsclp.info', 'receiver');
             $mail->Subject  =  'Reset Password';
             $mail->IsHTML(true);
             // $mail->Body    = 'Click On This Link to Reset Password '.$link.'';
