@@ -60,8 +60,7 @@
         <!-- Bootstrap javascript include links -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        
+
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
         <!-- include jQuery -->
@@ -99,7 +98,7 @@
 
                     <p id="password-info"></p>
 
-                    <div id="password-strength-indicator"></div> <br>
+                    <div id="password-strength-indicator" data-toggle="tooltip" data-placement="top" title="Tooltip on top"></div> <br>
                     
 
                     <input type="button" id="submit-change-password" class="pbs-button pbs-button-white" value="Confirm"> <br />
@@ -147,7 +146,6 @@
                 //Incase a user clears the text, the badge is hidden again
                 if($("#new-password").val().length !== 0){
                     $("#password-strength-indicator").show();
-                    $("#password-strength-indicator").tooltip({ content: "Passwords should be 8 characters or more, and must contain at least 1 upper case character, 1 lower case character, 1 number, and a special character"});
                 } else{
                     $("#password-strength-indicator").hide();
                 }
