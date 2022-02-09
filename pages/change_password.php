@@ -98,7 +98,7 @@
 
                     <p id="password-info"></p>
 
-                    <div id="password-strength-indicator" data-toggle="tooltip" data-placement="top" title="Passwords should be 8 characters or more, and must contain at least 1 upper case character, 1 lower case character, 1 number, and a special character"></div> <br>
+                    <div id="password-strength-indicator"></div> <br>
                     
 
                     <input type="button" id="submit-change-password" class="pbs-button pbs-button-white" value="Confirm"> <br />
@@ -113,11 +113,6 @@
 
         // https://www.section.io/engineering-education/password-strength-checker-javascript/
         $(document).ready(function () {
-
-            $(function () {
-                $('[data-toggle="tooltip"]').tooltip()
-            })
-
             $("#password-strength-indicator").hide();
 
             // The strong and weak password Regex pattern checker
