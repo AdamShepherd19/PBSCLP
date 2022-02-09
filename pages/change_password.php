@@ -95,6 +95,8 @@
                     <label for="confirm-password">Confirm Password</label>
                     <input type="text" id="confirm-password" class="pbs-form-text-box" placeholder="Confirm password..."> <br/>
 
+                    <p id="password-info"></p>
+
                     <input type="button" id="submit-change-password" class="pbs-button pbs-button-white" value="Confirm"> <br />
                 </form>
             </div>
@@ -105,7 +107,20 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
-            
+            // $("#new-password").on("keyup", function() {
+                
+            // });
+
+            $("#confirm-password").on("keyup", function() {
+                if ($("#confirm-password").val() != $("#new-password").val()) {
+                    $("#password-info").html("<p>Please make sure your passwords match.</p>");
+                }
+            });
+
+
+            // $("#submit-change-password").on('click', function(){
+                
+            // });
         });
     </script>
     
