@@ -97,9 +97,7 @@
 
                     <p id="password-info"></p>
 
-                    <br>
-                        <span id="StrengthDisp" class="badge displayBadge">Weak</span>
-                    <br>
+                    <span id="password-strength-indicator" class="badge displayBadge">Weak</span>
 
                     <input type="button" id="submit-change-password" class="pbs-button pbs-button-white" value="Confirm"> <br />
                 </form>
@@ -113,11 +111,7 @@
         // https://www.section.io/engineering-education/password-strength-checker-javascript/
         $(document).ready(function () {
 
-            $("#StrengthDisp").hide();
-
-            // traversing the DOM and getting the input and span using their IDs
-            // let password = $("#new-password");
-            // let strengthBadge = $("#StrengthDisp");
+            $("#password-strength-indicator").hide();
 
             // The strong and weak password Regex pattern checker
             let strongPassword = new RegExp('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})');
@@ -126,14 +120,14 @@
             function StrengthChecker(PasswordParameter){
                 // We then change the badge's color and text based on the password strength
                 if(strongPassword.test(PasswordParameter)) {
-                    $("#StrengthDisp").css('backgroundColor', "green");
-                    $("#StrengthDisp").text('Strong');
+                    $("#password-strength-indicator").css('backgroundColor', "green");
+                    $("#password-strength-indicator").text('Strong');
                 } else if(mediumPassword.test(PasswordParameter)){
-                    $("#StrengthDisp").css('backgroundColor', 'blue');
-                    $("#StrengthDisp").text('Medium');
+                    $("#password-strength-indicator").css('backgroundColor', 'blue');
+                    $("#password-strength-indicator").text('Medium');
                 } else{
-                    $("#StrengthDisp").css('backgroundColor', 'red');
-                    $("#StrengthDisp").text('Weak');
+                    $("#password-strength-indicator").css('backgroundColor', 'red');
+                    $("#password-strength-indicator").text('Weak');
                 }
             }
 
@@ -141,16 +135,16 @@
             $("#new-password").on("keyup", function() {
 
                 //The badge is hidden by default, so we show it
-                $("#StrengthDisp").show();
+                $("#password-strength-indicator").show();
 
                 //We then call the StrengChecker function as a callback then pass the typed password to it
                 StrengthChecker($("#new-password").val());
 
                 //Incase a user clears the text, the badge is hidden again
                 if($("#new-password").val().length !== 0){
-                    $("#StrengthDisp").show();
+                    $("#password-strength-indicator").show();
                 } else{
-                    $("#StrengthDisp").hide();
+                    $("#password-strength-indicator").hide();
                 }
             });
 

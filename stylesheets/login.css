@@ -39,6 +39,13 @@
     color: white;
 }
 
+#password-strength-indicator {
+    color: white;
+    width: 12rem;
+    height: 2rem;
+    text-align: center;
+}
+
 #login-response {
     color: red;
 }
