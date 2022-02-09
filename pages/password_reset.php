@@ -35,7 +35,7 @@
         
     </head>
 
-    <body style="background-image:url(../images/dog.jpg); background-size:cover; background-repeat: no-repeat;">
+    <body>
 
         <div class="logo-banner">
             <img src="../images/pbslogo.png" alt="PBSuk Logo">

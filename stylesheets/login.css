@@ -1,3 +1,4 @@
+
 .login-container {
     display: flex;
     margin: 5% 10% 0 10%;
@@ -18,10 +19,9 @@
     background-color: var(--pbs-green);
     padding: 50px;
     text-align: right;
-    color: white;
 }
 
-.login-form-container label, h2 {
+.login-form-container label, h2, p {
     color: white;
 }
 
