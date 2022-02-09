@@ -24,13 +24,15 @@
 
         $email = $_POST['emailPHP'];
 
-        $sql = "SELECT user_id FROM users WHERE email=?";
+        $sql = "SELECT user_id, firstname, lastname FROM users WHERE email=?";
         $stmt = $connectionPDO->prepare($sql);
         $stmt->execute([$email]);
         $data = $stmt->fetch();
         
         if($data)
         {
+            $name = $data['firstname'] . $data['lastname'];
+
             $token = md5($email).rand(10,9999);
             $expFormat = mktime(date("H"), date("i"), date("s"), date("m") ,date("d")+1, date("Y"));
             $expDate = date("Y-m-d H:i:s",$expFormat);
@@ -50,24 +52,28 @@
             $mail = new PHPMailer();
             $mail->CharSet =  "utf-8";
             $mail->IsSMTP();
-            // enable SMTP authentication
-            $mail->SMTPAuth = true;                  
-            // GMAIL username
+            
+            $mail->SMTPAuth = true; // enable SMTP authentication
+
             $mail->Username = "passwordreset@pbsclp.info";
-            // GMAIL password
             $mail->Password = $e_pass;
-            $mail->SMTPSecure = "ssl";  
-            // sets GMAIL as the SMTP server
-            $mail->Host = "mail.pbsclp.info";
-            // set the SMTP port for the GMAIL server
-            $mail->Port = "465";
+
+            $mail->SMTPSecure = "ssl";
+            
+            $mail->Host = "mail.pbsclp.info"; // sets pbsclp mail server as the SMTP server
+            $mail->Port = "465"; // set the SMTP port for the pbsclp server
+
             $mail->From='passwordreset@pbsclp.info';
-            $mail->FromName='Adam';
-            $mail->AddAddress('shepherd.adam.2000@gmail.com', 'Adam');
+            $mail->FromName='pbsclp passwordreset';
+
+            $mail->AddAddress($email, $name);
             $mail->Subject  =  'Reset Password';
             $mail->IsHTML(true);
-            // $mail->Body    = 'Click On This Link to Reset Password '.$link.'';
-            $mail->Body    = 'This is an email';
+
+            $mail->Body    = '<h1> Password Reset Email </h1> <br><br>Click On This Link to reset your password: ' . $link . '';
+
+            $mail->AltBody = 'Click On This Link to Reset Password https://pbsclp.info/pages/change_password.php?key='.$email.'&token='.$token.'';
+
             if($mail->Send())
             {
                 exit("*email_sent_successfully*");
@@ -76,6 +82,7 @@
             {
                 echo "Mail Error - >".$mail->ErrorInfo;
             }
+            
         }else{
             exit("*no_email_address_found*");
         }
