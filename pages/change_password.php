@@ -114,7 +114,8 @@
         // https://www.section.io/engineering-education/password-strength-checker-javascript/
         $(document).ready(function () {
             $("#password-strength-indicator").hide();
-
+            $passwords_match = false;
+            $password_strong_enough = false;
             // The strong and weak password Regex pattern checker
             let strongPassword = new RegExp('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})');
             let mediumPassword = new RegExp('((?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{6,}))|((?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])(?=.{8,}))');
@@ -124,18 +125,20 @@
                 if(strongPassword.test(PasswordParameter)) {
                     $("#password-strength-indicator").css('backgroundColor', "green");
                     $("#password-strength-indicator").html('<p>Strength:  Strong<p>');
+                    $password_strong_enough = true;
                 } else if(mediumPassword.test(PasswordParameter)){
                     $("#password-strength-indicator").css('backgroundColor', 'blue');
                     $("#password-strength-indicator").html('<p>Strength:  Medium<p>');
+                    $password_strong_enough = false;
                 } else{
                     $("#password-strength-indicator").css('backgroundColor', 'red');
                     $("#password-strength-indicator").html('<p>Strength:  Weak<p>');
+                    $password_strong_enough = false;
                 }
             }
 
             // Adding an input event listener when a user types to the  password input 
             $("#new-password").on("keyup", function() {
-
                 //The badge is hidden by default, so we show it
                 $("#password-strength-indicator").show();
 
@@ -153,18 +156,20 @@
             $("#confirm-password").on("keyup", function() {
                 if ($("#confirm-password").val() != $("#new-password").val()) {
                     $("#password-info").html("Please make sure your passwords match.");
+                    $passwords_match = false;
                 } else {
                     $("#password-info").html("");
+                    $passwords_match = false;
                 }
             });
 
 
             $("#submit-change-password").on('click', function(){
-                if (($("#confirm-password").val() == $("#new-password").val()) && ($("#password-strength-indicator").text().includes("Strong"))) {
+                if ($password_strong_enough && $passwords_match) {
                     console.log("Passed")
-                } else if ($("#confirm-password").val() != $("#new-password").val()) {
+                } else if (!$passwords_match) {
                     alert("Please make sure the passwords match.");
-                } else if (!$("#password-strength-indicator").text().includes("Strong")) {
+                } else if (!$password_strong_enough) {
                     alert("Please make sure your password is strong enough.");
                 }
             });
