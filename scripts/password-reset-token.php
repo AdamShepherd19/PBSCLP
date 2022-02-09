@@ -12,6 +12,7 @@
     if(isset($_POST['emailPHP'])) {
 
         $pass = file_get_contents('../../pass.txt', true);
+        $e_pass = file_get_contents('../../e-pass.txt', true);
 
         //connect to database
         try {
@@ -54,7 +55,7 @@
             // GMAIL username
             $mail->Username = "passwordreset@pbsclp.info";
             // GMAIL password
-            $mail->Password = "";
+            $mail->Password = $e_pass;
             $mail->SMTPSecure = "ssl";  
             // sets GMAIL as the SMTP server
             $mail->Host = "mail.pbsclp.info";
