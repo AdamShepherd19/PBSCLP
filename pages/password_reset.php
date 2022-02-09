@@ -29,6 +29,7 @@
         <script src="../includes/jquery.js"></script>
 
         <link rel="stylesheet" href="../stylesheets/style.css">
+        <link rel="stylesheet" href="../stylesheets/login.css">
 
         <title>Reset Password</title>
         
@@ -36,11 +37,26 @@
 
     <body style="background-image:url(../images/dog.jpg); background-size:cover; background-repeat: no-repeat;">
 
-        <div>
-            <h1 style="color:white; padding:20px 0 0 100px;font-size:5em;"> Password Reset</h1>
-            <h2 style="color:white; padding:0 0 0 100px;font-size:2em;">Website coming soon...</h2>
+        <div class="logo-banner">
+            <img src="../images/pbslogo.png" alt="PBSuk Logo">
         </div>
-            
+
+        <div class="login-container">
+
+            <div class="login-header">
+                <h1>PBSuk Collaboration and Learning Hub</h1>
+            </div>
+
+            <div class="login-form-container">
+                <h2>Reset Password</h2>
+                <p>Please enter the Email address linked to your account:</p>
+
+                <form action="password-reset-token.php" method="post">
+                    <input type="text" id="email" class="pbs-form-text-box" placeholder="Email..."> <br/>
+                    <input type="button" id="login" class="pbs-button pbs-button-white" value="Send Reset Email"> <br />
+                </form>
+            </div>
+        </div>
     </body>
 
 
