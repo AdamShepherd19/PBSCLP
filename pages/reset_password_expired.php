@@ -32,7 +32,7 @@
         <link rel="stylesheet" href="../stylesheets/style.css">
         <link rel="stylesheet" href="../stylesheets/login.css">
 
-        <title>Change Password</title>
+        <title>Link Expired</title>
         
     </head>
 
