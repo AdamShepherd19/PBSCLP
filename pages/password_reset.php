@@ -47,7 +47,7 @@
                 <h1>PBSuk Collaboration and Learning Hub</h1>
             </div>
 
-            <div class="login-form-container">
+            <div class="login-form-container" id="form-container">
                 <h2>Reset Password</h2>
                 <p>Please enter the Email address linked to your account:</p>
 
@@ -62,7 +62,29 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
-            
+            $("#submit-password-reset").on('click', function(){
+                var email = $("#reset-password-email").val();
+
+                if(email == ""){
+                    alert("Please enter an email address.");
+                } else {
+                    $.ajax({
+                        method: 'POST',
+                        url: "password-reset-token.php",
+                        data: {
+                            emailPHP: email
+                        },
+                        success: function (response) {
+                            if (response.includes("*email_sent_successfully*")){
+                                $('#form-container').html("<h4>A password reset email has been sent to your inbox. Please follow the instructions in the email to reset your password.</h4>");
+                            } else if (response.includes("*email_failed*")) {
+                                $('#form-container').html("<h4>An error occurred while sending the password reset email. Please try again later.</h4>");
+                            }
+                        },
+                        datatype: 'text'
+                    });
+                };
+            });
         });
     </script>
     
