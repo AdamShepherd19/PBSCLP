@@ -46,3 +46,7 @@
 #reset-password-email {
     width: 20rem;
 }
+
+#password-info {
+    color: red;
+}
