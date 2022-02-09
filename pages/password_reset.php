@@ -62,7 +62,7 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
-            $("#submit-password-reset").on('click', function(){
+            $("#submit-reset-password").on('click', function(){
                 var email = $("#reset-password-email").val();
 
                 if(email == ""){
