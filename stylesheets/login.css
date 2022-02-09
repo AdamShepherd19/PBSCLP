@@ -42,3 +42,7 @@
 #login-response {
     color: red;
 }
+
+#reset-password-input {
+    width: 20rem;
+}

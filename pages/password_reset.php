@@ -51,9 +51,9 @@
                 <h2>Reset Password</h2>
                 <p>Please enter the Email address linked to your account:</p>
 
-                <form action="password-reset-token.php" method="post">
-                    <input type="text" id="email" class="pbs-form-text-box" placeholder="Email..."> <br/>
-                    <input type="button" id="login" class="pbs-button pbs-button-white" value="Send Reset Email"> <br />
+                <form>
+                    <input type="text" id="reset-password-email" class="pbs-form-text-box" placeholder="Email..."> <br/>
+                    <input type="button" id="submit-reset-password" class="pbs-button pbs-button-white" value="Send Reset Email"> <br />
                 </form>
             </div>
         </div>
