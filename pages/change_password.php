@@ -159,9 +159,15 @@
             });
 
 
-            // $("#submit-change-password").on('click', function(){
-                
-            // });
+            $("#submit-change-password").on('click', function(){
+                if (($("#confirm-password").val() == $("#new-password").val()) && ($("#password-strength-indicator").val().includes("Strong"))) {
+                    console.log("Passed")
+                } else if ($("#confirm-password").val() != $("#new-password").val()) {
+                    console.log("Please make sure the passwords match.");
+                } else if ($("#password-strength-indicator").val().includes("Strong")) {
+                    console.log("Please make sure your password is strong enough.");
+                }
+            });
         });
     </script>
     
