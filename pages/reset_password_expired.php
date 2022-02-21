@@ -6,6 +6,7 @@
         header('Location: https://pbsclp.info');
         exit();
     }
+
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +32,7 @@
         <link rel="stylesheet" href="../stylesheets/style.css">
         <link rel="stylesheet" href="../stylesheets/login.css">
 
-        <title>Reset Password</title>
+        <title>Link Expired</title>
         
     </head>
 
@@ -48,42 +49,22 @@
             </div>
 
             <div class="login-form-container" id="form-container">
-                <h2>Reset Password</h2>
-                <p>Please enter the Email address linked to your account:</p>
+                <h2>Link Expired</h2>
+                <p>This link to reset your password has expired. Please create a new request using the 'Reset Password' link on the login page.</p>
 
                 <form>
-                    <input type="text" id="reset-password-email" class="pbs-form-text-box" placeholder="Email..."> <br/>
-                    <input type="button" id="submit-reset-password" class="pbs-button pbs-button-white" value="Send Reset Email"> <br />
+                    <input type="button" id="return-home" class="pbs-button pbs-button-white" value="Home"> <br />
                 </form>
             </div>
         </div>
     </body>
+    
 
 
     <script type="text/javascript">
         $(document).ready(function () {
-            $("#submit-reset-password").on('click', function(){
-                var email = $("#reset-password-email").val();
-
-                if(email == ""){
-                    alert("Please enter an email address.");
-                } else {
-                    $.ajax({
-                        method: 'POST',
-                        url: "../scripts/password-reset-token.php",
-                        data: {
-                            emailPHP: email
-                        },
-                        success: function (response) {
-                            if (response.includes("*email_sent_successfully*")){
-                                $('#form-container').html("<h4 style='text-align: left'>A password reset email has been sent to your inbox. Please follow the instructions in the email to reset your password.</h4>");
-                            } else if (response.includes("*email_failed*")) {
-                                $('#form-container').html("<h4 style='text-align: left'>An error occurred while sending the password reset email. Please try again later.</h4>");
-                            }
-                        },
-                        datatype: 'text'
-                    });
-                };
+            $("#return-home").on('click', function(){
+                window.location.href = "https://pbsclp.info";
             });
         });
     </script>

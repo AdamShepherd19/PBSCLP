@@ -114,7 +114,7 @@
                     var password = $('#password').val();
 
                     if(email == "" || password == ""){
-                        alert("Please enter a username and password");
+                        alert("Please enter an email and password");
                     } else {
                         $.ajax({
                             method: 'POST',
