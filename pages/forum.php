@@ -96,6 +96,32 @@
                 } else {
                     $('.admin-only').show();
                 }
+
+                $.ajax({
+                    url: '../scripts/get_forum_posts.php',
+                    type: 'get',
+                    dataType: 'JSON',
+                    success: function(response) {
+                        if (response.includes("*warning_no_posts_found*")) {
+                            var message = "<div class='card'><h4 class='card-header'> There are no posts yet!</div>"
+
+                            $(".forum-wrapper").append(message);
+                        } else {
+                            for(var x = 0; x < response.length; x++) {
+                                var message = '<div class="forum-post card">' +
+                                    '<div class="card-header">' + response[x].title + '</div>' +
+                                    '<div class="card-body">' +
+                                        '<p>' + response[x].content + '</p>' +
+                                        '<span><i>Comments (x)</i></span>' +
+                                    '</div></div>';
+
+                                $(".forum-wrapper").append(message);
+                            }
+                        }
+
+                    }
+                });
+
             });
         </script>
         
