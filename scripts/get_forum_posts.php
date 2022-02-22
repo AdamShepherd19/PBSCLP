@@ -14,7 +14,7 @@
     }
 
     //perform query and sort into newest first
-    $sql = "SELECT * FROM threads";
+    $sql = "SELECT * FROM threads ORDER BY post_time DESC";
     
     $stmt = $connectionPDO->prepare($sql);
     $stmt->execute();
