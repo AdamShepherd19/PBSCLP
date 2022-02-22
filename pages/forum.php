@@ -41,7 +41,11 @@
                 include "../common/nav-bar.php";
             ?>
         </div>
-        
+
+        <div class="page-header">
+            <h1>Forum</h1>
+        </div>
+
         <div class="main-content">
             <div class="search-wrapper">
                 <input type="search" class="pbs-form-text-box" id="search-input" placeholder="search">
