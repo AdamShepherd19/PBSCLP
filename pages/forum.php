@@ -34,49 +34,51 @@
         
     </head>
 
-    <body style="background-image:url(../images/dog.jpg); background-size:cover; background-repeat: no-repeat;">
+    <body>
 
         <div id="pbs-nav-bar">
             <?php
                 include "../common/nav-bar.php";
             ?>
         </div>
-
-        <div class="search-wrapper">
-            <input type="search" class="pbs-form-text-box" id="search-input" placeholder="search">
-            <input type="button" id="search-button" class="pbs-button pbs-search-button pbs-button-green" value="Search">
-            <input type="button" id="new-post-button" class="pbs-button pbs-button-green" value="New Post">
-        </div>
-
-        <div class="forum-wrapper">
-
-            <div class="forum-post card">
-                <div class="card-header">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                <div class="card-body">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                    </p>
-                    <span><i>Comments (x)</i></span>
-                </div>
+        
+        <div class="main-content">
+            <div class="search-wrapper">
+                <input type="search" class="pbs-form-text-box" id="search-input" placeholder="search">
+                <input type="button" id="search-button" class="pbs-button pbs-search-button pbs-button-green" value="Search">
+                <input type="button" id="new-post-button" class="pbs-button pbs-button-green" value="New Post">
             </div>
 
-            <div class="forum-post card">
-                <div class="card-header">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                <div class="card-body">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                    </p>
-                    <span><i>Comments (x)</i></span>
-                </div>
-            </div>
+            <div class="forum-wrapper">
 
-            <div class="forum-post card">
-                <div class="card-header">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                <div class="card-body">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                    </p>
-                    <span><i>Comments (x)</i></span>
+                <div class="forum-post card">
+                    <div class="card-header">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                    <div class="card-body">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        </p>
+                        <span><i>Comments (x)</i></span>
+                    </div>
                 </div>
-            </div>
 
+                <div class="forum-post card">
+                    <div class="card-header">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                    <div class="card-body">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        </p>
+                        <span><i>Comments (x)</i></span>
+                    </div>
+                </div>
+
+                <div class="forum-post card">
+                    <div class="card-header">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                    <div class="card-body">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        </p>
+                        <span><i>Comments (x)</i></span>
+                    </div>
+                </div>
+
+            </div>
         </div>
 
         
