@@ -55,32 +55,14 @@
 
             <div class="forum-wrapper">
 
-                <div class="forum-post card">
+                <!-- <div class="forum-post card">
                     <div class="card-header">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
                     <div class="card-body">
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
                         </p>
                         <span><i>Comments (x)</i></span>
                     </div>
-                </div>
-
-                <div class="forum-post card">
-                    <div class="card-header">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                    <div class="card-body">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                        </p>
-                        <span><i>Comments (x)</i></span>
-                    </div>
-                </div>
-
-                <div class="forum-post card">
-                    <div class="card-header">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                    <div class="card-body">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                        </p>
-                        <span><i>Comments (x)</i></span>
-                    </div>
-                </div>
+                </div> -->
 
             </div>
         </div>
@@ -113,7 +95,7 @@
                                     '<div class="card-body">' +
                                         '<p>' + response[x].content + '</p>' +
                                         '<span><i>Comments (x)</i></span>' +
-                                    '</div></div>';
+                                    '</div></div><br>';
 
                                 $(".forum-wrapper").append(message);
                             }
