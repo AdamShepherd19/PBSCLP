@@ -104,6 +104,10 @@
                     }
                 });
 
+                $("#forum-post").on('click', function(event){
+                    alert(event.target.id);
+                });
+
             });
         </script>
         
