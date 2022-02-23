@@ -98,12 +98,12 @@
                                     '</div></div><br>';
 
                                 $(".forum-wrapper").append(message);
-
-                                $(document).on("click", ".forum-post" , function() {
-                                    // $(this).parent().remove();
-                                    alert("test");
-                                });
                             }
+                            $(document).on("click", ".forum-post" , function(event) {
+                                // $(this).parent().remove();
+                                // alert("test");
+                                alert(event.target.id);
+                            });
                         }
 
                     }
