@@ -99,10 +99,10 @@
 
                                 $(".forum-wrapper").append(message);
                             }
-                            $(document).on("click", ".forum-post" , function(event) {
+                            $(document).on("click", ".forum-post" , function() {
                                 // $(this).parent().remove();
-                                // alert("test");
-                                alert(event.target.id);
+                                var contentPanelId = jQuery(this).attr("id");
+                                alert(contentPanelId);
                             });
                         }
 
