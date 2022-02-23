@@ -98,9 +98,10 @@
                                     '</div></div><br>';
 
                                 $(".forum-wrapper").append(message);
-                                $(".forum-wrapper").append("<p>list item <a href='javascript:void(0);' class='remove'>&times;</a></p>"); 
-                                $(document).on("click", "a.remove" , function() {
-                                    $(this).parent().remove();
+
+                                $(document).on("click", ".forum-post" , function() {
+                                    // $(this).parent().remove();
+                                    alert("test");
                                 });
                             }
                         }
