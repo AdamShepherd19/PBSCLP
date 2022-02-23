@@ -98,10 +98,7 @@
                                     '</div></div><br>';
 
                                 $(".forum-wrapper").append(message);
-
-                                $("button").click(function(){
-                                    $(".forum-wrapper").append("<li>list item <a href='javascript:void(0);' class='remove'>&times;</a></li>"); 
-                                });
+                                $(".forum-wrapper").append("<p>list item <a href='javascript:void(0);' class='remove'>&times;</a></p>"); 
                                 $(document).on("click", "a.remove" , function() {
                                     $(this).parent().remove();
                                 });
