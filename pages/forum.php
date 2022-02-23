@@ -100,7 +100,7 @@
                                 $(".forum-wrapper").append(message);
 
                                 $("button").click(function(){
-                                    $("ol").append("<li>list item <a href='javascript:void(0);' class='remove'>&times;</a></li>"); 
+                                    $(".forum-wrapper").append("<li>list item <a href='javascript:void(0);' class='remove'>&times;</a></li>"); 
                                 });
                                 $(document).on("click", "a.remove" , function() {
                                     $(this).parent().remove();
