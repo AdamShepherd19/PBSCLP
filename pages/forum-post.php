@@ -47,7 +47,7 @@
         </div>
 
         <div class="main-content">
-
+            <h2 id="temp-header"></h2>
         </div>
 
         
@@ -61,6 +61,10 @@
                 } else {
                     $('.admin-only').show();
                 }
+
+                var thread_id = <?php echo $_POST['thread_id']; ?>;
+
+                $('#temp-header').html(thread_id);
 
             });
         </script>
