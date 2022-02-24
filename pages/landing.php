@@ -114,7 +114,7 @@
                                 "<div class='card-body'>" +
                                     "<blockquote class='blockquote mb-0'>" +
                                         "<p>" + response[x].content + "</p>" +
-                                        "<footer class='blockquote-footer'>" + response[x].author + "</footer>" +
+                                        "<footer class='blockquote-footer'>" + response[x].firstname + " " + response[x].lastname + "</footer>" +
                                     "</blockquote>" +
                                 "</div></div>";
 

@@ -22,18 +22,25 @@
 
         // output data of each row
         foreach($result as $row) {
+            $sql = "SELECT firstname, lastname FROM users WHERE user_id=?";
+            $stmt = $connectionPDO->prepare($sql);
+            $stmt->execute([$row['user_id']]);
+            $names = $stmt->fetchAll();
+
             //retrieve data from query
             $id = $row['announcement_id'];
             $title = $row['title'];
             $content = $row['content'];
-            $author = $row['author'];
+            $firstname = $names[0]['firstname'];
+            $lastname = $names[0]['lastname'];
                 
             //add data into array
             $data[] = array(
                 "id" => $id,
                 "title" => $title,
                 "content" => $content,
-                "author" => $author
+                "firstname" => $firstname,
+                "lastname" => $lastname,
             );
         }
         
