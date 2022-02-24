@@ -24,9 +24,13 @@
 }
 
 #search-input {
-    width: 250px;
+  width: 250px;
 }
 
 #new-post-button {
-  margin-left: auto;
+    margin-left: auto;
+}
+
+.forum-post {
+    cursor: pointer;
 }

@@ -94,7 +94,7 @@
                                     '<div class="card-header">' + response[x].title + '</div>' +
                                     '<div class="card-body">' +
                                         '<p>' + response[x].content + '</p>' +
-                                        '<span><i>Comments (x) - ' + response[x].firstname + response[x].lastname + '</i></span>' +
+                                        '<span><i>Comments (x) - ' + response[x].firstname + ' ' + response[x].lastname + '</i></span>' +
                                     '</div></div><br>';
 
                                 $(".forum-wrapper").append(message);
