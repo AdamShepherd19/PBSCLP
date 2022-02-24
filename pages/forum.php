@@ -103,25 +103,20 @@
                                 // $(this).parent().remove();
                                 var contentPanelId = jQuery(this).attr("id");
                                 alert(contentPanelId);
+
+                                $.ajax({
+                                    method: 'POST',
+                                    url: "../scripts/forum_post.php",
+                                    data: {
+                                        thread_idPHP: event.target.id
+                                    },
+                                    datatype: 'text'
+                                });
                             });
                         }
 
                     }
                 });
-
-                $("#forum-post").on('click', function(event){
-                    // alert(event.target.id);
-
-                    $.ajax({
-                        method: 'POST',
-                        url: "../scripts/forum_post.php",
-                        data: {
-                            thread_idPHP: event.target.id
-                        },
-                        datatype: 'text'
-                    });
-                });
-
             });
         </script>
         
