@@ -28,18 +28,25 @@
 
         // output data of each row
         foreach($result as $row) {
+            $sql = "SELECT firstname, lastname FROM users WHERE user_id=?";
+            $stmt = $connectionPDO->prepare($sql);
+            $stmt->execute([$row['user_id']]);
+            $names = $stmt->fetchAll();
+
             //retrieve data from query
             $thread_id = $row['thread_id'];
             $title = $row['title'];
             $content = $row['content'];
-            $user_id = $row['user_id'];
+            $firstname = $names[0]['firstname'];
+            $lastname = $names[0]['lastname'];
             
             //add data into array
             $data[] = array(
                 "thread_id" => $thread_id,
                 "title" => $title,
                 "content" => $content,
-                "user_id" => $user_id
+                "firstname" => $firstname,
+                "lastname" => $lastname
             );
         }
 
