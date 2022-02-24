@@ -112,6 +112,8 @@
                                     },
                                     datatype: 'text'
                                 });
+
+                                window.location.href = 'forum-post.php';
                             });
                         }
 
