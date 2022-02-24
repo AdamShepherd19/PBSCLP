@@ -110,10 +110,13 @@
                                     data: {
                                         thread_idPHP: event.target.id
                                     },
+                                    success: function (response) {
+                                        window.location.href = 'forum-post.php';
+                                    },
                                     datatype: 'text'
                                 });
 
-                                window.location.href = 'forum-post.php';
+                                
                             });
                         }
 
