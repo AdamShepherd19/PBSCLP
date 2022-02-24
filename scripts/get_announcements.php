@@ -22,6 +22,7 @@
 
         // output data of each row
         foreach($result as $row) {
+            $stmt = null;
             $sql = "SELECT firstname, lastname FROM users WHERE user_id=?";
             $stmt = $connectionPDO->prepare($sql);
             $stmt->execute([$row['user_id']]);
