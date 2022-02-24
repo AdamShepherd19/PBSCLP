@@ -108,7 +108,7 @@
                                     method: 'POST',
                                     url: "../scripts/forum_post.php",
                                     data: {
-                                        thread_idPHP: event.target.id
+                                        thread_idPHP: contentPanelId
                                     },
                                     success: function (response) {
                                         window.location.href = 'forum-post.php';
