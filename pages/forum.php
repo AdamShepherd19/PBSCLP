@@ -106,7 +106,7 @@
 
                                 $.ajax({
                                     method: 'POST',
-                                    url: "../scripts/forum_post.php",
+                                    url: "forum_post.php",
                                     data: {
                                         thread_idPHP: contentPanelId
                                     },
