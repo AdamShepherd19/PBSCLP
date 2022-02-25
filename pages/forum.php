@@ -103,7 +103,7 @@
                                 // $(this).parent().remove();
                                 var contentPanelId = jQuery(this).attr("id");
                                 alert(contentPanelId);
-                                window.location.href = 'forum-post.php?thread_id=' + contentPanelId;
+                                window.location.href = 'forum-post.php?threadId=' + contentPanelId;
 
                                 // $.ajax({
                                 //     method: 'GET',
