@@ -62,7 +62,7 @@
                     $('.admin-only').show();
                 }
 
-                var thread_id = <?php echo $_POST['thread_id']; ?>;
+                var thread_id = <?php echo $_GET['thread_id']; ?>;
 
                 $('#temp-header').html(thread_id);
 

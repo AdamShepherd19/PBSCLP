@@ -111,7 +111,7 @@
                                         thread_idPHP: contentPanelId
                                     },
                                     success: function (response) {
-                                        window.location.href = 'forum-post.php';
+                                        window.location.href = 'forum-post.php?thread_id=' + contentPanelId;
                                     },
                                     datatype: 'text'
                                 });
