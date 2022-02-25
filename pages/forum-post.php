@@ -71,8 +71,8 @@
                 $('#temp-header').html(thread_id);
 
                 $.ajax({
-                    url: 'get_forum-post.php',
-                    type: 'post',
+                    url: 'forum-post.php',
+                    type: 'get',
                     dataType: 'JSON',
                     success: function(response) {
                         if (response.includes("*warning_no_comments_found*")) {
@@ -85,7 +85,7 @@
                                 var announcement = response[x].content + "<br>";
 
                                 // $("#announcement-wrapper").append(announcement);
-                                $('#temp-header').html(comment);
+                                $('#temp-header').append(comment);
                             }
                         }
 
