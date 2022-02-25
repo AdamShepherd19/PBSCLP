@@ -5,6 +5,10 @@
         header('Location: https://pbsclp.info');
         exit();
     }
+
+    $thread_id = $_GET['threadID'];
+
+    include_once('../scripts/get_comments.php');
 ?>
 
 <!DOCTYPE html>

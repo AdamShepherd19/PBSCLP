@@ -100,25 +100,9 @@
                                 $(".forum-wrapper").append(message);
                             }
                             $(document).on("click", ".forum-post" , function() {
-                                // $(this).parent().remove();
                                 var contentPanelId = jQuery(this).attr("id");
-                                // alert(contentPanelId);
                                 var thread_id = contentPanelId.split(/[-]+/).pop();
                                 window.location.href = 'forum-post.php?threadId=' + thread_id;
-
-                                // $.ajax({
-                                //     method: 'GET',
-                                //     url: "forum_post.php",
-                                //     data: {
-                                //         thread_idPHP: contentPanelId
-                                //     },
-                                //     success: function (response) {
-                                //         window.location.href = 'forum-post.php?thread_id=' + contentPanelId;
-                                //     },
-                                //     datatype: 'text'
-                                // });
-
-                                
                             });
                         }
 
