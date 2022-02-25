@@ -70,6 +70,28 @@
 
                 $('#temp-header').html(thread_id);
 
+                $.ajax({
+                    url: 'get_forum-post.php',
+                    type: 'post',
+                    dataType: 'JSON',
+                    success: function(response) {
+                        if (response.includes("*warning_no_comments_found*")) {
+                            var announcement = "no-comments";
+
+                            // $("#announcement-wrapper").append(announcement);
+                            $('#temp-header').html(announcement);
+                        } else {
+                            for(var x = 0; x < response.length; x++) {
+                                var announcement = response[x].content + "<br>";
+
+                                // $("#announcement-wrapper").append(announcement);
+                                $('#temp-header').html(comment);
+                            }
+                        }
+
+                    }
+                });
+
             });
         </script>
         
