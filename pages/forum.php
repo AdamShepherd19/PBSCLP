@@ -103,18 +103,19 @@
                                 // $(this).parent().remove();
                                 var contentPanelId = jQuery(this).attr("id");
                                 alert(contentPanelId);
+                                window.location.href = 'forum-post.php?thread_id=' + contentPanelId;
 
-                                $.ajax({
-                                    method: 'POST',
-                                    url: "forum_post.php",
-                                    data: {
-                                        thread_idPHP: contentPanelId
-                                    },
-                                    success: function (response) {
-                                        window.location.href = 'forum-post.php?thread_id=' + contentPanelId;
-                                    },
-                                    datatype: 'text'
-                                });
+                                // $.ajax({
+                                //     method: 'GET',
+                                //     url: "forum_post.php",
+                                //     data: {
+                                //         thread_idPHP: contentPanelId
+                                //     },
+                                //     success: function (response) {
+                                //         window.location.href = 'forum-post.php?thread_id=' + contentPanelId;
+                                //     },
+                                //     datatype: 'text'
+                                // });
 
                                 
                             });
