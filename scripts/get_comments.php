@@ -11,7 +11,7 @@
         }
 
     //perform query and sort into newest first
-    $sql = "SELECT * FROM comments WHERE thread_id=? ORDER BY date DESC";
+    $sql = "SELECT * FROM comments WHERE thread_id=2 ORDER BY date DESC";
     $stmt = $connectionPDO->prepare($sql);
     $stmt->execute([$thread_id]);
     $result = $stmt->fetchAll();
