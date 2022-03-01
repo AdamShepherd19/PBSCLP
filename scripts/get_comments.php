@@ -47,7 +47,7 @@
         //encode the array into jason
         echo json_encode($data);
     } else {
-        echo json_encode("*warning_no_announcements_found*");
+        echo json_encode("*warning_no_comments_found*");
     }
 
 
