@@ -89,7 +89,6 @@
                                     '<div class="card-header">' + response[x].title + '<br><span><i> - ' + response[x].firstname + ' ' + response[x].lastname + '</i></span>' + '</div>' +
                                     '<div class="card-body">' +
                                         '<p>' + response[x].content + '</p>' +
-                                        '<span><i>Comments (x)</i></span>' +
                                     '</div></div><br>';
 
                                 $('#post-section').html(post);
