@@ -91,30 +91,29 @@
                             }
                         }
 
-                    }
-                });
+                        $.ajax({
+                            url: '../scripts/get_comments.php',
+                            type: 'get',
+                            dataType: 'JSON',
+                            data: {
+                                threadIDPHP: thread_id
+                            },
+                            success: function(response) {
+                                if (response.includes("*warning_no_comments_found*")) {
+                                    var announcement = "no-comments";
 
-                $.ajax({
-                    url: '../scripts/get_comments.php',
-                    type: 'get',
-                    dataType: 'JSON',
-                    data: {
-                        threadIDPHP: thread_id
-                    },
-                    success: function(response) {
-                        if (response.includes("*warning_no_comments_found*")) {
-                            var announcement = "no-comments";
+                                    // $("#announcement-wrapper").append(announcement);
+                                    $('#temp-header').html(announcement);
+                                } else {
+                                    for(var x = 0; x < response.length; x++) {
+                                        var comment = response[x].content;
 
-                            // $("#announcement-wrapper").append(announcement);
-                            $('#temp-header').html(announcement);
-                        } else {
-                            for(var x = 0; x < response.length; x++) {
-                                var comment = response[x].content;
+                                        $('#temp-list').append("<li>" + comment + "</li>");
+                                    }
+                                }
 
-                                $('#temp-list').append("<li>" + comment + "</li>");
                             }
-                        }
-
+                        });
                     }
                 });
             });
