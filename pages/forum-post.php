@@ -29,7 +29,7 @@
         <script src="../includes/jquery.js"></script>
 
         <link rel="stylesheet" href="../stylesheets/style.css">
-        <link rel="stylesheet" href="../stylesheets/forum.css">
+        <link rel="stylesheet" href="../stylesheets/forum_post.css">
 
         <title>Forum Post</title>
         
@@ -111,10 +111,11 @@
                                 } else {
                                     for(var x = 0; x < response.length; x++) {
                                         var comment = '<div class="card">' +
-                                    '<div class="card-body">' +
-                                        '<p>' + response[x].content + '</p>' +
-                                        '<span><i>' + response[x].firstname  + ' ' + response[x].lastname + ' - ' + response[x].date + '</i></span>' +
-                                    '</div></div><br>';
+                                            '<div class="card-body post-comment">' +
+                                                '<p class="comment-text">' + response[x].content + '</p>' +
+                                                '<span class="comment-subtext"><i>' + response[x].firstname  + ' ' + 
+                                                response[x].lastname + ' - ' + response[x].date + '</i></span>' +
+                                            '</div></div><br>';
 
                                         $('#comment-section').append(comment);
                                     }
