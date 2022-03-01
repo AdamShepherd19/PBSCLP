@@ -82,7 +82,7 @@
                             $('#temp-header').html(announcement);
                         } else {
                             for(var x = 0; x < response.length; x++) {
-                                var announcement = response[x].content + "<br>";
+                                var comment = response[x].content + "<br>";
 
                                 // $("#announcement-wrapper").append(announcement);
                                 $('#temp-header').append(comment);
