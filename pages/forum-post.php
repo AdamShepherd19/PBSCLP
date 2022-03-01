@@ -6,6 +6,63 @@
         exit();
     }
 
+    $thread_id = $_GET['threadIDPHP'];
+
+    // https://makitweb.com/return-json-response-ajax-using-jquery-php
+    $pass = file_get_contents('../../pass.txt', true);
+
+        //connect to database
+        try {
+            $connectionPDO = new PDO('mysql:host=localhost;dbname=pbsclp_pbsclp', 'pbsclp', $pass);
+            $connectionPDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch(PDOException $e) {
+            exit('*database_connection_error*');
+        }
+
+    //perform query and sort into newest first
+    $sql = "SELECT * FROM threads WHERE thread_id=? LIMIT 1";
+    $stmt = $connectionPDO->prepare($sql);
+    $stmt->execute([$thread_id]);
+    $result = $stmt->fetchAll();
+
+
+    if ($result){
+        //initialise array
+        $data = array();
+
+        // output data of each row
+        foreach($result as $row) {
+            $sql = "SELECT firstname, lastname FROM users WHERE user_id=? LIMIT 1";
+            $stmt = $connectionPDO->prepare($sql);
+            $stmt->execute([$row['user_id']]);
+            $names = $stmt->fetchAll();
+
+            //retrieve data from query
+            $thread_id = $row['thread_id'];
+            $title = $row['title'];
+            $content = $row['content'];
+            $firstname = $names[0]['firstname'];
+            $lastname = $names[0]['lastname'];
+            
+            //add data into array
+            $data[] = array(
+                "thread_id" => $thread_id,
+                "title" => $title,
+                "content" => $content,
+                "firstname" => $firstname,
+                "lastname" => $lastname
+            );
+        }
+        //encode the array into jason
+        echo json_encode($data);
+    } else {
+        echo json_encode("*warning_no_post_found*");
+    }
+
+
+    // close connection to db
+    $stmt = null;
+    $connectionPDO = null;
 ?>
 
 <!DOCTYPE html>
@@ -48,7 +105,13 @@
         </div>
 
         <div class="main-content">
-            <h2 id="temp-header"></h2>
+            <h2 id="temp-header">
+                <!-- post here -->
+            </h2>
+
+            <ul id="temp-list">
+                <!-- comments here -->
+            </ul>
         </div>
 
         
@@ -65,7 +128,28 @@
 
                 var thread_id = "<?php echo $_GET['threadId']; ?>";
 
-                $('#temp-header').html(thread_id);
+                $.ajax({
+                    url: 'forum_post.php',
+                    type: 'get',
+                    dataType: 'JSON',
+                    data: {
+                        threadIDPHP: thread_id
+                    },
+                    success: function(response) {
+                        if (response.includes("*warning_no_post_found*")) {
+                            var announcement = "no-post";
+
+                            $('#temp-header').html(announcement);
+                        } else {
+                            for(var x = 0; x < response.length; x++) {
+                                var post_content = response[x].content;
+
+                                $('#temp-header').html(post_content);
+                            }
+                        }
+
+                    }
+                });
 
                 $.ajax({
                     url: '../scripts/get_comments.php',
@@ -82,16 +166,14 @@
                             $('#temp-header').html(announcement);
                         } else {
                             for(var x = 0; x < response.length; x++) {
-                                var comment = response[x].content + "<br>";
+                                var comment = response[x].content;
 
-                                // $("#announcement-wrapper").append(announcement);
-                                $('#temp-header').append(comment);
+                                $('#temp-list').append("<li>" + comment + "</li>");
                             }
                         }
 
                     }
                 });
-
             });
         </script>
         
