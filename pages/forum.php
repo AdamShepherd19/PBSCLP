@@ -79,6 +79,10 @@
                     $('.admin-only').show();
                 }
 
+                $('#new-post-button').on("click", function() {
+                    window.location.replace('new_forum_post.php');
+                });
+
                 $.ajax({
                     url: '../scripts/get_forum_posts.php',
                     type: 'get',
