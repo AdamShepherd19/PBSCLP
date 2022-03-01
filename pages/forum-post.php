@@ -85,9 +85,14 @@
                             $('#temp-header').html(announcement);
                         } else {
                             for(var x = 0; x < response.length; x++) {
-                                var post_content = response[x].content;
+                                var post = '<div class="forum-post card" id="thread-id-' + response[x].thread_id + '">' +
+                                    '<div class="card-header">' + response[x].title + '<br><span><i> - ' + response[x].firstname + ' ' + response[x].lastname + '</i></span>' + '</div>' +
+                                    '<div class="card-body">' +
+                                        '<p>' + response[x].content + '</p>' +
+                                        '<span><i>Comments (x)</i></span>' +
+                                    '</div></div><br>';
 
-                                $('#temp-header').html(post_content);
+                                $('#temp-header').html(post);
                             }
                         }
 
