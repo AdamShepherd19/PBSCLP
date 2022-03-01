@@ -48,13 +48,13 @@
         </div>
 
         <div class="main-content">
-            <h2 id="temp-header">
+            <div id='post-section'>
                 <!-- post here -->
-            </h2>
+            </div>
 
-            <ul id="temp-list">
+            <div id='comment-section'>
                 <!-- comments here -->
-            </ul>
+            </div>
         </div>
 
         
@@ -80,9 +80,9 @@
                     },
                     success: function(response) {
                         if (response.includes("*warning_no_post_found*")) {
-                            var announcement = "no-post";
+                            var announcement = "<h2>no-post</h2>";
 
-                            $('#temp-header').html(announcement);
+                            $('#post-section').html(announcement);
                         } else {
                             for(var x = 0; x < response.length; x++) {
                                 var post = '<div class="forum-post card" id="thread-id-' + response[x].thread_id + '">' +
@@ -92,7 +92,7 @@
                                         '<span><i>Comments (x)</i></span>' +
                                     '</div></div><br>';
 
-                                $('#temp-header').html(post);
+                                $('#post-section').html(post);
                             }
                         }
 
@@ -105,15 +105,19 @@
                             },
                             success: function(response) {
                                 if (response.includes("*warning_no_comments_found*")) {
-                                    var announcement = "no-comments";
+                                    var announcement = "<h2>no-comments</h2>";
 
                                     // $("#announcement-wrapper").append(announcement);
-                                    $('#temp-header').html(announcement);
+                                    $('#comment-section').html(announcement);
                                 } else {
                                     for(var x = 0; x < response.length; x++) {
-                                        var comment = response[x].content;
+                                        var comment = '<div class="card">' +
+                                    '<div class="card-body">' +
+                                        '<p>' + response[x].content + '</p>' +
+                                        '<span><i>' + response[x].firstname  + ' ' + response[x].lastname + ' - ' + response[x].date + '</i></span>' +
+                                    '</div></div><br>';
 
-                                        $('#temp-list').append("<li>" + comment + "</li>");
+                                        $('#comment-section').append(comment);
                                     }
                                 }
 
