@@ -19,6 +19,6 @@
     font-size: 1rem;
 }
 
-.comment-subtext {
+.comment-subtext, .post-name {
     font-size: 0.8rem;
 }
