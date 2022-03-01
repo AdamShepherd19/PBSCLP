@@ -68,7 +68,7 @@
                 $('#temp-header').html(thread_id);
 
                 $.ajax({
-                    url: 'forum-post.php',
+                    url: 'get_comments.php',
                     type: 'get',
                     dataType: 'JSON',
                     data: {
