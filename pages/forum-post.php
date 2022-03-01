@@ -6,7 +6,7 @@
         exit();
     }
 
-    $thread_id = $_GET['threadIDPHP'];
+    $thread_id = $_GET['threadID'];
 
     // https://makitweb.com/return-json-response-ajax-using-jquery-php
     $pass = file_get_contents('../../pass.txt', true);
@@ -38,7 +38,6 @@
             $names = $stmt->fetchAll();
 
             //retrieve data from query
-            $thread_id = $row['thread_id'];
             $title = $row['title'];
             $content = $row['content'];
             $firstname = $names[0]['firstname'];
@@ -46,7 +45,6 @@
             
             //add data into array
             $data[] = array(
-                "thread_id" => $thread_id,
                 "title" => $title,
                 "content" => $content,
                 "firstname" => $firstname,
@@ -132,9 +130,6 @@
                     url: 'forum_post.php',
                     type: 'get',
                     dataType: 'JSON',
-                    data: {
-                        threadIDPHP: thread_id
-                    },
                     success: function(response) {
                         if (response.includes("*warning_no_post_found*")) {
                             var announcement = "no-post";
