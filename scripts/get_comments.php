@@ -35,6 +35,9 @@
             $firstname = $names[0]['firstname'];
             $lastname = $names[0]['lastname'];
             $date = $row['date'];
+
+            $date = date_create($date);
+            $date = $date_format($date, 'd-m-Y H:i:s')
                 
             //add data into array
             $data[] = array(
