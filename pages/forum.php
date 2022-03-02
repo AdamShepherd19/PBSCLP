@@ -115,6 +115,18 @@
 
                     }
                 });
+
+
+                // search bar functionality that toggles visibility of user accounts based on the value
+                // entered into the search bar. This looks through any field of the user's information
+                // and displays all the user accounts that contain the search term
+                $("#search-input").on("keyup", function() {
+                    var value = $(this).val().toLowerCase();
+                    $(".card").filter(function() {
+                        $(this).find('*').toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                    });
+                });
+                
             });
         </script>
         
