@@ -92,7 +92,7 @@
                             $(".forum-wrapper").append(message);
                         } else {
                             for(var x = 0; x < response.length; x++) {
-                                var message = '<div class="forum-post card" id="thread-id-' + response[x].thread_id + '">' +
+                                var message = '<div class="forum-post no-pointer-change card" id="thread-id-' + response[x].thread_id + '">' +
                                     '<div class="card-header">' + response[x].title + '<br><span><i> - ' + response[x].firstname + ' ' + response[x].lastname + '</i></span>' + '</div>' +
                                     '<div class="card-body">' +
                                         '<p>' + response[x].content + '</p>' +
@@ -104,7 +104,7 @@
                             $(document).on("click", ".forum-post" , function() {
                                 var contentPanelId = jQuery(this).attr("id");
                                 var thread_id = contentPanelId.split(/[-]+/).pop();
-                                window.location.href = 'forum-post.php?threadId=' + thread_id;
+                                // window.location.href = 'forum-post.php?threadId=' + thread_id;
                             });
                         }
 
