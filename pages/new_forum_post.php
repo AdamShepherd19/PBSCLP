@@ -108,45 +108,45 @@
                 // onclick function for the post announcement button
                 $("#new-post-submit").on('click', function(){
                     // //retrieve data from form
-                    // var title = $("#title").val();
-                    // var content = $('#content').val();
+                    var title = $("#title").val();
+                    var content = $('#content').val();
 
                     // //check data not empty
-                    // if(title == "" || content == ""){
-                    //     //prompt user to fill in all data
-                    //     alert("Please fill out the information in the form");
-                    // } else {
-                    //     //send data to php
-                    //     $.ajax({
-                    //         method: 'POST',
-                    //         url: "new_announcement.php",
-                    //         data: {
-                    //             titlePHP: title,
-                    //             contentPHP: content
-                    //         },
-                    //         success: function (response) {
-                    //             //check if the php execution was successful and the data was added to the db
-                    //             if (response.includes("success")){
-                    //                 //replace html with success message and button to return to landing page
-                    //                 var successHTML = "<h3>Your post was created succesfully. Please click the button below to return to the landing page.</h3><br> " +
-                    //                     "<input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>";
+                    if(title == "" || content == ""){
+                        //prompt user to fill in all data
+                        alert("Please fill out the information in the form");
+                    } else {
+                        //send data to php
+                        $.ajax({
+                            method: 'POST',
+                            url: "new_forum_post.php",
+                            data: {
+                                titlePHP: title,
+                                contentPHP: content
+                            },
+                            success: function (response) {
+                                //check if the php execution was successful and the data was added to the db
+                                if (response.includes("*new_post_created_successfully*")){
+                                    //replace html with success message and button to return to landing page
+                                    var successHTML = "<h3>Your post was submitted succesfully. Please allow X days for the post to be reviewed and published. Click the button below to return to the landing page.</h3><br> " +
+                                        "<input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>";
 
-                    //                 $('.main-content').html(successHTML);
+                                    $('.main-content').html(successHTML);
 
-                    //             } else {
-                    //                 //display error message if the php could not be executed
-                    //                 $('.main-content').html("<h3> There was an error processing your request. Please try again </h3><br>Error" + response +
-                    //                     "<br><input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>");
-                    //             }
+                                } else {
+                                    //display error message if the php could not be executed
+                                    $('.main-content').html("<h3> There was an error processing your request. Please try again </h3><br>Error" + response +
+                                        "<br><input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>");
+                                }
 
-                    //             // onclick function for new button to return to landing page
-                    //             $("#return").on('click', function(){
-                    //                 window.location.replace('landing.php');
-                    //             });
-                    //         },
-                    //         datatype: 'text'
-                    //     });
-                    // };
+                                // onclick function for new button to return to landing page
+                                $("#return").on('click', function(){
+                                    window.location.replace('forum.php');
+                                });
+                            },
+                            datatype: 'text'
+                        });
+                    };
                 });
 
                 // only show administrator content if an admin logged in
