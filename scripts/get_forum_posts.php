@@ -28,7 +28,7 @@
 
         // output data of each row
         foreach($result as $row) {
-            $sql = "SELECT firstname, lastname FROM users WHERE user_id=?";
+            $sql = "SELECT firstname, lastname FROM users WHERE user_id=? AND approved=1";
             $stmt = $connectionPDO->prepare($sql);
             $stmt->execute([$row['user_id']]);
             $names = $stmt->fetchAll();
