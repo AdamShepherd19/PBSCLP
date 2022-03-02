@@ -57,10 +57,10 @@
         }
 
         //encode the array into jason
-        exit json_encode($data);
+        echo json_encode($data);
 
     } else {
-        exit json_encode("*warning_no_posts_found*");
+        echo json_encode("*warning_no_posts_found*");
     }
 
     // close connection to db
