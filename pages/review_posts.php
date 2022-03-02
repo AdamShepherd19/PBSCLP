@@ -82,7 +82,7 @@
                     url: '../scripts/get_forum_posts.php',
                     type: 'get',
                     dataType: 'JSON',
-                    date: {
+                    data: {
                         approvedPHP: '0'
                     },
                     success: function(response) {
