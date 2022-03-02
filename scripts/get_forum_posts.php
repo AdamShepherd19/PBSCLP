@@ -14,7 +14,7 @@
     }
 
     //perform query and sort into newest first
-    $sql = "SELECT * FROM threads ORDER BY post_time DESC";
+    $sql = "SELECT * FROM threads WHERE approved=1 ORDER BY post_time DESC";
     
     $stmt = $connectionPDO->prepare($sql);
     $stmt->execute();
@@ -28,7 +28,7 @@
 
         // output data of each row
         foreach($result as $row) {
-            $sql = "SELECT firstname, lastname FROM users WHERE user_id=? AND approved=1";
+            $sql = "SELECT firstname, lastname FROM users WHERE user_id=?";
             $stmt = $connectionPDO->prepare($sql);
             $stmt->execute([$row['user_id']]);
             $names = $stmt->fetchAll();
