@@ -88,7 +88,7 @@
                     type: 'get',
                     dataType: 'JSON',
                     date: {
-                        approvedPHP: 1
+                        approvedPHP: '1'
                     },
                     success: function(response) {
                         if (response.includes("*warning_no_posts_found*")) {
