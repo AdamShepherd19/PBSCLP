@@ -139,7 +139,8 @@
                         approvedPHP: '0'
                     },
                     success: function(response) {
-                        alert(response.length);
+                        number_of_new_posts = response.length;
+                        $('#review-forum-posts').val('New Posts (' + number_of_new_posts + ')');
                     }
                 });
 
