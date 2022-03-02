@@ -10,7 +10,7 @@
 
     if(isset($data)) {
         // $number_of_threads = count($data['thread_id']);
-        echo count($data['thread_id']);
+        echo count($data);
     } else {
         echo 'error counting threads';
     }
