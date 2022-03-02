@@ -13,7 +13,11 @@
         exit('*database_connection_error*');
     }
 
-    $approved = $_GET['approvedPHP'];
+    if(isset($_GET['approvedPHP'])) {
+        $approved = $_GET['approvedPHP'];
+    } else {
+        $approved = '0';
+    }
 
     //perform query and sort into newest first
     $sql = "SELECT * FROM threads WHERE approved=? ORDER BY post_time DESC";

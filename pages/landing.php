@@ -5,6 +5,15 @@
         header('Location: https://pbsclp.info');
         exit();
     }
+
+    require_once('../scripts/get_forum_posts.php');
+
+    if(isset($data)) {
+        // $number_of_threads = count($data['thread_id']);
+        echo count($data['thread_id']);
+    } else {
+        echo 'error counting threads';
+    }
 ?>
 
 <!DOCTYPE html>
