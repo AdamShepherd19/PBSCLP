@@ -11,6 +11,7 @@
     gap: 20px;
     max-height: 80vh;
     overflow-y: scroll;
+    margin-bottom: 40px;
 }
   
 .landing-nav-box-wrapper {
