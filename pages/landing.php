@@ -145,7 +145,6 @@
                         } else {
                             $('#review-forum-posts').hide();
                         }
-                        
                     }
                 });
 
