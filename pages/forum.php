@@ -87,6 +87,9 @@
                     url: '../scripts/get_forum_posts.php',
                     type: 'get',
                     dataType: 'JSON',
+                    date: {
+                        approvedPHP: 1
+                    },
                     success: function(response) {
                         if (response.includes("*warning_no_posts_found*")) {
                             var message = "<div class='card'><h4 class='card-header'> There are no posts yet!</div>"

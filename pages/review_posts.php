@@ -52,12 +52,6 @@
         </div>
 
         <div class="main-content">
-            <div class="search-wrapper">
-                <input type="search" class="pbs-form-text-box" id="search-input" placeholder="search">
-                <input type="button" id="search-button" class="pbs-button pbs-search-button pbs-button-green" value="Search">
-                <input type="button" id="new-post-button" class="pbs-button pbs-button-green" value="New Post">
-            </div>
-
             <div class="forum-wrapper">
 
                 <!-- <div class="forum-post card">
@@ -84,17 +78,16 @@
                     $('.admin-only').show();
                 }
 
-                $('#new-post-button').on("click", function() {
-                    window.location.replace('new_forum_post.php');
-                });
-
                 $.ajax({
                     url: '../scripts/get_forum_posts.php',
                     type: 'get',
                     dataType: 'JSON',
+                    date: {
+                        approvedPHP: 0
+                    },
                     success: function(response) {
                         if (response.includes("*warning_no_posts_found*")) {
-                            var message = "<div class='card'><h4 class='card-header'> There are no posts yet!</div>"
+                            var message = "<div class='card'><h4 class='card-header'> There are no posts that need reviewed!</div>"
 
                             $(".forum-wrapper").append(message);
                         } else {

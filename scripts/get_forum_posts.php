@@ -13,11 +13,13 @@
         exit('*database_connection_error*');
     }
 
+    $approved = $_GET['approvedPHP'];
+
     //perform query and sort into newest first
-    $sql = "SELECT * FROM threads WHERE approved=1 ORDER BY post_time DESC";
+    $sql = "SELECT * FROM threads WHERE approved=? ORDER BY post_time DESC";
     
     $stmt = $connectionPDO->prepare($sql);
-    $stmt->execute();
+    $stmt->execute([$approved]);
     $result = $stmt->fetchAll();
 
     //check that there were announcements to show
