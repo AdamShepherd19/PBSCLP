@@ -136,7 +136,7 @@
                     type: 'get',
                     dataType: 'JSON',
                     data: {
-                        approvedPHP: '0';
+                        approvedPHP: '0'
                     },
                     success: function(response) {
                         alert(response.length);
