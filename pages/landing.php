@@ -6,14 +6,6 @@
         exit();
     }
 
-    require_once('../scripts/get_forum_posts.php');
-
-    if(isset($data)) {
-        // $number_of_threads = count($data['thread_id']);
-        echo count($data);
-    } else {
-        echo 'error counting threads';
-    }
 ?>
 
 <!DOCTYPE html>
@@ -136,6 +128,18 @@
                             }
                         }
 
+                    }
+                });
+
+                $.ajax({
+                    url: '../scripts/get_forum_posts.php',
+                    type: 'get',
+                    dataType: 'JSON',
+                    data: {
+                        approvedPHP: '0';
+                    },
+                    success: function(response) {
+                        alert(response.length);
                     }
                 });
 
