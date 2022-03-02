@@ -96,15 +96,24 @@
                                     '<div class="card-header">' + response[x].title + '<br><span><i> - ' + response[x].firstname + ' ' + response[x].lastname + '</i></span>' + '</div>' +
                                     '<div class="card-body">' +
                                         '<p>' + response[x].content + '</p>' +
-                                        '<span><i>Comments (x)</i></span>' +
+                                        '<input type="button" id="approve-post-' + response[x].thread_id + '" class="pbs-button pbs-button-green approve-button" value="Approve">' +
+                                        '<input type="button" id="review-post' + response[x].thread_id + '" class="pbs-button pbs-button-orange review-button" value="Review">' +
                                     '</div></div><br>';
 
                                 $(".forum-wrapper").append(message);
                             }
-                            $(document).on("click", ".forum-post" , function() {
+                            $(document).on("click", ".approve-button" , function() {
                                 var contentPanelId = jQuery(this).attr("id");
                                 var thread_id = contentPanelId.split(/[-]+/).pop();
                                 // window.location.href = 'forum-post.php?threadId=' + thread_id;
+                                prompt(contentPanelId);
+                            });
+
+                            $(document).on("click", ".review-button" , function() {
+                                var contentPanelId = jQuery(this).attr("id");
+                                var thread_id = contentPanelId.split(/[-]+/).pop();
+                                // window.location.href = 'forum-post.php?threadId=' + thread_id;
+                                prompt(contentPanelId);
                             });
                         }
 
