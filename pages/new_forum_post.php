@@ -18,20 +18,20 @@
         }
 
         //retrieve title, content and author for the new post
-        // $title = $_POST['titlePHP'];
-        // $content = $_POST['contentPHP'];
-        // $author = $_SESSION['firstname'] . " " . $_SESSION['lastname'];
+        $title = $_POST['titlePHP'];
+        $content = $_POST['contentPHP'];
+        $user_id = $_SESSION['user_id'];
 
         // query database and insert the new announcement into the announcements table
-        // $sql = "INSERT INTO announcements (title, content, author) VALUES (:title, :content, :author);";
-        // $stmt = $connectionPDO->prepare($sql);
+        $sql = "INSERT INTO threads (title, content, user_id) VALUES (:title, :content, :user_id);";
+        $stmt = $connectionPDO->prepare($sql);
         
         //check to see if the insert was successful
-        // if ($stmt->execute(['title' => $title, 'content' => $content, 'author' => $author])) {
-        //     exit('success');
-        // } else {
-        //     exit('Error: ' . $connectionPDO->error);
-        // }
+        if ($stmt->execute(['title' => $title, 'content' => $content, 'user_id' => $user_id])) {
+            exit('*new_post_created_successfully*');
+        } else {
+            exit('Error: ' . $connectionPDO->error);
+        }
 
         // $stmt = null;
         $connectionPDO = null;
