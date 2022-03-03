@@ -52,10 +52,10 @@
                 <!-- post here -->
             </div>
 
-            <div id='new-comment-section'>
+            <div id='new-comment-section' class='card'>
                 <!-- new comment section here -->
                 <form>
-                    <label for="comment-box">Comment: </label><br />
+                    <label for="comment-box">New Comment: </label><br />
                     <textarea id="comment-box" class="pbs-form-text-box" placeholder="Enter comment..."></textarea><br />
                     
                     <div class="button-wrapper">
