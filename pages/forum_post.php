@@ -83,6 +83,7 @@
                             var announcement = "<br><h2>This post does not exist.</h2>";
 
                             $('#post-section').html(announcement);
+                            $('#comment-section').hide();
                         } else {
                             for(var x = 0; x < response.length; x++) {
                                 var post = '<div class="forum-post card" id="thread-id-' + response[x].thread_id + '">' +
