@@ -38,3 +38,7 @@
 .no-pointer-change {
     cursor: default;
 }
+
+.new-comment-section {
+    min-width: 60vw;
+}
