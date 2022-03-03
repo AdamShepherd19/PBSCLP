@@ -6,6 +6,34 @@
         exit();
     }
 
+    if(isset($_POST['threadIDPHP'])) {
+        $pass = file_get_contents('../../pass.txt', true);
+
+        //connect to database
+        try {
+            $connectionPDO = new PDO('mysql:host=localhost;dbname=pbsclp_pbsclp', 'pbsclp', $pass);
+            $connectionPDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch(PDOException $e) {
+            exit('*database_connection_error*');
+        }
+
+        //retrieve title, content and author for the new post
+        $threadID = $_POST['threadIDPHP'];
+
+        // query database and insert the new announcement into the announcements table
+        $sql = "UPDATE threads SET approved=1 WHERE threadID=?;";
+        $stmt = $connectionPDO->prepare($sql);
+        
+        //check to see if the insert was successful
+        if ($stmt->execute(['threadID' => $threadID])) {
+            exit('*post_approved_succesfully*');
+        } else {
+            exit('Error: ' . $connectionPDO->error);
+        }
+
+        $stmt = null;
+        $connectionPDO = null;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -106,7 +134,36 @@
                 });
 
                 $("#approve-announcement-submit").on('click', function(){
-                    // window.location.replace('review_posts.php');
+                    
+                    //send data to php
+                    $.ajax({
+                        method: 'POST',
+                        url: "approve_forum_post.php",
+                        data: {
+                            threadIDPHP: thread_id
+                        },
+                        success: function (response) {
+                            //check if the php execution was successful and the data was added to the db
+                            if (response.includes("*post_approved_succesfully*")){
+                                //replace html with success message and button to return to landing page
+                                var successHTML = "<h3>The post was approved succesfully. Please click the button below to return to the landing page.</h3><br> " +
+                                    "<input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>";
+
+                                $('.main-content').html(successHTML);
+
+                            } else {
+                                //display error message if the php could not be executed
+                                $('.main-content').html("<h3> There was an error processing your request. Please try again </h3><br>Error" + response +
+                                    "<br><input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>");
+                            }
+
+                            // onclick function for new button to return to landing page
+                            $("#return").on('click', function(){
+                                window.location.replace('landing.php');
+                            });
+                        },
+                        datatype: 'text'
+                    });
                 });
             });
         </script>

@@ -2,13 +2,13 @@
     // https://makitweb.com/return-json-response-ajax-using-jquery-php
     $pass = file_get_contents('../../pass.txt', true);
 
-        //connect to database
-        try {
-            $connectionPDO = new PDO('mysql:host=localhost;dbname=pbsclp_pbsclp', 'pbsclp', $pass);
-            $connectionPDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch(PDOException $e) {
-            exit('*database_connection_error*');
-        }
+    //connect to database
+    try {
+        $connectionPDO = new PDO('mysql:host=localhost;dbname=pbsclp_pbsclp', 'pbsclp', $pass);
+        $connectionPDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    } catch(PDOException $e) {
+        exit('*database_connection_error*');
+    }
 
     //perform query and sort into newest first
     $sql = "SELECT * FROM `announcements` ORDER BY announcement_id DESC";
