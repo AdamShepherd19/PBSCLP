@@ -93,36 +93,37 @@
 
                                 $('#post-section').html(post);
                             }
+
+                            $.ajax({
+                                url: '../scripts/get_comments.php',
+                                type: 'get',
+                                dataType: 'JSON',
+                                data: {
+                                    threadIDPHP: thread_id
+                                },
+                                success: function(response) {
+                                    if (response.includes("*warning_no_comments_found*")) {
+                                        var announcement = "<br><h2>There are no comments on this post yet!</h2>";
+
+                                        $('#comment-section').html(announcement);
+                                    } else {
+                                        for(var x = 0; x < response.length; x++) {
+                                            var comment = '<div class="card">' +
+                                                '<div class="card-body post-comment">' +
+                                                    '<p class="comment-text">' + response[x].content + '</p>' +
+                                                    '<span class="comment-subtext"><i>' + response[x].firstname  + ' ' + 
+                                                    response[x].lastname + ' - ' + response[x].date + '</i></span>' +
+                                                '</div></div><br>';
+
+                                            $('#comment-section').append(comment);
+                                        }
+                                    }
+
+                                }
+                            });
                         }
 
-                        $.ajax({
-                            url: '../scripts/get_comments.php',
-                            type: 'get',
-                            dataType: 'JSON',
-                            data: {
-                                threadIDPHP: thread_id
-                            },
-                            success: function(response) {
-                                if (response.includes("*warning_no_comments_found*")) {
-                                    var announcement = "<h2>no-comments</h2>";
-
-                                    // $("#announcement-wrapper").append(announcement);
-                                    $('#comment-section').html(announcement);
-                                } else {
-                                    for(var x = 0; x < response.length; x++) {
-                                        var comment = '<div class="card">' +
-                                            '<div class="card-body post-comment">' +
-                                                '<p class="comment-text">' + response[x].content + '</p>' +
-                                                '<span class="comment-subtext"><i>' + response[x].firstname  + ' ' + 
-                                                response[x].lastname + ' - ' + response[x].date + '</i></span>' +
-                                            '</div></div><br>';
-
-                                        $('#comment-section').append(comment);
-                                    }
-                                }
-
-                            }
-                        });
+                        
                     }
                 });
             });
