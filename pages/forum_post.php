@@ -52,10 +52,10 @@
                 <!-- post here -->
             </div>
 
-            <div id='new-comment-section' class='card'>
+            <div id='new-comment-section'>
                 <!-- new comment section here -->
                 <form>
-                    <label for="comment-box">New Comment: </label><br />
+                    <h4>New Comment: </h4><br />
                     <textarea id="comment-box" class="pbs-form-text-box" placeholder="Enter comment..."></textarea><br />
                     
                     <div class="button-wrapper">
@@ -63,6 +63,8 @@
                     </div>
                 </form>
             </div>
+
+            <br>
 
             <div id='comment-section'>
                 <!-- comments here -->
