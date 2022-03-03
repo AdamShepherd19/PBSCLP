@@ -80,7 +80,7 @@
                     },
                     success: function(response) {
                         if (response.includes("*warning_no_post_found*")) {
-                            var announcement = "<h2>no-post</h2>";
+                            var announcement = "<br><h2>This post does not exist.</h2>";
 
                             $('#post-section').html(announcement);
                         } else {
