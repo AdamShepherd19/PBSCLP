@@ -27,3 +27,7 @@
     width: 100%;
     min-height: 4rem;
 }
+
+.new-comment-button-wrapper {
+    text-align: right;
+}
