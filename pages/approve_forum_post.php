@@ -89,7 +89,7 @@
 
                                 $('#post-section').html(post);
                             } else {
-                                $('#post-section').html("<h2>This post has already been approved.</h2>");
+                                $('#post-section').html("<br><h2>Warning: This post has already been approved.</h2>");
                             }
                         }
                     }
