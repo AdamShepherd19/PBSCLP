@@ -5,8 +5,9 @@
         header('Location: https://pbsclp.info');
         exit();
     }
-
+    echo 'test1';
     if(isset($_POST['threadIDPHP'])) {
+        echo 'test3';
         $pass = file_get_contents('../../pass.txt', true);
 
         //connect to database
@@ -34,6 +35,7 @@
         $stmt = null;
         $connectionPDO = null;
     }
+    echo 'test2';
 ?>
 
 <!DOCTYPE html>
