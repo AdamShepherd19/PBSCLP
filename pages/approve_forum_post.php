@@ -109,7 +109,7 @@
                     //send data to php
                     $.ajax({
                         method: 'POST',
-                        url: "update_approved_status.php",
+                        url: "../scripts/update_approved_status.php",
                         data: {
                             threadIDPHP: thread_id
                         },
