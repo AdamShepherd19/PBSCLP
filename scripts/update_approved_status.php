@@ -20,9 +20,9 @@
         
         //check to see if the insert was successful
         if ($stmt->execute(['threadID' => $threadID])) {
-            exit('*post_approved_succesfully*');
+            echo '*post_approved_succesfully*';
         } else {
-            exit('Error: ' . $connectionPDO->error);
+            echo 'Error: ' . $connectionPDO->error;
         }
 
         $stmt = null;
