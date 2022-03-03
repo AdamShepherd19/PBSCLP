@@ -33,6 +33,7 @@
             //retrieve data from query
             $title = $row['title'];
             $content = $row['content'];
+            $approved = $row['approved'];
             $firstname = $names[0]['firstname'];
             $lastname = $names[0]['lastname'];
             
@@ -40,6 +41,7 @@
             $data[] = array(
                 "title" => $title,
                 "content" => $content,
+                "approved" => $approved,
                 "firstname" => $firstname,
                 "lastname" => $lastname
             );
