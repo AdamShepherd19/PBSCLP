@@ -81,8 +81,8 @@
             </div>
 
             <div class="button-wrapper">
-                <input type="button" id="approve-announcement-cancel" class="pbs-button pbs-button-red" value="Cancel"> 
-                <input type="button" id="approve-announcement-submit" class="pbs-button pbs-button-green" value="Approve">
+                <input type="button" id="approve-post-cancel" class="pbs-button pbs-button-red" value="Cancel"> 
+                <input type="button" id="approve-post-submit" class="pbs-button pbs-button-green" value="Approve">
             </div>
         </div>
 
@@ -129,12 +129,11 @@
                     }
                 });
 
-                $("#approve-announcement-cancel").on('click', function(){
+                $("#approve-post-cancel").on('click', function(){
                     window.location.replace('review_posts.php');
                 });
 
-                $("#approve-announcement-submit").on('click', function(){
-                    
+                $("#approve-post-submit").on('click', function(){
                     //send data to php
                     $.ajax({
                         method: 'POST',
