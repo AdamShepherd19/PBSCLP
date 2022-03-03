@@ -105,7 +105,7 @@
                             $(document).on("click", ".approve-button" , function() {
                                 var contentPanelId = jQuery(this).attr("id");
                                 var thread_id = contentPanelId.split(/[-]+/).pop();
-                                window.location.href = 'approve-forum-post.php?threadId=' + thread_id;
+                                window.location.href = 'approve_forum_post.php?threadId=' + thread_id;
                                 // prompt(contentPanelId);
                             });
 
