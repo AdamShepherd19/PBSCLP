@@ -109,7 +109,7 @@
                             $(document).on("click", ".forum-post" , function() {
                                 var contentPanelId = jQuery(this).attr("id");
                                 var thread_id = contentPanelId.split(/[-]+/).pop();
-                                window.location.href = 'forum-post.php?threadId=' + thread_id;
+                                window.location.href = 'forum_post.php?threadId=' + thread_id;
                             });
                         }
 
