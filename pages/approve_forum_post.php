@@ -51,6 +51,11 @@
             <div id='post-section'>
                 <!-- post here -->
             </div>
+
+            <div class="button-wrapper">
+                <input type="button" id="approve-announcement-cancel" class="pbs-button pbs-button-red" value="Cancel"> 
+                <input type="button" id="approve-announcement-submit" class="pbs-button pbs-button-green" value="Approve">
+            </div>
         </div>
 
         
