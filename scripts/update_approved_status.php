@@ -26,7 +26,7 @@
         // }
 
         try {
-            $stmt->execute(['threadID' => $threadID]);
+            $stmt->execute(['thread_id' => $threadID]);
             echo '*post_approved_succesfully*';
         } catch (Exception $e) {
             echo 'Caught exception: ',  $e->getMessage(), "\n";
