@@ -63,7 +63,7 @@
             $(document).ready(function () {
 
                 $("#approve-announcement-cancel").on('click', function(){
-                    window.location.replace('review-posts.php');
+                    window.location.replace('review_posts.php');
                 });
 
                 // only show administrator content if an admin logged in
