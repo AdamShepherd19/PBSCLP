@@ -5,37 +5,7 @@
         header('Location: https://pbsclp.info');
         exit();
     }
-    echo 'test1';
-    if(isset($_POST['threadIDPHP'])) {
-        echo 'test3';
-        $pass = file_get_contents('../../pass.txt', true);
-
-        //connect to database
-        try {
-            $connectionPDO = new PDO('mysql:host=localhost;dbname=pbsclp_pbsclp', 'pbsclp', $pass);
-            $connectionPDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch(PDOException $e) {
-            exit('*database_connection_error*');
-        }
-
-        //retrieve title, content and author for the new post
-        $threadID = $_POST['threadIDPHP'];
-
-        // query database and insert the new announcement into the announcements table
-        $sql = "UPDATE threads SET approved='1' WHERE threadID=?;";
-        $stmt = $connectionPDO->prepare($sql);
-        
-        //check to see if the insert was successful
-        if ($stmt->execute(['threadID' => $threadID])) {
-            exit('*post_approved_succesfully*');
-        } else {
-            exit('Error: ' . $connectionPDO->error);
-        }
-
-        $stmt = null;
-        $connectionPDO = null;
-    }
-    echo 'test2';
+    
 ?>
 
 <!DOCTYPE html>
@@ -139,7 +109,7 @@
                     //send data to php
                     $.ajax({
                         method: 'POST',
-                        url: "approve_forum_post.php",
+                        url: "update_approved_status.php",
                         data: {
                             threadIDPHP: thread_id
                         },
