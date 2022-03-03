@@ -62,10 +62,6 @@
         <script type="text/javascript">
             $(document).ready(function () {
 
-                $("#approve-announcement-cancel").on('click', function(){
-                    window.location.replace('review_posts.php');
-                });
-
                 // only show administrator content if an admin logged in
                 var accountType = '<?php echo $_SESSION['account_type']; ?>';
                 if (accountType != 'administrator') {
@@ -88,6 +84,7 @@
                             var announcement = "<br><h2>This post does not exist.</h2>";
 
                             $('#post-section').html(announcement);
+                            $(".button-wrapper").hide();
                         } else {
                             if (response[0].approved == '0'){
                                 var post = '<div class="forum-post card" id="thread-id-' + response[0].thread_id + '">' +
@@ -102,6 +99,14 @@
                             }
                         }
                     }
+                });
+
+                $("#approve-announcement-cancel").on('click', function(){
+                    window.location.replace('review_posts.php');
+                });
+
+                $("#approve-announcement-submit").on('click', function(){
+                    // window.location.replace('review_posts.php');
                 });
             });
         </script>
