@@ -52,6 +52,18 @@
                 <!-- post here -->
             </div>
 
+            <div id='new-comment-section'>
+                <!-- new comment section here -->
+                <form>
+                    <label for="comment-box">Comment: </label><br />
+                    <textarea id="comment-box" class="pbs-form-text-box" placeholder="Enter comment..."></textarea><br />
+                    
+                    <div class="button-wrapper">
+                        <input type="button" id="new-comment-submit" class="pbs-button pbs-button-green" value="Submit">
+                    </div>
+                </form>
+            </div>
+
             <div id='comment-section'>
                 <!-- comments here -->
             </div>
