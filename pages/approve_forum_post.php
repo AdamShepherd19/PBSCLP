@@ -21,7 +21,7 @@
         $threadID = $_POST['threadIDPHP'];
 
         // query database and insert the new announcement into the announcements table
-        $sql = "UPDATE threads SET approved=1 WHERE threadID=?;";
+        $sql = "UPDATE threads SET approved='1' WHERE threadID=?;";
         $stmt = $connectionPDO->prepare($sql);
         
         //check to see if the insert was successful
