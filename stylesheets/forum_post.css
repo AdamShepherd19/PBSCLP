@@ -22,3 +22,8 @@
 .comment-subtext, .post-name {
     font-size: 0.8rem;
 }
+
+#comment-box {
+    width: 100%;
+    min-height: 4rem;
+}
