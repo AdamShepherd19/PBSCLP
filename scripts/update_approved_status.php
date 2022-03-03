@@ -19,10 +19,17 @@
         $stmt = $connectionPDO->prepare($sql);
         
         //check to see if the insert was successful
-        if ($stmt->execute(['threadID' => $threadID])) {
+        // if ($stmt->execute(['threadID' => $threadID])) {
+        //     echo '*post_approved_succesfully*';
+        // } else {
+        //     echo 'Error: ' . $connectionPDO->error;
+        // }
+
+        try {
+            $stmt->execute(['threadID' => $threadID]);
             echo '*post_approved_succesfully*';
-        } else {
-            echo 'Error: ' . $connectionPDO->error;
+        } catch (Exception $e) {
+            echo 'Caught exception: ',  $e->getMessage(), "\n";
         }
 
         $stmt = null;
