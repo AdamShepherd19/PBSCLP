@@ -153,8 +153,9 @@
                                 commentPHP: comment
                             },
                             success: function(response) {
+                                alert("test1");
                                 if (response.includes("*comment_created_succesfully*")) {
-                                    alert("test");
+                                    alert("test2");
                                     var new_comment = '<div class="card">' +
                                         '<div class="card-body post-comment">' +
                                             '<p class="comment-text">' + comment + '</p>' +
