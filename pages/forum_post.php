@@ -143,7 +143,9 @@
 
                 $("#new-comment-submit").on('click', function(){
                     comment = $("#comment-box").val();
-                    alert(comment);
+                    if(comment.length > 0) {
+                        alert(comment);
+                    }
                 });
 
 
