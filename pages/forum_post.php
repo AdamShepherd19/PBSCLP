@@ -155,6 +155,7 @@
                             },
                             success: function(response) {
                                 if (response.includes("*comment_created_succesfully*")) {
+                                    alert("test");
                                     var new_comment = '<div class="card">' +
                                         '<div class="card-body post-comment">' +
                                             '<p class="comment-text">' + comment + '</p>' +
