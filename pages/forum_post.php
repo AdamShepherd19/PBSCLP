@@ -137,10 +137,16 @@
                                 }
                             });
                         }
-
-                        
                     }
                 });
+
+
+                $("#new-comment-submit").on('click', function(){
+                    comment = $("comment-box").val();
+                    alert(comment);
+                });
+
+
             });
         </script>
         
