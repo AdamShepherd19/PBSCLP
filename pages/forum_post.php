@@ -147,7 +147,7 @@
                         $.ajax({
                             url: '../scripts/new_comment.php',
                             type: 'POST',
-                            dataType: 'JSON',
+                            // dataType: 'JSON',
                             data: {
                                 threadIDPHP: thread_id,
                                 commentPHP: comment
