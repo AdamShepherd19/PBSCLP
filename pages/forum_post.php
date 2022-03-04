@@ -142,7 +142,7 @@
 
 
                 $("#new-comment-submit").on('click', function(){
-                    comment = $("comment-box").val();
+                    comment = $("#comment-box").val();
                     alert(comment);
                 });
 
