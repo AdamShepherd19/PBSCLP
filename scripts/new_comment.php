@@ -14,8 +14,8 @@
         }
 
         //retrieve title, content and author for the new post
-        $thread_id = $_GET['threadIDPHP'];
-        $comment = $_GET['commentPHP'];
+        $thread_id = $_POST['threadIDPHP'];
+        $comment = $_POST['commentPHP'];
 
         // query database and insert the new announcement into the announcements table
         $sql = "INSERT INTO comments (content, thread_id, user_id) values (:comment, :thread_id, :user_id)";

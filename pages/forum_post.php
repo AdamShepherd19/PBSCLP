@@ -146,7 +146,7 @@
                     if(comment.length > 0) {
                         $.ajax({
                             url: '../scripts/new_comment.php',
-                            type: 'get',
+                            type: 'POST',
                             dataType: 'JSON',
                             data: {
                                 threadIDPHP: thread_id,
