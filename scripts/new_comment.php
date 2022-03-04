@@ -32,8 +32,8 @@
             $stmt->execute(['comment' => $comment, 'thread_id' => $thread_id, 'user_id' => $_SESSION['user_id']]);
             exit("*comment_created_succesfully*");
         } catch (Exception $e) {
-            $output = "Caught exception: ",  $e->getMessage(), "\n";
-            exit($output);
+            // $output = "Caught exception: ",  $e->getMessage(), "\n";
+            // exit($output);
         }
 
         $stmt = null;
