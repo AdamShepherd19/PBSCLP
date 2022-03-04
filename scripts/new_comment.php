@@ -1,4 +1,6 @@
 <?php
+    session_start();
+    
     if(isset($_POST['commentPHP'])) {
         
         $pass = file_get_contents('../../pass.txt', true);
