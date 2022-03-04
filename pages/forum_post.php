@@ -161,7 +161,7 @@
                                             <?php echo $_SESSION['lastname']; ?> + ' - ' + 'date' + '</i></span>' +
                                         '</div></div><br>';
 
-                                    $('#comment-section').append(new_comment);
+                                    $(new_comment).prependTo('#comment-section');
                                 } else {
                                     alert("There was an error creating your comment. Please try again.<br>" + response);
                                 }
