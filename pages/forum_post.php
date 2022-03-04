@@ -142,9 +142,32 @@
 
 
                 $("#new-comment-submit").on('click', function(){
-                    comment = $("#comment-box").val();
+                    var comment = $("#comment-box").val();
                     if(comment.length > 0) {
-                        alert(comment);
+                        $.ajax({
+                            url: '../scripts/new_comment.php',
+                            type: 'post',
+                            dataType: 'JSON',
+                            data: {
+                                threadIDPHP: thread_id,
+                                commentPHP: comment
+                            },
+                            success: function(response) {
+                                if (response.includes("*comment_created_succesfully*")) {
+                                    var new_comment = '<div class="card">' +
+                                        '<div class="card-body post-comment">' +
+                                            '<p class="comment-text">' + comment + '</p>' +
+                                            '<span class="comment-subtext"><i>' + <?php echo $_SESSION['firstname']; ?>  + ' ' + 
+                                            <?php echo $_SESSION['lastname']; ?> + ' - ' + 'date' + '</i></span>' +
+                                        '</div></div><br>';
+
+                                    $('#comment-section').prepend(new_comment);
+                                } else {
+                                    alert("There was an error creating your comment. Please try again.<br>" + response);
+                                }
+
+                            }
+                        });
                     }
                 });
 
