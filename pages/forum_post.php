@@ -157,8 +157,8 @@
                                     var new_comment = '<div class="card">' +
                                         '<div class="card-body post-comment">' +
                                             '<p class="comment-text">' + comment + '</p>' +
-                                            '<span class="comment-subtext"><i>' + <?php echo $_SESSION['firstname']; ?>  + ' ' + 
-                                            <?php echo $_SESSION['lastname']; ?> + ' - ' + 'date' + '</i></span>' +
+                                            '<span class="comment-subtext"><i>' + 'firstname' + ' ' + 
+                                            'lastname' + ' - ' + 'date' + '</i></span>' +
                                         '</div></div><br>';
 
                                     $('#comment-section').append(new_comment);
