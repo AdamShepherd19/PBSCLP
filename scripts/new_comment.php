@@ -1,6 +1,6 @@
 <?php
     session_start();
-
+    
     if(isset($_POST['commentPHP'])) {
         
         $pass = file_get_contents('../../pass.txt', true);
@@ -30,10 +30,9 @@
 
         try {
             $stmt->execute(['comment' => $comment, 'thread_id' => $thread_id, 'user_id' => $_SESSION['user_id']]);
-            exit("*comment_created_succesfully*");
+            echo '*comment_created_succesfully*';
         } catch (Exception $e) {
-            // $output = "Caught exception: ",  $e->getMessage(), "\n";
-            // exit($output);
+            echo 'Caught exception: ',  $e->getMessage(), "\n";
         }
 
         $stmt = null;
