@@ -8,9 +8,7 @@
 
     $pass = file_get_contents('../../pass.txt', true);
     
-    echo "test1";
     if(isset($_POST['questionPHP'])) {
-        echo "test2";
         //connect to database
         try {
             $connectionPDO = new PDO('mysql:host=localhost;dbname=pbsclp_pbsclp', 'pbsclp', $pass);
@@ -21,17 +19,14 @@
 
         //retrieve title, content and author for the new post
         $title = $_POST['questionPHP'];
-        $content = $_POST['answerPHP'];
+        $answer = $_POST['answerPHP'];
 
         // query database and insert the new announcement into the announcements table
         $sql = "INSERT INTO faq (question, answer) VALUES (:question, :answer);";
         $stmt = $connectionPDO->prepare($sql);
-
-        echo $title;
         
         //check to see if the insert was successful
         if ($stmt->execute(['question' => $question, 'answer' => $answer])) {
-            echo "test4";
             exit('*new_post_created_successfully*');
         } else {
             exit('Error: ' . $connectionPDO->error);
@@ -41,7 +36,6 @@
         $connectionPDO = null;
 
     }
-    echo "test3";
 
 ?>
 
