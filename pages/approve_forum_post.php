@@ -5,6 +5,11 @@
         header('Location: https://pbsclp.info');
         exit();
     }
+
+    if($_SESSION['account_type'] != 'administrator'){
+        header('Location: landing.php');
+        exit();
+    }
     
 ?>
 

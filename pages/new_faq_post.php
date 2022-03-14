@@ -6,6 +6,11 @@
         exit();
     }
 
+    if($_SESSION['account_type'] != 'administrator'){
+        header('Location: landing.php');
+        exit();
+    }
+
     $pass = file_get_contents('../../pass.txt', true);
     
     if(isset($_POST['questionPHP'])) {
