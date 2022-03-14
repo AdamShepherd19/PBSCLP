@@ -18,7 +18,7 @@
         }
 
         //retrieve title, content and author for the new post
-        $title = $_POST['questionPHP'];
+        $question = $_POST['questionPHP'];
         $answer = $_POST['answerPHP'];
 
         // query database and insert the new announcement into the announcements table
