@@ -17,3 +17,11 @@
     flex-direction: row;
     float: right;
 }
+
+#question {
+    min-height: 20vh;
+}
+
+#answer {
+    min-height: 20vh;
+}
