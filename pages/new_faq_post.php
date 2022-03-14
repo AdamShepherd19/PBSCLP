@@ -29,6 +29,7 @@
         
         //check to see if the insert was successful
         if ($stmt->execute(['question' => $question, 'answer' => $answer])) {
+            echo "test4";
             exit('*new_post_created_successfully*');
         } else {
             exit('Error: ' . $connectionPDO->error);
