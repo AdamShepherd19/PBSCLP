@@ -6,11 +6,6 @@
         exit();
     }
 
-    if($_SESSION['account_type'] != 'administrator'){
-        header('Location: landing.php');
-        exit();
-    }
-
     $pass = file_get_contents('../../pass.txt', true);
     
     if(isset($_POST['titlePHP'])) {
@@ -28,17 +23,17 @@
         $user_id = $_SESSION['user_id'];
 
         // query database and insert the new announcement into the announcements table
-        $sql = "INSERT INTO announcements (title, content, user_id) VALUES (:title, :content, :user_id);";
+        $sql = "INSERT INTO threads (title, content, user_id) VALUES (:title, :content, :user_id);";
         $stmt = $connectionPDO->prepare($sql);
         
         //check to see if the insert was successful
         if ($stmt->execute(['title' => $title, 'content' => $content, 'user_id' => $user_id])) {
-            exit('success');
+            exit('*new_post_created_successfully*');
         } else {
             exit('Error: ' . $connectionPDO->error);
         }
 
-        $stmt = null;
+        // $stmt = null;
         $connectionPDO = null;
 
     }
@@ -68,7 +63,7 @@
         <link rel="stylesheet" href="../stylesheets/style.css">
         <link rel="stylesheet" href="../stylesheets/new_announcement.css">
 
-        <title>New Announcement</title>
+        <title>New Forum Post</title>
         
     </head>
 
@@ -81,7 +76,7 @@
         </div>
 
         <div class="page-header">
-            <h1>New Announcement</h1>
+            <h1>New Forum Post</h1>
         </div>
 
         <div class="main-content">
@@ -93,8 +88,8 @@
                     <textarea id="content" class="pbs-form-text-box" placeholder="Enter post content..."></textarea><br />
                     
                     <div class="button-wrapper">
-                        <input type="button" id="announcement-cancel" class="pbs-button pbs-button-red" value="Cancel"> 
-                        <input type="button" id="announcement-post" class="pbs-button pbs-button-green" value="Post">
+                        <input type="button" id="new-post-cancel" class="pbs-button pbs-button-red" value="Cancel"> 
+                        <input type="button" id="new-post-submit" class="pbs-button pbs-button-green" value="Post">
                     </div>
                 </form>
             </div>
@@ -106,17 +101,17 @@
             $(document).ready(function () {
                 
                 //onclick function for the cancel button
-                $("#announcement-cancel").on('click', function(){
-                    window.location.replace('landing.php');
+                $("#new-post-cancel").on('click', function(){
+                    window.location.replace('forum.php');
                 });
 
                 // onclick function for the post announcement button
-                $("#announcement-post").on('click', function(){
-                    //retrieve data from form
+                $("#new-post-submit").on('click', function(){
+                    // //retrieve data from form
                     var title = $("#title").val();
                     var content = $('#content').val();
 
-                    //check data not empty
+                    // //check data not empty
                     if(title == "" || content == ""){
                         //prompt user to fill in all data
                         alert("Please fill out the information in the form");
@@ -124,16 +119,16 @@
                         //send data to php
                         $.ajax({
                             method: 'POST',
-                            url: "new_announcement.php",
+                            url: "new_forum_post.php",
                             data: {
                                 titlePHP: title,
                                 contentPHP: content
                             },
                             success: function (response) {
                                 //check if the php execution was successful and the data was added to the db
-                                if (response.includes("success")){
+                                if (response.includes("*new_post_created_successfully*")){
                                     //replace html with success message and button to return to landing page
-                                    var successHTML = "<h3>Your post was created succesfully. Please click the button below to return to the landing page.</h3><br> " +
+                                    var successHTML = "<h3>Your post was submitted succesfully. Please allow X days for the post to be reviewed and published. Click the button below to return to the landing page.</h3><br> " +
                                         "<input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>";
 
                                     $('.main-content').html(successHTML);
@@ -146,7 +141,7 @@
 
                                 // onclick function for new button to return to landing page
                                 $("#return").on('click', function(){
-                                    window.location.replace('landing.php');
+                                    window.location.replace('forum.php');
                                 });
                             },
                             datatype: 'text'

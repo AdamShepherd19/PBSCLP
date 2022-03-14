@@ -1,0 +1,33 @@
+.main-content {
+    max-width: 60vw;
+    align-content: center;
+    margin: auto;
+  }
+  
+#comment-section {
+    overflow-y: scroll;
+    width: 100%;
+    height: 80vh;
+    margin-bottom: 40px;
+}
+
+.card-header {
+    font-size: 1.2rem;
+}
+
+.comment-text {
+    font-size: 1rem;
+}
+
+.comment-subtext, .post-name {
+    font-size: 0.8rem;
+}
+
+#comment-box {
+    width: 100%;
+    min-height: 4rem;
+}
+
+.new-comment-button-wrapper {
+    text-align: right;
+}

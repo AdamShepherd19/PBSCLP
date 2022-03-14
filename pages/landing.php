@@ -5,6 +5,7 @@
         header('Location: https://pbsclp.info');
         exit();
     }
+
 ?>
 
 <!DOCTYPE html>
@@ -63,6 +64,7 @@
             </div>
 
             <div class="landing-nav-box-wrapper">
+                <input type="button" id="review-forum-posts" class="pbs-button pbs-button-orange admin-only" value="New Forum Posts"> <br/>
                 <input type="button" id="new-announcement" class="pbs-button pbs-button-blue admin-only" value="New Announcement"> <br/>
                 <input type="button" id="forum" class="pbs-button pbs-button-white" value="Forum"> <br />
                 <input type="button" id="resource-bank" class="pbs-button pbs-button-blue" value="Resource Bank"> <br />
@@ -75,6 +77,10 @@
         <script type="text/javascript">
             
             $(document).ready(function () {
+
+                $("#review-forum-posts").on('click', function(){
+                    window.location.href = 'review_posts.php';
+                });
 
                 $("#forum").on('click', function(){
                     window.location.href = 'forum.php';
@@ -114,7 +120,7 @@
                                 "<div class='card-body'>" +
                                     "<blockquote class='blockquote mb-0'>" +
                                         "<p>" + response[x].content + "</p>" +
-                                        "<footer class='blockquote-footer'>" + response[x].author + "</footer>" +
+                                        "<footer class='blockquote-footer'>" + response[x].firstname + " " + response[x].lastname + "</footer>" +
                                     "</blockquote>" +
                                 "</div></div>";
 
@@ -122,6 +128,23 @@
                             }
                         }
 
+                    }
+                });
+
+                $.ajax({
+                    url: '../scripts/get_forum_posts.php',
+                    type: 'get',
+                    dataType: 'JSON',
+                    data: {
+                        approvedPHP: '0'
+                    },
+                    success: function(response) {
+                        if(response.length > 0) {
+                            number_of_new_posts = response.length;
+                            $('#review-forum-posts').val('New Posts (' + number_of_new_posts + ')');
+                        } else {
+                            $('#review-forum-posts').hide();
+                        }
                     }
                 });
 

@@ -1,4 +1,7 @@
 <?php
+
+    session_start();
+
     // https://makitweb.com/return-json-response-ajax-using-jquery-php
     $pass = file_get_contents('../../pass.txt', true);
 
@@ -10,13 +13,22 @@
         exit('*database_connection_error*');
     }
 
+    if(isset($_GET['approvedPHP'])) {
+        $approved = $_GET['approvedPHP'];
+    } else {
+        $approved = '0';
+    }
+
     //perform query and sort into newest first
-    $sql = "SELECT * FROM `announcements` ORDER BY announcement_id DESC";
-    $stmt = $connectionPDO->prepare($sql);
-    $stmt->execute();
-    $result = $stmt->fetchAll();
+    $sql = "SELECT * FROM threads WHERE approved=? ORDER BY post_time DESC";
     
-    if ($result){
+    $stmt = $connectionPDO->prepare($sql);
+    $stmt->execute([$approved]);
+    $result = $stmt->fetchAll();
+
+    //check that there were announcements to show
+    if ($result) {
+
         //initialise array
         $data = array();
 
@@ -28,27 +40,27 @@
             $names = $stmt->fetchAll();
 
             //retrieve data from query
-            $id = $row['announcement_id'];
+            $thread_id = $row['thread_id'];
             $title = $row['title'];
             $content = $row['content'];
             $firstname = $names[0]['firstname'];
             $lastname = $names[0]['lastname'];
-                
+            
             //add data into array
             $data[] = array(
-                "id" => $id,
+                "thread_id" => $thread_id,
                 "title" => $title,
                 "content" => $content,
                 "firstname" => $firstname,
-                "lastname" => $lastname,
+                "lastname" => $lastname
             );
         }
-        
 
         //encode the array into jason
         echo json_encode($data);
+
     } else {
-        echo json_encode("*warning_no_announcements_found*");
+        echo json_encode("*warning_no_posts_found*");
     }
 
     // close connection to db

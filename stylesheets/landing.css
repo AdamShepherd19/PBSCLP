@@ -9,8 +9,9 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-    max-height: 60vh;
+    max-height: 80vh;
     overflow-y: scroll;
+    margin-bottom: 40px;
 }
   
 .landing-nav-box-wrapper {

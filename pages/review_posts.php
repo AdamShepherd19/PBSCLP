@@ -5,6 +5,11 @@
         header('Location: https://pbsclp.info');
         exit();
     }
+
+    if($_SESSION['account_type'] != 'administrator'){
+        header('Location: landing.php');
+        exit();
+    }
 ?>
 
 <!DOCTYPE html>
@@ -30,7 +35,7 @@
         <link rel="stylesheet" href="../stylesheets/style.css">
         <link rel="stylesheet" href="../stylesheets/forum.css">
 
-        <title>Forum</title>
+        <title>New Posts</title>
         
     </head>
 
@@ -43,16 +48,10 @@
         </div>
 
         <div class="page-header">
-            <h1>Forum</h1>
+            <h1>New Posts</h1>
         </div>
 
         <div class="main-content">
-            <div class="search-wrapper">
-                <input type="search" class="pbs-form-text-box" id="search-input" placeholder="search">
-                <input type="button" id="search-button" class="pbs-button pbs-search-button pbs-button-green" value="Search">
-                <input type="button" id="new-post-button" class="pbs-button pbs-button-green" value="New Post">
-            </div>
-
             <div class="forum-wrapper">
 
                 <!-- <div class="forum-post card">
@@ -79,54 +78,47 @@
                     $('.admin-only').show();
                 }
 
-                $('#new-post-button').on("click", function() {
-                    window.location.replace('new_forum_post.php');
-                });
-
                 $.ajax({
                     url: '../scripts/get_forum_posts.php',
                     type: 'get',
                     dataType: 'JSON',
                     data: {
-                        approvedPHP: '1'
+                        approvedPHP: '0'
                     },
                     success: function(response) {
                         if (response.includes("*warning_no_posts_found*")) {
-                            var message = "<div class='card'><h4 class='card-header'> There are no posts yet!</div>"
+                            var message = "<div class='card'><h4 class='card-header'> There are no posts that need reviewed!</div>"
 
                             $(".forum-wrapper").append(message);
                         } else {
                             for(var x = 0; x < response.length; x++) {
-                                var message = '<div class="forum-post card" id="thread-id-' + response[x].thread_id + '">' +
+                                var message = '<div class="forum-post no-pointer-change card" id="thread-id-' + response[x].thread_id + '">' +
                                     '<div class="card-header">' + response[x].title + '<br><span><i> - ' + response[x].firstname + ' ' + response[x].lastname + '</i></span>' + '</div>' +
                                     '<div class="card-body">' +
                                         '<p>' + response[x].content + '</p>' +
-                                        '<span><i>Comments (x)</i></span>' +
+                                        '<input type="button" id="review-post-' + response[x].thread_id + '" class="pbs-button pbs-button-orange review-button" value="Review">' +
+                                        '<input type="button" id="approve-post-' + response[x].thread_id + '" class="pbs-button pbs-button-green approve-button" value="Approve">' +
                                     '</div></div><br>';
 
                                 $(".forum-wrapper").append(message);
                             }
-                            $(document).on("click", ".forum-post" , function() {
+                            $(document).on("click", ".approve-button" , function() {
                                 var contentPanelId = jQuery(this).attr("id");
                                 var thread_id = contentPanelId.split(/[-]+/).pop();
-                                window.location.href = 'forum_post.php?threadId=' + thread_id;
+                                window.location.replace('approve_forum_post.php?threadId=' + thread_id);
+                                // prompt(contentPanelId);
+                            });
+
+                            $(document).on("click", ".review-button" , function() {
+                                var contentPanelId = jQuery(this).attr("id");
+                                var thread_id = contentPanelId.split(/[-]+/).pop();
+                                // window.location.href = 'forum-post.php?threadId=' + thread_id;
+                                prompt(contentPanelId);
                             });
                         }
 
                     }
                 });
-
-
-                // search bar functionality that toggles visibility of user accounts based on the value
-                // entered into the search bar. This looks through any field of the user's information
-                // and displays all the user accounts that contain the search term
-                $("#search-input").on("keyup", function() {
-                    var value = $(this).val().toLowerCase();
-                    $(".card").filter(function() {
-                        $(this).find('*').toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                    });
-                });
-                
             });
         </script>
         
