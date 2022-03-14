@@ -77,9 +77,9 @@
                     $('.admin-only').show();
                 }
 
-                // $('#new-faq-button').on("click", function() {
-                //     window.location.replace('new_faq_post.php');
-                // });
+                $('#new-faq-button').on("click", function() {
+                    window.location.replace('new_faq_post.php');
+                });
                 
             });
         </script>
