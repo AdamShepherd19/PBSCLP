@@ -47,7 +47,7 @@
         </div>
 
         <div class="main-content">
-            <div class="button-wrapper">
+            <div class="button-wrapper admin-only">
                 <input type="button" id="new-faq-button" class="pbs-button pbs-button-green" value="New FAQ">
             </div>
 
