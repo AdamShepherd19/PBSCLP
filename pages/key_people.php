@@ -47,7 +47,47 @@
         </div>
 
         <div class="main-content">
-            
+            <div class="card">
+                <div class="card-header">Firstname Lastname</div>
+                <div class="card-body key-person-profile">
+                    <div class="key-person-photo">
+                        <img src="https://picsum.photos/200" alt="Profile Picture">
+                    </div>
+
+                    <div class="key-person-info">
+                        <p> email@email.com </p>
+                        <p> 071234567890 </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">Firstname Lastname</div>
+                <div class="card-body key-person-profile">
+                    <div class="key-person-photo">
+                        <img src="https://picsum.photos/200" alt="Profile Picture">
+                    </div>
+
+                    <div class="key-person-info">
+                        <p> email@email.com </p>
+                        <p> 071234567890 </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">Firstname Lastname</div>
+                <div class="card-body key-person-profile">
+                    <div class="key-person-photo">
+                        <img src="https://picsum.photos/200" alt="Profile Picture">
+                    </div>
+
+                    <div class="key-person-info">
+                        <p> email@email.com </p>
+                        <p> 071234567890 </p>
+                    </div>
+                </div>
+            </div>
         </div>
 
         
