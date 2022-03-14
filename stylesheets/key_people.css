@@ -4,8 +4,17 @@
     margin: auto;
 }
 
+.key-person {
+    margin-bottom: 10px;
+}
+
+.card-header {
+    text-align: center;
+}
+
 .key-person-profile {
     display: flex;
+
 }  
 
 .key-person-photo {
@@ -13,10 +22,13 @@
 }
 
 .key-person-photo img {
-    width: 100%;
+    width: 200px;
+    height: 200px;
 }
 
 .key-person-info {
     flex: 2;
     padding: 10px;
+    display: flex;
+    align-content: center;
 }
