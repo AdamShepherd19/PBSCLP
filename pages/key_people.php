@@ -47,7 +47,7 @@
         </div>
 
         <div class="main-content">
-            <div class="card">
+            <div class="card key-person">
                 <div class="card-header">
                     <h3> Firstname Lastname </h3>
                 </div>
@@ -64,7 +64,7 @@
                 </div>
             </div>
 
-            <div class="card">
+            <div class="card key-person">
                 <div class="card-header">
                     <h3> Firstname Lastname </h3>
                 </div>
@@ -81,7 +81,7 @@
                 </div>
             </div>
 
-            <div class="card">
+            <div class="card key-person">
                 <div class="card-header">
                     <h3> Firstname Lastname </h3>
                 </div>
