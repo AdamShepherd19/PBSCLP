@@ -51,7 +51,7 @@
                 <input type="button" id="new-faq-button" class="pbs-button pbs-button-green" value="New FAQ">
             </div>
 
-            <div class="faq-wrapper" id="#faq-wrapper">
+            <div class="faq-wrapper" id="faq-wrapper">
 
                 <!-- <div class="card">
                     <div class="card-header">
