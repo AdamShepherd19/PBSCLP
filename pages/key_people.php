@@ -47,8 +47,10 @@
         </div>
 
         <div class="main-content">
-            <div class="card key-person">
-                <div class="card-header">Firstname Lastname</div>
+            <div class="card">
+                <div class="card-header">
+                    <h3> Firstname Lastname </h3>
+                </div>
                 <div class="card-body key-person-profile">
                     <div class="key-person-photo">
                         <img src="https://picsum.photos/200" alt="Profile Picture">
@@ -78,7 +80,9 @@
             </div>
 
             <div class="card">
-                <div class="card-header">Firstname Lastname</div>
+                <div class="card-header">
+                    <h3> Firstname Lastname </h3>
+                </div>
                 <div class="card-body key-person-profile">
                     <div class="key-person-photo">
                         <img src="https://picsum.photos/200" alt="Profile Picture">
