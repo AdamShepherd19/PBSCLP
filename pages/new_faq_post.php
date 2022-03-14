@@ -26,6 +26,8 @@
         // query database and insert the new announcement into the announcements table
         $sql = "INSERT INTO faq (question, answer) VALUES (:question, :answer);";
         $stmt = $connectionPDO->prepare($sql);
+
+        echo $title;
         
         //check to see if the insert was successful
         if ($stmt->execute(['question' => $question, 'answer' => $answer])) {
