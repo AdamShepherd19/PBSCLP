@@ -8,7 +8,9 @@
 
     $pass = file_get_contents('../../pass.txt', true);
     
+    echo "test1";
     if(isset($_POST['questionPHP'])) {
+        echo "test2";
         //connect to database
         try {
             $connectionPDO = new PDO('mysql:host=localhost;dbname=pbsclp_pbsclp', 'pbsclp', $pass);
@@ -32,10 +34,11 @@
             exit('Error: ' . $connectionPDO->error);
         }
 
-        // $stmt = null;
+        $stmt = null;
         $connectionPDO = null;
 
     }
+    echo "test3";
 
 ?>
 
