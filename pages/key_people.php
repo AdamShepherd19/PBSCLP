@@ -57,8 +57,8 @@
                     </div>
 
                     <div class="key-person-info">
-                        <p> email@email.com </p>
-                        <p> 071234567890 </p>
+                        <h4> email@email.com </h4>
+                        <h4> 071234567890 </h4>
                     </div>
                 </div>
             </div>
@@ -73,8 +73,8 @@
                     </div>
 
                     <div class="key-person-info">
-                        <p> email@email.com </p>
-                        <p> 071234567890 </p>
+                        <h4> email@email.com </h4>
+                        <h4> 071234567890 </h4>
                     </div>
                 </div>
             </div>
@@ -89,8 +89,8 @@
                     </div>
 
                     <div class="key-person-info">
-                        <p> email@email.com </p>
-                        <p> 071234567890 </p>
+                        <h4> email@email.com </h4>
+                        <h4> 071234567890 </h4>
                     </div>
                 </div>
             </div>
