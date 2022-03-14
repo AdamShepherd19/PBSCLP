@@ -51,7 +51,7 @@
                 <input type="button" id="new-faq-button" class="pbs-button pbs-button-green" value="New FAQ">
             </div>
 
-            <div class="forum-wrapper">
+            <div class="faq-wrapper">
 
                 <div class="card">
                     <div class="card-header">
@@ -76,6 +76,35 @@
                 } else {
                     $('.admin-only').show();
                 }
+
+                $.ajax({
+                    url: '../scripts/get_faqs.php',
+                    type: 'get',
+                    dataType: 'JSON',
+                    success: function(response) {
+                        if (response.includes("*warning_no_faqs_found*")) {
+                            var announcement = "<div class='card'>" +
+                                "<div class='card-header'>" +
+                                    "<h3> There are no FAQ's yet! </h3>" +
+                                "</div>";
+
+                                $("#faq-wrapper").append(announcement);
+                        } else {
+                            for(var x = 0; x < response.length; x++) {
+                                var faq = '<div class="card">' +
+                                    '<div class="card-header">' +
+                                        '<h3> <strong>Q</strong> -' + response[x].question + '</h3>' +
+                                    '</div>' +
+                                    '<div class="card-body">' +
+                                        '<p> <strong>A</strong> -' + response[x].answer + '</p>' +
+                                    '</div>';
+
+                                $("#faq-wrapper").append(faq);
+                            }
+                        }
+
+                    }
+                });
 
                 $('#new-faq-button').on("click", function() {
                     window.location.replace('new_faq_post.php');
