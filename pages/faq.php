@@ -91,7 +91,7 @@
                                 $("#faq-wrapper").append(announcement);
                         } else {
                             for(var x = 0; x < response.length; x++) {
-                                var faq = '<div class="card">' +
+                                var faq = '<div class="card faq-card">' +
                                     '<div class="card-header">' +
                                         '<h3> <strong>Q</strong> -' + response[x].question + '</h3>' +
                                     '</div>' +
