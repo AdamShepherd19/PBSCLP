@@ -58,6 +58,7 @@
 
                     <div class="key-person-info">
                         <h4> email@email.com </h4>
+                        <br>
                         <h4> 071234567890 </h4>
                     </div>
                 </div>
@@ -74,6 +75,7 @@
 
                     <div class="key-person-info">
                         <h4> email@email.com </h4>
+                        <br>
                         <h4> 071234567890 </h4>
                     </div>
                 </div>
@@ -90,6 +92,7 @@
 
                     <div class="key-person-info">
                         <h4> email@email.com </h4>
+                        <br>
                         <h4> 071234567890 </h4>
                     </div>
                 </div>
