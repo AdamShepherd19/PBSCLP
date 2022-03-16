@@ -139,7 +139,7 @@
                     //send data to php
                     $.ajax({
                         method: 'POST',
-                        url: "../scripts/delete_account.php",
+                        url: "../scripts/remove_account.php",
                         data: {
                             userIDPHP: user_id
                         },
