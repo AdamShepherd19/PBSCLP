@@ -112,9 +112,9 @@
                         } else {
                             for(var x = 0; x < response.length; x++) {
                                 if (response[x].admin_locked == true){
-                                    $lock_unlock_button = '<input type="button" id="lock-profile-id:' + response[x].user_id + '" class="pbs-button pbs-button-yellow table-button lock-button" value="Un-Lock">';
+                                    $lock_unlock_button = '<input type="button" id="lock-profile-id-' + response[x].user_id + '" class="pbs-button pbs-button-yellow table-button lock-profile" value="Un-Lock">';
                                 } else {
-                                    $lock_unlock_button = '<input type="button" id="lock-profile-id:' + response[x].user_id + '" class="pbs-button pbs-button-yellow table-button lock-button" value="Lock">'
+                                    $lock_unlock_button = '<input type="button" id="lock-profile-id-' + response[x].user_id + '" class="pbs-button pbs-button-yellow table-button lock-profile" value="Lock">'
                                 }
 
                                 var message = '<div class="card">'+
@@ -131,13 +131,34 @@
                                     '</div>'+
                                     
                                     '<div class="button-wrapper">'+
-                                        '<input type="button" id="edit-profile" class="pbs-button pbs-button-orange table-button" value="Edit"> <br />'+
+                                        '<input type="button" id="edit-profile-' + response[x].user_id + '" class="pbs-button pbs-button-orange table-button edit-profile" value="Edit"> <br />'+
                                         $lock_unlock_button +
-                                        '<input type="button" id="remove-profile" class="pbs-button pbs-button-red table-button" value="Remove">'+
+                                        '<input type="button" id="edit-profile-' + response[x].user_id + '" class="pbs-button pbs-button-red table-button remove-profile" value="Remove">'+
                                 '</div></div></div>';
 
                                 $(".account-wrapper").append(message);
                             }
+
+                            $(document).on("click", ".edit-profile" , function() {
+                                var contentPanelId = jQuery(this).attr("id");
+                                var thread_id = contentPanelId.split(/[-]+/).pop();
+                                alert(contentPanelId);
+                                // window.location.href = 'forum_post.php?threadId=' + thread_id;
+                            });
+
+                            $(document).on("click", ".remove-profile" , function() {
+                                var contentPanelId = jQuery(this).attr("id");
+                                var thread_id = contentPanelId.split(/[-]+/).pop();
+                                alert(contentPanelId);
+                                // window.location.href = 'forum_post.php?threadId=' + thread_id;
+                            });
+
+                            $(document).on("click", ".lock-profile" , function() {
+                                var contentPanelId = jQuery(this).attr("id");
+                                var thread_id = contentPanelId.split(/[-]+/).pop();
+                                alert(contentPanelId);
+                                // window.location.href = 'forum_post.php?threadId=' + thread_id;
+                            });
                         }
 
                     }
