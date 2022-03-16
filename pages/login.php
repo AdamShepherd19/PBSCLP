@@ -21,7 +21,7 @@
         $email = $_POST['emailPHP'];
         $password = $_POST['passwordPHP'];
  
-        $sql = "SELECT user_id, account_type, firstname, lastname, password, account_locked FROM users WHERE email=?";
+        $sql = "SELECT user_id, account_type, firstname, lastname, password, admin_locked FROM users WHERE email=?";
         $stmt = $connectionPDO->prepare($sql);
         $stmt->execute([$email]);
         $data = $stmt->fetch();
