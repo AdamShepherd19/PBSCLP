@@ -167,9 +167,9 @@
                                     },
                                     success: function(response) {
                                         if (response.includes("*account_successfully_locked*")){
-                                            $(contentPanelId).prop("value", "Unlock");
+                                            $(contentPanelId).val("Unlock");
                                         } else if (response.includes("*account_successfully_unlocked*")) {
-                                            $(contentPanelId).prop("value", "Lock");
+                                            $(contentPanelId).val("Lock");
                                         } else {
                                             alert("There was an error processing your request. Please try again.");
                                         }
