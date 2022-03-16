@@ -166,10 +166,11 @@
                                         user_idPHP: user_id
                                     },
                                     success: function(response) {
+                                        var id = "#" + contentPanelId;
                                         if (response.includes("*account_successfully_locked*")){
-                                            $(contentPanelId).val("Unlock");
+                                            $(id).val("Unlock");
                                         } else if (response.includes("*account_successfully_unlocked*")) {
-                                            $(contentPanelId).val("Lock");
+                                            $(id).val("Lock");
                                         } else {
                                             alert("There was an error processing your request. Please try again.");
                                         }
