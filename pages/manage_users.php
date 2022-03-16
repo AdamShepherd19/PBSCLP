@@ -155,7 +155,7 @@
 
                             $(document).on("click", ".lock-profile" , function() {
                                 var contentPanelId = jQuery(this).attr("id");
-                                var thread_id = contentPanelId.split(/[-]+/).pop();
+                                var user_id = contentPanelId.split(/[-]+/).pop();
                                 // alert(contentPanelId);
                                 // window.location.href = 'forum_post.php?threadId=' + thread_id;
                                 $.ajax({
@@ -163,7 +163,7 @@
                                     type: 'post',
                                     dataType: 'text',
                                     data: {
-                                        toggle_lock: true;
+                                        user_idPHP: user_id
                                     },
                                     success: function(response) {
                                         if (response.includes("*account_successfully_locked*")){
