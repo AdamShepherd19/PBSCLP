@@ -26,7 +26,7 @@
         //perform query and sort into newest first
         $sql = "SELECT firstname, lastname FROM users WHERE user_id=? LIMIT 1";
         $stmt = $connectionPDO->prepare($sql);
-        $stmt->execute([$user_id]);
+        $stmt->execute([$_POST['userIDPHP']]);
         $result = $stmt->fetchAll();
 
         if ($result){
