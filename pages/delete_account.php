@@ -33,10 +33,10 @@
             // output data of each row
             foreach($result as $row) {
                 $name = $row['firstname'] . " " . $row['lastname'];
-                echo $name;
+                exit($name);
             }
         } else {
-            echo "*warning_no_user_found*";
+            exit("*warning_no_user_found*");
         }
 
 
