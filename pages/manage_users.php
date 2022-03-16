@@ -168,7 +168,7 @@
                                     success: function(response) {
                                         if (response.includes("*account_successfully_locked*")){
                                             $(contentPanelId).prop("value", "Unlock");
-                                        } else if (response.includes("*account_successfully_unlocked*") {
+                                        } else if (response.includes("*account_successfully_unlocked*")) {
                                             $(contentPanelId).prop("value", "Lock");
                                         } else {
                                             alert("There was an error processing your request. Please try again.");
