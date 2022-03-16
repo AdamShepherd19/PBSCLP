@@ -29,7 +29,7 @@
                         $stmt->execute([$user_id]);
                         exit("*account_successfully_unlocked*");
                     } catch (Exception $e) {
-                        exit('Caught exception: ',  $e->getMessage(), "\n");
+                        echo 'Caught exception: ',  $e->getMessage(), "\n";
                     }
                 } else if ($row['admin_locked'] == 0){
                     $sql = "UPDATE users SET admin_locked=1 WHERE user_id=?;";
@@ -38,7 +38,7 @@
                         $stmt->execute([$user_id]);
                         exit("*account_successfully_locked*");
                     } catch (Exception $e) {
-                        exit('Caught exception: ',  $e->getMessage(), "\n");
+                        echo 'Caught exception: ',  $e->getMessage(), "\n";
                     }
                 }
             }
