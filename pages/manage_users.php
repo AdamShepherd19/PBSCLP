@@ -156,8 +156,25 @@
                             $(document).on("click", ".lock-profile" , function() {
                                 var contentPanelId = jQuery(this).attr("id");
                                 var thread_id = contentPanelId.split(/[-]+/).pop();
-                                alert(contentPanelId);
+                                // alert(contentPanelId);
                                 // window.location.href = 'forum_post.php?threadId=' + thread_id;
+                                $.ajax({
+                                    url: '../scripts/toggle_profile_lock.php',
+                                    type: 'post',
+                                    dataType: 'text',
+                                    data: {
+                                        toggle_lock: true;
+                                    },
+                                    success: function(response) {
+                                        if (response.includes("*account_successfully_locked*")){
+                                            $(contentPanelId).prop("value", "Unlock");
+                                        } else if (response.includes("*account_successfully_unlocked*") {
+                                            $(contentPanelId).prop("value", "Lock");
+                                        } else {
+                                            alert("There was an error processing your request. Please try again.");
+                                        }
+                                    }
+                                });
                             });
                         }
 
