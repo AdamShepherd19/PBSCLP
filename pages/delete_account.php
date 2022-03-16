@@ -11,7 +11,7 @@
         exit();
     }
 
-    if (isset($_POST['userIDPHP']) {
+    if (isset($_POST['userIDPHP'])) {
         // https://makitweb.com/return-json-response-ajax-using-jquery-php
         $pass = file_get_contents('../../pass.txt', true);
 
