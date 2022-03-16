@@ -89,7 +89,7 @@
         <div class="main-content">
             <div id="info-wrapper">
                 
-                <h3>Are you sure you wish to remove the account belonging to <span id='account-name'> </span> account? All items relating to the account (such as forum posts created by the user and comments posted by the user) will be permanently removed.</h3>
+                <h3>Are you sure you wish to remove the account belonging to <span id='account-name'> </span>? All items relating to the account (such as forum posts created by the user and comments posted by the user) will be permanently removed.</h3>
 
             </div>
 
@@ -117,7 +117,7 @@
 
                 $.ajax({
                     method: 'POST',
-                    url: "../scripts/remove_account.php",
+                    url: "delete_account.php",
                     data: {
                         userIDPHP: user_id
                     },
