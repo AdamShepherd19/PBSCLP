@@ -28,7 +28,7 @@
 
         //check if login details provided match a user profile in the db
         if ($data && password_verify($password, $data['password'])){
-            if ($data['admin_locked'] == true) {
+            if ($data['admin_locked'] == 1) {
                 exit("*account_locked_by_administrator*");
             } else {
                 //store session variables

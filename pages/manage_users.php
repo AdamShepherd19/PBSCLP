@@ -133,7 +133,7 @@
                                     '<div class="button-wrapper">'+
                                         '<input type="button" id="edit-profile-' + response[x].user_id + '" class="pbs-button pbs-button-orange table-button edit-profile" value="Edit"> <br />'+
                                         $lock_unlock_button +
-                                        '<input type="button" id="edit-profile-' + response[x].user_id + '" class="pbs-button pbs-button-red table-button remove-profile" value="Remove">'+
+                                        '<input type="button" id="remove-profile-' + response[x].user_id + '" class="pbs-button pbs-button-red table-button remove-profile" value="Remove">'+
                                 '</div></div></div>';
 
                                 $(".account-wrapper").append(message);
