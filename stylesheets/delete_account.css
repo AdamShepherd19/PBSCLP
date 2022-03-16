@@ -1,0 +1,10 @@
+.main-content {
+    max-width: 60vw;
+    align-content: center;
+    margin: auto;
+}
+
+#account-name {
+    font-style: italic;
+    color: red;
+}

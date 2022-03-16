@@ -148,9 +148,9 @@
 
                             $(document).on("click", ".remove-profile" , function() {
                                 var contentPanelId = jQuery(this).attr("id");
-                                var thread_id = contentPanelId.split(/[-]+/).pop();
-                                alert(contentPanelId);
-                                // window.location.href = 'forum_post.php?threadId=' + thread_id;
+                                var user_id = contentPanelId.split(/[-]+/).pop();
+                                // alert(contentPanelId);
+                                window.location.href = 'delete_account.php?userId=' + user_id;
                             });
 
                             $(document).on("click", ".lock-profile" , function() {
