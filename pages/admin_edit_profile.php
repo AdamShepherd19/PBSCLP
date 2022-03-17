@@ -170,10 +170,10 @@
 
                 
                 var user_id_to_edit = "<?php echo $_GET['userId']; ?>";
-                
+
                 $.ajax({
                     url: '../scripts/get_profile.php',
-                    type: 'get',
+                    type: 'post',
                     dataType: 'JSON',
                     data: {
                         user_id_PHP: user_id_to_edit
