@@ -153,7 +153,8 @@
                             method: 'POST',
                             url: "../scripts/remove_account.php",
                             data: {
-                                userIDPHP: user_id
+                                confirm_deletion: true,
+                                deleting_user_id: user_id
                             },
                             success: function (response) {
                                 //check if the php execution was successful and the data was added to the db
