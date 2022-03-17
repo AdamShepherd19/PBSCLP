@@ -12,37 +12,77 @@
     }
 
     if (isset($_POST['confirm_deletion'])){
+        //get post variables
         $user_id_to_delete = $_POST['deleting_user_id'];
+        $reason = $_POST['delete_reason'];
+
+        $pass = file_get_contents('../../pass.txt', true);
+        //connect to database
+        try {
+            $connectionPDO = new PDO('mysql:host=localhost;dbname=pbsclp_pbsclp', 'pbsclp', $pass);
+            $connectionPDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch(PDOException $e) {
+            exit('*database_connection_error*');
+        }
+
+        // query database and insert the new announcement into the announcements table
+        $sql = "SELECT firstname, lastname, email, account_type FROM users WHERE user_id=? LIMIT 1";
+        $stmt = $connectionPDO->prepare($sql);
+        $stmt->execute([$user_id_to_delete]);
+        $result = $stmt->fetchAll();
+
+        if ($result){
+
+            // store data of each row
+            foreach($result as $row) {
+                // QUERY FOR INFO
+                $firstname_to_delete = $row['firstname'];
+                $lastname_to_delete = $row['lastname'];
+                $email_to_delete = $row['email'];
+                $account_type_to_delete = $row['account_type'];
+            }
+
+            $filename = "../account_deletion_logs/" . $_POST['deleting_user_id'] . "_" . $firstname_to_delete . $lastname_to_delete;
         
-        $filename = "../account_deletion_logs/" . $_POST['deleting_user_id'];
+            $myfile = fopen($filename, "w") or die("*error_creating_log*");
+
+            $txt = "User ID: " . $user_id_to_delete . "\n";
+            fwrite($myfile, $txt);
+
+            $txt = "Name: " . $firstname_to_delete . " " . $lastname_to_delete . "\n";
+            fwrite($myfile, $txt);
+
+            $txt = "Email Address: " . $email_to_delete . "\n";
+            fwrite($myfile, $txt);
+
+            $txt = "Account Type: " . $account_type_to_delete . "\n";
+            fwrite($myfile, $txt);
+
+            $txt = "\n===================================\n\n";
+            fwrite($myfile, $txt);
+
+            $txt = "Deleting User: \n";
+            fwrite($myfile, $txt);
+
+            $txt = "User ID: " . $_SESSION['user_id'] ."\n";
+            fwrite($myfile, $txt);
+
+            $txt = "Name: " . $_SESSION['firstname'] . " " . $_SESSION['lastname'] ."\n";
+            fwrite($myfile, $txt);
+
+            $txt = "\nReason: " . $reason ."\n";
+            fwrite($myfile, $txt);
+
+            fclose($myfile);
+        }
+
         
-        $myfile = fopen($filename, "w") or die("*error_creating_log*");
-
-        $txt = "User ID: " . $_SESSION['user_id'] . "\n";
-        fwrite($myfile, $txt);
-
-        // $txt = "Name: " . $_SESSION['firstname'] . $_SESSION['lastname'] . "\n";
-        // fwrite($myfile, $txt);
-
-        // $txt = "Email Address: " . $_SESSION['email'] . "\n";
-        // fwrite($myfile, $txt);
-
-        // $txt = "Account Type: " . $_SESSION['account_type'] . "\n";
-        // fwrite($myfile, $txt);
-
-        fclose($myfile);
     }
 
-    $pass = file_get_contents('../../pass.txt', true);
+    
     
     // if(isset($_POST['userIDPHP'])) {
-    //     //connect to database
-    //     try {
-    //         $connectionPDO = new PDO('mysql:host=localhost;dbname=pbsclp_pbsclp', 'pbsclp', $pass);
-    //         $connectionPDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    //     } catch(PDOException $e) {
-    //         exit('*database_connection_error*');
-    //     }
+    //     
 
     //     // query database and insert the new announcement into the announcements table
     //     $sql = "DELETE FROM users WHERE user_id=?";

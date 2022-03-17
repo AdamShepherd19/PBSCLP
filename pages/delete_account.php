@@ -154,7 +154,8 @@
                             url: "../scripts/remove_account.php",
                             data: {
                                 confirm_deletion: true,
-                                deleting_user_id: user_id
+                                deleting_user_id: user_id,
+                                delete_reason: reason
                             },
                             success: function (response) {
                                 //check if the php execution was successful and the data was added to the db
