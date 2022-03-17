@@ -98,6 +98,10 @@
                 $("#cancel-edit").hide();
                 $("#save-profile").hide();
 
+                $("#cancel-profile").on('click', function() {
+                    window.location.href = 'manage_users.php';
+                });
+
                 $("#edit-profile").on('click', function(){
                     $("#edit-profile").hide();
                     $("#cancel-profile").hide();
