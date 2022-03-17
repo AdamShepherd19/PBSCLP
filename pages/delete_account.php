@@ -91,8 +91,9 @@
                 
                 <h3>Are you sure you wish to remove the account belonging to <span id='account-name'> </span>? All items relating to the account (such as forum posts created by the user and comments posted by the user) will be permanently removed.</h3>
                 <form>
-                    <h4>Please enter the reason you are deleting this account below:</h4>
-                    <textarea id="delete-reason" class="pbs-form-text-box" placeholder="Please enter the reason for deletion"></textarea><br />
+                    <br>
+                    <h5>Please enter the reason you are deleting this account below:</h5>
+                    <textarea id="delete-reason" class="pbs-form-text-box" placeholder="Please enter the reason for deletion..."></textarea><br />
                 </form>
             </div>
 
