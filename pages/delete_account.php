@@ -98,8 +98,8 @@
             </div>
 
             <div class="button-wrapper">
-                <input type="button" id="remove-account-cancel" class="pbs-button pbs-button-red" value="Cancel"> 
-                <input type="button" id="remove-account-submit" class="pbs-button pbs-button-green" value="Delete">
+                <input type="button" id="remove-account-cancel" class="pbs-button pbs-button-green" value="Cancel"> 
+                <input type="button" id="remove-account-submit" class="pbs-button pbs-button-red" value="Delete">
             </div>
         </div>
 

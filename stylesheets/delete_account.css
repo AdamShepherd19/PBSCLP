@@ -13,3 +13,7 @@
     width: 100%;
     min-height: 8rem;
 }
+
+.button-wrapper {
+    text-align: right;
+}
