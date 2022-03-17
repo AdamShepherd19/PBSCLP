@@ -140,35 +140,44 @@
                 });
 
                 $("#remove-account-submit").on('click', function(){
-                    //send data to php
-                    $.ajax({
-                        method: 'POST',
-                        url: "../scripts/remove_account.php",
-                        data: {
-                            userIDPHP: user_id
-                        },
-                        success: function (response) {
-                            //check if the php execution was successful and the data was added to the db
-                            if (response.includes("*account_removed_succesfully*")){
-                                //replace html with success message and button to return to landing page
-                                var successHTML = "<h3>The account was removed succesfully. Please click the button below to return to the user management page.</h3><br> " +
-                                    "<input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>";
 
-                                $('.main-content').html(successHTML);
+                    // //retrieve data from form
+                    var reason = $("#delete-reason").val();
 
-                            } else {
-                                //display error message if the php could not be executed
-                                $('.main-content').html("<h3> There was an error processing your request. Please try again </h3><br>Error" + response +
-                                    "<br><input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>");
-                            }
+                    // //check data not empty
+                    if(reason == ""){
+                        alert("Please supply a reason for deleting this account.");
+                    } else {
+                        //send data to php
+                        $.ajax({
+                            method: 'POST',
+                            url: "../scripts/remove_account.php",
+                            data: {
+                                userIDPHP: user_id
+                            },
+                            success: function (response) {
+                                //check if the php execution was successful and the data was added to the db
+                                if (response.includes("*account_removed_succesfully*")){
+                                    //replace html with success message and button to return to landing page
+                                    var successHTML = "<h3>The account was removed succesfully. Please click the button below to return to the user management page.</h3><br> " +
+                                        "<input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>";
 
-                            // onclick function for new button to return to landing page
-                            $("#return").on('click', function(){
-                                window.location.replace('manage_users.php');
-                            });
-                        },
-                        datatype: 'text'
-                    });
+                                    $('.main-content').html(successHTML);
+
+                                } else {
+                                    //display error message if the php could not be executed
+                                    $('.main-content').html("<h3> There was an error processing your request. Please try again </h3><br>Error" + response +
+                                        "<br><input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>");
+                                }
+
+                                // onclick function for new button to return to landing page
+                                $("#return").on('click', function(){
+                                    window.location.replace('manage_users.php');
+                                });
+                            },
+                            datatype: 'text'
+                        });
+                    }
                 });
             });
         </script>
