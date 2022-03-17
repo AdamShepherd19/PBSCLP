@@ -169,13 +169,14 @@
                 });
 
                 
-
+                var user_id_to_edit = "<?php echo $_GET['userId']; ?>";
+                
                 $.ajax({
                     url: '../scripts/get_profile.php',
                     type: 'get',
                     dataType: 'JSON',
                     data: {
-                        user_id_PHP: $_GET['userId'];
+                        user_id_PHP: user_id_to_edit
                     },
                     success: function(response) {
                         if (response.includes("*warning_no_user_found*")) {
