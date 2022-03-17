@@ -78,6 +78,7 @@
                         <td></td>
                         <td id="buttons">
                             <input type="button" id="edit-profile" class="pbs-button pbs-button-green table-button" value="Edit">
+                            <input type="button" id="cancel-edit" class="pbs-button pbs-button-red" value="Cancel">
                             <input type="button" id="cancel-profile" class="pbs-button pbs-button-red" value="Cancel">
                             <input type="button" id="save-profile" class="pbs-button pbs-button-green" value="Save">
                         </td>
@@ -94,12 +95,13 @@
                 var name, email, contact_number, organisation;
                 
                 // hide save and cancel edit profile buttons
-                $("#cancel-profile").hide();
+                $("#cancel-edit").hide();
                 $("#save-profile").hide();
 
                 $("#edit-profile").on('click', function(){
                     $("#edit-profile").hide();
-                    $("#cancel-profile").show();
+                    $("#cancel-profile").hide();
+                    $("#cancel-edit").show();
                     $("#save-profile").show();
                     
                     $("#name").html('<input type="text" id="new-name" class="pbs-form-text-box" value="' + name + '"/>');
@@ -108,10 +110,11 @@
                     $("#organisation").html('<input type="text" id="new-organisation" class="pbs-form-text-box" value="' + organisation + '"/>');
                 });
 
-                $("#cancel-profile").on('click', function() {
-                    $("#cancel-profile").hide();
+                $("#cancel-edit").on('click', function() {
+                    $("#cancel-edit").hide();
                     $("#save-profile").hide();
                     $("#edit-profile").show();
+                    $("#cancel-profile").show();
 
                     $("#name").html(name);
                     $("#email-address").html(email);
