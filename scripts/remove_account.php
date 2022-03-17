@@ -46,34 +46,27 @@
         
             $myfile = fopen($filename, "w") or die("*error_creating_log*");
 
-            $txt = "User ID: " . $user_id_to_delete . "\n";
-            fwrite($myfile, $txt);
+            $uid = "User ID: " . $user_id_to_delete . "\n";
+            $name = "Name: " . $firstname_to_delete . " " . $lastname_to_delete . "\n";
+            $email = "Email Address: " . $email_to_delete . "\n";
+            $acctype = "Account Type: " . $account_type_to_delete . "\n";
+            $separator = "\n===================================\n\n";
+            $deluserinfo = "Deleting User: \n";
+            $adminid = "User ID: " . $_SESSION['user_id'] ."\n";
+            $adminname = "Name: " . $_SESSION['firstname'] . " " . $_SESSION['lastname'] ."\n";
+            $adminreason = "\nReason: " . $reason ."\n";
 
-            $txt = "Name: " . $firstname_to_delete . " " . $lastname_to_delete . "\n";
-            fwrite($myfile, $txt);
+            $total_log = $uid .= $name .= $email .= $acctype .= $separator .= $deluserinfo .= $adminid .= $adminname .= $adminreason;
+            
+            if (fwrite($myfile, $total_log) == false) {
+                fclose($myfile);
+                exit("*error_creating_log*");
+            } else {
+                fclose($myfile);
+                exit("*log_created_successfully*");
+            }
 
-            $txt = "Email Address: " . $email_to_delete . "\n";
-            fwrite($myfile, $txt);
-
-            $txt = "Account Type: " . $account_type_to_delete . "\n";
-            fwrite($myfile, $txt);
-
-            $txt = "\n===================================\n\n";
-            fwrite($myfile, $txt);
-
-            $txt = "Deleting User: \n";
-            fwrite($myfile, $txt);
-
-            $txt = "User ID: " . $_SESSION['user_id'] ."\n";
-            fwrite($myfile, $txt);
-
-            $txt = "Name: " . $_SESSION['firstname'] . " " . $_SESSION['lastname'] ."\n";
-            fwrite($myfile, $txt);
-
-            $txt = "\nReason: " . $reason ."\n";
-            fwrite($myfile, $txt);
-
-            fclose($myfile);
+            // fclose($myfile);
         }
 
         
