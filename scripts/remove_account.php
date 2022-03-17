@@ -59,38 +59,25 @@
             $total_log = $uid .= $name .= $email .= $acctype .= $separator .= $deluserinfo .= $adminid .= $adminname .= $adminreason;
             
             if (fwrite($myfile, $total_log) == false) {
-                fclose($myfile);
                 exit("*error_creating_log*");
             } else {
-                fclose($myfile);
-                exit("*log_created_successfully*");
+                $sql = "DELETE FROM users WHERE user_id=?";
+                $stmt = $connectionPDO->prepare($sql);
+                
+                //check to see if the insert was successful
+                if ($stmt->execute([$user_id_to_delete]) > 0) {
+                    exit('*account_removed_succesfully*');
+                } else {
+                    exit('Error: ' . $connection->error);
+                }
             }
 
-            // fclose($myfile);
+            fclose($myfile);
         }
 
-        
+        //close connection to db
+        $stmt = null;
+        $connectionPDO = null;
     }
-
-    
-    
-    // if(isset($_POST['userIDPHP'])) {
-    //     
-
-    //     // query database and insert the new announcement into the announcements table
-    //     $sql = "DELETE FROM users WHERE user_id=?";
-    //     $stmt = $connectionPDO->prepare($sql);
-        
-    //     //check to see if the insert was successful
-    //     if ($stmt->execute([$_POST['userIDPHP']]) > 0) {
-    //         exit('*account_removed_succesfully*');
-    //     } else {
-    //         exit('Error: ' . $connection->error);
-    //     }
-
-    //     //close connection to db
-    //     $stmt = null;
-    //     $connectionPDO = null;
-    // }
 
 ?>
