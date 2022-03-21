@@ -43,7 +43,10 @@
         </div>
 
         <div class="page-header">
-            <h1>Resource Bank</h1>
+            <h1>Resource Bank</h1> <br>
+        </div>
+
+        <div class="page-subheader">
             <h3 id='course-subheading'></h3>
         </div>
 
