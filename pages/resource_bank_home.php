@@ -48,7 +48,7 @@
 
         <div class="main-content">
 
-            <div class="course-wrapper">
+            <!-- <div class="course-wrapper">
 
                 <div class="course-card card">
                     <div class="card-header">Course Name Here</div>
@@ -57,7 +57,7 @@
                     </div>
                 </div>
 
-            </div>
+            </div> -->
         </div>
 
         
@@ -72,38 +72,36 @@
                     $('.admin-only').show();
                 }
 
-                // $.ajax({
-                //     url: '../scripts/get_course_summary.php',
-                //     type: 'get',
-                //     dataType: 'JSON',
-                //     data: {
-                //         approvedPHP: '1'
-                //     },
-                //     success: function(response) {
-                //         if (response.includes("*warning_no_posts_found*")) {
-                //             var message = "<div class='card'><h4 class='card-header'> There are no posts yet!</div>"
+                $.ajax({
+                    url: '../scripts/get_course_summary.php',
+                    type: 'get',
+                    dataType: 'JSON',
+                    success: function(response) {
+                        if (response.includes("*warning_no_courses_found*")) {
+                            var message = "<div class='card'><h4 class='card-header'> There is no course content yet!</div>"
 
-                //             $(".forum-wrapper").append(message);
-                //         } else {
-                //             for(var x = 0; x < response.length; x++) {
-                //                 var message = '<div class="forum-post card" id="thread-id-' + response[x].thread_id + '">' +
-                //                     '<div class="card-header">' + response[x].title + '<br><span><i> - ' + response[x].firstname + ' ' + response[x].lastname + '</i></span>' + '</div>' +
-                //                     '<div class="card-body">' +
-                //                         '<p>' + response[x].content + '</p>' +
-                //                         '<span><i>Comments (x)</i></span>' +
-                //                     '</div></div><br>';
+                            $(".course-wrapper").html(message);
+                        } else {
+                            for(var x = 0; x < response.length; x++) {
 
-                //                 $(".forum-wrapper").append(message);
-                //             }
-                //             $(document).on("click", ".forum-post" , function() {
-                //                 var contentPanelId = jQuery(this).attr("id");
-                //                 var thread_id = contentPanelId.split(/[-]+/).pop();
-                //                 window.location.href = 'forum_post.php?threadId=' + thread_id;
-                //             });
-                //         }
+                                var message = '<div class="course-card card" id=cid' + response[x].course_id + '>' +
+                                    '<div class="card-header">' + response[x].name + '</div>' +
+                                    '<div class="card-body">' +
+                                        '<p>' + response[x].description + '</p>' +
+                                    '</div></div>';
 
-                //     }
-                // });
+                                $(".course-wrapper").append(message);
+                            }
+                            $(document).on("click", ".course-card" , function() {
+                                var contentPanelId = jQuery(this).attr("id");
+                                var course_id = contentPanelId.split(/[-]+/).pop();
+                                // window.location.href = 'course.php?courseId=' + course_id;
+                                alert(contentPanelId);
+                            });
+                        }
+
+                    }
+                });
                 
             });
         </script>
