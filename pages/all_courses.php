@@ -89,7 +89,7 @@
                         } else {
                             for(var x = 0; x < response.length; x++) {
 
-                                var message = '<div class="course-card card" id=sid' + response[x].session_id + '>' +
+                                var message = '<div class="session-card card" id=sid-' + response[x].session_id + '>' +
                                     '<div class="card-header">' + response[x].name + '</div>' +
                                     '<div class="card-body">' +
                                         '<p>' + response[x].description + '</p>' +
@@ -97,11 +97,11 @@
 
                                 $(".inner-wrapper").append(message);
                             }
-                            $(document).on("click", ".course-card" , function() {
+                            $(document).on("click", ".session-card" , function() {
                                 var contentPanelId = jQuery(this).attr("id");
-                                var course_id = contentPanelId.split(/[-]+/).pop();
-                                // window.location.href = 'all_courses.php?courseId=' + course_id;
-                                alert(contentPanelId);
+                                var session_id = contentPanelId.split(/[-]+/).pop();
+                                window.location.href = 'individual_session.php?sid=' + session_id;
+                                // alert(contentPanelId);
                             });
                         }
 
