@@ -11,7 +11,7 @@
     margin-bottom: 40px;
 }
 
-.course-card, .session-card {
+.course-card, .session-card, .file-card {
     cursor: pointer;
     margin-bottom: 10px;
 }
