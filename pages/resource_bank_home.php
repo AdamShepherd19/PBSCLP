@@ -48,7 +48,7 @@
 
         <div class="main-content">
 
-            <div class="course-wrapper">
+            <div class="inner-wrapper">
 
                 <!-- <div class="course-card card">
                     <div class="card-header">Course Name Here</div>
