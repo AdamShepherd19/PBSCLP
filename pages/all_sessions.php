@@ -44,6 +44,7 @@
 
         <div class="page-header">
             <h1>Resource Bank</h1>
+            <h3 id='course-subheading'></h3>
         </div>
 
         <div class="main-content">
@@ -73,6 +74,8 @@
                 }
 
                 var course_id = "<?php echo $_GET['cid']; ?>";
+
+                $(".course-subheading").html(course_id);
 
                 $.ajax({
                     url: '../scripts/get_session_summary.php',

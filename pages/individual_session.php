@@ -44,6 +44,7 @@
 
         <div class="page-header">
             <h1>Resource Bank</h1>
+            <h3 id='session-subheading'></h3>
         </div>
 
         <div class="main-content">
@@ -87,6 +88,8 @@
                 }
 
                 var session_id = "<?php echo $_GET['sid']; ?>";
+
+                $(".session-subheading").html(session_id);
 
                 // $.ajax({
                 //     url: '../scripts/get_session_summary.php',
