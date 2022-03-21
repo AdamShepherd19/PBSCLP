@@ -80,7 +80,7 @@
                         if (response.includes("*warning_no_courses_found*")) {
                             var message = "<div class='card'><h4 class='card-header'> There is no course content yet!</div>"
 
-                            $(".course-wrapper").html(message);
+                            $(".inner-wrapper").html(message);
                         } else {
                             for(var x = 0; x < response.length; x++) {
 
@@ -90,7 +90,7 @@
                                         '<p>' + response[x].description + '</p>' +
                                     '</div></div>';
 
-                                $(".course-wrapper").append(message);
+                                $(".inner-wrapper").append(message);
                             }
                             $(document).on("click", ".course-card" , function() {
                                 var contentPanelId = jQuery(this).attr("id");
