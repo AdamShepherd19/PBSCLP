@@ -95,7 +95,7 @@
                             $(document).on("click", ".course-card" , function() {
                                 var contentPanelId = jQuery(this).attr("id");
                                 var course_id = contentPanelId.split(/[-]+/).pop();
-                                window.location.href = 'course.php?cid=' + course_id;
+                                window.location.href = 'all_courses.php?cid=' + course_id;
                                 // alert(contentPanelId);
                             });
                         }
