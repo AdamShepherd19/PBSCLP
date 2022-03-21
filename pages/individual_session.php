@@ -89,7 +89,7 @@
 
                 var session_id = "<?php echo $_GET['sid']; ?>";
 
-                $(".session-subheading").html(session_id);
+                $("#session-subheading").html(session_id);
 
                 // $.ajax({
                 //     url: '../scripts/get_session_summary.php',

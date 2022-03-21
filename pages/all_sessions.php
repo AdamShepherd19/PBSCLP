@@ -75,7 +75,7 @@
 
                 var course_id = "<?php echo $_GET['cid']; ?>";
 
-                $(".course-subheading").html(course_id);
+                $("#course-subheading").html(course_id);
 
                 $.ajax({
                     url: '../scripts/get_session_summary.php',
