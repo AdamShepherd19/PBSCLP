@@ -1,0 +1,19 @@
+.main-content {
+    max-width: 60vw;
+    align-content: center;
+    margin: auto;
+}
+
+#account-name {
+    font-style: italic;
+    color: red;
+}
+
+#delete-reason {
+    width: 100%;
+    min-height: 8rem;
+}
+
+.button-wrapper {
+    text-align: right;
+}

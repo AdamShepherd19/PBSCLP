@@ -21,14 +21,14 @@
         $email = $_POST['emailPHP'];
         $password = $_POST['passwordPHP'];
  
-        $sql = "SELECT user_id, account_type, firstname, lastname, password FROM users WHERE email=?";
+        $sql = "SELECT user_id, account_type, firstname, lastname, password, admin_locked FROM users WHERE email=?";
         $stmt = $connectionPDO->prepare($sql);
         $stmt->execute([$email]);
         $data = $stmt->fetch();
 
         //check if login details provided match a user profile in the db
         if ($data && password_verify($password, $data['password'])){
-            if ($data['admin_locked'] == true) {
+            if ($data['admin_locked'] == 1) {
                 exit("*account_locked_by_administrator*");
             } else {
                 //store session variables

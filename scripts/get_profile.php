@@ -15,7 +15,13 @@
     //perform query and sort into newest first
     $sql = "SELECT firstname, lastname, email, organisation, contact_number FROM users WHERE user_id=?";
     $stmt = $connectionPDO->prepare($sql);
-    $stmt->execute([$_SESSION['user_id']]);
+
+    if(isset($_POST['user_id_PHP'])) {
+        $stmt->execute([$_POST['user_id_PHP']]);
+    } else {
+        $stmt->execute([$_SESSION['user_id']]);
+    }
+    
     $result = $stmt->fetch();
 
     
