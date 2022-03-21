@@ -48,7 +48,7 @@
 
         <div class="main-content">
 
-            <div class="course-wrapper">
+            <div class="inner-wrapper">
 
                 <!-- <div class="course-card card">
                     <div class="card-header">Course Name Here</div>
@@ -72,31 +72,36 @@
                     $('.admin-only').show();
                 }
 
+                var course_id = "<?php echo $_GET['cid']; ?>";
+
                 $.ajax({
-                    url: '../scripts/get_course_summary.php',
-                    type: 'get',
+                    url: '../scripts/get_session_summary.php',
+                    type: 'post',
                     dataType: 'JSON',
+                    data: {
+                        course_idPHP: course_id
+                    },
                     success: function(response) {
-                        if (response.includes("*warning_no_courses_found*")) {
+                        if (response.includes("*warning_no_sessions_found*")) {
                             var message = "<div class='card'><h4 class='card-header'> There is no course content yet!</div>"
 
-                            $(".course-wrapper").html(message);
+                            $(".inner-wrapper").html(message);
                         } else {
                             for(var x = 0; x < response.length; x++) {
 
-                                var message = '<div class="course-card card" id=cid-' + response[x].course_id + '>' +
+                                var message = '<div class="course-card card" id=sid' + response[x].session_id + '>' +
                                     '<div class="card-header">' + response[x].name + '</div>' +
                                     '<div class="card-body">' +
                                         '<p>' + response[x].description + '</p>' +
                                     '</div></div>';
 
-                                $(".course-wrapper").append(message);
+                                $(".inner-wrapper").append(message);
                             }
                             $(document).on("click", ".course-card" , function() {
                                 var contentPanelId = jQuery(this).attr("id");
                                 var course_id = contentPanelId.split(/[-]+/).pop();
-                                window.location.href = 'course.php?cid=' + course_id;
-                                // alert(contentPanelId);
+                                // window.location.href = 'course.php?courseId=' + course_id;
+                                alert(contentPanelId);
                             });
                         }
 
