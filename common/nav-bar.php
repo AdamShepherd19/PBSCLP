@@ -22,7 +22,7 @@
                 </li>
 
                 <li class="nav-item" id="nav-resource-bank">
-                    <a class="nav-link" href="resource_bank.php">Resource Bank</a>
+                    <a class="nav-link" href="resource_bank_home.php">Resource Bank</a>
                 </li>
 
                 <li class="nav-item" id="nav-profile">
