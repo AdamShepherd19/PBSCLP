@@ -79,25 +79,25 @@
 
     // $filename = isset($_GET["fn"])?$_GET["fn"]:null;
 
-    // if ($file_id === null || !file_exists($proxiedDirectory.$file_path)) {
-    //     // http_response_code(404);
-    //     exit("*warning_error_opening_file*");
-    // }
+    if ($file_id === null || !file_exists($proxiedDirectory.$file_path)) {
+        // http_response_code(404);
+        exit("*warning_error_opening_file*");
+    }
 
-    // if (!isset($_SESSION['logged_in'])) { //Not a real method, use your own check
-    //     // http_response_code(403);
-    //     exit("*not_authorised_to_view_content*");
-    // }
+    if (!isset($_SESSION['logged_in'])) { //Not a real method, use your own check
+        // http_response_code(403);
+        exit("*not_authorised_to_view_content*");
+    }
 
     // header("Location:" . $proxiedDirectory . $file_path);
 
-    // $fp = fopen($proxiedDirectory.$file_path, 'rb');
+    $fp = fopen($proxiedDirectory.$file_path, 'rb');
 
-    // header("Content-Type: application/pdf"); //May need to determine mime type somehow
-    // header("Content-Length: " . filesize($proxiedDirectory.$file_path));
+    header("Content-Type: application/pdf"); //May need to determine mime type somehow
+    header("Content-Length: " . filesize($proxiedDirectory.$file_path));
     // header('Content-Disposition: inline; filename="' . $proxiedDirectory.$file_path . '"');  
     // header($proxiedDirectory.$file_path);
     // @readfile($proxiedDirectory . $file_path);
-    // fpassthru($fp);
-    // exit;
+    fpassthru($fp);
+    exit;
 ?>
