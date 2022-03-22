@@ -93,7 +93,7 @@
     header("Content-Length: " . filesize($proxiedDirectory.$file_path));
     // header('Content-Disposition: inline; filename="' . $filename . '"');  
 
-    readfile($proxiedDirectory . $file_path);
-    // fpassthru($fp);
+    // readfile($proxiedDirectory . $file_path);
+    fpassthru($fp);
     exit;
 ?>
