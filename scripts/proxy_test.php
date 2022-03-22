@@ -87,7 +87,7 @@
         exit("*not_authorised_to_view_content*");
     }
 
-    $fp = fopen($proxiedDirectory.$file_path, 'rb');
+    // $fp = fopen($proxiedDirectory.$file_path, 'rb');
 
     header("Content-Type: application/pdf"); //May need to determine mime type somehow
     header("Content-Length: " . filesize($proxiedDirectory.$file_path));
