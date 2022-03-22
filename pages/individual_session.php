@@ -123,7 +123,7 @@
                                             alert("There was an error opening the file. Please try again or contact a system administrator.");
                                             // $(".inner-wrapper").html(message);
                                         } else {
-                                            window.location.href = response;
+                                            window.open(response);
                                         }
                                         // else {
                                         //     for(var x = 0; x < response.length; x++) {
