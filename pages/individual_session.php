@@ -54,14 +54,14 @@
 
             <div class="inner-wrapper">
 
-                <!-- <div class="file-card card">
+                <div class="file-card card">
                     <div class="card-header">Course Name Here</div>
-                    <a href="../resource_bank/course_1/session_1/Test_PDF.pdf">
+                    <a href="../../resource_bank/course_1/session_1/Test_PDF.pdf">
                         <div class="card-body">
                             <h5>filename.pdf</h5>
                         </div>
                     </a>
-                </div> -->
+                </div>
 
             </div>
         </div>
@@ -104,27 +104,27 @@
 
                                 $(".inner-wrapper").append(message);
                             }
-                            $(document).on("click", ".file-card" , function() {
-                                var contentPanelId = jQuery(this).attr("id");
-                                var file_id = contentPanelId.split(/[-]+/).pop();
+                            // $(document).on("click", ".file-card" , function() {
+                            //     var contentPanelId = jQuery(this).attr("id");
+                            //     var file_id = contentPanelId.split(/[-]+/).pop();
 
-                                $.ajax({
-                                    url: '../scripts/proxy_test.php',
-                                    type: 'post',
-                                    dataType: 'text',
-                                    data: {
-                                        file_idPHP: file_id
-                                    },
-                                    success: function(response) {
-                                        if (response.includes("*warning_error_opening_file*")) {
-                                            alert("There was an error opening the file. Please try again or contact a system administrator.");
-                                        } else {
-                                            window.open(response);
-                                            // alert(response);
-                                        }
-                                    }
-                                });
-                            });
+                            //     $.ajax({
+                            //         url: '../scripts/proxy_test.php',
+                            //         type: 'post',
+                            //         dataType: 'text',
+                            //         data: {
+                            //             file_idPHP: file_id
+                            //         },
+                            //         success: function(response) {
+                            //             if (response.includes("*warning_error_opening_file*")) {
+                            //                 alert("There was an error opening the file. Please try again or contact a system administrator.");
+                            //             } else {
+                            //                 window.open(response);
+                            //                 // alert(response);
+                            //             }
+                            //         }
+                            //     });
+                            // });
 
                             // $(document).on("click", ".file-card" , function() {
                             //     var contentPanelId = jQuery(this).attr("id");

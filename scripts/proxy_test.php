@@ -75,7 +75,7 @@
 
     $proxiedDirectory = "../../resource_bank/"; //Whatever the directory you blocked access to is.
 
-    exit($proxiedDirectory . $file_path);
+    // exit($proxiedDirectory . $file_path);
 
     // $filename = isset($_GET["fn"])?$_GET["fn"]:null;
 
