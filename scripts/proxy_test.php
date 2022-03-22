@@ -87,7 +87,7 @@
         exit("*not_authorised_to_view_content*");
     }
 
-    exit($proxiedDirectory . $file_path);
+    header("Location:" . $proxiedDirectory . $file_path);
 
     // $fp = fopen($proxiedDirectory.$file_path, 'rb');
 
