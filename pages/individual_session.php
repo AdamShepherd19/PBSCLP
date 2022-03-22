@@ -54,28 +54,14 @@
 
             <div class="inner-wrapper">
 
-                <div class="file-card card">
-                    <!-- <div class="card-header">Course Name Here</div> -->
+                <!-- <div class="file-card card">
+                    <div class="card-header">Course Name Here</div>
                     <a href="../resource_bank/course_1/session_1/handout_1_1.txt">
                         <div class="card-body">
                             <h5>filename.pdf</h5>
                         </div>
                     </a>
-                </div>
-
-                <div class="file-card card">
-                    <!-- <div class="card-header">Course Name Here</div> -->
-                    <div class="card-body">
-                        <h5>filename_2.pdf</h5>
-                    </div>
-                </div>
-
-                <div class="file-card card">
-                    <!-- <div class="card-header">Course Name Here</div> -->
-                    <div class="card-body">
-                        <h5>filename_3.pdf</h5>
-                    </div>
-                </div>
+                </div> -->
 
             </div>
         </div>
