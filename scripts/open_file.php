@@ -22,7 +22,7 @@
             foreach($result as $row) {
                 $course_id = $row['course_id'];
                 $session_id = $row['session_id'];
-                global $filename = $row['filename'];
+                $filename = $row['filename'];
 
                 //perform query and sort into newest first
                 $sql = "SELECT directory_name FROM sessions WHERE session_id=? AND course_id=? LIMIT 1";
@@ -72,6 +72,8 @@
     $file_id = $_GET['file_idPHP'];
 
     $file_path = get_file_path($file_id);
+
+    $filename = array_pop(explode('/', $file_path));
 
     $directory = "../../resource_bank/";
 
