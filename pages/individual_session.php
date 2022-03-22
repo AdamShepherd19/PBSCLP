@@ -129,7 +129,7 @@
                                 var contentPanelId = jQuery(this).attr("id");
                                 var file_id = contentPanelId.split(/[-]+/).pop();
 
-                                var filename = $('#fid-' + file_id).children('.filename_header').text();
+                                var filename = $('#fid-' + file_id).find('.filename_header').text();
                                 alert(filename);
                                 // $.ajax({
                                 //     url: '../scripts/proxy_test.php?fn=',
