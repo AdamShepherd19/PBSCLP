@@ -113,7 +113,7 @@
                                 $.ajax({
                                     url: '../scripts/open_file.php',
                                     type: 'post',
-                                    dataType: 'JSON',
+                                    dataType: 'text',
                                     data: {
                                         file_idPHP: file_id
                                     },
@@ -122,7 +122,9 @@
                                             // var message = "<div class='card'><h4 class='card-header'> There are no supporting files relating to this session yet!</div>"
                                             alert("There was an error opening the file. Please try again or contact a system administrator.");
                                             // $(".inner-wrapper").html(message);
-                                        } 
+                                        } else {
+                                            window.location.href = response;
+                                        }
                                         // else {
                                         //     for(var x = 0; x < response.length; x++) {
 

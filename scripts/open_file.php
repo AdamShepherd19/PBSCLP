@@ -47,24 +47,18 @@
 
                             $file_path = "../resource_bank/" . $course_dir_name . "/" . $session_dir_name . "/" . $filename;
 
-                            header('Content-type: application/pdf');
-                            header('Content-Disposition: inline; filename="' . $file_path . '"');
-                            header('Content-Transfer-Encoding: binary');
-                            header('Accept-Ranges: bytes');
-                            // Read the file
-                            @readfile($file_path);
-                            exit();
+                            exit($file_path);
                         }
                     } else {
-                        echo json_encode("*warning_error_opening_file*");
+                        echo "*warning_error_opening_file*";
                     }
                 }
             } else {
-                echo json_encode("*warning_error_opening_file*");
+                echo "*warning_error_opening_file*";
             }
         }
     } else {
-        echo json_encode("*warning_error_opening_file*");
+        echo "*warning_error_opening_file*";
     }
 
     // close connection to db
