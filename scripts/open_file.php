@@ -99,6 +99,22 @@
         case ".docx":
             $content_type = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
             break;
+        case ".jpg":
+            $content_type = "image/jpeg";
+            break;
+        case ".jpeg":
+            $content_type = "image/jpeg";
+            break;
+        case ".png":
+            $content_type = "image/png";
+            break;
+        case ".gif":
+            $content_type = "image/gif";
+            break;
+        case ".svg":
+            $content_type = "image/svg+xml";
+            break;
+        
 
     }
 
