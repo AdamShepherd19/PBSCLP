@@ -53,6 +53,7 @@
                             header('Accept-Ranges: bytes');
                             // Read the file
                             @readfile($file_path);
+                            exit();
                         }
                     } else {
                         echo json_encode("*warning_error_opening_file*");
