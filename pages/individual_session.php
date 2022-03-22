@@ -56,7 +56,7 @@
 
                 <!-- <div class="file-card card">
                     <div class="card-header">Course Name Here</div>
-                    <a href="../resource_bank/course_1/session_1/handout_1_1.txt">
+                    <a href="../resource_bank/course_1/session_1/Test_PDF.pdf">
                         <div class="card-body">
                             <h5>filename.pdf</h5>
                         </div>
@@ -99,30 +99,53 @@
 
                                 var message = '<div class="file-card card" id="fid-' + response[x].file_id + '">' +
                                     '<div class="card-body">' +
-                                        '<h5>' + response[x].filename + '</h5>' +
+                                        '<h5 class="filename_header">' + response[x].filename + '</h5>' +
                                     '</div></div>';
 
                                 $(".inner-wrapper").append(message);
                             }
+                            // $(document).on("click", ".file-card" , function() {
+                            //     var contentPanelId = jQuery(this).attr("id");
+                            //     var file_id = contentPanelId.split(/[-]+/).pop();
+
+                            //     $.ajax({
+                            //         url: '../scripts/open_file.php',
+                            //         type: 'post',
+                            //         dataType: 'text',
+                            //         data: {
+                            //             file_idPHP: file_id
+                            //         },
+                            //         success: function(response) {
+                            //             if (response.includes("*warning_error_opening_file*")) {
+                            //                 alert("There was an error opening the file. Please try again or contact a system administrator.");
+                            //             } else {
+                            //                 window.open(response);
+                            //             }
+                            //         }
+                            //     });
+                            // });
+
                             $(document).on("click", ".file-card" , function() {
                                 var contentPanelId = jQuery(this).attr("id");
                                 var file_id = contentPanelId.split(/[-]+/).pop();
 
-                                $.ajax({
-                                    url: '../scripts/open_file.php',
-                                    type: 'post',
-                                    dataType: 'text',
-                                    data: {
-                                        file_idPHP: file_id
-                                    },
-                                    success: function(response) {
-                                        if (response.includes("*warning_error_opening_file*")) {
-                                            alert("There was an error opening the file. Please try again or contact a system administrator.");
-                                        } else {
-                                            window.open(response);
-                                        }
-                                    }
-                                });
+                                var filename = $('#fid-' + file_id).children('.filename_header').text();
+                                alert(filename);
+                                // $.ajax({
+                                //     url: '../scripts/proxy_test.php?fn=',
+                                //     type: 'post',
+                                //     dataType: 'text',
+                                //     data: {
+                                //         file_idPHP: file_id
+                                //     },
+                                //     success: function(response) {
+                                //         if (response.includes("*warning_error_opening_file*")) {
+                                //             alert("There was an error opening the file. Please try again or contact a system administrator.");
+                                //         } else {
+                                //             window.open(response);
+                                //         }
+                                //     }
+                                // });
                             });
                         }
                     }
