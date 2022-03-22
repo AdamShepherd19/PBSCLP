@@ -83,10 +83,8 @@
         exit("*not_authorised_to_view_content*");
     }
 
-    // $fp = fopen($directory.$file_path, 'rb');
-
     header("Content-Type: application/pdf");
-    header('Content-Disposition: inline; filename="' . $directory.$file_path . '"');
+    header('Content-Disposition: inline; filename="' . $filename . '"');
 
     @readfile($directory . $file_path);
 
