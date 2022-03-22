@@ -46,7 +46,7 @@
                             foreach($result as $row) {
                                 $course_dir_name = $row['directory_name'];
 
-                                $file_path = "../resource_bank/" . $course_dir_name . "/" . $session_dir_name . "/" . $filename;
+                                $file_path = $course_dir_name . "/" . $session_dir_name . "/" . $filename;
 
                                 exit($file_path);
                             }
@@ -67,31 +67,29 @@
         $connectionPDO = null;
     }
 
+    $file_id = $_POST['file_idPHP'];
 
-    echo get_file_path($_POST['file_idPHP']);
+    $file_path = get_file_path($file_id);
 
-    // $proxiedDirectory = "../resource_bank/"; //Whatever the directory you blocked access to is.
-
-
+    $proxiedDirectory = "../resource_bank/"; //Whatever the directory you blocked access to is.
 
     // $filename = isset($_GET["fn"])?$_GET["fn"]:null;
 
-    // if ($filename === null || !file_exists($proxiedDirectory.$filename)) {
-    //     http_response_code(404);
-    //     exit;
-    // }
+    if ($file_id === null || !file_exists($proxiedDirectory.$file_path)) {
+        // http_response_code(404);
+        exit("*warning_error_opening_file*");
+    }
 
-    // if (!user_is_authenticated()) { //Not a real method, use your own check
-    //     http_response_code(403);
-    //     exit;
-    // }
+    if (!user_is_authenticated()) { //Not a real method, use your own check
+        // http_response_code(403);
+        exit("*not_authorised_to_view_content*");
+    }
 
+    $fp = fopen($proxiedDirectory.$file_path, 'rb');
 
-    // $fp = fopen($proxiedDirectory.$filename, 'rb');
+    header("Content-Type: application/pdf"); //May need to determine mime type somehow
+    header("Content-Length: " . filesize($proxiedDirectory.$file_path));
 
-    // header("Content-Type: image/???"); //May need to determine mime type somehow
-    // header("Content-Length: " . filesize($proxiedDirectory.$filename));
-
-    // fpassthru($fp);
-    // exit;
+    fpassthru($fp);
+    exit;
 ?>
