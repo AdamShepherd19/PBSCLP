@@ -93,6 +93,12 @@
         case ".txt":
             $content_type = "text/plain";
             break;
+        case ".doc":
+            $content_type = "application/msword";
+            break;
+        case ".docx":
+            $content_type = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+            break;
 
     }
 
