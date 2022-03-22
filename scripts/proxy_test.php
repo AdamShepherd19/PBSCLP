@@ -69,7 +69,7 @@
 
     session_start();
 
-    $file_id = $_POST['file_idPHP'];
+    $file_id = $_GET['file_idPHP'];
 
     $file_path = get_file_path($file_id);
 
