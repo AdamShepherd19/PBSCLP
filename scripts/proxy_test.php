@@ -80,7 +80,7 @@
         exit("*warning_error_opening_file*");
     }
 
-    if (!user_is_authenticated()) { //Not a real method, use your own check
+    if (!isset($_SESSION['logged_in'])) { //Not a real method, use your own check
         // http_response_code(403);
         exit("*not_authorised_to_view_content*");
     }
