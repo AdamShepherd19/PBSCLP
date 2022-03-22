@@ -97,7 +97,7 @@
                         } else {
                             for(var x = 0; x < response.length; x++) {
 
-                                var message = '<a href="../scripts/proxy_test.php?file_idPHP=' + response[x].file_id + '" target="_blank"><div class="file-card card" id="fid-' + response[x].file_id + '">' +
+                                var message = '<a href="../scripts/open_file.php?file_idPHP=' + response[x].file_id + '" target="_blank"><div class="file-card card" id="fid-' + response[x].file_id + '">' +
                                     '<div class="card-body">' +
                                         '<h5 class="filename_header">' + response[x].filename + '</h5>' +
                                     '</div></div></a>';
