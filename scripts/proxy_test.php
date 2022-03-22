@@ -48,7 +48,7 @@
 
                                 $file_path = $course_dir_name . "/" . $session_dir_name . "/" . $filename;
 
-                                exit($file_path);
+                                return($file_path);
                             }
                         } else {
                             echo "*warning_error_opening_file*";
