@@ -113,7 +113,7 @@
                                     type: 'get',
                                     dataType: 'text',
                                     data: {
-                                        fid: file_id
+                                        file_idPHP: file_id
                                     },
                                     success: function(response) {
                                         if (response.includes("*warning_error_opening_file*")) {
