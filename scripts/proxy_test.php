@@ -69,7 +69,7 @@
 
     session_start();
 
-    $file_id = $_POST['file_idPHP'];
+    $file_id = $_GET['file_idPHP'];
 
     $file_path = get_file_path($file_id);
 
@@ -89,13 +89,13 @@
 
     header("Location:" . $proxiedDirectory . $file_path);
 
-    // $fp = fopen($proxiedDirectory.$file_path, 'rb');
+    $fp = fopen($proxiedDirectory.$file_path, 'rb');
 
-    // header("Content-Type: application/pdf"); //May need to determine mime type somehow
-    // header("Content-Length: " . filesize($proxiedDirectory.$file_path));
+    header("Content-Type: application/pdf"); //May need to determine mime type somehow
+    header("Content-Length: " . filesize($proxiedDirectory.$file_path));
     // header('Content-Disposition: inline; filename="' . $proxiedDirectory.$file_path . '"');  
     // header($proxiedDirectory.$file_path);
     // @readfile($proxiedDirectory . $file_path);
-    // fpassthru($fp);
-    // exit;
+    fpassthru($fp);
+    exit;
 ?>

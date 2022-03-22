@@ -109,8 +109,8 @@
                                 var file_id = contentPanelId.split(/[-]+/).pop();
 
                                 $.ajax({
-                                    url: '../scripts/proxy_test.php',
-                                    type: 'post',
+                                    url: '../scripts/proxy_test.php?fid=' + file_id,
+                                    type: 'get',
                                     dataType: 'text',
                                     data: {
                                         file_idPHP: file_id
@@ -119,7 +119,7 @@
                                         if (response.includes("*warning_error_opening_file*")) {
                                             alert("There was an error opening the file. Please try again or contact a system administrator.");
                                         } else {
-                                            window.open(response);
+                                            // window.open(response);
                                             // alert(response);
                                         }
                                     }
