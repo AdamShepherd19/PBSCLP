@@ -91,9 +91,9 @@
 
     header("Content-Type: application/pdf"); //May need to determine mime type somehow
     header("Content-Length: " . filesize($proxiedDirectory.$file_path));
-    // header('Content-Disposition: inline; filename="' . $filename . '"');  
-    header($proxiedDirectory.$file_path);
-    // readfile($proxiedDirectory . $file_path);
+    header('Content-Disposition: inline; filename="' . $proxiedDirectory.$file_path . '"');  
+    // header($proxiedDirectory.$file_path);
+    @readfile($proxiedDirectory . $file_path);
     // fpassthru($fp);
     exit;
 ?>
