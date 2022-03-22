@@ -51,15 +51,15 @@
                                 return($file_path);
                             }
                         } else {
-                            echo "*warning_error_opening_file*";
+                            exit("*warning_error_opening_file*");
                         }
                     }
                 } else {
-                    echo "*warning_error_opening_file*";
+                    exit("*warning_error_opening_file*");
                 }
             }
         } else {
-            echo "*warning_error_opening_file*";
+            exit("*warning_error_opening_file*");
         }
 
         // close connection to db
