@@ -52,7 +52,7 @@
                             header('Content-Transfer-Encoding: binary');
                             header('Accept-Ranges: bytes');
                             // Read the file
-                            @readfile($file);
+                            @readfile($file_path);
                         }
                     } else {
                         echo json_encode("*warning_error_opening_file*");
