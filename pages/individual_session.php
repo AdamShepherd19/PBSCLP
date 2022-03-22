@@ -104,48 +104,6 @@
 
                                 $(".inner-wrapper").append(message);
                             }
-                            // $(document).on("click", ".file-card" , function() {
-                            //     var contentPanelId = jQuery(this).attr("id");
-                            //     var file_id = contentPanelId.split(/[-]+/).pop();
-
-                            //     $.ajax({
-                            //         url: '../scripts/proxy_test.php',
-                            //         type: 'post',
-                            //         dataType: 'text',
-                            //         data: {
-                            //             file_idPHP: file_id
-                            //         },
-                            //         success: function(response) {
-                            //             if (response.includes("*warning_error_opening_file*")) {
-                            //                 alert("There was an error opening the file. Please try again or contact a system administrator.");
-                            //             } else {
-                            //                 // window.open(response);
-                            //                 // alert(response);
-                            //             }
-                            //         }
-                            //     });
-                            // });
-
-                            // $(document).on("click", ".file-card" , function() {
-                            //     var contentPanelId = jQuery(this).attr("id");
-                            //     var file_id = contentPanelId.split(/[-]+/).pop();
-
-                            //     $.ajax({
-                            //         url: '../scripts/open_file.php',
-                            //         type: 'post',
-                            //         dataType: 'text',
-                            //         data: {
-                            //             file_idPHP: file_id
-                            //         },
-                            //         success: function(response) {
-                            //             if (response.includes("*warning_error_opening_file*")) {
-                            //                 alert("There was an error opening the file. Please try again or contact a system administrator.");
-                            //             } else {
-                            //                 window.open(response);
-                            //             }
-                            //         }
-                            //     });
-                            // });
                         }
                     }
                 });
