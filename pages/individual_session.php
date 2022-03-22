@@ -97,10 +97,10 @@
                         } else {
                             for(var x = 0; x < response.length; x++) {
 
-                                var message = '<div class="file-card card" id="fid-' + response[x].file_id + '">' +
+                                var message = '<a href="../scripts/proxy_test.php?file_idPHP=' + response[x].file_id + '" target="_blank"><div class="file-card card" id="fid-' + response[x].file_id + '">' +
                                     '<div class="card-body">' +
                                         '<h5 class="filename_header">' + response[x].filename + '</h5>' +
-                                    '</div></div>';
+                                    '</div></div></a>';
 
                                 $(".inner-wrapper").append(message);
                             }
@@ -126,26 +126,26 @@
                             //     });
                             // });
 
-                            $(document).on("click", ".file-card" , function() {
-                                var contentPanelId = jQuery(this).attr("id");
-                                var file_id = contentPanelId.split(/[-]+/).pop();
-                                
-                                $.ajax({
-                                    url: '../scripts/open_file.php',
-                                    type: 'post',
-                                    dataType: 'text',
-                                    data: {
-                                        file_idPHP: file_id
-                                    },
-                                    success: function(response) {
-                                        if (response.includes("*warning_error_opening_file*")) {
-                                            alert("There was an error opening the file. Please try again or contact a system administrator.");
-                                        } else {
-                                            window.open(response);
-                                        }
-                                    }
-                                });
-                            });
+                            // $(document).on("click", ".file-card" , function() {
+                            //     var contentPanelId = jQuery(this).attr("id");
+                            //     var file_id = contentPanelId.split(/[-]+/).pop();
+
+                            //     $.ajax({
+                            //         url: '../scripts/open_file.php',
+                            //         type: 'post',
+                            //         dataType: 'text',
+                            //         data: {
+                            //             file_idPHP: file_id
+                            //         },
+                            //         success: function(response) {
+                            //             if (response.includes("*warning_error_opening_file*")) {
+                            //                 alert("There was an error opening the file. Please try again or contact a system administrator.");
+                            //             } else {
+                            //                 window.open(response);
+                            //             }
+                            //         }
+                            //     });
+                            // });
                         }
                     }
                 });
