@@ -106,10 +106,36 @@
                             }
                             $(document).on("click", ".file-card" , function() {
                                 var contentPanelId = jQuery(this).attr("id");
-                                var course_id = contentPanelId.split(/[-]+/).pop();
+                                var file_id = contentPanelId.split(/[-]+/).pop();
                                 // window.location.href = 'all_courses.php?courseId=' + course_id;
-                                alert(contentPanelId);
+                                // alert(contentPanelId);
 
+                                $.ajax({
+                                    url: '../scripts/open_file.php',
+                                    type: 'post',
+                                    dataType: 'JSON',
+                                    data: {
+                                        file_idPHP: file_id
+                                    },
+                                    success: function(response) {
+                                        if (response.includes("*warning_error_opening_file*")) {
+                                            // var message = "<div class='card'><h4 class='card-header'> There are no supporting files relating to this session yet!</div>"
+                                            alert("There was an error opening the file. Please try again or contact a system administrator.");
+                                            // $(".inner-wrapper").html(message);
+                                        } 
+                                        // else {
+                                        //     for(var x = 0; x < response.length; x++) {
+
+                                        //         var message = '<div class="file-card card" id="fid-' + response[x].file_id + '">' +
+                                        //             '<div class="card-body">' +
+                                        //                 '<h5>' + response[x].filename + '</h5>' +
+                                        //             '</div></div>';
+
+                                        //         $(".inner-wrapper").append(message);
+                                        //     }
+                                        // }
+                                    }
+                                });
                             });
                         }
 
