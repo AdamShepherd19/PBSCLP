@@ -113,7 +113,7 @@
 
                                 var message = '<div class="file-card card" id="fid-' + response[x].file_id + '">' +
                                     '<div class="card-body">' +
-                                        '<h5>' + response[x].file_name + '</h5>' +
+                                        '<h5>' + response[x].filename + '</h5>' +
                                     '</div></div>';
 
                                 $(".inner-wrapper").append(message);
