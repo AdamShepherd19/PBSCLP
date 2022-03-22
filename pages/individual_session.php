@@ -109,8 +109,8 @@
                                 var file_id = contentPanelId.split(/[-]+/).pop();
 
                                 $.ajax({
-                                    url: '../scripts/proxy_test.php?',
-                                    type: 'get',
+                                    url: '../scripts/proxy_test.php',
+                                    type: 'post',
                                     dataType: 'text',
                                     data: {
                                         file_idPHP: file_id
