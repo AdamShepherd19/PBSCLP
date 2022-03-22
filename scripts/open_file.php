@@ -22,7 +22,7 @@
             foreach($result as $row) {
                 $course_id = $row['course_id'];
                 $session_id = $row['session_id'];
-                $filename = $row['filename'];
+                global $filename = $row['filename'];
 
                 //perform query and sort into newest first
                 $sql = "SELECT directory_name FROM sessions WHERE session_id=? AND course_id=? LIMIT 1";
@@ -84,7 +84,7 @@
     }
 
     header("Content-Type: application/pdf");
-    header('Content-Disposition: inline; filename="' . $file_path . '"');
+    header('Content-Disposition: inline; filename="' . $filename . '"');
 
     @readfile($directory . $file_path);
 
