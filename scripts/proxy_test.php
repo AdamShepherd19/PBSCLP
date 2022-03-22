@@ -89,7 +89,7 @@
 
     header("Content-Type: application/pdf"); //May need to determine mime type somehow
     header("Content-Length: " . filesize($proxiedDirectory.$file_path));
-
-    fpassthru($fp);
+    header($proxiedDirectory.$file_path);
+    // fpassthru($fp);
     exit;
 ?>
