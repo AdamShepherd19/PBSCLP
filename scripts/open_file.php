@@ -84,7 +84,7 @@
     }
 
     header("Content-Type: application/pdf");
-    header('Content-Disposition: inline; filename="' . $directory.$file_path . '"');
+    header('Content-Disposition: inline; filename="' . $file_path . '"');
 
     @readfile($directory . $file_path);
 
