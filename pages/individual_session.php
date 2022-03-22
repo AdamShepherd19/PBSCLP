@@ -109,11 +109,11 @@
                                 var file_id = contentPanelId.split(/[-]+/).pop();
 
                                 $.ajax({
-                                    url: '../scripts/proxy_test.php?fid=' + file_id,
+                                    url: '../scripts/proxy_test.php?',
                                     type: 'get',
                                     dataType: 'text',
                                     data: {
-                                        file_idPHP: file_id
+                                        fid: file_id
                                     },
                                     success: function(response) {
                                         if (response.includes("*warning_error_opening_file*")) {
