@@ -74,6 +74,7 @@
     $file_path = get_file_path($file_id);
 
     $filename = array_pop(explode('/', $file_path));
+    $file_extension = array_pop(explode('.', $filename));
 
     $directory = "../../resource_bank/";
 
@@ -85,8 +86,18 @@
         exit("*not_authorised_to_view_content*");
     }
 
-    header("Content-Type: application/pdf");
-    header('Content-Disposition: inline; filename="' . $filename . '"');
+    switch($file_extension) {
+        case ".pdf":
+            $content_type = "application/pdf";
+            break;
+        case ".txt":
+            $content_type = "text/plain";
+            break;
+
+    }
+
+    header("Content-Type: " . $content_type);
+    header('Content-Disposition: inline; filename="' . $file_path . '"');
 
     @readfile($directory . $file_path);
 
