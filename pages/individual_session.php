@@ -96,39 +96,39 @@
 
                 $("#session-subheading").html(session_id);
 
-                // $.ajax({
-                //     url: '../scripts/get_session_summary.php',
-                //     type: 'post',
-                //     dataType: 'JSON',
-                //     data: {
-                //         course_idPHP: course_id
-                //     },
-                //     success: function(response) {
-                //         if (response.includes("*warning_no_sessions_found*")) {
-                //             var message = "<div class='card'><h4 class='card-header'> There is no course content yet!</div>"
+                $.ajax({
+                    url: '../scripts/get_files.php',
+                    type: 'post',
+                    dataType: 'JSON',
+                    data: {
+                        session_idPHP: session_id
+                    },
+                    success: function(response) {
+                        if (response.includes("*warning_no_files_found*")) {
+                            var message = "<div class='card'><h4 class='card-header'> There are no supporting files relating to this session yet!</div>"
 
-                //             $(".inner-wrapper").html(message);
-                //         } else {
-                //             for(var x = 0; x < response.length; x++) {
+                            $(".inner-wrapper").html(message);
+                        } else {
+                            for(var x = 0; x < response.length; x++) {
 
-                //                 var message = '<div class="course-card card" id=sid' + response[x].session_id + '>' +
-                //                     '<div class="card-header">' + response[x].name + '</div>' +
-                //                     '<div class="card-body">' +
-                //                         '<p>' + response[x].description + '</p>' +
-                //                     '</div></div>';
+                                var message = '<div class="file-card card" id="fid-' + response[x].file_id + '">' +
+                                    '<div class="card-body">' +
+                                        '<h5>' + response[x].file_name + '</h5>' +
+                                    '</div></div>';
 
-                //                 $(".inner-wrapper").append(message);
-                //             }
-                //             $(document).on("click", ".course-card" , function() {
-                //                 var contentPanelId = jQuery(this).attr("id");
-                //                 var course_id = contentPanelId.split(/[-]+/).pop();
-                //                 // window.location.href = 'all_courses.php?courseId=' + course_id;
-                //                 alert(contentPanelId);
-                //             });
-                //         }
+                                $(".inner-wrapper").append(message);
+                            }
+                            $(document).on("click", ".file-card" , function() {
+                                var contentPanelId = jQuery(this).attr("id");
+                                var course_id = contentPanelId.split(/[-]+/).pop();
+                                // window.location.href = 'all_courses.php?courseId=' + course_id;
+                                alert(contentPanelId);
 
-                //     }
-                // });
+                            });
+                        }
+
+                    }
+                });
                 
             });
         </script>
