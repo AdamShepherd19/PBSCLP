@@ -76,7 +76,7 @@
                 var session_id = "<?php echo $_GET['sid']; ?>"
                 
                 //onclick function for the cancel button
-                $("#session-cancel").on('click', function(){
+                $("#file-cancel").on('click', function(){
                     window.location.replace('resource_bank_home.php');
                 });
 
