@@ -48,7 +48,7 @@
 
         <div class="main-content">
             <div class="button-wrapper">
-                <input type="button" id="manage-content-button" class="pbs-button pbs-button-green" value="Manage Content">
+                <input type="button" id="new-course-button" class="pbs-button pbs-button-green admin-only" value="Manage Content">
             </div>
 
             <div class="inner-wrapper">
@@ -74,6 +74,10 @@
                 } else {
                     $('.admin-only').show();
                 }
+
+                $("#new-course-button").on('click', function() {
+                    window.location.href = 'add_new_course.php';
+                });
 
                 $.ajax({
                     url: '../scripts/get_course_summary.php',
