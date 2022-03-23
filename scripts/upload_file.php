@@ -34,6 +34,8 @@
             } else {
                 exit("*file_upload_failed*");
             }
+        } else {
+            exit("*filetype_not_supported*");
         }
         // exit;
     }
