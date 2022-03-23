@@ -87,9 +87,9 @@
                 // onclick function for the post announcement button
                 $("#file-create").on('click', function(){
 
-                    var file_data = $('#file-to-upload')[0].files[0];   
+                    var files = $('#file-to-upload')[0].files; 
                     var form_data = new FormData();                  
-                    form_data.append('file', file_data);
+                    form_data.append('file',files[0]);
                     alert(form_data);
 
 
@@ -106,6 +106,8 @@
                         $.ajax({
                             method: 'POST',
                             url: "../scripts/upload_file.php",
+                            processData: false,
+                            contentType: false,
                             data: {
                                 file_namePHP: file_name,
                                 filePHP: form_data
