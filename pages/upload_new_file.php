@@ -108,12 +108,6 @@
                             url: "../scripts/upload_file.php",
                             processData: false,
                             contentType: false,
-                            // data: {
-                            //     file_namePHP: file_name,
-                            //     filePHP: form_data
-                            //     // descriptionPHP: description,
-                            //     // course_idPHP: course_id
-                            // },
                             data: form_data,
                             success: function (response) {
                                 //check if the php execution was successful and the data was added to the db

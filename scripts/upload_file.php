@@ -1,6 +1,5 @@
 <?php
     session_start();
-    echo "test";
     // if(isset($_POST['file_namePHP'])) {
         
         // $pass = file_get_contents('../../pass.txt', true);
@@ -14,7 +13,6 @@
         // }
 
     if(isset($_FILES['file']['name'])){
-        echo "test 2";
         /* Getting file name */
         $filename = $_FILES['file']['name'];
         
@@ -26,19 +24,17 @@
         /* Valid extensions */
         $valid_extensions = array("jpg","jpeg","png");
         
-        $response = 0;
         /* Check file extension */
         if(in_array(strtolower($imageFileType), $valid_extensions)) {
             /* Upload file */
             if(move_uploaded_file($_FILES['file']['tmp_name'],$location)){
-                $response = $location;
+                exit("*file_uploaded_successfully*");
+            } else {
+                exit("*file_upload_failed*");
             }
         }
-        
-        echo $response;
-        exit;
+        // exit;
     }
-    echo "test 3";
         
         // if(file_exists('../../resource_bank/' . $directory_name)) {
         //     exit('*warning_course_already_exists*');
