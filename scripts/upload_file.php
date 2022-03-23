@@ -1,6 +1,6 @@
 <?php
     session_start();
-    
+    echo "test";
     if(isset($_POST['file_namePHP'])) {
         
         // $pass = file_get_contents('../../pass.txt', true);
@@ -19,7 +19,7 @@
             $filename = $_FILES['file']['name'];
          
             /* Location */
-            $location = "../../resource_bank".$filename;
+            $location = "../../resource_bank/".$filename;
             $imageFileType = pathinfo($location,PATHINFO_EXTENSION);
             $imageFileType = strtolower($imageFileType);
          
