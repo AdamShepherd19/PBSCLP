@@ -18,11 +18,17 @@
 
         // echo $course_name;
 
-        $directory_name = str_replace(' ', '_', $course_name);
-        echo $directory_name;
+        $directory_name = strtolower(str_replace(' ', '_', $course_name));
+        // echo $directory_name;
         if(file_exists('../../resource_bank/' . $directory_name)) {
             exit('*warning_course_already_exists*');
         }
+
+        if (!mkdir("../../resource_bank/" . $directory_name)) {
+            exit("*error_creating_directory*")
+        }
+
+        
 
         //generate directory name
         //create directory in resource bank
