@@ -19,6 +19,7 @@
         // echo $course_name;
 
         $directory_name = str_replace(' ', '_', $course_name);
+        echo $directory_name;
         if(file_exists('../../resource_bank/' . $directory_name)) {
             exit('*warning_course_already_exists*');
         }
