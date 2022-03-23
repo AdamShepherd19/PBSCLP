@@ -52,6 +52,10 @@
 
         <div class="main-content">
 
+            <div class="button-wrapper">
+                <input type="button" id="new-file-button" class="pbs-button pbs-button-green admin-only" value="Upload File">
+            </div>
+
             <div class="inner-wrapper">
 
                 <!-- <div class="file-card card">
@@ -81,6 +85,10 @@
                 var session_id = "<?php echo $_GET['sid']; ?>";
 
                 $("#session-subheading").html(session_id);
+
+                $("#new-file-button").on('click', function() {
+                    window.location.href = 'upload_new_file.php?sid=' + session_id;
+                });
 
                 $.ajax({
                     url: '../scripts/get_files.php',
