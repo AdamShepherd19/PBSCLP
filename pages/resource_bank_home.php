@@ -48,7 +48,7 @@
 
         <div class="main-content">
             <div class="button-wrapper">
-                <input type="button" id="new-course-button" class="pbs-button pbs-button-green admin-only" value="Manage Content">
+                <input type="button" id="new-course-button" class="pbs-button pbs-button-green admin-only" value="New Course">
             </div>
 
             <div class="inner-wrapper">
