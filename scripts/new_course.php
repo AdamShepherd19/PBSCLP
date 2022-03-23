@@ -39,9 +39,10 @@
         //add new course to database
         
         try {
-            $stmt->execute(['name' => $course_name, 'description' => $_POST['descriptionPHP'], 'directory_name' => $directory_name]);
-            echo '*comment_created_succesfully*';
+            $stmt->execute(['name' => $course_name, 'description' => $_POST['description'], 'directory_name' => $directory_name]);
+            echo '*course_created_successfully*';
         } catch (Exception $e) {
+            rmdir("../../resource_bank/" . $directory_name);
             echo 'Caught exception: ',  $e->getMessage(), "\n";
         }
 
