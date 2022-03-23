@@ -91,7 +91,7 @@
                         //send data to php
                         $.ajax({
                             method: 'POST',
-                            url: "new_course.php",
+                            url: "../scripts/new_course.php",
                             data: {
                                 course_namePHP: course_name
                             },
