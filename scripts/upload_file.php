@@ -79,7 +79,7 @@
         $stmt = $connectionPDO->prepare($sql);
 
         try {
-            $stmt->execute(['filename' => $new_file_name, 'session_id' => $course_id, 'course_id' => $session_id]);
+            $stmt->execute(['filename' => $new_file_name, 'session_id' => $session_id, 'course_id' => $course_id]);
             exit('*file_uploaded_successfully*');
         } catch (Exception $e) {
             unlink($location . $new_file_name);
