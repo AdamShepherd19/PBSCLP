@@ -52,6 +52,10 @@
 
         <div class="main-content">
 
+            <div class="button-wrapper">
+                <input type="button" id="new-session-button" class="pbs-button pbs-button-green admin-only" value="New Session">
+            </div>
+
             <div class="inner-wrapper">
 
                 <!-- <div class="course-card card">
@@ -75,6 +79,12 @@
                 } else {
                     $('.admin-only').show();
                 }
+
+                var course_id = "<?php echo $_GET['cid']; ?>";
+
+                $("#new-session-button").on('click', function() {
+                    window.location.href = 'add_new_session.php?cid=' + course_id;
+                });
 
                 var course_id = "<?php echo $_GET['cid']; ?>";
 
