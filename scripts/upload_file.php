@@ -3,35 +3,41 @@
     
     if(isset($_POST['file_namePHP'])) {
         
-        $pass = file_get_contents('../../pass.txt', true);
+        // $pass = file_get_contents('../../pass.txt', true);
 
         //connect to database
-        try {
-            $connectionPDO = new PDO('mysql:host=localhost;dbname=pbsclp_pbsclp', 'pbsclp', $pass);
-            $connectionPDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch(PDOException $e) {
-            exit('*database_connection_error*');
-        }
+        // try {
+        //     $connectionPDO = new PDO('mysql:host=localhost;dbname=pbsclp_pbsclp', 'pbsclp', $pass);
+        //     $connectionPDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        // } catch(PDOException $e) {
+        //     exit('*database_connection_error*');
+        // }
 
-        $file_name = $_POST['file_namePHP'];
+        if(isset($_FILES['file']['name'])){
 
-        // $directory_name = strtolower(str_replace(' ', '_', $course_name));
-        $directory_name = "../../resource_bank/";
-        // $file_to_upload = $_POST['file'];
-
-        // get details of the uploaded file
-        // $fileTmpPath = $_FILES['filePHP']['tmp_name'];
-        // $fileName = $_FILES['filePHP']['name'];
-        
-        // $uploadFileDir = '../../resource_bank/';
-        // $dest_path = $uploadFileDir . $fileName;
-        
-        if ( 0 < $_FILES['file']['error'] ) {
-            echo 'Error: ' . $_FILES['file']['error'] . '<br>';
-        }
-        else {
-            move_uploaded_file($_FILES['file']['tmp_name'], '../../resource_bank/' . $_FILES['file']['name']);
-        }
+            /* Getting file name */
+            $filename = $_FILES['file']['name'];
+         
+            /* Location */
+            $location = "../../resource_bank".$filename;
+            $imageFileType = pathinfo($location,PATHINFO_EXTENSION);
+            $imageFileType = strtolower($imageFileType);
+         
+            /* Valid extensions */
+            $valid_extensions = array("jpg","jpeg","png");
+         
+            $response = 0;
+            /* Check file extension */
+            if(in_array(strtolower($imageFileType), $valid_extensions)) {
+               /* Upload file */
+               if(move_uploaded_file($_FILES['file']['tmp_name'],$location)){
+                  $response = $location;
+               }
+            }
+         
+            echo $response;
+            exit;
+         }
         
         // if(file_exists('../../resource_bank/' . $directory_name)) {
         //     exit('*warning_course_already_exists*');
