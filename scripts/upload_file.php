@@ -4,7 +4,7 @@
         
         $pass = file_get_contents('../../pass.txt', true);
 
-        connect to database
+        // connect to database
         try {
             $connectionPDO = new PDO('mysql:host=localhost;dbname=pbsclp_pbsclp', 'pbsclp', $pass);
             $connectionPDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
