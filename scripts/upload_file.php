@@ -19,9 +19,10 @@
         echo $file_name;
         
         /* Location */
-        $location = "../../resource_bank/".$file_name;
+        
         $imageFileType = pathinfo($location,PATHINFO_EXTENSION);
         $imageFileType = strtolower($imageFileType);
+        $location = "../../resource_bank/".$file_name.".".$imageFileType;
         
         /* Valid extensions */
         $valid_extensions = array("jpg","jpeg","png");
