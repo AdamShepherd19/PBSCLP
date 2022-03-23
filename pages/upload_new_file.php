@@ -117,9 +117,13 @@
                                     $('.main-content').html(successHTML);
                                 } else if (response.includes("*warning_file_already_exists*")){
                                     alert("A file with this name already exists. Please enter a different name.");
+                                } else if (response.includes("*filetype_not_supported*")){
+                                    alert("This filetype is not supported at the moment. Please ensure the file extension is in the name and if the error persists, contact a system administrator.");
+                                } else if (response.includes("*file_upload_failed*")){
+                                    alert("There was an error uploading your file. Please try again or contact a system administrator.");
                                 } else {
                                     //display error message if the php could not be executed
-                                    $('.main-content').html("<h3> There was an error processing your request. Please try again </h3><br>Error" + response +
+                                    $('.main-content').html("<h3> There was an error processing your request. Please try again </h3><br>Error: " + response +
                                         "<br><input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>");
                                 }
 
