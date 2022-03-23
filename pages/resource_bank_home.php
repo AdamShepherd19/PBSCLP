@@ -47,6 +47,9 @@
         </div>
 
         <div class="main-content">
+            <div class="search-wrapper">
+                <input type="button" id="manage-content-button" class="pbs-button pbs-button-green" value="Manage Content">
+            </div>
 
             <div class="inner-wrapper">
 
