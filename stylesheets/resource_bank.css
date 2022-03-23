@@ -23,3 +23,7 @@
     margin-bottom: 20px;
     color: var(--pbs-grey);
 }
+
+.button-wrapper {
+    text-align: right;
+}
