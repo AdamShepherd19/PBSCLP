@@ -84,13 +84,15 @@
                     window.location.replace('resource_bank_home.php');
                 });
 
-                var file_data = $('#file-to-upload').prop('files')[0];   
-                var form_data = new FormData();                  
-                form_data.append('file', file_data);
-                alert(form_data);
-
                 // onclick function for the post announcement button
                 $("#file-create").on('click', function(){
+
+                    var file_data = $('#file-to-upload').prop('files')[0];   
+                    var form_data = new FormData();                  
+                    form_data.append('file', file_data);
+                    alert(form_data);
+
+
                     //retrieve data from form
                     var file_name = $("#name").val();
                     // var description = $("#description").val();
