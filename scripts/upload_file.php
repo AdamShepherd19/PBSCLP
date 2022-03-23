@@ -19,7 +19,7 @@
         echo $file_name;
         
         /* Location */
-        $location = "../../resource_bank/".$filename;
+        $location = "../../resource_bank/".$file_name;
         $imageFileType = pathinfo($location,PATHINFO_EXTENSION);
         $imageFileType = strtolower($imageFileType);
         
