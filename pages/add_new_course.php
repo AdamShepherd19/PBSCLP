@@ -103,7 +103,8 @@
                                         "<input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>";
 
                                     $('.main-content').html(successHTML);
-
+                                } else if (response.includes("*warning_course_already_exists*")){
+                                    alert("A course with this name already exists. Please enter a different name.");
                                 } else {
                                     //display error message if the php could not be executed
                                     $('.main-content').html("<h3> There was an error processing your request. Please try again </h3><br>Error" + response +

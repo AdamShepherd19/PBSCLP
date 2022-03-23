@@ -16,7 +16,17 @@
         //retrieve title, content and author for the new post
         $course_name = $_POST['course_namePHP'];
 
-        echo $course_name;
+        // echo $course_name;
+
+        $directory_name = str_replace(' ', '_', $course_name);
+        if(file_exists('../../resource_bank/' . $directory_name)) {
+            exit('*warning_course_already_exists*');
+        }
+
+        //generate directory name
+        //create directory in resource bank
+        //add new course to database
+        
 
         // query database and insert the new announcement into the announcements table
         // $sql = "INSERT INTO comments (content, thread_id, user_id) values (:comment, :thread_id, :user_id)";
