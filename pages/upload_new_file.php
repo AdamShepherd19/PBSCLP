@@ -92,12 +92,8 @@
                     var form_data = new FormData();                  
                     form_data.append('file',files[0]);
                     form_data.append('filename', file_name);
-                    // alert(form_data);
+                    form_data.append('session_id', session_id);
 
-
-                    //retrieve data from form
-                    // var file_name = $("#name").val();
-                    // var description = $("#description").val();
 
                     //check data not empty
                     if(file_name == ""){
