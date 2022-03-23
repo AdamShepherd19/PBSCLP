@@ -14,7 +14,7 @@
         // }
 
         if(isset($_FILES['file']['name'])){
-
+            echo "test 2";
             /* Getting file name */
             $filename = $_FILES['file']['name'];
          
@@ -37,7 +37,8 @@
          
             echo $response;
             exit;
-         }
+        }
+        echo "test 3";
         
         // if(file_exists('../../resource_bank/' . $directory_name)) {
         //     exit('*warning_course_already_exists*');
