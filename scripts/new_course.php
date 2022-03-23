@@ -1,7 +1,7 @@
 <?php
     session_start();
     
-    if(isset($_POST['commentPHP'])) {
+    if(isset($_POST['course_namePHP'])) {
         
         $pass = file_get_contents('../../pass.txt', true);
 
