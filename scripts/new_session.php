@@ -45,7 +45,7 @@
         $stmt = $connectionPDO->prepare($sql);
 
         try {
-            $stmt->execute(['name' => $session_name, 'description' => $_POST['descriptionPHP'], 'directory_name' => $session_directory_name, 'session_id' => $course_id]);
+            $stmt->execute(['name' => $session_name, 'description' => $_POST['descriptionPHP'], 'directory_name' => $session_directory_name, 'course_id' => $course_id]);
             exit('*course_created_successfully*');
         } catch (Exception $e) {
             rmdir("../../resource_bank/" . $course_directory_name . '/' . $session_directory_name);
