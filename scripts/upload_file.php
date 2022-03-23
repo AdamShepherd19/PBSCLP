@@ -22,6 +22,7 @@
         /* Extension */
         $file_extension = pathinfo($existing_filename, PATHINFO_EXTENSION);
         $file_extension = strtolower($file_extension);
+        $new_file_name = $new_file_name . "." . $file_extension;
 
         $sql = "SELECT course_id, directory_name FROM sessions WHERE session_id=? LIMIT 1";
         $stmt = $connectionPDO->prepare($sql);
@@ -80,7 +81,7 @@
         /* Check file extension */
         if(in_array(strtolower($file_extension), $valid_extensions)) {
             /* Upload file */
-            if(move_uploaded_file($_FILES['file']['tmp_name'],$location.$new_file_name.".".$file_extension)){
+            if(move_uploaded_file($_FILES['file']['tmp_name'],$location.$new_file_name)){
                 exit("*file_uploaded_successfully*");
             } else {
                 exit("*file_upload_failed*");
