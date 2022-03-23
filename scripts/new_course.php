@@ -28,23 +28,22 @@
             exit("*error_creating_directory*");
         }
 
+        // query database and insert the new announcement into the announcements table
+        $sql = "INSERT INTO courses (name, description, directory_name ) values (:name, :description, :directory_name)";
+        $stmt = $connectionPDO->prepare($sql);
 
 
-        //generate directory name
-        //create directory in resource bank
+
+        //generate directory name X
+        //create directory in resource bank X
         //add new course to database
         
-
-        // query database and insert the new announcement into the announcements table
-        // $sql = "INSERT INTO comments (content, thread_id, user_id) values (:comment, :thread_id, :user_id)";
-        // $stmt = $connectionPDO->prepare($sql);
-
-        // try {
-        //     $stmt->execute(['comment' => $comment, 'thread_id' => $thread_id, 'user_id' => $_SESSION['user_id']]);
-        //     echo '*comment_created_succesfully*';
-        // } catch (Exception $e) {
-        //     echo 'Caught exception: ',  $e->getMessage(), "\n";
-        // }
+        try {
+            $stmt->execute(['name' => $course_name, 'description' => $_POST['description'], 'directory_name' => $directory_name]);
+            echo '*comment_created_succesfully*';
+        } catch (Exception $e) {
+            echo 'Caught exception: ',  $e->getMessage(), "\n";
+        }
 
         // $stmt = null;
         $connectionPDO = null;

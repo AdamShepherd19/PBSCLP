@@ -57,8 +57,8 @@
                 <form>
                     <label for="name">Course Name: </label><br />
                     <input type="text" id="name" class="pbs-form-text-box" placeholder="Enter the course name..."><br /><br />
-                    <!-- <label for="content">Content: </label><br />
-                    <textarea id="content" class="pbs-form-text-box" placeholder="Enter post content..."></textarea><br /> -->
+                    <label for="description">Description: </label><br />
+                    <textarea id="description" class="pbs-form-text-box" placeholder="Enter course description..."></textarea><br />
                     
                     <div class="button-wrapper">
                         <input type="button" id="course-cancel" class="pbs-button pbs-button-red" value="Cancel"> 
@@ -82,9 +82,10 @@
                 $("#course-create").on('click', function(){
                     //retrieve data from form
                     var course_name = $("#name").val();
+                    var description = $("#description").val();
 
                     //check data not empty
-                    if(course_name == ""){
+                    if(course_name == "" || description == ""){
                         //prompt user to fill in all data
                         alert("Please fill out the information in the form");
                     } else {
@@ -93,7 +94,8 @@
                             method: 'POST',
                             url: "../scripts/new_course.php",
                             data: {
-                                course_namePHP: course_name
+                                course_namePHP: course_name,
+                                descriptionPHP: description
                             },
                             success: function (response) {
                                 //check if the php execution was successful and the data was added to the db
