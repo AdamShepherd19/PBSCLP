@@ -41,11 +41,11 @@
             exit("*error_creating_directory*");
         }
 
-        $sql = "INSERT INTO sessions (name, description, directory_name ) values (:name, :description, :directory_name)";
+        $sql = "INSERT INTO sessions (name, description, directory_name, course_id) values (:name, :description, :directory_name, :course_id)";
         $stmt = $connectionPDO->prepare($sql);
 
         try {
-            $stmt->execute(['name' => $session_name, 'description' => $_POST['descriptionPHP'], 'directory_name' => $session_directory_name]);
+            $stmt->execute(['name' => $session_name, 'description' => $_POST['descriptionPHP'], 'directory_name' => $session_directory_name, 'session_id' => $course_id]);
             exit('*course_created_successfully*');
         } catch (Exception $e) {
             rmdir("../../resource_bank/" . $course_directory_name . '/' . $session_directory_name);
