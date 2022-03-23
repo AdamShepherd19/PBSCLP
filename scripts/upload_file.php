@@ -1,7 +1,7 @@
 <?php
     session_start();
     
-    if(isset($_POST['course_namePHP'])) {
+    if(isset($_POST['file_namePHP'])) {
         
         $pass = file_get_contents('../../pass.txt', true);
 
@@ -18,7 +18,7 @@
         // $directory_name = strtolower(str_replace(' ', '_', $course_name));
         $directory_name = "../../resource_bank/";
         // $file_to_upload = $_POST['file'];
-        
+
         // get details of the uploaded file
         $fileTmpPath = $_FILES['filePHP']['tmp_name'];
         $fileName = $_FILES['filePHP']['name'];
