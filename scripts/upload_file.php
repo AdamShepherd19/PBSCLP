@@ -29,7 +29,7 @@
         /* Check file extension */
         if(in_array(strtolower($imageFileType), $valid_extensions)) {
             /* Upload file */
-            if(move_uploaded_file($_FILES['file']['tmp_name'],$location.$file_name.$imageFileType)){
+            if(move_uploaded_file($_FILES['file']['tmp_name'],$location.$file_name.".".$imageFileType)){
                 exit("*file_uploaded_successfully*");
             } else {
                 exit("*file_upload_failed*");
