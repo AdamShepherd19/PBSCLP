@@ -60,21 +60,6 @@
             exit('*warning_file_already_exists*');
         }
 
-        // if (!mkdir("../../resource_bank/" . $directory_name)) {
-        //     exit("*error_creating_directory*");
-        // }
-
-        // $sql = "INSERT INTO courses (name, description, directory_name ) values (:name, :description, :directory_name)";
-        // $stmt = $connectionPDO->prepare($sql);
-
-        // try {
-        //     $stmt->execute(['name' => $course_name, 'description' => $_POST['descriptionPHP'], 'directory_name' => $directory_name]);
-        //     exit('*course_created_successfully*');
-        // } catch (Exception $e) {
-        //     rmdir("../../resource_bank/" . $directory_name);
-        //     echo 'Caught exception: ',  $e->getMessage(), "\n";
-        // }
-        
         /* Valid extensions */
         $valid_extensions = array("jpg","jpeg","png");
         
@@ -88,6 +73,17 @@
             }
         } else {
             exit("*filetype_not_supported*");
+        }
+
+        $sql = "INSERT INTO files (filename, session_id, course_id ) values (:filename, :course_id, :session_id)";
+        $stmt = $connectionPDO->prepare($sql);
+
+        try {
+            $stmt->execute(['filename' => $new_file_name, 'course_id' => $course_id, 'session_id' => $session_id]);
+            exit('*file_uploaded_successfully*');
+        } catch (Exception $e) {
+            unlink($location . $new_file_name);
+            echo 'Caught exception: ',  $e->getMessage(), "\n";
         }
 
         $stmt = null;
