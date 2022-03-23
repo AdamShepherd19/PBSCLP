@@ -78,7 +78,7 @@
         $valid_extensions = array("jpg","jpeg","png");
         
         /* Check file extension */
-        if(in_array(strtolower($file_extension), $valid_extensions)) {
+        if(in_array(strtolower($file_extension, $valid_extensions)) {
             /* Upload file */
             if(move_uploaded_file($_FILES['file']['tmp_name'],$location.$new_file_name.".".$file_extension)){
                 exit("*file_uploaded_successfully*");
