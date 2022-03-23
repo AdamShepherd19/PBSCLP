@@ -84,9 +84,10 @@
                     window.location.replace('resource_bank_home.php');
                 });
 
-                var file = $('#file-to-upload')[0].files[0]
-                var fd = new FormData();
-                fd.append('theFile', file);
+                var file_data = $('#file-to-upload').prop('files')[0];   
+                var form_data = new FormData();                  
+                form_data.append('file', file_data);
+                alert(form_data);
 
                 // onclick function for the post announcement button
                 $("#file-create").on('click', function(){
@@ -105,7 +106,7 @@
                             url: "../scripts/upload_file.php",
                             data: {
                                 file_namePHP: file_name,
-                                filePHP: fd
+                                filePHP: form_data
                                 // descriptionPHP: description,
                                 // course_idPHP: course_id
                             },

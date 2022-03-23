@@ -20,19 +20,17 @@
         // $file_to_upload = $_POST['file'];
 
         // get details of the uploaded file
-        $fileTmpPath = $_FILES['filePHP']['tmp_name'];
-        $fileName = $_FILES['filePHP']['name'];
+        // $fileTmpPath = $_FILES['filePHP']['tmp_name'];
+        // $fileName = $_FILES['filePHP']['name'];
         
-        $uploadFileDir = '../../resource_bank/';
-        $dest_path = $uploadFileDir . $fileName;
+        // $uploadFileDir = '../../resource_bank/';
+        // $dest_path = $uploadFileDir . $fileName;
         
-        if(move_uploaded_file($fileTmpPath, $dest_path))
-        {
-            exit('*file_uploaded_successfully*');
+        if ( 0 < $_FILES['file']['error'] ) {
+            echo 'Error: ' . $_FILES['file']['error'] . '<br>';
         }
-        else
-        {
-            exit('*error_uploading_file*');
+        else {
+            move_uploaded_file($_FILES['file']['tmp_name'], '../../resource_bank/' . $_FILES['file']['name']);
         }
         
         // if(file_exists('../../resource_bank/' . $directory_name)) {
