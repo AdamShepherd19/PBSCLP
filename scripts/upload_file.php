@@ -24,7 +24,7 @@
         $imageFileType = strtolower($imageFileType);
         
         /* Valid extensions */
-        $valid_extensions = array("jpg","jpeg","png");
+        $valid_extensions = array("jpg","jpeg","png", "");
         
         /* Check file extension */
         if(in_array(strtolower($imageFileType), $valid_extensions)) {
