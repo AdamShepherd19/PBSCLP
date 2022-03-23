@@ -92,7 +92,7 @@
                     var form_data = new FormData();                  
                     form_data.append('file',files[0]);
                     form_data.append('filename', file_name);
-                    alert(form_data);
+                    // alert(form_data);
 
 
                     //retrieve data from form
