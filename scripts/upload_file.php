@@ -67,7 +67,7 @@
         if(in_array(strtolower($file_extension), $valid_extensions)) {
             /* Upload file */
             if(move_uploaded_file($_FILES['file']['tmp_name'],$location.$new_file_name)){
-                exit("*file_uploaded_successfully*");
+                echo "*file_uploaded_successfully*";
             } else {
                 exit("*file_upload_failed*");
             }
