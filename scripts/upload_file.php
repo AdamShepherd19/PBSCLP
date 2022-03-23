@@ -16,20 +16,19 @@
         /* Getting file name */
         $filename = $_FILES['file']['name'];
         $file_name = $_POST['filename'];
-        // echo $file_name;
         
         /* Location */
         $location = "../../resource_bank/";
-        $imageFileType = pathinfo($location.$filename,PATHINFO_EXTENSION);
-        $imageFileType = strtolower($imageFileType);
+        $file_extension = pathinfo($location.$filename,PATHINFO_EXTENSION);
+        $file_extension = strtolower($imagefile_extensionFileType);
         
         /* Valid extensions */
-        $valid_extensions = array("jpg","jpeg","png", "");
+        $valid_extensions = array("jpg","jpeg","png");
         
         /* Check file extension */
-        if(in_array(strtolower($imageFileType), $valid_extensions)) {
+        if(in_array(strtolower($file_extension), $valid_extensions)) {
             /* Upload file */
-            if(move_uploaded_file($_FILES['file']['tmp_name'],$location.$file_name.".".$imageFileType)){
+            if(move_uploaded_file($_FILES['file']['tmp_name'],$location.$file_name.".".$file_extension)){
                 exit("*file_uploaded_successfully*");
             } else {
                 exit("*file_upload_failed*");
@@ -37,7 +36,6 @@
         } else {
             exit("*filetype_not_supported*");
         }
-        // exit;
     }
         
         // if(file_exists('../../resource_bank/' . $directory_name)) {
