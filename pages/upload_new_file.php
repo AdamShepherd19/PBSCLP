@@ -61,7 +61,7 @@
                     <textarea id="description" class="pbs-form-text-box" placeholder="Enter course description..."></textarea><br /> -->
                         <!-- <form action="upload.php" method="post" enctype="multipart/form-data"> -->
                     <label for="file-to-upload"> Select file to upload: </label> <br>
-                    <input type="file" name="file-to-upload" id="file-to-upload" class="pbs-button">
+                    <input type="file" name="file-to-upload" id="file-to-upload">
                         <!-- <input type="submit" value="Upload Image" name="submit"> -->
                         <!-- </form> -->
                     <div class="button-wrapper">
