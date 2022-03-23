@@ -33,11 +33,11 @@
             exit("*warning_no_course_found*");
         }
         
-        if(file_exists('../../resource_bank/' . $course_directory_name . '/' . $directory_name)) {
+        if(file_exists('../../resource_bank/' . $course_directory_name . '/' . $session_directory_name)) {
             exit('*warning_session_already_exists*');
         }
 
-        if (!mkdir("../../resource_bank/" . $course_directory_name . '/' .  $directory_name)) {
+        if (!mkdir("../../resource_bank/" . $course_directory_name . '/' .  $session_directory_name)) {
             exit("*error_creating_directory*");
         }
 
@@ -48,7 +48,7 @@
             $stmt->execute(['name' => $session_name, 'description' => $_POST['descriptionPHP'], 'directory_name' => $session_directory_name]);
             exit('*course_created_successfully*');
         } catch (Exception $e) {
-            rmdir("../../resource_bank/" . $course_directory_name . '/' . $directory_name);
+            rmdir("../../resource_bank/" . $course_directory_name . '/' . $session_directory_name);
             echo 'Caught exception: ',  $e->getMessage(), "\n";
         }
 
