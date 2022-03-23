@@ -87,14 +87,16 @@
                 // onclick function for the post announcement button
                 $("#file-create").on('click', function(){
 
-                    var files = $('#file-to-upload')[0].files; 
+                    var files = $('#file-to-upload')[0].files;
+                    var file_name = $("#name").val();
                     var form_data = new FormData();                  
                     form_data.append('file',files[0]);
+                    form_data.append('filename', file_name);
                     alert(form_data);
 
 
                     //retrieve data from form
-                    var file_name = $("#name").val();
+                    // var file_name = $("#name").val();
                     // var description = $("#description").val();
 
                     //check data not empty

@@ -15,6 +15,8 @@
     if(isset($_FILES['file']['name'])){
         /* Getting file name */
         $filename = $_FILES['file']['name'];
+        $file_name = $_POST['filename'];
+        echo $file_name;
         
         /* Location */
         $location = "../../resource_bank/".$filename;
