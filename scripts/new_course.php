@@ -25,10 +25,10 @@
         }
 
         if (!mkdir("../../resource_bank/" . $directory_name)) {
-            exit("*error_creating_directory*")
+            exit("*error_creating_directory*");
         }
 
-        
+
 
         //generate directory name
         //create directory in resource bank
