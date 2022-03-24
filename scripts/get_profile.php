@@ -25,23 +25,19 @@
     $result = $stmt->fetch();
 
     if ($result) {
-        // echo "test1";
         // //perform query and sort into newest first
         $sql = "SELECT course_id FROM users_on_courses WHERE user_id=? ORDER BY course_id ASC";
         $stmt = $connectionPDO->prepare($sql);
         $stmt->execute([$user_id]);
         $courses_result = $stmt->fetch();
-        // echo $courses_result->num_rows;
 
         if ($courses_result){
-            // $listOfCourseID = array();
-    
-            // output data of each row
+            $listOfCourseID = array();
+            
             foreach($courses_result as $row) {
-                // array_push($listOfCourseID, $row['course_id']);
+                array_push($listOfCourseID, $row['course_id']);
                 $courses_as_string .= $row['course_id'] .= ",";
                 echo $courses_as_string;
-                echo $row["course_id"];
             }
         }
         //     $courses_as_string = substr($courses_as_string, 0, -1);
@@ -80,8 +76,8 @@
             "name" => $name,
             "email" => $email,
             "organisation" => $organisation,
-            "contact_number" => $contact_number
-            // "list_of_course_id" => $listOfCourseID
+            "contact_number" => $contact_number,
+            "list_of_course_id" => $listOfCourseID
             // "list_of_course_name" => $list_of_course_name
         );
 
