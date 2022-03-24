@@ -34,10 +34,10 @@
         // echo $courses_result->num_rows;
 
         if ($courses_result){
-        //     echo "test2";
+            echo "test2";
         //     //initialise array
-            $list_of_course_id = array();
-        //     echo $courses_result->num_rows;
+            // $list_of_course_id = array();
+            echo $courses_result->num_rows;
     
         //     // output data of each row
             foreach($courses_result as $row) {
