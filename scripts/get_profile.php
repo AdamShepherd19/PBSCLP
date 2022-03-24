@@ -31,6 +31,7 @@
         $stmt = $connectionPDO->prepare($sql);
         $stmt->execute([$user_id]);
         $courses_result = $stmt->fetch();
+        echo $courses_result->num_rows;
 
         if ($courses_result){
             echo "test2";
