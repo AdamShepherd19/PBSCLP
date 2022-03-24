@@ -114,7 +114,7 @@
                     $("#save-profile").show();
 
                     $.ajax({
-                        method: 'POST',
+                        method: 'get',
                         url: "../scripts/get_all_courses.php",
                         datatype: 'JSON',
                         success: function (response) {
