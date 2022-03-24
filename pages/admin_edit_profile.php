@@ -97,6 +97,8 @@
 
         <script type="text/javascript">
             $(document).ready(function () {
+                var user_id_to_edit = "<?php echo $_GET['userId']; ?>";
+
                 var name, email, contact_number, organisation;
                 
                 // hide save and cancel edit profile buttons
@@ -121,6 +123,25 @@
                             if(response.includes("*warning_no_courses_found*")){
                                 console.log("temp");
                             } else {
+                                let list_of_assigned_course_id;
+
+                                $.ajax({
+                                    url: '../scripts/get_assigned_courses.php',
+                                    type: 'post',
+                                    dataType: 'JSON',
+                                    data: {
+                                        user_idPHP: user_id_to_edit
+                                    },
+                                    success: function(response) {
+                                        if(response.includes("*warning_no_courses_found*")){
+                                            console.log("temp");
+                                        } else {
+                                            list_of_assigned_course_id = response;
+                                        }
+                                    }
+                                });
+                                console.log(list_of_assigned_course_id);
+                                
                                 $("#courses").html("");
                                 for(var i = 0; i < response.length; i++) {
                                     // courseId = response[x].course_id;
@@ -197,9 +218,6 @@
                         datatype: 'text'
                     });
                 });
-
-                
-                var user_id_to_edit = "<?php echo $_GET['userId']; ?>";
 
                 $.ajax({
                     url: '../scripts/get_profile.php',
