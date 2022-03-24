@@ -3,7 +3,7 @@
     // https://makitweb.com/return-json-response-ajax-using-jquery-php
     $pass = file_get_contents('../../pass.txt', true);
 
-    $session_id = $_POST['session_idPHP'];
+    $session_id = $_GET['session_idPHP'];
 
     //connect to database
     try {
