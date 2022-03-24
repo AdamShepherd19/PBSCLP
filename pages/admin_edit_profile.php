@@ -123,8 +123,8 @@
                             } else {
                                 // $("#courses").html("");
                                 for(var i = 0; i < response.length; i++) {
-                                    courseId = response[x].course_id;
-                                    let output = '<input type="checkbox" id="edit-cid-' + response[x].course_id + '" class="pbs-form-text-box" value="' + response[x].course_name + '"/>';
+                                    // courseId = response[x].course_id;
+                                    let output = '<input type="checkbox" id="edit-cid-' + response[i].course_id + '" class="pbs-form-text-box" value="' + response[i].course_name + '"/>';
                                     $("#courses").append(output);
                                 }
                             }
