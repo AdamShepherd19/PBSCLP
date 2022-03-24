@@ -24,18 +24,21 @@
         // output data of each row
         foreach($result as $row) {
             //add data into array
+            echo "test";
             array_push($valid_courses, $row['course_id'])
         }
     } else {
         echo json_encode("*no_courses_assigned_to_user*");
     }
 
+    echo "test2";
+
     //perform query and sort into newest first
-    $sql = "SELECT * FROM courses WHERE course_id IN ? ORDER BY course_id ASC";
+    $sql = "SELECT * FROM courses WHERE course_id IN (?) ORDER BY course_id ASC";
     $stmt = $connectionPDO->prepare($sql);
     $stmt->execute($valid_courses);
     $result = $stmt->fetchAll();
-    
+    echo "test3";
     if ($result){
         //initialise array
         $data = array();
