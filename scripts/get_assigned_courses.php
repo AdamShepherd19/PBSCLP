@@ -18,14 +18,17 @@
     $courses_result = $stmt->fetchAll();
 
     if ($courses_result){
-        $listOfCourseID = array();
+        $data = array();
             
         foreach($courses_result as $row) {
-            array_push($listOfCourseID, $row['course_id']);
+            $data[] = array(
+                "id" => $row['course_id']
+            );
+            // array_push($listOfCourseID, $row['course_id']);
         }
 
         //encode the array into jason
-        echo json_encode($listOfCourseID);
+        echo json_encode($data);
     } else {
         echo json_encode("*warning_no_courses_found*");
     }

@@ -137,7 +137,8 @@
                                             console.log("temp");
                                         } else {
                                             for(let j = 0; j < response.length; j++) {
-                                                list_of_assigned_course_id.push(response[j]);
+                                                list_of_assigned_course_id.push(response[j].id);
+
                                             }
                                         }
                                     }
