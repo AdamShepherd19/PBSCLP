@@ -30,7 +30,7 @@
         $sql = "SELECT course_id FROM users_on_courses WHERE user_id=? ORDER BY course_id ASC";
         $stmt = $connectionPDO->prepare($sql);
         $stmt->execute([$user_id]);
-        $courses_result = $stmt->fetch();
+        $courses_result = $stmt->fetchAll();
 
         if ($courses_result){
             // $listOfCourseID = array();
