@@ -114,8 +114,8 @@
                     $("#save-profile").show();
 
                     $.ajax({
-                        method: 'get',
                         url: "../scripts/get_all_courses.php",
+                        type: 'get',
                         datatype: 'JSON',
                         success: function (response) {
                             if(response.includes("*warning_no_courses_found*")){
