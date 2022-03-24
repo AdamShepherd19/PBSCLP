@@ -15,7 +15,7 @@
 
     $sql = "SELECT course_id FROM sessions WHERE session_id=? LIMIT 1";
     $stmt = $connectionPDO->prepare($sql);
-    $stmt->execute($session_id);
+    $stmt->execute([$session_id]);
     $result = $stmt->fetchAll();
 
     if ($result){
@@ -42,7 +42,7 @@
     //perform query and sort into newest first
     $sql = "SELECT file_id, filename FROM files WHERE session_id=? ORDER BY file_id ASC";
     $stmt = $connectionPDO->prepare($sql);
-    $stmt->execute($session_id);
+    $stmt->execute([$session_id]);
     $result = $stmt->fetchAll();
     
     if ($result){
