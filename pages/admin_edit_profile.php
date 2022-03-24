@@ -148,6 +148,9 @@
                                     let output;
                                     console.log(list_of_assigned_course_id);
                                     console.log(list_of_assigned_course_id.includes(response[i].course_id));
+                                    console.log(list_of_assigned_course_id[i]);
+                                    console.log(response[i].course_id);
+
 
                                     if (list_of_assigned_course_id.includes(response[i].course_id)) {
                                         output = '<input type="checkbox" id="edit-cid-' + response[i].course_id + '" class="pbs-form-check-box" value="' + response[i].course_name + '" checked><label for="edit-cid-' + response[i].course_id + '">' + response[i].course_name + '</label><br>';
