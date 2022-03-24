@@ -25,7 +25,7 @@
         foreach($result as $row) {
             //add data into array
             echo "test";
-            array_push($valid_courses, $row['course_id'])
+            array_push($valid_courses, $row['course_id']);
         }
     } else {
         echo json_encode("*no_courses_assigned_to_user*");
