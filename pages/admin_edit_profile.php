@@ -73,6 +73,11 @@
                         <td class="caption">Organisation:</td>
                         <td id="organisation"></td>
                     </tr>
+
+                    <tr>
+                        <td class="caption">Courses:</td>
+                        <td id="courses"><ul id="course-list"></ul></td>
+                    </tr>
                     
                     <tr>
                         <td></td>
@@ -193,11 +198,16 @@
                             email = response[0].email;
                             contact_number = response[0].contact_number;
                             organisation = response[0].organisation;
+                            list_of_course_id = response[0].list_of_course_id;
+                            list_of_course_names = response[0].list_of_course_names;
 
                             $('#name').text(name);
                             $('#email-address').text(email);
                             $('#contact-number').text(contact_number);
                             $('#organisation').text(organisation);
+                            for (let x = 0; x < list_of_courses.length; x++){
+                                $('#course-list').append("<li id='cid=" + list_of_course_id[x] + "'>" + list_of_course_names[x] + "</li>");
+                            }
                         }
 
                     }
