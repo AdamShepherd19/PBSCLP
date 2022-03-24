@@ -63,7 +63,7 @@
         $data = array();
 
         //retrieve data from query
-        $name = $result['firstname'] . " " . $result['lastname'];;
+        $name = $result['firstname'] . " " . $result['lastname'];
         $email = $result['email'];
         $organisation = $result['organisation'];
         $contact_number = $result['contact_number'];
