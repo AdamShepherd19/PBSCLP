@@ -81,8 +81,8 @@
             "email" => $email,
             "organisation" => $organisation,
             "contact_number" => $contact_number,
-            "list_of_course_id" => $list_of_course_id,
-            "list_of_course_name" => $list_of_course_name
+            "list_of_course_id" => $listOfCourseID
+            // "list_of_course_name" => $list_of_course_name
         );
 
         //encode the array into jason
