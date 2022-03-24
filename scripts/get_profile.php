@@ -39,7 +39,7 @@
     
             // output data of each row
             foreach($courses_result as $row) {
-                $list_of_course_id[] = $row['course_id'];
+                array_push($list_of_course_id, $row['course_id']);
                 $courses_as_string .= $row['course_id'] .= ",";
                 echo $courses_as_string;
             }
@@ -58,7 +58,7 @@
         
                 // output data of each row
                 foreach($course_name_result as $row) {
-                    $list_of_course_name[] = $row['name'];
+                    array_push($list_of_course_name[], $row['name']);
                     print_r($list_of_course_name);
                 }
             }
