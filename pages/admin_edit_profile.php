@@ -119,7 +119,7 @@
                         success: function (response) {
                             if(response.includes("*warning_no_courses_found*")){
                                 console.log("temp");
-                            } else {}
+                            } else {
                                 $("#courses").html("");
                                 for(var x = 0; x < response.length; x++) {
                                     // courseId = response[x].course_id;
