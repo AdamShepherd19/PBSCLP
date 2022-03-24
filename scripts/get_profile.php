@@ -61,6 +61,7 @@
                     print_r($list_of_course_name);
                 }
             }
+        }
 
         // }
         //initialise array
