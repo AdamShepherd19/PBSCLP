@@ -1,6 +1,9 @@
 <?php
+    session_start();
     // https://makitweb.com/return-json-response-ajax-using-jquery-php
     $pass = file_get_contents('../../pass.txt', true);
+
+    $session_id = $_POST['session_idPHP'];
 
     //connect to database
     try {
@@ -10,10 +13,33 @@
         exit('*database_connection_error*');
     }
 
+    $sql = "SELECT course_id FROM sessions WHERE session_id=? LIMIT 1";
+    $stmt = $connectionPDO->prepare($sql);
+    $stmt->execute($session_id);
+    $result = $stmt->fetchAll();
+
+    if (!$result){
+        foreach($result as $row) {
+            $course_id = $row['course_id'];
+        }
+    }
+
+    //query users_on_courses for course_id's for $_SESSION['user_id']
+    //apply this query to select courses query
+    $sql = "SELECT course_id FROM users_on_courses WHERE user_id=:user_id AND course_id=:course_id LIMIT 1";
+    $stmt = $connectionPDO->prepare($sql);
+    $stmt->execute(["user_id" => $_SESSION['user_id'], "course_id" => $course_id]);
+    $result = $stmt->fetchAll();
+
+    if (!$result){
+        $error_msg = json_encode("*user_not_authorised_on_this_course*");
+        exit($error_msg);
+    }
+
     //perform query and sort into newest first
     $sql = "SELECT file_id, filename FROM files WHERE session_id=? ORDER BY file_id ASC";
     $stmt = $connectionPDO->prepare($sql);
-    $stmt->execute([$_POST['session_idPHP']]);
+    $stmt->execute([$session_id]);
     $result = $stmt->fetchAll();
     
     if ($result){
