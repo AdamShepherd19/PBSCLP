@@ -18,10 +18,13 @@
     $stmt->execute($session_id);
     $result = $stmt->fetchAll();
 
-    if (!$result){
+    if ($result){
         foreach($result as $row) {
             $course_id = $row['course_id'];
         }
+    } else {
+        $error_msg = json_encode("*user_not_authorised_on_this_course*");
+        exit($error_msg);
     }
 
     //query users_on_courses for course_id's for $_SESSION['user_id']
