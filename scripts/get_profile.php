@@ -23,6 +23,7 @@
     $stmt = $connectionPDO->prepare($sql);
     $stmt->execute([$user_id]);
     $result = $stmt->fetch();
+    print_r($result);
 
     if ($result) {
         // //perform query and sort into newest first
