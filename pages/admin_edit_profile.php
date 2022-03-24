@@ -200,6 +200,7 @@
                             organisation = response[0].organisation;
                             list_of_course_id = response[0].list_of_course_id;
                             list_of_course_names = response[0].list_of_course_names;
+                            console.log(list_of_course_name);
 
                             $('#name').text(name);
                             $('#email-address').text(email);
