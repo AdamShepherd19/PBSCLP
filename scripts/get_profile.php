@@ -23,7 +23,7 @@
     $stmt = $connectionPDO->prepare($sql);
     $stmt->execute([$user_id]);
     $result = $stmt->fetch();
-    print_r($result);
+    // print_r($result);
 
     if ($result) {
         // //perform query and sort into newest first
@@ -34,12 +34,12 @@
 
         if ($courses_result){
             $listOfCourseID = array();
-            print_r($courses_result);
+            // print_r($courses_result);
             
             foreach($courses_result as $row) {
                 array_push($listOfCourseID, $row['course_id']);
                 $courses_as_string .= $row['course_id'] .= ",";
-                echo $courses_as_string;
+                // echo $courses_as_string;
                 // echo $row['course_id'];
             }
         
@@ -58,7 +58,7 @@
                 // output data of each row
                 foreach($course_name_result as $row) {
                     array_push($list_of_course_name, $row['name']);
-                    print_r($list_of_course_name);
+                    // print_r($list_of_course_name);
                 }
             }
         }
