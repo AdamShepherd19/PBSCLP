@@ -114,19 +114,19 @@
                     $("#save-profile").show();
 
                     $.ajax({
-                        url: "../scripts/get_all_courses.php",
+                        url: '../scripts/get_all_courses.php',
                         type: 'get',
-                        datatype: 'JSON',
-                        success: function (response) {
+                        dataType: 'JSON',
+                        success: function(response) {
                             if(response.includes("*warning_no_courses_found*")){
                                 console.log("temp");
                             } else {
                                 // $("#courses").html("");
-                                for(var x = 0; x < response.length; x++) {
+                                for(var i = 0; i < response.length; i++) {
                                     // courseId = response[x].course_id;
                                     // let output = '<input type="checkbox" id="edit-cid-' + response[x].course_id + '" class="pbs-form-text-box" value="' + response[x].course_name + '"/>';
                                     // $("#courses").append(output);
-                                    console.log(response[x].course_id);
+                                    console.log(response[i].course_id);
                                 }
                             }
                         }
