@@ -205,7 +205,7 @@
                             $('#email-address').text(email);
                             $('#contact-number').text(contact_number);
                             $('#organisation').text(organisation);
-                            for (let x = 0; x < list_of_courses.length; x++){
+                            for (let x = 0; x < list_of_course_id.length; x++){
                                 $('#course-list').append("<li id='cid=" + list_of_course_id[x] + "'>" + list_of_course_names[x] + "</li>");
                             }
                         }
