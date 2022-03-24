@@ -200,14 +200,15 @@
                             organisation = response[0].organisation;
                             list_of_course_id = response[0].list_of_course_id;
                             list_of_course_names = response[0].list_of_course_names;
-
+                            console.log(list_of_course_id);
+                            
                             $('#name').text(name);
                             $('#email-address').text(email);
                             $('#contact-number').text(contact_number);
                             $('#organisation').text(organisation);
-                            for (let x = 0; x < list_of_course_id.length; x++){
-                                $('#course-list').append("<li id='cid=" + list_of_course_id[x] + "'>" + list_of_course_names[x] + "</li>");
-                            }
+                            // for (let x = 0; x < list_of_course_id.length; x++){
+                            //     $('#course-list').append("<li id='cid=" + list_of_course_id[x] + "'>" + list_of_course_names[x] + "</li>");
+                            // }
                         }
 
                     }
