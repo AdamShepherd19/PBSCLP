@@ -114,7 +114,7 @@
                     $("#cancel-profile").hide();
                     $("#cancel-edit").show();
                     $("#save-profile").show();
-                    let list_of_assigned_course_id = [];
+                    
                     $.ajax({
                         url: '../scripts/get_all_courses.php',
                         type: 'get',
@@ -124,7 +124,7 @@
                                 console.log("temp");
                             } else {
                                 
-
+                                let list_of_assigned_course_id = [];
                                 $.ajax({
                                     url: '../scripts/get_assigned_courses.php',
                                     type: 'post',
@@ -137,8 +137,7 @@
                                             console.log("temp");
                                         } else {
                                             for(let j = 0; j < response.length; j++) {
-                                                list_of_assigned_course_id.push(response[j].id);
-
+                                                list_of_assigned_course_id[j] = response[j].id;
                                             }
                                         }
                                     }
