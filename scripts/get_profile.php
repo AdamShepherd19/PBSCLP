@@ -33,13 +33,14 @@
 
         if ($courses_result){
             // $listOfCourseID = array();
+            print_r($courses_result);
             
-            foreach($courses_result as $row) {
-                // array_push($listOfCourseID, $row['course_id']);
-                // $courses_as_string .= $row['course_id'] .= ",";
-                // echo $courses_as_string;
-                echo $row['course_id'];
-            }
+            // foreach($courses_result as $row) {
+            //     // array_push($listOfCourseID, $row['course_id']);
+            //     // $courses_as_string .= $row['course_id'] .= ",";
+            //     // echo $courses_as_string;
+            //     echo $row['course_id'];
+            // }
         }
         //     $courses_as_string = substr($courses_as_string, 0, -1);
 
@@ -70,7 +71,7 @@
         $email = $result['email'];
         $organisation = $result['organisation'];
         $contact_number = $result['contact_number'];
-        echo "test4";
+        // echo "test4";
         
         //add data into array
         $data[] = array(
