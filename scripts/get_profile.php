@@ -32,10 +32,10 @@
         $courses_result = $stmt->fetch();
 
         if ($courses_result){
-            $listOfCourseID = array();
+            // $listOfCourseID = array();
             
             foreach($courses_result as $row) {
-                array_push($listOfCourseID, $row['course_id']);
+                // array_push($listOfCourseID, $row['course_id']);
                 $courses_as_string .= $row['course_id'] .= ",";
                 echo $courses_as_string;
             }
@@ -76,8 +76,8 @@
             "name" => $name,
             "email" => $email,
             "organisation" => $organisation,
-            "contact_number" => $contact_number,
-            "list_of_course_id" => $listOfCourseID
+            "contact_number" => $contact_number
+            // "list_of_course_id" => $listOfCourseID
             // "list_of_course_name" => $list_of_course_name
         );
 
