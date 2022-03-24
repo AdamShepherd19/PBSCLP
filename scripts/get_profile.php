@@ -23,10 +23,9 @@
     $stmt = $connectionPDO->prepare($sql);
     $stmt->execute([$user_id]);
     $result = $stmt->fetch();
-    // print_r($result);
 
     if ($result) {
-        // //perform query and sort into newest first
+        
         $sql = "SELECT course_id FROM users_on_courses WHERE user_id=? ORDER BY course_id ASC";
         $stmt = $connectionPDO->prepare($sql);
         $stmt->execute([$user_id]);
@@ -34,18 +33,14 @@
 
         if ($courses_result){
             $listOfCourseID = array();
-            // print_r($courses_result);
             
             foreach($courses_result as $row) {
                 array_push($listOfCourseID, $row['course_id']);
                 $courses_as_string .= $row['course_id'] .= ",";
-                // echo $courses_as_string;
-                // echo $row['course_id'];
             }
         
             $courses_as_string = substr($courses_as_string, 0, -1);
 
-        //     //perform query and sort into newest first
             $sql = "SELECT name FROM courses WHERE course_id IN (" . $courses_as_string . ") ORDER BY course_id ASC";
             $stmt = $connectionPDO->prepare($sql);
             $stmt->execute();
@@ -58,13 +53,10 @@
                 // output data of each row
                 foreach($course_name_result as $row) {
                     array_push($list_of_course_name, $row['name']);
-                    // print_r($list_of_course_name);
                 }
             }
         }
 
-        // }
-        //initialise array
         $data = array();
 
         //retrieve data from query
@@ -72,7 +64,6 @@
         $email = $result['email'];
         $organisation = $result['organisation'];
         $contact_number = $result['contact_number'];
-        // echo "test4";
         
         //add data into array
         $data[] = array(

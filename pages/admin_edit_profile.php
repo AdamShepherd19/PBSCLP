@@ -192,7 +192,9 @@
                     },
                     success: function(response) {
                         if (response.includes("*warning_no_user_found*")) {
-                            console.log('No user found...')
+                            var message = "<h3>That user does not exist</h3><br> ";
+
+                                $('.main-content').html(message);
                         } else {
                             name = response[0].name;
                             email = response[0].email;
@@ -200,7 +202,6 @@
                             organisation = response[0].organisation;
                             list_of_course_id = response[0].list_of_course_id;
                             list_of_course_names = response[0].list_of_course_names;
-                            // console.log(list_of_course_names);
 
                             $('#name').text(name);
                             $('#email-address').text(email);
