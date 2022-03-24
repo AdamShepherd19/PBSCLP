@@ -124,7 +124,7 @@
                                 $("#courses").html("");
                                 for(var i = 0; i < response.length; i++) {
                                     // courseId = response[x].course_id;
-                                    let output = '<input type="checkbox" id="edit-cid-' + response[i].course_id + '" class="pbs-form-text-box" value="' + response[i].course_name + '"/><label for="edit-cid-' + response[i].course_id + '">' + response[i].course_name + '</label><br><br>';
+                                    let output = '<input type="checkbox" id="edit-cid-' + response[i].course_id + '" class="pbs-form-check-box" value="' + response[i].course_name + '"/><label for="edit-cid-' + response[i].course_id + '">' + response[i].course_name + '</label><br><br>';
                                     $("#courses").append(output);
                                 }
                             }
