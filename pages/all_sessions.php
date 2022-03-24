@@ -102,6 +102,10 @@
                             var message = "<div class='card'><h4 class='card-header'> There is no course content yet!</div>"
 
                             $(".inner-wrapper").html(message);
+                        } else if(response.includes("*user_not_authorised_on_this_course*")) {
+                            var message = "<div class='card'><h4 class='card-header'> You are not authorised to access this course material.</div>"
+
+                            $(".inner-wrapper").html(message);
                         } else {
                             for(var x = 0; x < response.length; x++) {
 
