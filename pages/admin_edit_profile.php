@@ -146,6 +146,7 @@
                                 $("#courses").html("");
                                 for(var i = 0; i < response.length; i++) {
                                     let output;
+                                    console.log(list_of_assigned_course_id);
                                     console.log(list_of_assigned_course_id.includes(response[i].course_id));
 
                                     if (list_of_assigned_course_id.includes(response[i].course_id)) {
