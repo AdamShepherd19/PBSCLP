@@ -25,6 +25,7 @@
     $result = $stmt->fetch();
 
     if ($result) {
+        echo "test1";
         //perform query and sort into newest first
         $sql = "SELECT course_id FROM users_on_courses WHERE user_id=? ORDER BY course_id ASC";
         $stmt = $connectionPDO->prepare($sql);
@@ -32,6 +33,7 @@
         $courses_result = $stmt->fetch();
 
         if ($courses_result){
+            echo "test2";
             //initialise array
             $list_of_course_id = array();
     
@@ -39,6 +41,7 @@
             foreach($courses_result as $row) {
                 $list_of_course_id[] = $row['course_id'];
                 $courses_as_string .= $row['course_id'] .= ",";
+                echo $courses_as_string;
             }
             $courses_as_string = substr($courses_as_string, 0, -1);
 
@@ -49,12 +52,14 @@
             $course_name_result = $stmt->fetchAll();
 
             if ($course_name_result){
+                echo "test3";
                 //initialise array
                 $list_of_course_name = array();
         
                 // output data of each row
                 foreach($course_name_result as $row) {
                     $list_of_course_name[] = $row['name'];
+                    print_r($list_of_course_name);
                 }
             }
 
@@ -67,6 +72,7 @@
         $email = $result['email'];
         $organisation = $result['organisation'];
         $contact_number = $result['contact_number'];
+        echo "test4";
         
         //add data into array
         $data[] = array(
