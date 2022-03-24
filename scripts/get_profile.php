@@ -34,16 +34,13 @@
         // echo $courses_result->num_rows;
 
         if ($courses_result){
-            echo "test2";
-        //     //initialise array
-            // $list_of_course_id = array();
-            echo $courses_result->num_rows;
+            $listOfCourseID = array();
     
-        //     // output data of each row
+            // output data of each row
             foreach($courses_result as $row) {
-        //         array_push($list_of_course_id, $row['course_id']);
-        //         $courses_as_string .= $row['course_id'] .= ",";
-        //         echo $courses_as_string;
+                array_push($listOfCourseID, $row['course_id']);
+                $courses_as_string .= $row['course_id'] .= ",";
+                echo $courses_as_string;
                 echo $row["course_id"];
             }
         }
