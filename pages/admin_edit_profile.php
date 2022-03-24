@@ -116,6 +116,7 @@
                     $.ajax({
                         method: 'POST',
                         url: "../scripts/get_all_courses.php",
+                        datatype: 'JSON',
                         success: function (response) {
                             if(response.includes("*warning_no_courses_found*")){
                                 console.log("temp");
@@ -126,8 +127,7 @@
                                     $("#courses").append('<input type="checkbox" id="edit-cid-' + response[x].course_id + '" class="pbs-form-text-box" value="' + response[x].course_name + '"/>');
                                 }
                             }
-                        },
-                        datatype: 'json'
+                        }
                     });
                     
                     $("#name").html('<input type="text" id="new-name" class="pbs-form-text-box" value="' + name + '"/>');
