@@ -57,7 +57,7 @@
         
                 // output data of each row
                 foreach($course_name_result as $row) {
-                    array_push($list_of_course_name[], $row['name']);
+                    array_push($list_of_course_name, $row['name']);
                     print_r($list_of_course_name);
                 }
             }
