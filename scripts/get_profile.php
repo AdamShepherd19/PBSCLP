@@ -42,26 +42,25 @@
                 echo $courses_as_string;
                 // echo $row['course_id'];
             }
-        }
-        //     $courses_as_string = substr($courses_as_string, 0, -1);
+        
+            $courses_as_string = substr($courses_as_string, 0, -1);
 
         //     //perform query and sort into newest first
-        //     $sql = "SELECT name FROM courses WHERE course_id IN (" . $courses_as_string . ") ORDER BY course_id ASC";
-        //     $stmt = $connectionPDO->prepare($sql);
-        //     $stmt->execute();
-        //     $course_name_result = $stmt->fetchAll();
+            $sql = "SELECT name FROM courses WHERE course_id IN (" . $courses_as_string . ") ORDER BY course_id ASC";
+            $stmt = $connectionPDO->prepare($sql);
+            $stmt->execute();
+            $course_name_result = $stmt->fetchAll();
 
-        //     if ($course_name_result){
-        //         echo "test3";
-        //         //initialise array
-        //         $list_of_course_name = array();
+            if ($course_name_result){
+                //initialise array
+                $list_of_course_name = array();
         
-        //         // output data of each row
-        //         foreach($course_name_result as $row) {
-        //             array_push($list_of_course_name[], $row['name']);
-        //             print_r($list_of_course_name);
-        //         }
-        //     }
+                // output data of each row
+                foreach($course_name_result as $row) {
+                    array_push($list_of_course_name[], $row['name']);
+                    print_r($list_of_course_name);
+                }
+            }
 
         // }
         //initialise array
@@ -80,8 +79,8 @@
             "email" => $email,
             "organisation" => $organisation,
             "contact_number" => $contact_number,
-            "list_of_course_id" => $listOfCourseID
-            // "list_of_course_name" => $list_of_course_name
+            "list_of_course_id" => $listOfCourseID,
+            "list_of_course_name" => $list_of_course_name
         );
 
         //encode the array into jason
