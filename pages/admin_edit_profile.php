@@ -123,7 +123,7 @@
                             if(response.includes("*warning_no_courses_found*")){
                                 console.log("temp");
                             } else {
-                                let list_of_assigned_course_id;
+                                // let list_of_assigned_course_id;
 
                                 $.ajax({
                                     url: '../scripts/get_assigned_courses.php',
@@ -136,7 +136,7 @@
                                         if(response.includes("*warning_no_courses_found*")){
                                             console.log("temp");
                                         } else {
-                                            list_of_assigned_course_id = response;
+                                            let list_of_assigned_course_id = new Array(response);
                                         }
                                     }
                                 });
