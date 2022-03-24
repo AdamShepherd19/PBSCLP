@@ -130,7 +130,7 @@
                                     type: 'post',
                                     dataType: 'JSON',
                                     data: {
-                                        user_idPHP: user_id_to_edit
+                                        user_id_PHP: user_id_to_edit
                                     },
                                     success: function(response) {
                                         if(response.includes("*warning_no_courses_found*")){
@@ -141,7 +141,7 @@
                                     }
                                 });
                                 console.log(list_of_assigned_course_id);
-                                
+
                                 $("#courses").html("");
                                 for(var i = 0; i < response.length; i++) {
                                     // courseId = response[x].course_id;
