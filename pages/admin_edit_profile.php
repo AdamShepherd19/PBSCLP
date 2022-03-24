@@ -123,7 +123,7 @@
                             if(response.includes("*warning_no_courses_found*")){
                                 console.log("temp");
                             } else {
-                                // let list_of_assigned_course_id = new Array();
+                                let list_of_assigned_course_id;
 
                                 $.ajax({
                                     url: '../scripts/get_assigned_courses.php',
@@ -136,13 +136,13 @@
                                         if(response.includes("*warning_no_courses_found*")){
                                             console.log("temp");
                                         } else {
-                                            // for(let j = 0; j < response.length; j++) {
-                                            //     let list_of_assigned_course_id = new Array(response);
-                                            // }
-                                            let list_of_assigned_course_id = new Array(response);
+                                            for(let j = 0; j < response.length; j++) {
+                                                list_of_assigned_course_id.push(response[j]);
+                                            }
                                         }
                                     }
                                 });
+                                
                                 console.log(list_of_assigned_course_id);
 
                                 $("#courses").html("");
