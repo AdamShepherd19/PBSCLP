@@ -24,7 +24,7 @@
         foreach($result as $row) {
             //retrieve data from query
             $course_id = $row['course_id'];
-            $course_name = $row['course_name'];
+            $course_name = $row['name'];
                 
             //add data into array
             $data[] = array(
