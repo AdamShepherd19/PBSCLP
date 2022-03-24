@@ -78,7 +78,7 @@
                 $("#new-course-button").on('click', function() {
                     window.location.href = 'add_new_course.php';
                 });
-
+                
                 $.ajax({
                     url: '../scripts/get_course_summary.php',
                     type: 'get',
@@ -86,6 +86,10 @@
                     success: function(response) {
                         if (response.includes("*warning_no_courses_found*")) {
                             var message = "<div class='card'><h4 class='card-header'> There is no course content yet!</div>"
+
+                            $(".inner-wrapper").html(message);
+                        } else if(response.includes("*no_courses_assigned_to_user*")) {
+                            var message = "<div class='card'><h4 class='card-header'> You have not been assigned any courses yet.</div>"
 
                             $(".inner-wrapper").html(message);
                         } else {

@@ -10,10 +10,29 @@
         exit('*database_connection_error*');
     }
 
-    //perform query and sort into newest first
-    $sql = "SELECT * FROM courses ORDER BY course_id ASC";
+    //query users_on_courses for course_id's for $_SESSION['user_id']
+    //apply this query to select courses query
+    $sql = "SELECT course_id FROM users_on_courses WHERE user_id=? ORDER BY course_id ASC";
     $stmt = $connectionPDO->prepare($sql);
-    $stmt->execute();
+    $stmt->execute([$_SESSION['user_id']]);
+    $result = $stmt->fetchAll();
+
+    if ($result){
+        //initialise array
+        $valid_courses = array();
+        // output data of each row
+        foreach($result as $row) {
+            //add data into array
+            array_push($valid_courses, $row['course_id'])
+        }
+    } else {
+        echo json_encode("*no_courses_assigned_to_user*");
+    }
+
+    //perform query and sort into newest first
+    $sql = "SELECT * FROM courses WHERE course_id IN ? ORDER BY course_id ASC";
+    $stmt = $connectionPDO->prepare($sql);
+    $stmt->execute($valid_courses);
     $result = $stmt->fetchAll();
     
     if ($result){
