@@ -28,7 +28,7 @@
             }
         } else {
             $error_msg = json_encode("*user_not_authorised_on_this_course*");
-            exit($error_msg);
+            return $error_msg;
         }
 
         //query users_on_courses for course_id's for $_SESSION['user_id']
@@ -40,7 +40,7 @@
 
         if (!$result){
             $error_msg = json_encode("*user_not_authorised_on_this_course*");
-            exit($error_msg);
+            return $error_msg;
         }
 
         $sql = "SELECT name, link FROM videos WHERE video_id=? LIMIT 1";
