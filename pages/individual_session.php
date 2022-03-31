@@ -118,7 +118,7 @@
 
                                 var message = '<a href="../pages/video.php?video_id' + response[x].video_id + '"><div class="file-card card" id="vid-' + response[x].video_id + '">' +
                                     '<div class="card-body">' +
-                                        '<h5 class="filename_header">' + response[x].name + '</h5>' +
+                                        '<h5 class="filename_header">' + response[x].video_name + '</h5>' +
                                     '</div></div></a>';
 
                                 $(".inner-wrapper").append(message);

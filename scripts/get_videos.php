@@ -40,7 +40,7 @@
     }
 
     //perform query and sort into newest first
-    $sql = "SELECT video_id, name, link FROM videos WHERE session_id=? ORDER BY video_id ASC";
+    $sql = "SELECT video_id, name FROM videos WHERE session_id=? ORDER BY video_id ASC";
     $stmt = $connectionPDO->prepare($sql);
     $stmt->execute([$session_id]);
     $result = $stmt->fetchAll();
@@ -55,13 +55,11 @@
             //retrieve data from query
             $video_id = $row['video_id'];
             $video_name = $row['name'];
-            $video_link = $row['link'];
                 
             //add data into array
             $data[] = array(
                 "video_id" => $video_id,
-                "video_name" => $video_name,
-                "link" => $video_link
+                "video_name" => $video_name
             );
         }
         
