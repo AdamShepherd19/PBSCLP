@@ -110,13 +110,15 @@
                 var video_info = <?php echo getVideoLink($_GET['video_id']);?>;
                 console.log(video_info);
                 if (video_info === "*warning_video_not_found*") {
-                    console.log("test success");
-                }
-                // $("#video-subheading").html(video_info.name);
+                    $('.main-content').html("<h4> This video does not exist </h4>");
+                } else {
+                    $("#video-subheading").html(video_info.name);
 
-                // const videoId = getId(video_info.link);
-                // const iframeMarkup = '<iframe src="//www.youtube.com/embed/' + videoId + '" class="pbs-video" frameborder="0" allowfullscreen></iframe>';
-                // $('.main-content').html(iframeMarkup);
+                    const videoId = getId(video_info.link);
+                    const iframeMarkup = '<iframe src="//www.youtube.com/embed/' + videoId + '" class="pbs-video" frameborder="0" allowfullscreen></iframe>';
+                    $('.main-content').html(iframeMarkup);
+                }
+                
             });
         </script>
         
