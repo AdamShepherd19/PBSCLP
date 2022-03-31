@@ -104,9 +104,7 @@
         </div>
 
         <div class="main-content">
-            <!-- <iframe width="853" height="480" src="https://www.youtube.com/embed/_-wmIW6FSVo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
-            <!-- <iframe src="https://www.youtube.com/embed/_-wmIW6FSVo" class="pbs-video"> </iframe> -->
-
+            <!-- video inserted here from js -->
         </div>
 
         
@@ -132,13 +130,12 @@
                     $('.admin-only').show();
                 }
 
-                
                 var video_info = <?php echo getVideoLink($_GET['video_id']);?>;
-                console.log(video_info);
+                
                 if (video_info === "*warning_video_not_found*") {
                     $('.main-content').html("<h4> This video does not exist </h4>");
                 } else if (video_info === "*user_not_authorised_on_this_course*") {
-                    $('.main-content').html("<h4> You not authorised to view this content. </h4>");
+                    $('.main-content').html("<h4> You are not authorised to view this content. </h4>");
                 } else {
                    $("#video-subheading").html(video_info.name);
 
