@@ -5,6 +5,31 @@
         header('Location: https://pbsclp.info');
         exit();
     }
+
+    function getVideoLink($video_id) {
+        $pass = file_get_contents('../../pass.txt', true);
+
+        //connect to database
+        try {
+            $connectionPDO = new PDO('mysql:host=localhost;dbname=pbsclp_pbsclp', 'pbsclp', $pass);
+            $connectionPDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch(PDOException $e) {
+            exit('*database_connection_error*');
+        }
+
+        $sql = "SELECT link FROM videos WHERE video_id=? LIMIT 1";
+        $stmt = $connectionPDO->prepare($sql);
+        $stmt->execute([$video_id]);
+        $result = $stmt->fetch();
+
+        if ($result){
+            return $result['link'];
+        } else {
+            return "*warning_video_not_found*";
+        }
+
+        return $video_link;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -78,29 +103,15 @@
                     $('.admin-only').show();
                 }
 
-                const videoId = getId('https://www.youtube.com/embed/sgM1StcXte0');
-                const iframeMarkup = '<iframe src="//www.youtube.com/embed/' + videoId + '" class="pbs-video" frameborder="0" allowfullscreen></iframe>';
-                $('.main-content').html(iframeMarkup);
-                
-                
-                // $.ajax({
-                //     url: '../scripts/get_forum_posts.php',
-                //     type: 'get',
-                //     dataType: 'JSON',
-                //     data: {
-                //         approvedPHP: '1'
-                //     },
-                //     success: function(response) {
-                //         if (response.includes("*warning_no_video_found*")) {
-                //             var message = "<div class='card'><h4 class='card-header'> The video cannot be found.</div>"
+                var video_link = "<?php echo getVideoLink($_GET['video_id']);?>"
 
-                //             $(".inner-wrapper").append(message);
-                //         } else {
-                //         }
-
-                //     }
-                // });
-                
+                if (video_link.contains("*warning_no_video_found*")) {
+                    $('.main-content').html("<h2> This video could not be found. </h2>");
+                } else {
+                    const videoId = getId(video_link);
+                    const iframeMarkup = '<iframe src="//www.youtube.com/embed/' + videoId + '" class="pbs-video" frameborder="0" allowfullscreen></iframe>';
+                    $('.main-content').html(iframeMarkup);
+                }
             });
         </script>
         
