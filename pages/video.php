@@ -17,7 +17,7 @@
             exit('*database_connection_error*');
         }
 
-        $sql = "SELECT course_id FROM files WHERE video_id=? LIMIT 1";
+        $sql = "SELECT course_id FROM videos WHERE video_id=? LIMIT 1";
         $stmt = $connectionPDO->prepare($sql);
         $stmt->execute([$video_id]);
         $result = $stmt->fetchAll();
