@@ -133,7 +133,6 @@
                                     $('#login-response').html("Your account has been suspended. Please contact an adminstrator.");
                                 } else if (response.includes("*account_password_locked*")) {
                                     $('#login-response').html("You have entered your password incorrectly too many times. Please use the password reset tool to change your password and unlock your account.");
-                                    $('#login-response').append('<br><br><a href="password_reset.php" id="forgot-password">Reset password</a>');
                                 } else if (response.includes("*login_failed*")) {
                                     $('#login-response').html("Login Failed. Please try again.");
                                 } else if (response.includes("*database_connection_error*")) {
