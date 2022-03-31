@@ -59,7 +59,7 @@
             $stmt = $connectionPDO->prepare($sql);
             
             //check to see if the insert was successful
-            if (!$stmt->execute(['attempts' => $attempts, 'locked' => $account_locked], 'email' => $email)) {
+            if (!$stmt->execute(['attempts' => $attempts, 'locked' => $account_locked, 'email' => $email])) {
                 exit('Error: ' . $connection->error);
             }
 
