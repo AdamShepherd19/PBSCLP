@@ -51,12 +51,21 @@
 
         <div class="main-content">
             <!-- <iframe width="853" height="480" src="https://www.youtube.com/embed/_-wmIW6FSVo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
-            <iframe src="https://www.youtube.com/embed/_-wmIW6FSVo" class="pbs-video"> </iframe>
+            <!-- <iframe src="https://www.youtube.com/embed/_-wmIW6FSVo" class="pbs-video"> </iframe> -->
 
         </div>
 
         
         <script type="text/javascript">
+            function getId(url) {
+                const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+                const match = url.match(regExp);
+
+                return (match && match[2].length === 11)
+                ? match[2]
+                : null;
+            }
+
             $(document).ready(function () {
 
                 // only show administrator content if an admin logged in
@@ -67,6 +76,8 @@
                     $('.admin-only').show();
                 }
 
+                const videoId = getId('https://www.youtube.com/watch?v=_-wmIW6FSVo');
+                const iframeMarkup = '<iframe src="//www.youtube.com/embed/' + videoId + '" class="pbs-video" frameborder="0" allowfullscreen></iframe>';
                 // $.ajax({
                 //     url: '../scripts/get_forum_posts.php',
                 //     type: 'get',
