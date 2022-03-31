@@ -44,6 +44,26 @@
                 exit('*login_success*');
             }
         } else {
+
+            // query database and insert the new announcement into the announcements table
+            $sql = "UPDATE users SET password_attempts=:attempts, password_locked=:locked WHERE email=:email";
+            $stmt = $connectionPDO->prepare($sql);
+
+            $account_locked = 0;
+            if ($data['password_attempts'] == 0) {
+                $attempts = 1;
+            } else if ($data['password_attempts'] == 1) {
+                $attempts = 2;
+            } else if ($data['password_attempts'] == 2) {
+                $attempts = 3;
+                $account_locked = 1;
+            }
+            
+            //check to see if the insert was successful
+            if (!$stmt->execute(['password_attempts' => $attempts, 'password_locked' => $account_locked])) {
+                exit('Error: ' . $connection->error);
+            }
+
             exit('*login_failed*');
         }
 
