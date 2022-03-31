@@ -33,7 +33,7 @@
         $stmt = null;
         $connectionPDO = null;
 
-        return $video_link;
+        return $data;
     }
 ?>
 
