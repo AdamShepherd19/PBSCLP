@@ -28,6 +28,10 @@
             return "*warning_video_not_found*";
         }
 
+        // close connection to db
+        $stmt = null;
+        $connectionPDO = null;
+
         return $video_link;
     }
 ?>
