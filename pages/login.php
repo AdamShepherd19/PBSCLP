@@ -60,7 +60,7 @@
             }
             
             //check to see if the insert was successful
-            if (!$stmt->execute(['password_attempts' => $attempts, 'password_locked' => $account_locked])) {
+            if (!$stmt->execute(['attempts' => $attempts, 'locked' => $account_locked])) {
                 exit('Error: ' . $connection->error);
             }
 
