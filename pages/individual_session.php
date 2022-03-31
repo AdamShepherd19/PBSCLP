@@ -53,6 +53,7 @@
         <div class="main-content">
 
             <div class="button-wrapper">
+                <input type="button" id="new-video-button" class="pbs-button pbs-button-green admin-only" value="Upload Video">
                 <input type="button" id="new-file-button" class="pbs-button pbs-button-green admin-only" value="Upload File">
             </div>
 
@@ -88,6 +89,10 @@
 
                 $("#new-file-button").on('click', function() {
                     window.location.href = 'upload_new_file.php?sid=' + session_id;
+                });
+
+                $("#new-video-button").on('click', function() {
+                    window.location.href = 'upload_new_video.php?sid=' + session_id;
                 });
 
                 $.ajax({
