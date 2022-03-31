@@ -17,13 +17,14 @@
             exit('*database_connection_error*');
         }
 
-        $sql = "SELECT link FROM videos WHERE video_id=? LIMIT 1";
+        $sql = "SELECT name, link FROM videos WHERE video_id=? LIMIT 1";
         $stmt = $connectionPDO->prepare($sql);
         $stmt->execute([$video_id]);
         $result = $stmt->fetch();
 
         if ($result){
-            return $result['link'];
+            $data = array("name" => $result['name'], "link" => $result['link']);
+            return $data;
         } else {
             return "*warning_video_not_found*";
         }
@@ -107,12 +108,15 @@
                     $('.admin-only').show();
                 }
 
-                var video_link = "<?php echo getVideoLink($_GET['video_id']);?>"
+                
+                var video_info = "<?php echo getVideoLink($_GET['video_id']);?>"
 
-                if (video_link.includes("*warning_no_video_found*")) {
+                if (video_info.includes("*warning_no_video_found*")) {
                     $('.main-content').html("<h2> This video could not be found. </h2>");
                 } else {
-                    const videoId = getId(video_link);
+                    $("#video-subheading").html(video_info.name);
+
+                    const videoId = getId(video_info.link);
                     const iframeMarkup = '<iframe src="//www.youtube.com/embed/' + videoId + '" class="pbs-video" frameborder="0" allowfullscreen></iframe>';
                     $('.main-content').html(iframeMarkup);
                 }
