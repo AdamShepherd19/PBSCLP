@@ -100,7 +100,7 @@
                             data: {
                                 video_namePHP: video_name,
                                 video_linkPHP: video_link,
-                                sessionIDPHP: session_id
+                                session_idPHP: session_id
                             },
                             success: function (response) {
                                 //check if the php execution was successful and the data was added to the db
