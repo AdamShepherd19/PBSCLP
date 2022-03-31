@@ -108,18 +108,12 @@
 
                 
                 var video_info = <?php echo getVideoLink($_GET['video_id']);?>;
-                // console.log(video_info);
-
-                if (video_info.includes("*warning_no_video_found*")) {
-                //     $('.main-content').html("<h2> This video could not be found. </h2>");
-                    console.log(video_info);
-                }
+                
                 $("#video-subheading").html(video_info.name);
 
                 const videoId = getId(video_info.link);
                 const iframeMarkup = '<iframe src="//www.youtube.com/embed/' + videoId + '" class="pbs-video" frameborder="0" allowfullscreen></iframe>';
                 $('.main-content').html(iframeMarkup);
-                // }
             });
         </script>
         
