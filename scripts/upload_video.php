@@ -1,6 +1,6 @@
 <?php
     session_start();
-    if(isset($_POST['filename'])) {
+    if(isset($_POST['video_namePHP'])) {
         
         $pass = file_get_contents('../../pass.txt', true);
 
