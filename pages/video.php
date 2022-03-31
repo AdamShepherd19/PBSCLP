@@ -57,6 +57,8 @@
 
         
         <script type="text/javascript">
+
+            // https://stackoverflow.com/questions/21607808/convert-a-youtube-video-url-to-embed-code
             function getId(url) {
                 const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
                 const match = url.match(regExp);
@@ -76,7 +78,7 @@
                     $('.admin-only').show();
                 }
 
-                const videoId = getId('https://www.youtube.com/watch?v=_-wmIW6FSVo');
+                const videoId = getId('www.youtube.com/watch?v=sgM1StcXte0');
                 const iframeMarkup = '<iframe src="//www.youtube.com/embed/' + videoId + '" class="pbs-video" frameborder="0" allowfullscreen></iframe>';
                 $('.main-content').html(iframeMarkup);
                 
