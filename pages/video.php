@@ -52,7 +52,7 @@
         <div class="main-content">
             <div class="inner-wrapper">
 
-                <iframe src="https://www.youtube.com/watch?v=_-wmIW6FSVo" class="pbs-video"> </iframe>
+                <iframe src="https://youtu.be/_-wmIW6FSVo" class="pbs-video"> </iframe>
 
             </div>
         </div>
