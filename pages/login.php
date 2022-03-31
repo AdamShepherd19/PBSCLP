@@ -27,11 +27,11 @@
         $data = $stmt->fetch();
 
         //check if login details provided match a user profile in the db
-        if ($data && password_verify($password, $data['password'])){
+        if ($data['password_locked'] == 1) {
+            exit("*account_password_locked*");
+        } else if ($data && password_verify($password, $data['password'])){
             if ($data['admin_locked'] == 1) {
                 exit("*account_locked_by_administrator*");
-            } else if ($data['password_locked'] == 1) {
-                exit("*account_password_locked*");
             } else {
                 //store session variables
                 $_SESSION['logged_in'] = True;
