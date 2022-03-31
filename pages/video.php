@@ -78,7 +78,7 @@
                     $('.admin-only').show();
                 }
 
-                const videoId = getId('sgM1StcXte0');
+                const videoId = getId('https://www.youtube.com/embed/sgM1StcXte0');
                 const iframeMarkup = '<iframe src="//www.youtube.com/embed/' + videoId + '" class="pbs-video" frameborder="0" allowfullscreen></iframe>';
                 $('.main-content').html(iframeMarkup);
                 
