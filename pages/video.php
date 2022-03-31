@@ -24,7 +24,7 @@
 
         if ($result){
             $data = array("name" => $result['name'], "link" => $result['link']);
-            json_encode($data)
+            return json_encode($data)
         } else {
             return "*warning_video_not_found*";
         }
