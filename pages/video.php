@@ -109,6 +109,9 @@
                 
                 var video_info = <?php echo getVideoLink($_GET['video_id']);?>;
                 console.log(video_info);
+                if (video_info === "*warning_video_not_found*") {
+                    console.log("test success");
+                }
                 // $("#video-subheading").html(video_info.name);
 
                 // const videoId = getId(video_info.link);
