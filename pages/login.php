@@ -21,7 +21,7 @@
         $email = $_POST['emailPHP'];
         $password = $_POST['passwordPHP'];
  
-        $sql = "SELECT user_id, account_type, firstname, lastname, password, admin_locked FROM users WHERE email=?";
+        $sql = "SELECT user_id, account_type, firstname, lastname, password, admin_locked, password_locked FROM users WHERE email=?";
         $stmt = $connectionPDO->prepare($sql);
         $stmt->execute([$email]);
         $data = $stmt->fetch();
@@ -30,6 +30,8 @@
         if ($data && password_verify($password, $data['password'])){
             if ($data['admin_locked'] == 1) {
                 exit("*account_locked_by_administrator*");
+            } else if ($data['password_locked'] == 1) {
+                exit("*account_password_locked*");
             } else {
                 //store session variables
                 $_SESSION['logged_in'] = True;
@@ -129,6 +131,9 @@
                                     window.location.href = 'landing.php';
                                 } else if (response.includes("*account_locked_by_administrator*")) {
                                     $('#login-response').html("Your account has been suspended. Please contact an adminstrator.");
+                                } else if (response.includes("*account_password_locked*")) {
+                                    $('#login-response').html("You have entered your password incorrectly too many times. Please use the password reset tool to change your password and unlock your account.");
+                                    $('#login-response').append('<br><br><a href="password_reset.php" id="forgot-password">Reset password</a>');
                                 } else if (response.includes("*login_failed*")) {
                                     $('#login-response').html("Login Failed. Please try again.");
                                 } else if (response.includes("*database_connection_error*")) {
