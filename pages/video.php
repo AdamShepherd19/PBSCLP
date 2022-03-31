@@ -17,6 +17,32 @@
             exit('*database_connection_error*');
         }
 
+        $sql = "SELECT course_id FROM files WHERE video_id=? LIMIT 1";
+        $stmt = $connectionPDO->prepare($sql);
+        $stmt->execute([$video_id]);
+        $result = $stmt->fetchAll();
+
+        if ($result){
+            foreach($result as $row) {
+                $course_id = $row['course_id'];
+            }
+        } else {
+            $error_msg = json_encode("*user_not_authorised_on_this_course*");
+            exit($error_msg);
+        }
+
+        //query users_on_courses for course_id's for $_SESSION['user_id']
+        //apply this query to select courses query
+        $sql = "SELECT course_id FROM users_on_courses WHERE user_id=:user_id AND course_id=:course_id LIMIT 1";
+        $stmt = $connectionPDO->prepare($sql);
+        $stmt->execute(["user_id" => $_SESSION['user_id'], "course_id" => $course_id]);
+        $result = $stmt->fetchAll();
+
+        if (!$result){
+            $error_msg = json_encode("*user_not_authorised_on_this_course*");
+            exit($error_msg);
+        }
+
         $sql = "SELECT name, link FROM videos WHERE video_id=? LIMIT 1";
         $stmt = $connectionPDO->prepare($sql);
         $stmt->execute([$video_id]);
