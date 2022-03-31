@@ -13,7 +13,7 @@
         }
 
         /* Getting file name */
-        $session_id = $_POST['session_id'];
+        $session_id = $_POST['session_idPHP'];
         $video_name = $_POST['video_namePHP'];
         $video_link = $_POST['video_linkPHP'];
 
