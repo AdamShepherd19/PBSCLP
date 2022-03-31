@@ -32,8 +32,6 @@
         // close connection to db
         $stmt = null;
         $connectionPDO = null;
-
-        return $data;
     }
 ?>
 
