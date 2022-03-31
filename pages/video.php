@@ -107,7 +107,7 @@
                 }
 
                 
-                var video_info = JSON.parse("<?php echo getVideoLink($_GET['video_id']);?>");
+                var video_info = JSON.parse(<?php echo getVideoLink($_GET['video_id']);?>);
                 console.log(video_info);
 
                 // if (video_info.includes("*warning_no_video_found*")) {
