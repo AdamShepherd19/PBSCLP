@@ -78,6 +78,9 @@
 
                 const videoId = getId('https://www.youtube.com/watch?v=_-wmIW6FSVo');
                 const iframeMarkup = '<iframe src="//www.youtube.com/embed/' + videoId + '" class="pbs-video" frameborder="0" allowfullscreen></iframe>';
+                $('.main-content').html(iframeMarkup);
+                
+                
                 // $.ajax({
                 //     url: '../scripts/get_forum_posts.php',
                 //     type: 'get',
