@@ -137,8 +137,10 @@
                 console.log(video_info);
                 if (video_info === "*warning_video_not_found*") {
                     $('.main-content').html("<h4> This video does not exist </h4>");
+                } else if (video_info === "*user_not_authorised_on_this_course*") {
+                    $('.main-content').html("<h4> You not authorised to view this content. </h4>");
                 } else {
-                    $("#video-subheading").html(video_info.name);
+                   $("#video-subheading").html(video_info.name);
 
                     const videoId = getId(video_info.link);
                     const iframeMarkup = '<iframe src="//www.youtube.com/embed/' + videoId + '" class="pbs-video" frameborder="0" allowfullscreen></iframe>';
