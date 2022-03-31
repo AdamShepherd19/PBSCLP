@@ -110,7 +110,7 @@
                 var video_info = <?php echo getVideoLink($_GET['video_id']);?>;
                 // console.log(video_info);
 
-                if (video_info[0].includes("*warning_no_video_found*")) {
+                if (video_info.includes("*warning_no_video_found*")) {
                     $('.main-content').html("<h2> This video could not be found. </h2>");
                 } else {
                     $("#video-subheading").html(video_info[0].name);
