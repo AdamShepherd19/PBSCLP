@@ -26,7 +26,7 @@
             $data = array("name" => $result['name'], "link" => $result['link']);
             return json_encode($data);
         } else {
-            return "*warning_video_not_found*";
+            return json_encode("*warning_video_not_found*");
         }
 
         // close connection to db
@@ -110,7 +110,7 @@
                 var video_info = <?php echo getVideoLink($_GET['video_id']);?>;
                 // console.log(video_info);
 
-                if (video_info.includes("*warning_no_video_found*")) {
+                if (video_info[0].includes("*warning_no_video_found*")) {
                     $('.main-content').html("<h2> This video could not be found. </h2>");
                 } else {
                     $("#video-subheading").html(video_info[0].name);
