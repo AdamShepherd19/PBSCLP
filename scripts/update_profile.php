@@ -43,8 +43,8 @@
             $new_list_of_courses = $_POST['new_list_of_coursesPHP'];
             $old_list_of_courses = $_POST['old_list_of_coursesPHP'];
 
-            $courses_to_add = array_diff($new_list_of_courses, $old_list_of_courses);
-            $courses_to_remove = array_diff($old_list_of_courses, $new_list_of_courses);
+            $courses_to_add = array_values(array_diff($new_list_of_courses, $old_list_of_courses));
+            $courses_to_remove = array_values(array_diff($old_list_of_courses, $new_list_of_courses));
 
             if(count($courses_to_remove) > 0){
                 $courses_to_remove_string = "";
