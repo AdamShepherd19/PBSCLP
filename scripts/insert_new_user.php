@@ -17,6 +17,10 @@
         $contact_number = $_POST['contact_numberPHP'];
         $organisation = $_POST['organisationPHP'];
         $account_type = $_POST['account_typePHP'];
+        $list_of_courses = $_POST['list_of_coursesPHP'];
+
+        print_r($list_of_courses);
+
         
 
         // query database and insert the new announcement into the announcements table
