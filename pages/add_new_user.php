@@ -148,7 +148,7 @@
                     var email = $('#email').val();
                     var contact_number = $('#contact-number').val();
                     var organisation = $('#organisation').val();
-                    var account_type = $('#account-type').val();
+                    var account_type = $('#account-type').val(); 
 
                     //check data not empty
                     if(firstname == "" || lastname == "" || email == "" || contact_number == "" || organisation == ""){
