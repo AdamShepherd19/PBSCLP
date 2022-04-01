@@ -50,11 +50,22 @@
             if(count($courses_to_remove) > 0){
                 $courses_to_remove_string = "";
                 for ($x = 0; $x < count($courses_to_remove); $x++) {
-                    $courses_to_remove_string .= $user_id;
+                    $courses_to_remove_string .= $courses_to_remove[$x];
                     if ($x < (count($list_of_courses) - 1)) {
                         $courses_to_remove_string .= ", ";
                     }
                 }
+
+                // for ($y = 0; $y < count($courses_to_add); $y++) {
+                //     $insertquery .= "(" . $user_id . ", " . $courses_to_add[$y] . ")";
+                //     if ($y < (count($courses_to_add) - 1)) {
+                //         $insertquery .= ", ";
+                //     } else {
+                //         $insertquery .= ";";
+                //     }
+                // }
+
+
                 $remove_query = "DELETE FROM users_on_courses WHERE user_id=? AND course_id IN (" . $courses_to_remove_string . ");";
                 echo $remove_query;
                 $stmt = $connectionPDO->prepare($remove_query);
