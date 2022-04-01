@@ -79,6 +79,15 @@ h2 {
     padding: 10px;
 }
 
+.pbs-form-check-box {
+    margin: 10px 0;
+    border-radius: 5px;
+    width: 2rem;
+    height: 1.2rem;
+    border: 1px solid var(--pbs-grey);
+    color: var(--pbs-grey);
+}
+
 .nav-item {
   padding: 0 30px;
   font-size: 1.2em;

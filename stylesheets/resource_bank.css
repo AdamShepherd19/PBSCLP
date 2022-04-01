@@ -1,0 +1,34 @@
+.main-content {
+    max-width: 60vw;
+    align-content: center;
+    margin: auto;
+  }
+  
+.inner-wrapper {
+    overflow-y: scroll;
+    width: 100%;
+    height: 70vh;
+    margin-bottom: 40px;
+}
+
+.course-card, .session-card, .file-card {
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.page-subheader {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: var(--pbs-grey);
+}
+
+.button-wrapper {
+    text-align: right;
+}
+
+.pbs-video {
+    width: 100%;
+    height: 60vh;
+}

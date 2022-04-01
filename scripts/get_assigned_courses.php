@@ -10,34 +10,30 @@
         exit('*database_connection_error*');
     }
 
-    //perform query and sort into newest first
-    $sql = "SELECT * FROM faq ORDER BY faq_id ASC";
-    $stmt = $connectionPDO->prepare($sql);
-    $stmt->execute();
-    $result = $stmt->fetchAll();
-    
-    if ($result){
-        //initialise array
-        $data = array();
+    $user_id = $_POST['user_id_PHP'];
 
-        // output data of each row
-        foreach($result as $row) {
-            //retrieve data from query
-            $question = $row['question'];
-            $answer = $row['answer'];
-                
-            //add data into array
+    $sql = "SELECT course_id FROM users_on_courses WHERE user_id=? ORDER BY course_id ASC";
+    $stmt = $connectionPDO->prepare($sql);
+    $stmt->execute([$user_id]);
+    $courses_result = $stmt->fetchAll();
+
+    if ($courses_result){
+        $data = array();
+            
+        foreach($courses_result as $row) {
             $data[] = array(
-                "question" => $question,
-                "answer" => $answer
+                "id" => $row['course_id']
             );
+            // array_push($listOfCourseID, $row['course_id']);
         }
-        
+
         //encode the array into jason
         echo json_encode($data);
     } else {
-        echo json_encode("*warning_no_faqs_found*");
+        echo json_encode("*warning_no_courses_found*");
     }
+
+    
 
     // close connection to db
     $stmt = null;

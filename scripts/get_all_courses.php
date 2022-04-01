@@ -11,7 +11,7 @@
     }
 
     //perform query and sort into newest first
-    $sql = "SELECT * FROM faq ORDER BY faq_id ASC";
+    $sql = "SELECT * FROM courses ORDER BY course_id ASC";
     $stmt = $connectionPDO->prepare($sql);
     $stmt->execute();
     $result = $stmt->fetchAll();
@@ -23,20 +23,20 @@
         // output data of each row
         foreach($result as $row) {
             //retrieve data from query
-            $question = $row['question'];
-            $answer = $row['answer'];
+            $course_id = $row['course_id'];
+            $course_name = $row['name'];
                 
             //add data into array
             $data[] = array(
-                "question" => $question,
-                "answer" => $answer
+                "course_id" => $course_id,
+                "course_name" => $course_name
             );
         }
         
         //encode the array into jason
         echo json_encode($data);
     } else {
-        echo json_encode("*warning_no_faqs_found*");
+        echo json_encode("*warning_no_courses_found*");
     }
 
     // close connection to db

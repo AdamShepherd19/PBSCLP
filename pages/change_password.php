@@ -173,9 +173,6 @@
 
             $("#submit-change-password").on('click', function(){
                 if ($password_strong_enough && CheckPassMatch()) {
-                    alert("Passed");
-                    // code to submit new pass to db
-
                     new_password = $("#confirm-password").val();
                     email = '<?php echo $_GET['key'];?>';
                     token = '<?php echo $_GET['token'];?>';

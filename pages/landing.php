@@ -87,7 +87,7 @@
                 });
 
                 $("#resource-bank").on('click', function(){
-                    window.location.href = 'resource_bank.php';
+                    window.location.href = 'resource_bank_home.php';
                 });
 
                 $("#profile").on('click', function(){

@@ -24,7 +24,7 @@
         $new_password_enc = password_hash($new_password, PASSWORD_DEFAULT);
 
         // query database and insert the new announcement into the announcements table
-        $sql = "UPDATE users SET password=:new_pass_enc, reset_link_token=NULL, exp_date=NULL WHERE email=:email";
+        $sql = "UPDATE users SET password=:new_pass_enc, reset_link_token=NULL, exp_date=NULL, password_attempts=0, password_locked=0 WHERE email=:email";
         $stmt = $connectionPDO->prepare($sql);
         
         //check to see if the insert was successful

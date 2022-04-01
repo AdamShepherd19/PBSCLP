@@ -12,25 +12,55 @@
         exit('*database_connection_error*');
     }
 
-    //perform query and sort into newest first
-    $sql = "SELECT firstname, lastname, email, organisation, contact_number FROM users WHERE user_id=?";
-    $stmt = $connectionPDO->prepare($sql);
-
     if(isset($_POST['user_id_PHP'])) {
-        $stmt->execute([$_POST['user_id_PHP']]);
+        $user_id = $_POST['user_id_PHP'];
     } else {
-        $stmt->execute([$_SESSION['user_id']]);
+        $user_id = $_SESSION['user_id'];
     }
-    
+
+    //perform query and sort into newest first
+    $sql = "SELECT firstname, lastname, email, organisation, contact_number FROM users WHERE user_id=? LIMIT 1";
+    $stmt = $connectionPDO->prepare($sql);
+    $stmt->execute([$user_id]);
     $result = $stmt->fetch();
 
-    
     if ($result) {
-        //initialise array
+        
+        $sql = "SELECT course_id FROM users_on_courses WHERE user_id=? ORDER BY course_id ASC";
+        $stmt = $connectionPDO->prepare($sql);
+        $stmt->execute([$user_id]);
+        $courses_result = $stmt->fetchAll();
+
+        if ($courses_result){
+            $listOfCourseID = array();
+            
+            foreach($courses_result as $row) {
+                array_push($listOfCourseID, $row['course_id']);
+                $courses_as_string .= $row['course_id'] .= ",";
+            }
+        
+            $courses_as_string = substr($courses_as_string, 0, -1);
+
+            $sql = "SELECT name FROM courses WHERE course_id IN (" . $courses_as_string . ") ORDER BY course_id ASC";
+            $stmt = $connectionPDO->prepare($sql);
+            $stmt->execute();
+            $course_name_result = $stmt->fetchAll();
+
+            if ($course_name_result){
+                //initialise array
+                $list_of_course_name = array();
+        
+                // output data of each row
+                foreach($course_name_result as $row) {
+                    array_push($list_of_course_name, $row['name']);
+                }
+            }
+        }
+
         $data = array();
 
         //retrieve data from query
-        $name = $result['firstname'] . " " . $result['lastname'];;
+        $name = $result['firstname'] . " " . $result['lastname'];
         $email = $result['email'];
         $organisation = $result['organisation'];
         $contact_number = $result['contact_number'];
@@ -40,7 +70,9 @@
             "name" => $name,
             "email" => $email,
             "organisation" => $organisation,
-            "contact_number" => $contact_number
+            "contact_number" => $contact_number,
+            "list_of_course_id" => $listOfCourseID,
+            "list_of_course_names" => $list_of_course_name
         );
 
         //encode the array into jason

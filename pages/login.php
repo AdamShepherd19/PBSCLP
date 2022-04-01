@@ -21,13 +21,15 @@
         $email = $_POST['emailPHP'];
         $password = $_POST['passwordPHP'];
  
-        $sql = "SELECT user_id, account_type, firstname, lastname, password, admin_locked FROM users WHERE email=?";
+        $sql = "SELECT user_id, account_type, firstname, lastname, password, admin_locked, password_attempts, password_locked FROM users WHERE email=?";
         $stmt = $connectionPDO->prepare($sql);
         $stmt->execute([$email]);
         $data = $stmt->fetch();
 
         //check if login details provided match a user profile in the db
-        if ($data && password_verify($password, $data['password'])){
+        if ($data['password_locked'] == 1) {
+            exit("*account_password_locked*");
+        } else if ($data && password_verify($password, $data['password'])){
             if ($data['admin_locked'] == 1) {
                 exit("*account_locked_by_administrator*");
             } else {
@@ -42,6 +44,25 @@
                 exit('*login_success*');
             }
         } else {
+            $account_locked = 0;
+            if ($data['password_attempts'] == 0) {
+                $attempts = 1;
+            } else if ($data['password_attempts'] == 1) {
+                $attempts = 2;
+            } else if ($data['password_attempts'] == 2) {
+                $attempts = 3;
+                $account_locked = 1;
+            }
+
+            // query database and insert the new announcement into the announcements table
+            $sql = "UPDATE users SET password_attempts=:attempts, password_locked=:locked WHERE email=:email";
+            $stmt = $connectionPDO->prepare($sql);
+            
+            //check to see if the insert was successful
+            if (!$stmt->execute(['attempts' => $attempts, 'locked' => $account_locked, 'email' => $email])) {
+                exit('Error: ' . $connection->error);
+            }
+
             exit('*login_failed*');
         }
 
@@ -129,6 +150,8 @@
                                     window.location.href = 'landing.php';
                                 } else if (response.includes("*account_locked_by_administrator*")) {
                                     $('#login-response').html("Your account has been suspended. Please contact an adminstrator.");
+                                } else if (response.includes("*account_password_locked*")) {
+                                    $('#login-response').html("You have entered your password incorrectly too many times. Please use the password reset tool to change your password and unlock your account.");
                                 } else if (response.includes("*login_failed*")) {
                                     $('#login-response').html("Login Failed. Please try again.");
                                 } else if (response.includes("*database_connection_error*")) {

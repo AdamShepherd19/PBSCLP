@@ -73,6 +73,11 @@
                         <td class="caption">Organisation:</td>
                         <td id="organisation"></td>
                     </tr>
+
+                    <tr>
+                        <td class="caption">Courses:</td>
+                        <td id="courses"><ul id="course-list"></ul></td>
+                    </tr>
                     
                     <tr>
                         <td></td>
@@ -92,6 +97,8 @@
 
         <script type="text/javascript">
             $(document).ready(function () {
+                var user_id_to_edit = "<?php echo $_GET['userId']; ?>";
+
                 var name, email, contact_number, organisation;
                 
                 // hide save and cancel edit profile buttons
@@ -107,6 +114,53 @@
                     $("#cancel-profile").hide();
                     $("#cancel-edit").show();
                     $("#save-profile").show();
+                    
+                    $.ajax({
+                        url: '../scripts/get_all_courses.php',
+                        type: 'get',
+                        dataType: 'JSON',
+                        success: function(response) {
+                            if(response.includes("*warning_no_courses_found*")){
+                                console.log("temp");
+                            } else {
+                                
+                                let list_of_assigned_course_id = [];
+                                $.ajax({
+                                    url: '../scripts/get_assigned_courses.php',
+                                    type: 'post',
+                                    dataType: 'JSON',
+                                    data: {
+                                        user_id_PHP: user_id_to_edit
+                                    },
+                                    success: function(response) {
+                                        if(response.includes("*warning_no_courses_found*")){
+                                            console.log("temp");
+                                        } else {
+                                            for(let j = 0; j < response.length; j++) {
+                                                list_of_assigned_course_id.push(response[j].id);
+                                            }
+                                        }
+
+                                        $("#courses").html("");
+                                        for(var i = 0; i < response.length; i++) {
+                                            let output;
+                                            
+                                            if (list_of_assigned_course_id.includes(response[i].course_id)) {
+                                                output = '<input type="checkbox" id="edit-cid-' + response[i].course_id + '" class="pbs-form-check-box" value="' + response[i].course_name + '" checked><label for="edit-cid-' + response[i].course_id + '">' + response[i].course_name + '</label><br>';
+                                            } else {
+                                                output = '<input type="checkbox" id="edit-cid-' + response[i].course_id + '" class="pbs-form-check-box" value="' + response[i].course_name + '"><label for="edit-cid-' + response[i].course_id + '">' + response[i].course_name + '</label><br>';
+                                            }
+                                            // let output = '<input type="checkbox" id="edit-cid-' + response[i].course_id + '" class="pbs-form-check-box" value="' + response[i].course_name + '"><label for="edit-cid-' + response[i].course_id + '">' + response[i].course_name + '</label><br>';
+
+                                            $("#courses").append(output);
+                                        }
+                                    }
+                                });
+
+                                
+                            }
+                        }
+                    });
                     
                     $("#name").html('<input type="text" id="new-name" class="pbs-form-text-box" value="' + name + '"/>');
                     $("#email-address").html('<input type="text" id="new-email" class="pbs-form-text-box" value="' + email + '"/>');
@@ -175,9 +229,6 @@
                     });
                 });
 
-                
-                var user_id_to_edit = "<?php echo $_GET['userId']; ?>";
-
                 $.ajax({
                     url: '../scripts/get_profile.php',
                     type: 'post',
@@ -187,17 +238,25 @@
                     },
                     success: function(response) {
                         if (response.includes("*warning_no_user_found*")) {
-                            console.log('No user found...')
+                            var message = "<h3>That user does not exist</h3><br> ";
+
+                                $('.main-content').html(message);
                         } else {
                             name = response[0].name;
                             email = response[0].email;
                             contact_number = response[0].contact_number;
                             organisation = response[0].organisation;
+                            list_of_course_id = response[0].list_of_course_id;
+                            list_of_course_names = response[0].list_of_course_names;
 
                             $('#name').text(name);
                             $('#email-address').text(email);
                             $('#contact-number').text(contact_number);
                             $('#organisation').text(organisation);
+                            for (let x = 0; x < list_of_course_id.length; x++){
+                                let output = "<li id='cid-" + list_of_course_id[x] + "'>" + list_of_course_names[x] + "</li>";
+                                $('#course-list').append(output);
+                            }
                         }
 
                     }

@@ -124,6 +124,20 @@
                             </select>
                         </td>
                     </tr>
+
+                    <tr id="course-list">
+                        <td class="caption">Courses:</td>
+                        <td>
+                            <input type="checkbox" id="course1" class="pbs-form-check-box" value="course 1">
+                            <label for="course1">Course 1</label><br>
+
+                            <input type="checkbox" id="course2" class="pbs-form-check-box" value="course 2">
+                            <label for="course2">Course 2</label><br>
+
+                            <input type="checkbox" id="course3" class="pbs-form-check-box" value="course 3">
+                            <label for="course3">Course 3</label><br>
+                        </td>
+                    </tr>
                 </table>
         
                 <div class="button-wrapper">
@@ -141,6 +155,12 @@
                     window.location.replace('manage_users.php');
                 });
 
+                if($('#account-type').val() == "administrator") {
+                    $('#course-list').hide();
+                } else {
+                    $('#course-list').hide();
+                }
+
                 $("#add-new-user").on('click', function(){
                     //retrieve data from form
                     var firstname = $("#firstname").val();
@@ -148,7 +168,7 @@
                     var email = $('#email').val();
                     var contact_number = $('#contact-number').val();
                     var organisation = $('#organisation').val();
-                    var account_type = $('#account-type').val();
+                    var account_type = $('#account-type').val(); 
 
                     //check data not empty
                     if(firstname == "" || lastname == "" || email == "" || contact_number == "" || organisation == ""){
