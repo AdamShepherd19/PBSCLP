@@ -154,7 +154,7 @@
                 $("#cancel").on('click', function(){
                     window.location.replace('manage_users.php');
                 });
-
+                console.log($('#account-type').val());
                 if($('#account-type').val() == "administrator") {
                     $('#course-list').hide();
                 } else {
