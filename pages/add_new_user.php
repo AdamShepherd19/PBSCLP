@@ -128,16 +128,15 @@
                     <tr id="course-list">
                         <td class="caption">Courses:</td>
                         <td>
-                            <input type="checkbox" id="course1" class="pbs-form-check-box" value="course 1">
+                            <input type="checkbox" id="cid-1" class="pbs-form-check-box" value="course 1">
                             <label for="course1">Course 1</label><br>
 
-                            <input type="checkbox" id="course2" class="pbs-form-check-box" value="course 2">
+                            <input type="checkbox" id="cid-2" class="pbs-form-check-box" value="course 2">
                             <label for="course2">Course 2</label><br>
 
-                            <input type="checkbox" id="course3" class="pbs-form-check-box" value="course 3">
+                            <input type="checkbox" id="cid-3" class="pbs-form-check-box" value="course 3">
                             <label for="course3">Course 3</label><br>
                         </td>
-                        <input type="button" id="test-button" class="pbs-button pbs-button-orange" value="Test">
                     </tr>
                 </table>
         
@@ -164,13 +163,13 @@
                     }
                 });
 
-                $("#test-button").click(function(event){
-                    event.preventDefault();
-                    var searchIDs = $("#course-list input:checkbox:checked").map(function(){
-                        return $(this).val();
-                    }).get(); // <----
-                    console.log(searchIDs);
-                });
+                // $("#test-button").click(function(event){
+                //     event.preventDefault();
+                //     var searchIDs = $("#course-list input:checkbox:checked").map(function(){
+                //         return $(this).val();
+                //     }).get();
+                //     console.log(searchIDs);
+                // });
 
                 $("#add-new-user").on('click', function(){
                     //retrieve data from form
@@ -180,6 +179,9 @@
                     var contact_number = $('#contact-number').val();
                     var organisation = $('#organisation').val();
                     var account_type = $('#account-type').val(); 
+                    var list_of_courses = $("#course-list input:checkbox:checked").map(function(){
+                        return $(this).attr('id');
+                    }).get();
 
                     //check data not empty
                     if(firstname == "" || lastname == "" || email == "" || contact_number == "" || organisation == ""){
@@ -206,7 +208,8 @@
                                             emailPHP: email,
                                             contact_numberPHP: contact_number,
                                             organisationPHP: organisation,
-                                            account_typePHP: account_type
+                                            account_typePHP: account_type,
+                                            list_of_coursesPHP: list_of_courses
                                         },
                                         success: function (response) {
                                             //check if the php execution was successful and the data was added to the db
