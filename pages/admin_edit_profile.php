@@ -123,6 +123,7 @@
                             if(response.includes("*warning_no_courses_found*")){
                                 console.log("temp");
                             } else {
+                                $("#courses").html("");
                                 for (let i = 0; i < response.length; i++) {
                                     let output = '<input type="checkbox" id="edit-cid-' + response[i].course_id + '" class="pbs-form-check-box" value="' + response[i].course_name + '"><label for="edit-cid-' + response[i].course_id + '">' + response[i].course_name + '</label><br>';
 
