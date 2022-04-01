@@ -48,9 +48,17 @@
                 if ($stmt->execute()) {
                     exit('*user_added_successfully*');
                 } else {
+                    $sqldelete = "DELETE FROM users WHERE email=?";
+                    $stmt = $connectionPDO->prepare($sqldelete);
+                    $stmt->execute([$email]);
+                    
                     exit('Error: ' . $connectionPDO->error);
                 }
             } else {
+                $sqldelete = "DELETE FROM users WHERE email=?";
+                $stmt = $connectionPDO->prepare($sqldelete);
+                $stmt->execute([$email]);
+
                 exit('Error: ' . $connectionPDO->error);
             }
             
