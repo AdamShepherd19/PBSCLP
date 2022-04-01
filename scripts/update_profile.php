@@ -80,13 +80,12 @@
                     exit('Error: ' . $connection->error);
                 }
             }
-
-            exit('*account_updated_successfully*');
         }
 
         //close connection to db
         $stmt = null;
         $connectionPDO = null;
+        exit('*account_updated_successfully*');
     }
 
 ?>
