@@ -77,6 +77,7 @@
                 }
 
                 echo $insertquery;
+                print_r($courses_to_add);
 
                 $stmt = $connectionPDO->prepare($insertquery);
                 
