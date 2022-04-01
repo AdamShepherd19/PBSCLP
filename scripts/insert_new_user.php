@@ -19,9 +19,6 @@
         $account_type = $_POST['account_typePHP'];
         $list_of_courses = $_POST['list_of_coursesPHP'];
 
-        print_r($list_of_courses);
-
-        
 
         // query database and insert the new announcement into the announcements table
         $sql = "INSERT INTO users (firstname, lastname, email, contact_number, organisation, account_type) VALUES (:firstname, :lastname, :email, :contact_number, :organisation, :account_type);";
@@ -30,6 +27,29 @@
         
         //check to see if the insert was successful
         if ($stmt->execute(['firstname' => $firstname, 'lastname' => $lastname, 'email' => $email, 'contact_number' => $contact_number, 'organisation' => $organisation, 'account_type' => $account_type])) {
+            $sql = "SELECT user_id FROM users WHERE email=? LIMIT 1";
+            $stmt = $connectionPDO->prepare($sql);
+            $stmt->execute([$email]);
+            $data = $stmt->fetch();
+
+            if ($data) {
+                $user_id = $data['user_id'];
+                $query = "INSERT INTO users_on_courses (user_id, course_id) VALUES ";
+                for ($x = 0; $x < count($list_of_courses); $x++) {
+                    $query .= "(" . $user_id . ", " . $list_of_courses[x] . ")";
+                    if ($x < (count($list_of_courses) - 1)) {
+                        $query .= ", ";
+                    } else {
+                        $query .= ";";
+                    }
+                }
+
+                echo $query;
+
+            } else {
+                exit('Error: ' . $connectionPDO->error);
+            }
+            
             exit('*user_added_successfully*');
         } else {
             exit('Error: ' . $connectionPDO->error);
