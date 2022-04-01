@@ -141,11 +141,10 @@
                                         if(response.includes("*warning_no_courses_found*")){
                                             console.log("temp");
                                         } else {
-                                            // for (let j = 0; j < response.length; j++) {
-                                            //     let temp_id = "#edit-cid-" + response[j];
-                                            //     $(temp_id).prop('checked', true);
-                                            // }
-                                            console.log(response);
+                                            for (let j = 0; j < response.length; j++) {
+                                                let temp_id = "#edit-cid-" + response[j];
+                                                $(temp_id).prop('checked', true);
+                                            }
                                         }
                                     }
                                 });
