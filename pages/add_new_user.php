@@ -155,11 +155,14 @@
                     window.location.replace('manage_users.php');
                 });
                 
-                if($('#account-type').val() == "administrator") {
-                    $('#course-list').hide();
-                } else {
-                    $('#course-list').show();
-                }
+                $('#account-type').change( function () {
+                    if($('#account-type').val() == "administrator") {
+                        $('#course-list').hide();
+                    } else {
+                        $('#course-list').show();
+                    }
+                });
+                
 
                 $("#add-new-user").on('click', function(){
                     //retrieve data from form
