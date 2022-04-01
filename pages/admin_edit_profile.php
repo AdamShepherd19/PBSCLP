@@ -171,6 +171,11 @@
                     $("#email-address").html(email);
                     $("#contact-number").html(contact_number);
                     $("#organisation").html(organisation);
+                    $("#courses").html('<ul id="course-list"></ul>');
+                    for (let x = 0; x < list_of_course_id.length; x++){
+                        let output = "<li id='cid-" + list_of_course_id[x] + "'>" + list_of_course_names[x] + "</li>";
+                        $('#course-list').append(output);
+                    }
 
                 });
 
