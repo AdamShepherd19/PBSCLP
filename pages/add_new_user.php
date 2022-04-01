@@ -137,6 +137,7 @@
                             <input type="checkbox" id="course3" class="pbs-form-check-box" value="course 3">
                             <label for="course3">Course 3</label><br>
                         </td>
+                        <input type="button" id="test-button" class="pbs-button pbs-button-orange" value="Test">
                     </tr>
                 </table>
         
@@ -162,7 +163,14 @@
                         $('#course-list').show();
                     }
                 });
-                
+
+                $("#test-button").click(function(event){
+                    event.preventDefault();
+                    var searchIDs = $("#course-list input:checkbox:checked").map(function(){
+                        return $(this).val();
+                    }).get(); // <----
+                    console.log(searchIDs);
+                });
 
                 $("#add-new-user").on('click', function(){
                     //retrieve data from form
