@@ -46,7 +46,7 @@
             $courses_to_add = array_diff($new_list_of_courses, $old_list_of_courses);
             $courses_to_remove = array_diff($old_list_of_courses, $new_list_of_courses);
 
-            if(count($courses_to_remove > 0)){
+            if(count($courses_to_remove) > 0){
                 $courses_to_remove_string = "";
                 for ($x = 0; $x < count($courses_to_remove); $x++) {
                     $courses_to_remove_string .= $user_id;
@@ -65,7 +65,7 @@
                 echo "no courses to remove...";
             }
 
-            if (count($courses_to_add > 0)) {
+            if (count($courses_to_add) > 0) {
                 $insertquery = "INSERT INTO users_on_courses (user_id, course_id) VALUES ";
                 for ($y = 0; $y < count($courses_to_add); $y++) {
                     $insertquery .= "(" . $user_id . ", " . $courses_to_add[$y] . ")";
