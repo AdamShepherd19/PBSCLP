@@ -44,7 +44,7 @@
                     }
                 }
 
-                $stmt = $connectionPDO->prepare($test);
+                $stmt = $connectionPDO->prepare($query);
                 if ($stmt->execute()) {
                     exit('*user_added_successfully*');
                 } else {
