@@ -41,7 +41,7 @@
         //     // difference between new and old = to be added
 
             $new_list_of_courses = $_POST['new_list_of_coursesPHP'];
-            $old_list_of_courses = $_POST['new_list_of_coursesPHP'];
+            $old_list_of_courses = $_POST['old_list_of_coursesPHP'];
 
             $courses_to_add = array_diff($new_list_of_courses, $old_list_of_courses);
             $courses_to_remove = array_diff($old_list_of_courses, $new_list_of_courses);
@@ -55,6 +55,7 @@
                 }
             }
             $remove_query = "DELETE FROM users_on_courses WHERE user_id=? AND course_id IN (" . $courses_to_remove_string . ");";
+            echo $remove_query;
             $stmt = $connectionPDO->prepare($remove_query);
             
             if (!$stmt->execute([$user_id])) {
