@@ -44,13 +44,17 @@
                     }
                 }
 
-                echo $query;
-
+                $stmt = $connectionPDO->prepare($sql);
+                if ($stmt->execute()) {
+                    exit('*user_added_successfully*');
+                } else {
+                    exit('Error: ' . $connectionPDO->error);
+                }
             } else {
                 exit('Error: ' . $connectionPDO->error);
             }
             
-            exit('*user_added_successfully*');
+            
         } else {
             exit('Error: ' . $connectionPDO->error);
         }
