@@ -36,52 +36,52 @@
             exit('Error: ' . $connection->error);
         }
 
-        // if (isset($_POST['new_list_of_coursesPHP'])) {
-        // //     // difference between old and new = to be removed
-        // //     // difference between new and old = to be added
+        if (isset($_POST['new_list_of_coursesPHP'])) {
+        //     // difference between old and new = to be removed
+        //     // difference between new and old = to be added
 
-        //     $new_list_of_courses = $_POST['new_list_of_coursesPHP'];
-        //     $old_list_of_courses = $_POST['new_list_of_coursesPHP'];
+            $new_list_of_courses = $_POST['new_list_of_coursesPHP'];
+            $old_list_of_courses = $_POST['new_list_of_coursesPHP'];
 
-        //     $courses_to_add = array_diff($new_list_of_courses, $old_list_of_courses);
-        //     $courses_to_remove = array_diff($old_list_of_courses, $new_list_of_courses);
+            $courses_to_add = array_diff($new_list_of_courses, $old_list_of_courses);
+            $courses_to_remove = array_diff($old_list_of_courses, $new_list_of_courses);
 
             
-        //     $courses_to_remove_string = "";
-        //     for ($x = 0; $x < count($courses_to_remove); $x++) {
-        //         $courses_to_remove_string .= $user_id;
-        //         if ($x < (count($list_of_courses) - 1)) {
-        //             $courses_to_remove_string .= ", ";
-        //         }
-        //     }
-        //     $remove_query = "DELETE FROM users_on_courses WHERE user_id=? AND course_id IN (" . $courses_to_remove_string . ");";
-        //     $stmt = $connectionPDO->prepare($remove_query);
+            $courses_to_remove_string = "";
+            for ($x = 0; $x < count($courses_to_remove); $x++) {
+                $courses_to_remove_string .= $user_id;
+                if ($x < (count($list_of_courses) - 1)) {
+                    $courses_to_remove_string .= ", ";
+                }
+            }
+            $remove_query = "DELETE FROM users_on_courses WHERE user_id=? AND course_id IN (" . $courses_to_remove_string . ");";
+            $stmt = $connectionPDO->prepare($remove_query);
             
-        //     if (!$stmt->execute([$user_id]) {
-        //         exit('Error: ' . $connection->error);
-        //     }
+            if (!$stmt->execute([$user_id]) {
+                exit('Error: ' . $connection->error);
+            }
 
 
-        //     $insertquery = "INSERT INTO users_on_courses (user_id, course_id) VALUES ";
-        //     for ($y = 0; $y < count($courses_to_add); $y++) {
-        //         $insertquery .= "(" .= $user_id . ", " .= $courses_to_add[$y] .= ")";
-        //         if ($y < (count($courses_to_add) - 1)) {
-        //             $insertquery .= ", ";
-        //         } else {
-        //             $insertquery .= ";";
-        //         }
-        //     }
+            $insertquery = "INSERT INTO users_on_courses (user_id, course_id) VALUES ";
+            for ($y = 0; $y < count($courses_to_add); $y++) {
+                $insertquery .= "(" .= $user_id . ", " .= $courses_to_add[$y] .= ")";
+                if ($y < (count($courses_to_add) - 1)) {
+                    $insertquery .= ", ";
+                } else {
+                    $insertquery .= ";";
+                }
+            }
 
-        //     $stmt = $connectionPDO->prepare($insertquery);
+            $stmt = $connectionPDO->prepare($insertquery);
             
-        //     if (!$stmt->execute()) {
-        //         exit('Error: ' . $connection->error);
-        //     }
+            if (!$stmt->execute()) {
+                exit('Error: ' . $connection->error);
+            }
 
-        //     exit('success');
+            exit('success');
 
 
-        // }
+        }
 
         //close connection to db
         $stmt = null;
