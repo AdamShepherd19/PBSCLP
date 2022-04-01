@@ -36,7 +36,7 @@
                 $user_id = $data['user_id'];
                 $query = "INSERT INTO users_on_courses (user_id, course_id) VALUES ";
                 for ($x = 0; $x < count($list_of_courses); $x++) {
-                    $query .= "(" . $user_id . ", " . $list_of_courses[x] . ")";
+                    $query .= "(" . $user_id . ", " . $list_of_courses[$x] . ")";
                     if ($x < (count($list_of_courses) - 1)) {
                         $query .= ", ";
                     } else {
