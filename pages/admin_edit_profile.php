@@ -184,11 +184,15 @@
                     var new_email = $("#new-email").val();
                     var new_contact_number = $("#new-contact-number").val();
                     var new_organisation = $("#new-organisation").val();
-                    
+
+                    var new_list_of_courses = $("#course-list input:checkbox:checked").map(function(){
+                        return $(this).attr('id').split(/[-]+/).pop();
+                    }).get();
 
                     var index = new_name.lastIndexOf(" ");
                     var lastname = new_name.slice(index + 1);
                     var firstname = new_name.substring(0, index);
+
 
                     console.log(firstname + " " + lastname);
 
@@ -196,11 +200,14 @@
                         method: 'POST',
                         url: "../scripts/update_profile.php",
                         data: {
+                            user_idPHP: user_id_to_edit,
                             firstnamePHP: firstname,
                             lastnamePHP: lastname,
                             emailPHP: new_email,
                             contact_numberPHP: new_contact_number,
-                            organisationPHP: new_organisation
+                            organisationPHP: new_organisation,
+                            old_list_of_coursesPHP: list_of_course_id,
+                            new_list_of_coursesPHP: new_list_of_courses
                         },
                         success: function (response) {
                             //check if the php execution was successful and the data was added to the db
