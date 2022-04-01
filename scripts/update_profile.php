@@ -37,8 +37,8 @@
         }
 
         if (isset($_POST['new_list_of_coursesPHP'])) {
-        //     // difference between old and new = to be removed
-        //     // difference between new and old = to be added
+            // difference between old and new = to be removed
+            // difference between new and old = to be added
 
             $new_list_of_courses = $_POST['new_list_of_coursesPHP'];
             $old_list_of_courses = $_POST['old_list_of_coursesPHP'];
@@ -46,7 +46,6 @@
             $courses_to_add = array_values(array_diff($new_list_of_courses, $old_list_of_courses));
             $courses_to_remove = array_values(array_diff($old_list_of_courses, $new_list_of_courses));
 
-            print_r($courses_to_remove);
             if(count($courses_to_remove) > 0){
                 $courses_to_remove_string = "";
                 for ($x = 0; $x < count($courses_to_remove); $x++) {
@@ -56,25 +55,12 @@
                     }
                 }
 
-                // for ($y = 0; $y < count($courses_to_add); $y++) {
-                //     $insertquery .= "(" . $user_id . ", " . $courses_to_add[$y] . ")";
-                //     if ($y < (count($courses_to_add) - 1)) {
-                //         $insertquery .= ", ";
-                //     } else {
-                //         $insertquery .= ";";
-                //     }
-                // }
-
-
                 $remove_query = "DELETE FROM users_on_courses WHERE user_id=? AND course_id IN (" . $courses_to_remove_string . ");";
-                echo $remove_query;
                 $stmt = $connectionPDO->prepare($remove_query);
                 
                 if (!$stmt->execute([$user_id])) {
                     exit('Error: ' . $connection->error);
                 }
-            } else {
-                echo "no courses to remove...";
             }
 
             if (count($courses_to_add) > 0) {
@@ -93,13 +79,9 @@
                 if (!$stmt->execute()) {
                     exit('Error: ' . $connection->error);
                 }
-            } else {
-                echo "no courses to add...";
             }
 
-            exit('success');
-
-
+            exit('*account_updated_successfully*');
         }
 
         //close connection to db
