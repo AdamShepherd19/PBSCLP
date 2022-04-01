@@ -146,7 +146,7 @@
                         },
                         success: function (response) {
                             //check if the php execution was successful and the data was added to the db
-                            if (response.includes("success")){
+                            if (response.includes("*account_updated_successfully*")){
                                 //replace html with success message and button to return to landing page
                                 var successHTML = "<h3>Your profile was updated succesfully. Please click the button below to return to the landing page.</h3><br> " +
                                     "<br><input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>";
