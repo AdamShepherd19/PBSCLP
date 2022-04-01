@@ -46,6 +46,7 @@
             $courses_to_add = array_values(array_diff($new_list_of_courses, $old_list_of_courses));
             $courses_to_remove = array_values(array_diff($old_list_of_courses, $new_list_of_courses));
 
+            print_r($courses_to_remove);
             if(count($courses_to_remove) > 0){
                 $courses_to_remove_string = "";
                 for ($x = 0; $x < count($courses_to_remove); $x++) {
@@ -75,9 +76,6 @@
                         $insertquery .= ";";
                     }
                 }
-
-                echo $insertquery;
-                print_r($courses_to_add);
 
                 $stmt = $connectionPDO->prepare($insertquery);
                 
