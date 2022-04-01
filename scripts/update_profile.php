@@ -57,14 +57,14 @@
             $remove_query = "DELETE FROM users_on_courses WHERE user_id=? AND course_id IN (" . $courses_to_remove_string . ");";
             $stmt = $connectionPDO->prepare($remove_query);
             
-            if (!$stmt->execute([$user_id]) {
+            if (!$stmt->execute([$user_id])) {
                 exit('Error: ' . $connection->error);
             }
 
 
             $insertquery = "INSERT INTO users_on_courses (user_id, course_id) VALUES ";
             for ($y = 0; $y < count($courses_to_add); $y++) {
-                $insertquery .= "(" .= $user_id . ", " .= $courses_to_add[$y] .= ")";
+                $insertquery .= "(" .= $user_id .= ", " .= $courses_to_add[$y] .= ")";
                 if ($y < (count($courses_to_add) - 1)) {
                     $insertquery .= ", ";
                 } else {
