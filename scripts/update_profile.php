@@ -37,8 +37,8 @@
         }
 
         // if (isset($_POST['new_list_of_coursesPHP'])) {
-        //     // difference between old and new = to be removed
-        //     // difference between new and old = to be added
+        // //     // difference between old and new = to be removed
+        // //     // difference between new and old = to be added
 
         //     $new_list_of_courses = $_POST['new_list_of_coursesPHP'];
         //     $old_list_of_courses = $_POST['new_list_of_coursesPHP'];

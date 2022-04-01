@@ -194,7 +194,8 @@
                     var firstname = new_name.substring(0, index);
 
 
-                    console.log(firstname + " " + lastname);
+                    // console.log(firstname + " " + lastname);
+                    console.log(new_list_of_courses);
 
                     $.ajax({
                         method: 'POST',
@@ -226,7 +227,7 @@
 
                             // onclick function for new button to return to landing page
                             $("#return").on('click', function(){
-                                window.location.replace('profile.php');
+                                window.location.replace('manage_users.php');
                             });
 
                         },
