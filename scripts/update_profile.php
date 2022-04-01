@@ -51,7 +51,7 @@
                 $courses_to_remove_string = "";
                 for ($x = 0; $x < count($courses_to_remove); $x++) {
                     $courses_to_remove_string .= $courses_to_remove[$x];
-                    if ($x < (count($list_of_courses) - 1)) {
+                    if ($x < count($list_of_courses) - 1) {
                         $courses_to_remove_string .= ", ";
                     }
                 }
