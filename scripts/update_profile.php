@@ -64,12 +64,18 @@
 
             $insertquery = "INSERT INTO users_on_courses (user_id, course_id) VALUES ";
             for ($y = 0; $y < count($courses_to_add); $y++) {
-                $query .= "(" . $user_id . ", " . $courses_to_add[$y] . ")";
+                $insertquery .= "(" . $user_id . ", " . $courses_to_add[$y] . ")";
                 if ($y < (count($courses_to_add) - 1)) {
-                    $query .= ", ";
+                    $insertquery .= ", ";
                 } else {
-                    $query .= ";";
+                    $insertquery .= ";";
                 }
+            }
+
+            $stmt = $connectionPDO->prepare($insertquery);
+            
+            if (!$stmt->execute()) {
+                exit('Error: ' . $connection->error);
             }
 
             exit('success');
