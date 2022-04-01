@@ -129,40 +129,26 @@
                                     $("#courses").append(output);
                                 }
                                 
-
                                 
-                                // let list_of_assigned_course_id = [];
-                                // $.ajax({
-                                //     url: '../scripts/get_assigned_courses.php',
-                                //     type: 'post',
-                                //     dataType: 'JSON',
-                                //     data: {
-                                //         user_id_PHP: user_id_to_edit
-                                //     },
-                                //     success: function(response) {
-                                //         if(response.includes("*warning_no_courses_found*")){
-                                //             console.log("temp");
-                                //         } else {
-                                //             for(let j = 0; j < response.length; j++) {
-                                //                 list_of_assigned_course_id.push(response[j].id);
-                                //             }
-                                //         }
-
-                                //         $("#courses").html("");
-                                //         for(var i = 0; i < response.length; i++) {
-                                //             let output;
-                                            
-                                //             if (list_of_assigned_course_id.includes(response[i].course_id)) {
-                                //                 output = '<input type="checkbox" id="edit-cid-' + response[i].course_id + '" class="pbs-form-check-box" value="' + response[i].course_name + '" checked><label for="edit-cid-' + response[i].course_id + '">' + response[i].course_name + '</label><br>';
-                                //             } else {
-                                //                 output = '<input type="checkbox" id="edit-cid-' + response[i].course_id + '" class="pbs-form-check-box" value="' + response[i].course_name + '"><label for="edit-cid-' + response[i].course_id + '">' + response[i].course_name + '</label><br>';
-                                //             }
-                                //             // let output = '<input type="checkbox" id="edit-cid-' + response[i].course_id + '" class="pbs-form-check-box" value="' + response[i].course_name + '"><label for="edit-cid-' + response[i].course_id + '">' + response[i].course_name + '</label><br>';
-
-                                //             $("#courses").append(output);
-                                //         }
-                                //     }
-                                // });
+                                $.ajax({
+                                    url: '../scripts/get_assigned_courses.php',
+                                    type: 'post',
+                                    dataType: 'JSON',
+                                    data: {
+                                        user_id_PHP: user_id_to_edit
+                                    },
+                                    success: function(response) {
+                                        if(response.includes("*warning_no_courses_found*")){
+                                            console.log("temp");
+                                        } else {
+                                            // for (let j = 0; j < response.length; j++) {
+                                            //     let temp_id = "#edit-cid-" + response[j];
+                                            //     $(temp_id).prop('checked', true);
+                                            // }
+                                            console.log(response);
+                                        }
+                                    }
+                                });
 
                                 
                             }
