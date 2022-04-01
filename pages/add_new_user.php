@@ -180,7 +180,7 @@
                     var organisation = $('#organisation').val();
                     var account_type = $('#account-type').val(); 
                     var list_of_courses = $("#course-list input:checkbox:checked").map(function(){
-                        return $(this).attr('id');
+                        return $(this).attr('id').split(/[-]+/).pop();
                     }).get();
 
                     //check data not empty
