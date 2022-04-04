@@ -33,6 +33,9 @@
             if($data['exp_date'] < $curDate){
                 header('Location: https://pbsclp.info/pages/reset_password_expired.php');
             }
+        } else {
+            header('Location: https://pbsclp.info');
+            exit();
         }
 
         $stmt = null;
