@@ -212,24 +212,43 @@
                                             list_of_coursesPHP: list_of_courses
                                         },
                                         success: function (response) {
-                                            //check if the php execution was successful and the data was added to the db
                                             if (response.includes("*user_added_successfully*")){
-                                                //replace html with success message and button to return to landing page
-                                                var successHTML = "<h3>The new user was added succesfully. Please click the button below to return to the landing page.</h3><br> " +
-                                                    "<input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>";
+                                                $.ajax({
+                                                    method: 'POST',
+                                                    url: "../scripts/password-reset-token.php",
+                                                    data: {
+                                                        emailPHP: email
+                                                    },
+                                                    success: function (response) {
+                                                        //check if the php execution was successful and the data was added to the db
+                                                        if (response.includes("*email_sent_successfully*")){
+                                                            //replace html with success message and button to return to landing page
+                                                            var successHTML = "<h3>The new user was added succesfully and an email has been sent to them to create their password. Please click the button below to return to the landing page.</h3><br> " +
+                                                                "<input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>";
 
-                                                $('.main-content').html(successHTML);
+                                                            $('.main-content').html(successHTML);
 
+                                                        } else {
+                                                            //display error message if the php could not be executed
+                                                            $('.main-content').html("<h3> There was an error processing your request. Please try again </h3><br>Error" + response +
+                                                                "<br><input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>");
+                                                        }
+
+                                                        // onclick function for new button to return to landing page
+                                                        $("#return").on('click', function(){
+                                                            window.location.replace('manage_users.php');
+                                                        });
+                                                        
+                                                    },
+                                                    datatype: 'text'
+                                                });
                                             } else {
-                                                //display error message if the php could not be executed
-                                                $('.main-content').html("<h3> There was an error processing your request. Please try again </h3><br>Error" + response +
-                                                    "<br><input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>");
+                                                $('.main-content').html("<h3> There was an error processing your request. Please try again </h3><br>Error" + response + "<br><input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>");
+                                                
+                                                $("#return").on('click', function(){
+                                                    window.location.replace('manage_users.php');
+                                                });
                                             }
-
-                                            // onclick function for new button to return to landing page
-                                            $("#return").on('click', function(){
-                                                window.location.replace('manage_users.php');
-                                            });
                                         },
                                         datatype: 'text'
                                     });
