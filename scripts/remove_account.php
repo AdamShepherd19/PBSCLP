@@ -46,7 +46,8 @@
         
             $myfile = fopen($filename, "w") or die("*error_creating_log*");
 
-            // $date_of_deletion = Date();
+            $expFormat = mktime(date("H"), date("i")+20, date("s"), date("m") ,date("d"), date("Y"));
+            $date = "Date of deletion: " . date("d-m-Y H:i:s",$expFormat) . "\n";
             $uid = "User ID: " . $user_id_to_delete . "\n";
             $name = "Name: " . $firstname_to_delete . " " . $lastname_to_delete . "\n";
             $email = "Email Address: " . $email_to_delete . "\n";
@@ -57,7 +58,7 @@
             $adminname = "Name: " . $_SESSION['firstname'] . " " . $_SESSION['lastname'] ."\n";
             $adminreason = "\nReason: " . $reason ."\n";
 
-            $total_log = $uid .= $name .= $email .= $acctype .= $separator .= $deluserinfo .= $adminid .= $adminname .= $adminreason;
+            $total_log = $date.= $uid .= $name .= $email .= $acctype .= $separator .= $deluserinfo .= $adminid .= $adminname .= $adminreason;
             
             if (fwrite($myfile, $total_log) == false) {
                 exit("*error_creating_log*");
