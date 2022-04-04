@@ -29,6 +29,7 @@
         $data = $stmt->fetch();
         
         if ($data) {
+            echo gettype($data['exp_date']);
             if($data['exp_date'] < $curDate){
                 header('Location: https://pbsclp.info/pages/reset_password_expired.php');
             }
