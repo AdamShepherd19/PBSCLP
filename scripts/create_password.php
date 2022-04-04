@@ -68,10 +68,10 @@
             $mail->Port = "465"; // set the SMTP port for the pbsclp server
 
             $mail->From='passwordreset@pbsclp.info';
-            $mail->FromName='pbsclp passwordreset';
+            $mail->FromName='PBSCLP Password Reset System';
 
             $mail->AddAddress($email, $name);
-            $mail->Subject  =  'Reset Password';
+            $mail->Subject  =  'Set Password';
             $mail->IsHTML(true);
 
             $mail->Body    = '<h1> Choose a Password </h1> <br><br>Click On This Link to choose the password for your new account: ' . $link . '';
