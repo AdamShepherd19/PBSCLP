@@ -46,6 +46,7 @@
         
             $myfile = fopen($filename, "w") or die("*error_creating_log*");
 
+            // $date_of_deletion = Date();
             $uid = "User ID: " . $user_id_to_delete . "\n";
             $name = "Name: " . $firstname_to_delete . " " . $lastname_to_delete . "\n";
             $email = "Email Address: " . $email_to_delete . "\n";
