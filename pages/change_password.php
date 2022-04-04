@@ -34,7 +34,7 @@
                 header('Location: https://pbsclp.info/pages/reset_password_expired.php');
             }
         } else {
-            header('Location: https://pbsclp.info');
+            header('Location: https://pbsclp.info/pages/reset_password_expired.php');
             exit();
         }
 
