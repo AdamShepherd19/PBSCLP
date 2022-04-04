@@ -215,7 +215,7 @@
                                             if (response.includes("*user_added_successfully*")){
                                                 $.ajax({
                                                     method: 'POST',
-                                                    url: "../scripts/password-reset-token.php",
+                                                    url: "../scripts/create_password.php",
                                                     data: {
                                                         emailPHP: email
                                                     },
