@@ -132,13 +132,15 @@
                         success: function (response) {
                             if(response.includes("*feedback_sent_successfully*")) {
                                 $('#post-section').html("<br><h2>Feedback has been successfully sent back to the author for review. Please press the button below to return to the post reviewal page.</h2>");
-
-                                $("#feedback-section").hide();
-                                $("#review-post-submit").hide();
-                                $("#review-post-cancel").val("Return");
-                                $("#review-post-cancel").removeClass("pbs-button-red");
-                                $("#review-post-cancel").addClass("pbs-button-green");
+                            } else {
+                                $('#post-section').html("<br><h2>There was a problem sending your feedback. Please try again or contact a system administrator if the issue persists.</h2>");
                             }
+
+                            $("#feedback-section").hide();
+                            $("#review-post-submit").hide();
+                            $("#review-post-cancel").val("Return");
+                            $("#review-post-cancel").removeClass("pbs-button-red");
+                            $("#review-post-cancel").addClass("pbs-button-green");
                         },
                         datatype: 'text'
                     });
