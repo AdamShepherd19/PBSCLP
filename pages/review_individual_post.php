@@ -109,6 +109,7 @@
                                 $('#post-section').html("<br><h2>Warning: This post has already been approved.</h2>");
                                 $("#feedback-section").hide();
                                 $("#review-post-submit").hide();
+                                $("#review-post-cancel").toggleClass("pbs-button-green");
                             }
                         }
                     }
@@ -134,7 +135,9 @@
                                 $('#post-section').html("<br><h2>Feedback has been successfully sent back to the author for review. Please press the button below to return to the post reviewal page.</h2>");
 
                                 $("#feedback-section").hide();
-                                $(".button-wrapper").hide();
+                                $("#review-post-submit").hide();
+                                $("#review-post-cancel").val("Return");
+                                $("#review-post-cancel").toggleClass("pbs-button-green");
                             }
                         },
                         datatype: 'text'
