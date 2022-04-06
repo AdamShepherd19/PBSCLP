@@ -17,10 +17,10 @@
         $feedback = $_POST['feedbackPHP'];
 
         // query database and insert the new announcement into the announcements table
-        $sql = "ALTER threads SET feedback_provided=0, current_feedback=:feedback WHERE thread_id=:thread_id;";
+        $sql = "ALTER threads SET feedback_provided=1, current_feedback=:feedback WHERE thread_id=:thread_id;";
         $stmt = $connectionPDO->prepare($sql);
 
-        if($stmt->execute(['feedback' => $feedback, 'thread_id' => $thread_id]));
+        if($stmt->execute(['feedback' => $feedback, 'thread_id' => $thread_id])) {;
             echo '*feedback_sent_successfully*';
         } else {
             $error_msg = 'Caught exception: ',  $e->getMessage(), "\n";
