@@ -109,8 +109,6 @@
                                 $('#post-section').html("<br><h2>Warning: This post has already been approved.</h2>");
                                 $("#feedback-section").hide();
                                 $("#review-post-submit").hide();
-                                $("#review-post-cancel").removeClass("pbs-button-red");
-                                $("#review-post-cancel").addClass("pbs-button-green");
                             }
                         }
                     }
@@ -138,7 +136,8 @@
                                 $("#feedback-section").hide();
                                 $("#review-post-submit").hide();
                                 $("#review-post-cancel").val("Return");
-                                $("#review-post-cancel").toggleClass("pbs-button-green");
+                                $("#review-post-cancel").removeClass("pbs-button-red");
+                                $("#review-post-cancel").addClass("pbs-button-green");
                             }
                         },
                         datatype: 'text'
