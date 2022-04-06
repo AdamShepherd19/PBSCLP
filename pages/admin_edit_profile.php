@@ -123,8 +123,14 @@
                             if(response.includes("*warning_no_courses_found*")){
                                 console.log("temp");
                             } else {
+                                $("#courses").html("");
+                                for (let i = 0; i < response.length; i++) {
+                                    let output = '<input type="checkbox" id="edit-cid-' + response[i].course_id + '" class="pbs-form-check-box" value="' + response[i].course_name + '"><label for="edit-cid-' + response[i].course_id + '">' + response[i].course_name + '</label><br>';
+
+                                    $("#courses").append(output);
+                                }
                                 
-                                let list_of_assigned_course_id = [];
+                                
                                 $.ajax({
                                     url: '../scripts/get_assigned_courses.php',
                                     type: 'post',
@@ -136,23 +142,10 @@
                                         if(response.includes("*warning_no_courses_found*")){
                                             console.log("temp");
                                         } else {
-                                            for(let j = 0; j < response.length; j++) {
-                                                list_of_assigned_course_id.push(response[j].id);
+                                            for (let j = 0; j < response.length; j++) {
+                                                let temp_id = "#edit-cid-" + response[j];
+                                                $(temp_id).prop('checked', true);
                                             }
-                                        }
-
-                                        $("#courses").html("");
-                                        for(var i = 0; i < response.length; i++) {
-                                            let output;
-                                            
-                                            if (list_of_assigned_course_id.includes(response[i].course_id)) {
-                                                output = '<input type="checkbox" id="edit-cid-' + response[i].course_id + '" class="pbs-form-check-box" value="' + response[i].course_name + '" checked><label for="edit-cid-' + response[i].course_id + '">' + response[i].course_name + '</label><br>';
-                                            } else {
-                                                output = '<input type="checkbox" id="edit-cid-' + response[i].course_id + '" class="pbs-form-check-box" value="' + response[i].course_name + '"><label for="edit-cid-' + response[i].course_id + '">' + response[i].course_name + '</label><br>';
-                                            }
-                                            // let output = '<input type="checkbox" id="edit-cid-' + response[i].course_id + '" class="pbs-form-check-box" value="' + response[i].course_name + '"><label for="edit-cid-' + response[i].course_id + '">' + response[i].course_name + '</label><br>';
-
-                                            $("#courses").append(output);
                                         }
                                     }
                                 });
@@ -178,6 +171,11 @@
                     $("#email-address").html(email);
                     $("#contact-number").html(contact_number);
                     $("#organisation").html(organisation);
+                    $("#courses").html('<ul id="course-list"></ul>');
+                    for (let x = 0; x < list_of_course_id.length; x++){
+                        let output = "<li id='cid-" + list_of_course_id[x] + "'>" + list_of_course_names[x] + "</li>";
+                        $('#course-list').append(output);
+                    }
 
                 });
 
@@ -186,42 +184,48 @@
                     var new_email = $("#new-email").val();
                     var new_contact_number = $("#new-contact-number").val();
                     var new_organisation = $("#new-organisation").val();
-                    
+
+                    var new_list_of_courses = $("#courses input:checkbox:checked").map(function(){
+                        return $(this).attr('id').split(/[-]+/).pop();
+                    }).get();
 
                     var index = new_name.lastIndexOf(" ");
                     var lastname = new_name.slice(index + 1);
                     var firstname = new_name.substring(0, index);
 
-                    console.log(firstname + " " + lastname);
+
+                    // console.log(firstname + " " + lastname);
+                    console.log(new_list_of_courses);
 
                     $.ajax({
                         method: 'POST',
                         url: "../scripts/update_profile.php",
                         data: {
+                            user_idPHP: user_id_to_edit,
                             firstnamePHP: firstname,
                             lastnamePHP: lastname,
                             emailPHP: new_email,
                             contact_numberPHP: new_contact_number,
-                            organisationPHP: new_organisation
+                            organisationPHP: new_organisation,
+                            old_list_of_coursesPHP: list_of_course_id,
+                            new_list_of_coursesPHP: new_list_of_courses
                         },
                         success: function (response) {
                             //check if the php execution was successful and the data was added to the db
-                            if (response.includes("success")){
+                            if (response.includes("*account_updated_successfully*")){
                                 //replace html with success message and button to return to landing page
-                                var successHTML = "<h3>Your profile was updated succesfully. Please click the button below to return to the landing page.</h3><br> " +
-                                    "<br><input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>";
+                                var successHTML = "<h3>Your profile was updated succesfully. Please click the button below to return to the user management page.</h3><br> " + "<br><input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>";
 
                                 $('.main-content').html(successHTML);
 
                             } else {
                                 //display error message if the php could not be executed
-                                $('.main-content').html("<h3> There was an error processing your request. Please try again </h3><br>Error" + response +
-                                        "<br><input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>");
+                                $('.main-content').html("<h3> There was an error processing your request. Please try again </h3><br>Error" + response +"<br><input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>");
                             }
 
                             // onclick function for new button to return to landing page
                             $("#return").on('click', function(){
-                                window.location.replace('profile.php');
+                                window.location.replace('manage_users.php');
                             });
 
                         },

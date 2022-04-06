@@ -38,7 +38,7 @@
             $name = $data['firstname'] . $data['lastname'];
 
             $token = md5($email).rand(10,9999);
-            $expFormat = mktime(date("H"), date("i")+20, date("s"), date("m") ,date("d"), date("Y"));
+            $expFormat = mktime(date("H"), date("i"), date("s"), date("m") ,date("d")+1, date("Y"));
             $expDate = date("Y-m-d H:i:s",$expFormat);
 
             $sql = "UPDATE users set reset_link_token=:token, exp_date=:expDate WHERE email=:email";
@@ -48,7 +48,7 @@
             if ($stmt->execute(['token' => $token, 'expDate' => $expDate, 'email' => $email])) {
                 echo 'success';
             } else {
-                echo 'Error: ' . $connectionPDO->error;
+                exit("*failed_to_create_token*");
             }
             
             $link = "<a href='https://pbsclp.info/pages/change_password.php?key=".$email."&token=".$token."'>Click To Reset password</a>";
@@ -71,12 +71,12 @@
             $mail->FromName='PBSCLP Password Reset System';
 
             $mail->AddAddress($email, $name);
-            $mail->Subject  =  'Reset Password';
+            $mail->Subject  =  'Set Password';
             $mail->IsHTML(true);
 
-            $mail->Body    = '<h1> Password Reset Email </h1> <br><br>Click On This Link to reset your password: ' . $link . '';
+            $mail->Body    = '<h1> Choose a Password </h1> <br><br>Click On This Link to choose the password for your new account: ' . $link . '';
 
-            $mail->AltBody = 'Click On This Link to Reset Password https://pbsclp.info/pages/change_password.php?key='.$email.'&token='.$token.'';
+            $mail->AltBody = 'Click On This Link to choose the password for your new account https://pbsclp.info/pages/change_password.php?key='.$email.'&token='.$token.'';
 
             if($mail->Send())
             {

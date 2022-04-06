@@ -128,13 +128,13 @@
                     <tr id="course-list">
                         <td class="caption">Courses:</td>
                         <td>
-                            <input type="checkbox" id="course1" class="pbs-form-check-box" value="course 1">
+                            <input type="checkbox" id="cid-1" class="pbs-form-check-box" value="course 1">
                             <label for="course1">Course 1</label><br>
 
-                            <input type="checkbox" id="course2" class="pbs-form-check-box" value="course 2">
+                            <input type="checkbox" id="cid-2" class="pbs-form-check-box" value="course 2">
                             <label for="course2">Course 2</label><br>
 
-                            <input type="checkbox" id="course3" class="pbs-form-check-box" value="course 3">
+                            <input type="checkbox" id="cid-3" class="pbs-form-check-box" value="course 3">
                             <label for="course3">Course 3</label><br>
                         </td>
                     </tr>
@@ -154,12 +154,22 @@
                 $("#cancel").on('click', function(){
                     window.location.replace('manage_users.php');
                 });
+                
+                $('#account-type').change( function () {
+                    if($('#account-type').val() == "administrator") {
+                        $('#course-list').hide();
+                    } else {
+                        $('#course-list').show();
+                    }
+                });
 
-                if($('#account-type').val() == "administrator") {
-                    $('#course-list').hide();
-                } else {
-                    $('#course-list').hide();
-                }
+                // $("#test-button").click(function(event){
+                //     event.preventDefault();
+                //     var searchIDs = $("#course-list input:checkbox:checked").map(function(){
+                //         return $(this).val();
+                //     }).get();
+                //     console.log(searchIDs);
+                // });
 
                 $("#add-new-user").on('click', function(){
                     //retrieve data from form
@@ -169,6 +179,9 @@
                     var contact_number = $('#contact-number').val();
                     var organisation = $('#organisation').val();
                     var account_type = $('#account-type').val(); 
+                    var list_of_courses = $("#course-list input:checkbox:checked").map(function(){
+                        return $(this).attr('id').split(/[-]+/).pop();
+                    }).get();
 
                     //check data not empty
                     if(firstname == "" || lastname == "" || email == "" || contact_number == "" || organisation == ""){
@@ -195,27 +208,47 @@
                                             emailPHP: email,
                                             contact_numberPHP: contact_number,
                                             organisationPHP: organisation,
-                                            account_typePHP: account_type
+                                            account_typePHP: account_type,
+                                            list_of_coursesPHP: list_of_courses
                                         },
                                         success: function (response) {
-                                            //check if the php execution was successful and the data was added to the db
                                             if (response.includes("*user_added_successfully*")){
-                                                //replace html with success message and button to return to landing page
-                                                var successHTML = "<h3>The new user was added succesfully. Please click the button below to return to the landing page.</h3><br> " +
-                                                    "<input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>";
+                                                $.ajax({
+                                                    method: 'POST',
+                                                    url: "../scripts/create_password.php",
+                                                    data: {
+                                                        emailPHP: email
+                                                    },
+                                                    success: function (response) {
+                                                        //check if the php execution was successful and the data was added to the db
+                                                        if (response.includes("*email_sent_successfully*")){
+                                                            //replace html with success message and button to return to landing page
+                                                            var successHTML = "<h3>The new user was added succesfully and an email has been sent to them to create their password. Please click the button below to return to the landing page.</h3><br> " +
+                                                                "<input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>";
 
-                                                $('.main-content').html(successHTML);
+                                                            $('.main-content').html(successHTML);
 
+                                                        } else {
+                                                            //display error message if the php could not be executed
+                                                            $('.main-content').html("<h3> There was an error processing your request. Please try again </h3><br>Error" + response +
+                                                                "<br><input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>");
+                                                        }
+
+                                                        // onclick function for new button to return to landing page
+                                                        $("#return").on('click', function(){
+                                                            window.location.replace('manage_users.php');
+                                                        });
+                                                        
+                                                    },
+                                                    datatype: 'text'
+                                                });
                                             } else {
-                                                //display error message if the php could not be executed
-                                                $('.main-content').html("<h3> There was an error processing your request. Please try again </h3><br>Error" + response +
-                                                    "<br><input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>");
+                                                $('.main-content').html("<h3> There was an error processing your request. Please try again </h3><br>Error" + response + "<br><input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>");
+                                                
+                                                $("#return").on('click', function(){
+                                                    window.location.replace('manage_users.php');
+                                                });
                                             }
-
-                                            // onclick function for new button to return to landing page
-                                            $("#return").on('click', function(){
-                                                window.location.replace('manage_users.php');
-                                            });
                                         },
                                         datatype: 'text'
                                     });

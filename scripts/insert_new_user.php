@@ -17,7 +17,8 @@
         $contact_number = $_POST['contact_numberPHP'];
         $organisation = $_POST['organisationPHP'];
         $account_type = $_POST['account_typePHP'];
-        
+        $list_of_courses = $_POST['list_of_coursesPHP'];
+
 
         // query database and insert the new announcement into the announcements table
         $sql = "INSERT INTO users (firstname, lastname, email, contact_number, organisation, account_type) VALUES (:firstname, :lastname, :email, :contact_number, :organisation, :account_type);";
@@ -26,7 +27,42 @@
         
         //check to see if the insert was successful
         if ($stmt->execute(['firstname' => $firstname, 'lastname' => $lastname, 'email' => $email, 'contact_number' => $contact_number, 'organisation' => $organisation, 'account_type' => $account_type])) {
-            exit('*user_added_successfully*');
+            $sql = "SELECT user_id FROM users WHERE email=? LIMIT 1";
+            $stmt = $connectionPDO->prepare($sql);
+            $stmt->execute([$email]);
+            $data = $stmt->fetch();
+
+            if ($data) {
+                $user_id = $data['user_id'];
+                $query = "INSERT INTO users_on_courses (user_id, course_id) VALUES ";
+                for ($x = 0; $x < count($list_of_courses); $x++) {
+                    $query .= "(" . $user_id . ", " . $list_of_courses[$x] . ")";
+                    if ($x < (count($list_of_courses) - 1)) {
+                        $query .= ", ";
+                    } else {
+                        $query .= ";";
+                    }
+                }
+
+                $stmt = $connectionPDO->prepare($query);
+                if ($stmt->execute()) {
+                    exit('*user_added_successfully*');
+                } else {
+                    $sqldelete = "DELETE FROM users WHERE email=?";
+                    $stmt = $connectionPDO->prepare($sqldelete);
+                    $stmt->execute([$email]);
+                    
+                    exit('Error: ' . $connectionPDO->error);
+                }
+            } else {
+                $sqldelete = "DELETE FROM users WHERE email=?";
+                $stmt = $connectionPDO->prepare($sqldelete);
+                $stmt->execute([$email]);
+
+                exit('Error: ' . $connectionPDO->error);
+            }
+            
+            
         } else {
             exit('Error: ' . $connectionPDO->error);
         }

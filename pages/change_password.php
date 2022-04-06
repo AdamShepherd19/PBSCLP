@@ -3,7 +3,7 @@
 
     // if already logged in
     if (isset($_SESSION['logged_in'])){
-        header('Location: https://pbsclp.info');
+        header('Location: https://pbsclp.info/scripts/logout.php');
         exit();
     }
 
@@ -29,9 +29,13 @@
         $data = $stmt->fetch();
         
         if ($data) {
+            echo gettype($data['exp_date']);
             if($data['exp_date'] < $curDate){
                 header('Location: https://pbsclp.info/pages/reset_password_expired.php');
             }
+        } else {
+            header('Location: https://pbsclp.info/pages/reset_password_expired.php');
+            exit();
         }
 
         $stmt = null;

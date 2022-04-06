@@ -21,9 +21,7 @@
         $data = array();
             
         foreach($courses_result as $row) {
-            $data[] = array(
-                "id" => $row['course_id']
-            );
+            $data[] = $row['course_id'];
             // array_push($listOfCourseID, $row['course_id']);
         }
 
