@@ -4,6 +4,10 @@
     align-items: center;
 }
 
+.pbs-form-text-box {
+    min-width: 60vw;
+}
+
 .button-wrapper {
     display: flex;
     flex-direction: row;
