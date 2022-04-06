@@ -23,7 +23,7 @@
         if($stmt->execute(['feedback' => $feedback, 'thread_id' => $thread_id])) {
             echo '*feedback_sent_successfully*';
         } else {
-            $error_msg = 'Caught exception: ',  $e->getMessage(), "\n";
+            $error_msg = 'Caught exception: ' . $e->getMessage() . "\n";
             exit($error_msg);
         }
 
