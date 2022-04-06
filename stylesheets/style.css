@@ -116,4 +116,5 @@ h2 {
 
 .text-area-large {
     min-height: 30vh;
+    min-width: 60vw;
 }
