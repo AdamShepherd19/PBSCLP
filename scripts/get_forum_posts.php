@@ -13,18 +13,31 @@
         exit('*database_connection_error*');
     }
 
-    if(isset($_GET['approvedPHP'])) {
+    if(isset($_GET['approvedPHP']) && isset($_GET['feedback_providedPHP'])) {
+        
         $approved = $_GET['approvedPHP'];
-    } else {
-        $approved = '0';
-    }
+        $feedback_provided = $_GET['feedback_providedPHP'];
 
-    //perform query and sort into newest first
-    $sql = "SELECT * FROM threads WHERE approved=? ORDER BY post_time DESC";
-    
-    $stmt = $connectionPDO->prepare($sql);
-    $stmt->execute([$approved]);
-    $result = $stmt->fetchAll();
+        $sql = "SELECT * FROM threads WHERE approved=:approved AND feedback_provided=:feedback_provided ORDER BY post_time DESC";
+
+        $stmt = $connectionPDO->prepare($sql);
+        $stmt->execute(['approved' => $approved, 'feedback_provided' => $feedback_provided]);
+        $result = $stmt->fetchAll();
+
+    } else {
+        
+        if (isset($_GET['approvedPHP'])) {
+            $approved = $_GET['approvedPHP'];
+            $sql = "SELECT * FROM threads WHERE approved=? ORDER BY post_time DESC";
+        } else {
+            $approved = '0';
+            $sql = "SELECT * FROM threads WHERE approved=? ORDER BY post_time DESC";
+        }
+
+        $stmt = $connectionPDO->prepare($sql);
+        $stmt->execute([$approved]);
+        $result = $stmt->fetchAll();
+    }
 
     //check that there were announcements to show
     if ($result) {
