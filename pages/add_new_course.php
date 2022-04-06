@@ -58,7 +58,7 @@
                     <label for="name">Course Name: </label><br />
                     <input type="text" id="name" class="pbs-form-text-box" placeholder="Enter the course name..."><br /><br />
                     <label for="description">Description: </label><br />
-                    <textarea id="description" class="pbs-form-text-box" placeholder="Enter course description..."></textarea><br />
+                    <textarea id="description" class="pbs-form-text-box text-area-large" placeholder="Enter course description..."></textarea><br />
                     
                     <div class="button-wrapper">
                         <input type="button" id="course-cancel" class="pbs-button pbs-button-red" value="Cancel"> 
