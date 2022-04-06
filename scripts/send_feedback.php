@@ -23,8 +23,7 @@
         if($stmt->execute(['feedback' => $feedback, 'thread_id' => $thread_id])) {
             echo '*feedback_sent_successfully*';
         } else {
-            $error_msg = 'Caught exception: ' . $e->getMessage();
-            echo $error_msg;
+            exit("*error_adding_feedback_to_database*");
         }
 
         // sendEmail();
