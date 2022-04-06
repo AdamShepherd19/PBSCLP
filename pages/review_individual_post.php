@@ -120,9 +120,9 @@
                     window.location.replace('review_posts.php');
                 });
 
-                var feedback = $('#feedback').val();
-
                 $("#review-post-submit").on('click', function(){
+                    var feedback = $('#feedback').val();
+                    
                     //send data to php
                     $.ajax({
                         method: 'POST',
