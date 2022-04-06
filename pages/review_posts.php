@@ -105,15 +105,15 @@
                             $(document).on("click", ".approve-button" , function() {
                                 var contentPanelId = jQuery(this).attr("id");
                                 var thread_id = contentPanelId.split(/[-]+/).pop();
+
                                 window.location.replace('approve_forum_post.php?threadId=' + thread_id);
-                                // prompt(contentPanelId);
                             });
 
                             $(document).on("click", ".review-button" , function() {
                                 var contentPanelId = jQuery(this).attr("id");
                                 var thread_id = contentPanelId.split(/[-]+/).pop();
-                                // window.location.href = 'forum-post.php?threadId=' + thread_id;
-                                prompt(contentPanelId);
+
+                                window.location.replace('review_individual_post.php?threadId=' + thread_id);
                             });
                         }
 
