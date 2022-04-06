@@ -57,6 +57,11 @@
                 <!-- post here -->
             </div>
 
+            <div id='feedback-section'>
+                <label for="feedback">Feedback: </label><br />
+                <textarea id="feedback" class="pbs-form-text-box text-area-large" placeholder="Enter feedback for author..."></textarea><br />
+            </div>
+
             <div class="button-wrapper">
                 <input type="button" id="approve-post-cancel" class="pbs-button pbs-button-red" value="Cancel"> 
                 <input type="button" id="approve-post-submit" class="pbs-button pbs-button-green" value="Approve">

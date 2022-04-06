@@ -8,10 +8,6 @@
     min-width: 60vw;
 }
 
-.text-area-large {
-    min-height: 30vh;
-}
-
 .button-wrapper {
     display: flex;
     flex-direction: row;
