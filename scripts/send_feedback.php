@@ -19,11 +19,13 @@
         // query database and insert the new announcement into the announcements table
         $sql = "ALTER threads SET feedback_provided=1, current_feedback=:feedback WHERE thread_id=:thread_id;";
         $stmt = $connectionPDO->prepare($sql);
+        
 
-        if($stmt->execute(['feedback' => $feedback, 'thread_id' => $thread_id])) {
-            echo '*feedback_sent_successfully*';
-        } else {
-            exit("*error_adding_feedback_to_database*");
+        try {
+            $stmt->execute(['feedback' => $feedback, 'thread_id' => $thread_id]);
+            echo "*feedback_sent_successfully*";
+        } catch (Exception $e) {
+            echo 'Caught exception: ',  $e->getMessage(), "\n";
         }
 
         // sendEmail();
