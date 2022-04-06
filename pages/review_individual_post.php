@@ -122,7 +122,7 @@
 
                 $("#review-post-submit").on('click', function(){
                     var feedback = $('#feedback').val();
-                    
+
                     //send data to php
                     $.ajax({
                         method: 'POST',
@@ -144,7 +144,7 @@
                             $("#review-post-cancel").removeClass("pbs-button-red");
                             $("#review-post-cancel").addClass("pbs-button-green");
                         },
-                        datatype: 'JSON'
+                        datatype: 'text'
                     });
                 });
             });
