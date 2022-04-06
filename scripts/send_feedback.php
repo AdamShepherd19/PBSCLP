@@ -17,7 +17,7 @@
         $feedback = $_POST['feedbackPHP'];
 
         // query database and insert the new announcement into the announcements table
-        $sql = "ALTER threads SET feedback_provided=1, current_feedback=:feedback WHERE thread_id=:thread_id;";
+        $sql = "UPDATE threads SET feedback_provided=1, current_feedback=:feedback WHERE thread_id=:thread_id;";
         $stmt = $connectionPDO->prepare($sql);
         
 
