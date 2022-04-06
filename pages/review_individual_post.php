@@ -95,7 +95,7 @@
 
                             $('#post-section').html(announcement);
                             $("#review-post-submit").hide();
-                            $(".feedback-section").hide();
+                            $("#feedback-section").hide();
                         } else {
                             if (response[0].approved == '0'){
                                 var post = '<div class="forum-post card" id="thread-id-' + response[0].thread_id + '">' +
@@ -107,7 +107,7 @@
                                 $('#post-section').html(post);
                             } else {
                                 $('#post-section').html("<br><h2>Warning: This post has already been approved.</h2>");
-                                $(".feedback-section").hide();
+                                $("#feedback-section").hide();
                                 $("#review-post-submit").hide();
                             }
                         }
@@ -132,8 +132,8 @@
                         success: function (response) {
                             if(response.includes("*feedback_sent_successfully*")) {
                                 $('#post-section').html("<br><h2>Feedback has been successfully sent back to the author for review. Please press the button below to return to the post reviewal page.</h2>");
-                                
-                                $(".feedback-section").hide();
+
+                                $("#feedback-section").hide();
                                 $(".button-wrapper").hide();
                             }
                         },
