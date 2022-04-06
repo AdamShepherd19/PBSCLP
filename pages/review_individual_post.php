@@ -126,7 +126,7 @@
                         method: 'POST',
                         url: "../scripts/send_feedback.php",
                         data: {
-                            thread_idPHP: threadId,
+                            thread_idPHP: thread_id,
                             feedbackPHP: feedback
                         },
                         success: function (response) {
