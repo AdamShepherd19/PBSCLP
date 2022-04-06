@@ -63,8 +63,8 @@
             </div>
 
             <div class="button-wrapper">
-                <input type="button" id="approve-post-cancel" class="pbs-button pbs-button-red" value="Cancel"> 
-                <input type="button" id="approve-post-submit" class="pbs-button pbs-button-green" value="Approve">
+                <input type="button" id="review-post-cancel" class="pbs-button pbs-button-red" value="Cancel"> 
+                <input type="button" id="review-post-submit" class="pbs-button pbs-button-green" value="Approve">
             </div>
         </div>
 
@@ -94,7 +94,8 @@
                             var announcement = "<br><h2>This post does not exist.</h2>";
 
                             $('#post-section').html(announcement);
-                            $(".button-wrapper").hide();
+                            $("#review-post-submit").hide();
+                            $(".feedback-section").hide();
                         } else {
                             if (response[0].approved == '0'){
                                 var post = '<div class="forum-post card" id="thread-id-' + response[0].thread_id + '">' +
@@ -106,29 +107,39 @@
                                 $('#post-section').html(post);
                             } else {
                                 $('#post-section').html("<br><h2>Warning: This post has already been approved.</h2>");
+                                $(".feedback-section").hide();
+                                $("#review-post-submit").hide();
                             }
                         }
                     }
                 });
 
-                $("#approve-post-cancel").on('click', function(){
+                $("#review-post-cancel").on('click', function(){
                     window.location.replace('review_posts.php');
                 });
 
-                // $("#approve-post-submit").on('click', function(){
-                //     //send data to php
-                //     $.ajax({
-                //         method: 'POST',
-                //         url: "../scripts/",
-                //         data: {
-                            
-                //         },
-                //         success: function (response) {
-                            
-                //         },
-                //         datatype: 'text'
-                //     });
-                // });
+                var feedback = $('#feedback').val();
+
+                $("#review-post-submit").on('click', function(){
+                    //send data to php
+                    $.ajax({
+                        method: 'POST',
+                        url: "../scripts/send_feedback.php",
+                        data: {
+                            thread_idPHP: threadId,
+                            feedbackPHP: feedback
+                        },
+                        success: function (response) {
+                            if(response.includes("*feedback_sent_successfully*")) {
+                                $('#post-section').html("<br><h2>Feedback has been successfully sent back to the author for review. Please press the button below to return to the post reviewal page.</h2>");
+                                
+                                $(".feedback-section").hide();
+                                $(".button-wrapper").hide();
+                            }
+                        },
+                        datatype: 'text'
+                    });
+                });
             });
         </script>
         
