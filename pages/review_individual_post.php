@@ -144,7 +144,7 @@
                             $("#review-post-cancel").removeClass("pbs-button-red");
                             $("#review-post-cancel").addClass("pbs-button-green");
                         },
-                        datatype: 'text'
+                        datatype: 'JSON'
                     });
                 });
             });
