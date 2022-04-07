@@ -115,7 +115,7 @@
                             $("#feedback-section").hide();
                             $("#post-amendmend-section").hide();
                         } else {
-                            if (response[0].user_id != $current_user_id) {
+                            if (response[0].user_id != current_user_id) {
                                 var announcement = "<br><h2>You are not authorised to amend this post.</h2>";
 
                                 $('#post-section').html(announcement);
