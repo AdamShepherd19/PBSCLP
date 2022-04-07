@@ -114,6 +114,14 @@
                             $("#feedback-section").hide();
                             $("#post-amendmend-section").hide();
                         } else {
+                            if (response[0].feedback_provided == 0) {
+                                var announcement = "<br><h2>Please wait for feedback to be provided by an administrator.</h2>";
+
+                                $('#post-section').html(announcement);
+                                $("#amend-post-submit").hide();
+                                $("#feedback-section").hide();
+                                $("#post-amendmend-section").hide();
+                            }
                             if (response[0].approved == '0'){
                                 var post = '<div class="forum-post card" id="thread-id-' + response[0].thread_id + '">' +
                                     '<div class="card-header">' + response[0].title + '<br><span class="post-name"><i> - ' + response[0].firstname + ' ' + response[0].lastname + '</i></span>' + '</div>' +
