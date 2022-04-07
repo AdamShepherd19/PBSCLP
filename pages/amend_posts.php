@@ -84,16 +84,14 @@
                                     '<div class="card-header">' + response[x].title + '<br><span><i> - ' + response[x].firstname + ' ' + response[x].lastname + '</i></span>' + '</div>' +
                                     '<div class="card-body">' +
                                         '<p>' + response[x].content + '</p>' +
-                                        '<div class="button-wrapper"><input type="button" id="amend-post-' + response[x].thread_id + '" class="pbs-button pbs-button-green amend-button" value="View"> </div>' +
                                     '</div></div><br>';
 
                                 $(".inner-wrapper").append(message);
                             }
 
-                            $(document).on("click", ".amend-button" , function() {
+                            $(document).on("click", ".forum-post" , function() {
                                 var contentPanelId = jQuery(this).attr("id");
                                 var thread_id = contentPanelId.split(/[-]+/).pop();
-
                                 window.location.replace('amend_individual_post.php?threadId=' + thread_id);
                             });
                         }
