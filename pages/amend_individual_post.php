@@ -110,7 +110,7 @@
                             var announcement = "<br><h2>This post does not exist.</h2>";
 
                             $('#post-section').html(announcement);
-                            $("#review-post-submit").hide();
+                            $("#amend-post-submit").hide();
                             $("#feedback-section").hide();
                             $("#post-amendmend-section").hide();
                         } else {
@@ -145,7 +145,7 @@
                                 $('#post-section').html("<br><h2>Warning: This post has already been approved.</h2>");
                                 $("#feedback-section").hide();
                                 $("#post-amendmend-section").hide();
-                                $("#review-post-submit").hide();
+                                $("#amend-post-submit").hide();
                             }
                         }
                     }
