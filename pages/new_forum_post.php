@@ -30,11 +30,16 @@
         
         //check to see if the insert was successful
         if ($stmt->execute(['title' => $title, 'content' => $content, 'user_id' => $user_id])) {
-            if(sendEmail($title, $content) == "*email_sent_successfully*") {
-                exit('*new_post_created_successfully*');
-            } else {
-                exit('*error_sending_email*');
+            try{
+                if(sendEmail($title, $content) == "*email_sent_successfully*") {
+                    exit('*new_post_created_successfully*');
+                } else {
+                    exit('*error_sending_email*');
+                }
+            } catch (Exception $e) {
+                echo 'Caught exception: ',  $e->getMessage(), "\n";
             }
+            
             
         } else {
             exit('Error: ' . $connectionPDO->error);
