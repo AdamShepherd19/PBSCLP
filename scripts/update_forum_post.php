@@ -23,7 +23,7 @@
         $user_id = $_SESSION['user_id'];
 
         // query database and insert the new announcement into the announcements table
-        $sql = "UPDATE threads (title, content, feedback_provided, current_feedback) VALUES (:title, :content, 0, NULL) WHERE user_id=:user_id;";
+        $sql = "UPDATE threads SET title=:title, content=:content, feedback_provided=0, current_feedback=NULL WHERE user_id=:user_id;";
         $stmt = $connectionPDO->prepare($sql);
         
         //check to see if the insert was successful
