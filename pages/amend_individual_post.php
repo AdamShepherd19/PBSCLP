@@ -127,31 +127,31 @@
                                 $('#amend-content').text(response[0].content);
 
                                 $('#post-section').html(post);
+
+                                $.ajax({
+                                    url: '../scripts/get_feedback.php',
+                                    type: 'get',
+                                    dataType: 'text',
+                                    data: {
+                                        threadIDPHP: thread_id
+                                    },
+                                    success: function(response) {
+                                        if (response.includes("*warning_no_feedback_found*")) {
+                                            $("#feedback-text").text("There is no current feedback for this post.");
+                                        } else {
+                                            $("#feedback-text").text(response);
+                                        }
+                                    }
+                                });
                             } else {
                                 $('#post-section').html("<br><h2>Warning: This post has already been approved.</h2>");
                                 $("#feedback-section").hide();
+                                
                                 $("#review-post-submit").hide();
                             }
                         }
                     }
                 });
-
-                $.ajax({
-                    url: '../scripts/get_feedback.php',
-                    type: 'get',
-                    dataType: 'text',
-                    data: {
-                        threadIDPHP: thread_id
-                    },
-                    success: function(response) {
-                        if (response.includes("*warning_no_feedback_found*")) {
-                            $("#feedback-text").text("There is no current feedback for this post.");
-                        } else {
-                            $("#feedback-text").text(response);
-                        }
-                    }
-                });
-
 
                 // $('#name').text(name);
                 // $('#email-address').text(email);
