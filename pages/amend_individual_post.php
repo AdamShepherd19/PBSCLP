@@ -63,13 +63,17 @@
                 </div>
             </div>
 
+            <br>
+            <h4>Amend Post:</h4>
+            <br>
+
             <div id="post-amendmend-section">
                 <div class="form-wrapper">
                     <form>
-                        <label for="title">Title: </label><br />
-                        <input type="text" id="title" class="pbs-form-text-box" placeholder="Enter post title..."><br /><br />
-                        <label for="content">Content: </label><br />
-                        <textarea id="content" class="pbs-form-text-box text-area-large" placeholder="Enter post content..."></textarea><br />
+                        <label for="amend-title">Title: </label><br />
+                        <input type="amend-text" id="title" class="pbs-form-text-box" placeholder="Enter post title..."><br /><br />
+                        <label for="amend-content">Content: </label><br />
+                        <textarea id="amend-content" class="pbs-form-text-box text-area-large" placeholder="Enter post content..."></textarea><br />
                     </form>
                 </div>
             </div>
@@ -116,6 +120,9 @@
                                         '<p>' + response[0].content + '</p>' +
                                     '</div></div><br>';
 
+                                $('#amend-title').text(response[0].title);
+                                $('#amend-content').text(response[0].content);
+                                
                                 $('#post-section').html(post);
                             } else {
                                 $('#post-section').html("<br><h2>Warning: This post has already been approved.</h2>");
