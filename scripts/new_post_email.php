@@ -37,7 +37,7 @@
         $mail->Subject  =  'Forum Post Update';
         $mail->IsHTML(true);
 
-        $mail->Body    = '<h1> New Forum Post </h1> <br> A new post has been submitted for approval. Please log in to the PBSCLP platform to review the new post. <br><br> <h4> Post Title </h4> <br>' . $post_title . '<br> <h4> Post Content </h4><br>' . $post_content;
+        $mail->Body    = '<h1> New Forum Post </h1> <br> A new post has been submitted for approval. Please log in to the PBSCLP platform to review the new post. <br><br> <h4> Post Title </h4>' . $post_title . '<br><br> <h4> Post Content </h4>' . $post_content;
 
         $mail->AltBody = 'New Forum Post. A new post has been submitted for approval. Please log in to the PBSCLP platform to review the new post. Post Title: ' . $post_title . 'Post Content: ' . $post_content;
 
