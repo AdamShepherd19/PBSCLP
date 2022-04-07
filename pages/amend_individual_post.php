@@ -71,7 +71,7 @@
                 <div class="form-wrapper">
                     <form>
                         <label for="amend-title">Title: </label><br />
-                        <input type="amend-title" id="amend-title" class="pbs-form-text-box" placeholder="Enter post title..."><br /><br />
+                        <input type="text" id="amend-title" class="pbs-form-text-box" placeholder="Enter post title..."><br /><br />
                         <label for="amend-content">Content: </label><br />
                         <textarea id="amend-content" class="pbs-form-text-box text-area-large" placeholder="Enter post content..."></textarea><br />
                     </form>
