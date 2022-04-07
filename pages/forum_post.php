@@ -85,6 +85,8 @@
 
                 var thread_id = "<?php echo $_GET['threadId']; ?>";
 
+                var comments = false;
+
                 $.ajax({
                     url: '../scripts/get_single_post.php',
                     type: 'get',
@@ -131,6 +133,7 @@
                                                 '</div></div><br>';
 
                                             $('#comment-section').append(comment);
+                                            comments = true;
                                         }
                                     }
 
@@ -160,7 +163,12 @@
                                             '<?php echo $_SESSION['lastname']; ?>' + ' - now' + '</i></span>' +
                                         '</div></div><br>';
 
-                                    $('#comment-section').prepend(new_comment);
+                                    if (comments) {
+                                        $('#comment-section').prepend(new_comment);
+                                    } else {
+                                        $('#comment-section').html(new_comment);
+                                    }
+                                    
                                 } else {
                                     alert("There was an error creating your comment. Please try again.<br>" + response);
                                 }
