@@ -122,7 +122,7 @@
                                         '<p>' + response[0].content + '</p>' +
                                     '</div></div><br>';
 
-                                $('#amend-title').text(response[0].title);
+                                $('#amend-title').val(response[0].title);
                                 $('#amend-content').text(response[0].content);
 
                                 $('#post-section').html(post);
