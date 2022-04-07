@@ -1,6 +1,8 @@
 <?php
     session_start();
 
+    include_once "../scripts/new_post_email.php";
+
     if(!isset($_SESSION['logged_in'])){
         header('Location: https://pbsclp.info');
         exit();
@@ -28,7 +30,12 @@
         
         //check to see if the insert was successful
         if ($stmt->execute(['title' => $title, 'content' => $content, 'user_id' => $user_id])) {
-            exit('*new_post_created_successfully*');
+            if(sendEmail($title, $content) == "*email_sent_successfully*") {
+                exit('*new_post_created_successfully*');
+            } else {
+                exit('*error_sending_email*');
+            }
+            
         } else {
             exit('Error: ' . $connectionPDO->error);
         }
@@ -132,6 +139,8 @@
                                         "<input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>";
 
                                     $('.form-wrapper').html(successHTML);
+
+                                    
 
                                 } else {
                                     //display error message if the php could not be executed
