@@ -53,10 +53,8 @@
                 <!-- post here -->
             </div>
 
-            <h4>Feedback:</h4>
-
             <div id='feedback-section'>
-                <!-- feedback here -->
+                <h4>Feedback:</h4>
                 <div class="card">
                     <div class="card-body">
                         <p class="card-text" id="feedback-text"></p>
@@ -64,11 +62,10 @@
                 </div>
             </div>
 
-            <br>
-            <h4>Amend Post:</h4>
-            <br>
-
             <div id="post-amendmend-section">
+                <br>
+                <h4>Amend Post:</h4>
+                <br>
                 <div class="form-wrapper">
                     <form>
                         <label for="amend-title">Title: </label><br />
@@ -115,6 +112,7 @@
                             $('#post-section').html(announcement);
                             $("#review-post-submit").hide();
                             $("#feedback-section").hide();
+                            $("#post-amendmend-section").hide();
                         } else {
                             if (response[0].approved == '0'){
                                 var post = '<div class="forum-post card" id="thread-id-' + response[0].thread_id + '">' +
