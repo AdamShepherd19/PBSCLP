@@ -167,6 +167,7 @@
                                         $('#comment-section').prepend(new_comment);
                                     } else {
                                         $('#comment-section').html(new_comment);
+                                        comments = true;
                                     }
                                     
                                 } else {
