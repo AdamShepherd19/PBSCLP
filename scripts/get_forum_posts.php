@@ -13,7 +13,19 @@
         exit('*database_connection_error*');
     }
 
-    if(isset($_GET['approvedPHP']) && isset($_GET['feedback_providedPHP'])) {
+    if (isset($_GET['approvedPHP']) && isset($_GET['feedback_providedPHP']) && isset($_GET['review_posts'])) {
+
+        $approved = $_GET['approvedPHP'];
+        $feedback_provided = $_GET['feedback_providedPHP'];
+        $user_id = $_SESSION['user_id'];
+
+        $sql = "SELECT * FROM threads WHERE approved=:approved AND feedback_provided=:feedback_provided AND user_id=:user_id ORDER BY post_time DESC";
+
+        $stmt = $connectionPDO->prepare($sql);
+        $stmt->execute(['approved' => $approved, 'feedback_provided' => $feedback_provided, 'user_id' = $user_id]);
+        $result = $stmt->fetchAll();
+
+    } else if(isset($_GET['approvedPHP']) && isset($_GET['feedback_providedPHP'])) {
         
         $approved = $_GET['approvedPHP'];
         $feedback_provided = $_GET['feedback_providedPHP'];
@@ -25,7 +37,7 @@
         $result = $stmt->fetchAll();
 
     } else {
-        
+
         if (isset($_GET['approvedPHP'])) {
             $approved = $_GET['approvedPHP'];
             $sql = "SELECT * FROM threads WHERE approved=? ORDER BY post_time DESC";
