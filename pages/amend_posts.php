@@ -30,7 +30,7 @@
         <link rel="stylesheet" href="../stylesheets/style.css">
         <link rel="stylesheet" href="../stylesheets/forum.css">
 
-        <title>Review Posts</title>
+        <title>Amend Posts</title>
         
     </head>
 
@@ -43,7 +43,7 @@
         </div>
 
         <div class="page-header">
-            <h1>Review Posts</h1>
+            <h1>Amend Posts</h1>
         </div>
 
         <div class="main-content">
@@ -84,26 +84,18 @@
                                     '<div class="card-header">' + response[x].title + '<br><span><i> - ' + response[x].firstname + ' ' + response[x].lastname + '</i></span>' + '</div>' +
                                     '<div class="card-body">' +
                                         '<p>' + response[x].content + '</p>' +
-                                        // '<input type="button" id="review-post-' + response[x].thread_id + '" class="pbs-button pbs-button-orange review-button" value="Review">' +
-                                        // '<input type="button" id="approve-post-' + response[x].thread_id + '" class="pbs-button pbs-button-green approve-button" value="Approve">' +
+                                        '<input type="button" id="amend-post-' + response[x].thread_id + '" class="pbs-button pbs-button-green amend-button" value="View">' +
                                     '</div></div><br>';
 
                                 $(".inner-wrapper").append(message);
                             }
 
-                            // $(document).on("click", ".approve-button" , function() {
-                            //     var contentPanelId = jQuery(this).attr("id");
-                            //     var thread_id = contentPanelId.split(/[-]+/).pop();
+                            $(document).on("click", ".amend-button" , function() {
+                                var contentPanelId = jQuery(this).attr("id");
+                                var thread_id = contentPanelId.split(/[-]+/).pop();
 
-                            //     window.location.replace('approve_forum_post.php?threadId=' + thread_id);
-                            // });
-
-                            // $(document).on("click", ".review-button" , function() {
-                            //     var contentPanelId = jQuery(this).attr("id");
-                            //     var thread_id = contentPanelId.split(/[-]+/).pop();
-
-                            //     window.location.replace('review_individual_post.php?threadId=' + thread_id);
-                            // });
+                                window.location.replace('amend_individual_post.php?threadId=' + thread_id);
+                            });
                         }
 
                     }
