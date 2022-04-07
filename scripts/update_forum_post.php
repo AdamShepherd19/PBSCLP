@@ -20,7 +20,7 @@
         //retrieve title, content and author for the new post
         $new_title = $_POST['new_titlePHP'];
         $new_content = $_POST['new_contentPHP'];
-        $thread_id = $_POST['thread_id'];
+        $thread_id = $_POST['thread_idPHP'];
 
         // query database and insert the new announcement into the announcements table
         $sql = "UPDATE threads SET title=:title, content=:content, feedback_provided=0, current_feedback=NULL WHERE thread_id=:thread_id;";
