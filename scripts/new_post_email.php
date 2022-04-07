@@ -1,5 +1,18 @@
 <?php
+    // Reference Links:
+    // https://laratutorials.com/php-send-reset-password-link-email/
+    // https://github.com/PHPMailer/PHPMailer
 
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\SMTP;
+    use PHPMailer\PHPMailer\Exception;
+    
+
+    require '../includes/PHPMailer/src/Exception.php';
+    require '../includes/PHPMailer/src/PHPMailer.php';
+    require '../includes/PHPMailer/src/SMTP.php';
+
+    
     function sendEmail($post_title, $post_content) {
         $e_pass = file_get_contents('../../f-e-pass.txt', true);
 
