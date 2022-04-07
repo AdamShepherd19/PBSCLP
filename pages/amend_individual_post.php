@@ -54,8 +54,10 @@
 
             <div id='feedback-section'>
                 <!-- feedback here -->
-                <div class="card-body">
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consequat ante risus, vitae aliquam neque efficitur ut. Aenean quis elementum metus. Nulla tortor odio, accumsan ac imperdiet sit amet, mollis ut magna. Ut in purus tortor. Curabitur et nulla nisi. Pellentesque elementum ultrices sapien ac malesuada.</p>
+                <div class="card">
+                    <div class="card-body">
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consequat ante risus, vitae aliquam neque efficitur ut. Aenean quis elementum metus. Nulla tortor odio, accumsan ac imperdiet sit amet, mollis ut magna. Ut in purus tortor. Curabitur et nulla nisi. Pellentesque elementum ultrices sapien ac malesuada.</p>
+                    </div>
                 </div>
             </div>
 
