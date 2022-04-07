@@ -128,8 +128,9 @@
                                 $('.main-content').html(successHTML);
 
                             } else {
+                                $('.button-wrapper').hide();
                                 //display error message if the php could not be executed
-                                $('.main-content').html("<h3> There was an error processing your request. Please try again </h3><br>Error" + response +
+                                $('#post-section').html("<h3> There was an error processing your request. Please try again </h3><br>Error" + response +
                                     "<br><input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>");
                             }
 
