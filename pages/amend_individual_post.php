@@ -144,7 +144,7 @@
                             } else {
                                 $('#post-section').html("<br><h2>Warning: This post has already been approved.</h2>");
                                 $("#feedback-section").hide();
-                                
+                                $("#post-amendmend-section").hide();
                                 $("#review-post-submit").hide();
                             }
                         }
