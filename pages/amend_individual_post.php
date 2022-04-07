@@ -174,7 +174,7 @@
                         //send data to php
                         $.ajax({
                             method: 'POST',
-                            url: "new_forum_post.php",
+                            url: "update_forum_post.php",
                             data: {
                                 new_titlePHP: new_title,
                                 new_contentPHP: new_content
