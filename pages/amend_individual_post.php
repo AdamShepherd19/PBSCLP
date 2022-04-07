@@ -129,7 +129,7 @@
                 $.ajax({
                     url: '../scripts/get_feedback.php',
                     type: 'get',
-                    dataType: 'JSON',
+                    dataType: 'text',
                     data: {
                         threadIDPHP: thread_id
                     },
