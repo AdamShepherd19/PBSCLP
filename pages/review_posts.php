@@ -97,9 +97,10 @@
                                     '<div class="card-header">' + response[x].title + '<br><span><i> - ' + response[x].firstname + ' ' + response[x].lastname + '</i></span>' + '</div>' +
                                     '<div class="card-body">' +
                                         '<p>' + response[x].content + '</p>' +
+                                        '<div class="button-wrapper">' +
                                         '<input type="button" id="review-post-' + response[x].thread_id + '" class="pbs-button pbs-button-orange review-button" value="Review">' +
                                         '<input type="button" id="approve-post-' + response[x].thread_id + '" class="pbs-button pbs-button-green approve-button" value="Approve">' +
-                                    '</div></div><br>';
+                                    '</div></div></div><br>';
 
                                 $(".forum-wrapper").append(message);
                             }
