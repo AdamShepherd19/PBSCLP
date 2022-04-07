@@ -52,12 +52,25 @@
                 <!-- post here -->
             </div>
 
+            <h4>Feedback:</h4>
+
             <div id='feedback-section'>
                 <!-- feedback here -->
                 <div class="card">
                     <div class="card-body">
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consequat ante risus, vitae aliquam neque efficitur ut. Aenean quis elementum metus. Nulla tortor odio, accumsan ac imperdiet sit amet, mollis ut magna. Ut in purus tortor. Curabitur et nulla nisi. Pellentesque elementum ultrices sapien ac malesuada.</p>
+                        <p class="card-text" id="feedback-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consequat ante risus, vitae aliquam neque efficitur ut. Aenean quis elementum metus. Nulla tortor odio, accumsan ac imperdiet sit amet, mollis ut magna. Ut in purus tortor. Curabitur et nulla nisi. Pellentesque elementum ultrices sapien ac malesuada.</p>
                     </div>
+                </div>
+            </div>
+
+            <div id="post-amendmend-section">
+                <div class="form-wrapper">
+                    <form>
+                        <label for="title">Title: </label><br />
+                        <input type="text" id="title" class="pbs-form-text-box" placeholder="Enter post title..."><br /><br />
+                        <label for="content">Content: </label><br />
+                        <textarea id="content" class="pbs-form-text-box text-area-large" placeholder="Enter post content..."></textarea><br />
+                    </form>
                 </div>
             </div>
 
@@ -112,6 +125,26 @@
                         }
                     }
                 });
+
+                $.ajax({
+                    url: '../scripts/get_feedback.php',
+                    type: 'get',
+                    dataType: 'JSON',
+                    data: {
+                        threadIDPHP: thread_id
+                    },
+                    success: function(response) {
+                        if (response.includes("*no_feedback_found*")) {
+                            $("#feedback-text").text("There is no current feedback for this post.");
+                        } else {
+                            $("#feedback-text").text(response);
+                        }
+                    }
+                });
+
+
+                // $('#name').text(name);
+                // $('#email-address').text(email);
 
                 $("#amend-post-cancel").on('click', function(){
                     window.location.replace('amend_posts.php');
