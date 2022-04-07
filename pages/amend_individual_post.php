@@ -121,8 +121,7 @@
                                 $("#amend-post-submit").hide();
                                 $("#feedback-section").hide();
                                 $("#post-amendmend-section").hide();
-                            }
-                            if (response[0].approved == '0'){
+                            } else if (response[0].approved == '0'){
                                 var post = '<div class="forum-post card" id="thread-id-' + response[0].thread_id + '">' +
                                     '<div class="card-header">' + response[0].title + '<br><span class="post-name"><i> - ' + response[0].firstname + ' ' + response[0].lastname + '</i></span>' + '</div>' +
                                     '<div class="card-body">' +
