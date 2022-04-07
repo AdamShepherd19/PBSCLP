@@ -48,6 +48,8 @@
         </div>
 
         <div class="main-content">
+            <h4>Original Post:</h4>
+
             <div id='post-section'>
                 <!-- post here -->
             </div>
