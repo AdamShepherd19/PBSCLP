@@ -39,8 +39,6 @@
             } catch (Exception $e) {
                 echo 'Caught exception: ',  $e->getMessage(), "\n";
             }
-            
-            
         } else {
             echo 'Error: ' . $connectionPDO->error;
         }

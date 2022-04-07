@@ -13,7 +13,7 @@
     require '../includes/PHPMailer/src/SMTP.php';
 
 
-    function sendEmail($email_to, $name_to, $post_title, $post_content, $post_feedback) {
+    function sendEmail($email_to, $name_to) {
         $e_pass = file_get_contents('../../f-e-pass.txt', true);
 
         $mail = new PHPMailer();

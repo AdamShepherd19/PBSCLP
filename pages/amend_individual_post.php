@@ -199,7 +199,7 @@
                                 //check if the php execution was successful and the data was added to the db
                                 if (response.includes("*post_updated_successfully*")){
                                     //replace html with success message and button to return to landing page
-                                    var successHTML = "<h3>Your post was submitted succesfully. Please allow X days for the post to be reviewed and/or published. Click the button below to return to the landing page.</h3><br> " +
+                                    var successHTML = "<h3>Your ammendments have been submitted succesfully. Please allow X days for the post to be reviewed and/or published. Click the button below to return to the landing page.</h3><br> " +
                                         "<input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>";
 
                                     $('.main-content').html(successHTML);

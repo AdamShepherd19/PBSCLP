@@ -1,5 +1,7 @@
 <?php
     session_start();
+
+    include_once "../scripts/post_feedback_email.php";
     
     if(isset($_POST['feedbackPHP'])) {
         
@@ -23,7 +25,25 @@
 
         try {
             $stmt->execute(['feedback' => $feedback, 'thread_id' => $thread_id]);
-            echo "*feedback_sent_successfully*";
+
+            $sql = "SELECT firstname, lastname, email FROM users WHERE user_id IN (SELECT user_id FROM threads WHERE thread_id=?);";
+            $stmt = $connectionPDO->prepare($sql);
+            $stmt->execute([$thread_id]);
+            $result = $stmt->fetch();
+
+            if ($result) {
+                $email_to = $result['email'];
+                $name_to = $result['firstname'] . " " . $result['lastname'];
+
+                if(sendEmail($email_to, $name_to) == "*email_sent_successfully*") {
+                    exit('*feedback_sent_successfully*');
+                } else {
+                    exit('*error_sending_email*');
+                }
+            } else {
+                exit("*error_fetching_user_details*");
+            }
+
         } catch (Exception $e) {
             echo 'Caught exception: ',  $e->getMessage(), "\n";
         }
