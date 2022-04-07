@@ -97,6 +97,7 @@
                 }
 
                 var thread_id = "<?php echo $_GET['threadId']; ?>";
+                var current_user_id = "<?php echo $_SESSION['user_id']; ?>";
 
                 $.ajax({
                     url: '../scripts/get_single_post.php',
@@ -114,45 +115,54 @@
                             $("#feedback-section").hide();
                             $("#post-amendmend-section").hide();
                         } else {
-                            if (response[0].feedback_provided == 0) {
-                                var announcement = "<br><h2>Please wait for feedback to be provided by an administrator.</h2>";
+                            if (response[0].user_id != $current_user_id) {
+                                var announcement = "<br><h2>You are not authorised to amend this post.</h2>";
 
                                 $('#post-section').html(announcement);
                                 $("#amend-post-submit").hide();
                                 $("#feedback-section").hide();
                                 $("#post-amendmend-section").hide();
-                            } else if (response[0].approved == '0'){
-                                var post = '<div class="forum-post card" id="thread-id-' + response[0].thread_id + '">' +
-                                    '<div class="card-header">' + response[0].title + '<br><span class="post-name"><i> - ' + response[0].firstname + ' ' + response[0].lastname + '</i></span>' + '</div>' +
-                                    '<div class="card-body">' +
-                                        '<p>' + response[0].content + '</p>' +
-                                    '</div></div><br>';
-
-                                $('#amend-title').val(response[0].title);
-                                $('#amend-content').text(response[0].content);
-
-                                $('#post-section').html(post);
-
-                                $.ajax({
-                                    url: '../scripts/get_feedback.php',
-                                    type: 'get',
-                                    dataType: 'text',
-                                    data: {
-                                        threadIDPHP: thread_id
-                                    },
-                                    success: function(response) {
-                                        if (response.includes("*warning_no_feedback_found*")) {
-                                            $("#feedback-text").text("There is no current feedback for this post.");
-                                        } else {
-                                            $("#feedback-text").text(response);
-                                        }
-                                    }
-                                });
                             } else {
-                                $('#post-section').html("<br><h2>Warning: This post has already been approved.</h2>");
-                                $("#feedback-section").hide();
-                                $("#post-amendmend-section").hide();
-                                $("#amend-post-submit").hide();
+                                if (response[0].feedback_provided == 0) {
+                                    var announcement = "<br><h2>Please wait for feedback to be provided by an administrator.</h2>";
+
+                                    $('#post-section').html(announcement);
+                                    $("#amend-post-submit").hide();
+                                    $("#feedback-section").hide();
+                                    $("#post-amendmend-section").hide();
+                                } else if (response[0].approved == '0'){
+                                    var post = '<div class="forum-post card" id="thread-id-' + response[0].thread_id + '">' +
+                                        '<div class="card-header">' + response[0].title + '<br><span class="post-name"><i> - ' + response[0].firstname + ' ' + response[0].lastname + '</i></span>' + '</div>' +
+                                        '<div class="card-body">' +
+                                            '<p>' + response[0].content + '</p>' +
+                                        '</div></div><br>';
+
+                                    $('#amend-title').val(response[0].title);
+                                    $('#amend-content').text(response[0].content);
+
+                                    $('#post-section').html(post);
+
+                                    $.ajax({
+                                        url: '../scripts/get_feedback.php',
+                                        type: 'get',
+                                        dataType: 'text',
+                                        data: {
+                                            threadIDPHP: thread_id
+                                        },
+                                        success: function(response) {
+                                            if (response.includes("*warning_no_feedback_found*")) {
+                                                $("#feedback-text").text("There is no current feedback for this post.");
+                                            } else {
+                                                $("#feedback-text").text(response);
+                                            }
+                                        }
+                                    });
+                                } else {
+                                    $('#post-section').html("<br><h2>Warning: This post has already been approved.</h2>");
+                                    $("#feedback-section").hide();
+                                    $("#post-amendmend-section").hide();
+                                    $("#amend-post-submit").hide();
+                                }
                             }
                         }
                     }
