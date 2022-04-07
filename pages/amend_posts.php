@@ -84,7 +84,7 @@
                                     '<div class="card-header">' + response[x].title + '<br><span><i> - ' + response[x].firstname + ' ' + response[x].lastname + '</i></span>' + '</div>' +
                                     '<div class="card-body">' +
                                         '<p>' + response[x].content + '</p>' +
-                                        '<input type="button" id="amend-post-' + response[x].thread_id + '" class="pbs-button pbs-button-green amend-button" value="View">' +
+                                        '<div class="button-wrapper"><input type="button" id="amend-post-' + response[x].thread_id + '" class="pbs-button pbs-button-green amend-button" value="View"> </div>' +
                                     '</div></div><br>';
 
                                 $(".inner-wrapper").append(message);

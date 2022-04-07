@@ -109,7 +109,7 @@
                 });
 
                 $("#amend-post-cancel").on('click', function(){
-                    window.location.replace('review_posts.php');
+                    window.location.replace('amend_posts.php');
                 });
 
                 $("#review-post-submit").on('click', function(){
