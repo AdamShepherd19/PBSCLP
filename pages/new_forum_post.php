@@ -80,7 +80,7 @@
         </div>
 
         <div class="main-content">
-            <div class="form-wrapper">
+            <div class="inner-wrapper">
                 <form>
                     <label for="title">Title: </label><br />
                     <input type="text" id="title" class="pbs-form-text-box" placeholder="Enter post title..."><br /><br />
@@ -131,11 +131,11 @@
                                     var successHTML = "<h3>Your post was submitted succesfully. Please allow X days for the post to be reviewed and published. Click the button below to return to the landing page.</h3><br> " +
                                         "<input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>";
 
-                                    $('.form-wrapper').html(successHTML);
+                                    $('.inner-wrapper').html(successHTML);
 
                                 } else {
                                     //display error message if the php could not be executed
-                                    $('.form-wrapper').html("<h3> There was an error processing your request. Please try again </h3><br>Error" + response +
+                                    $('.inner-wrapper').html("<h3> There was an error processing your request. Please try again </h3><br>Error" + response +
                                         "<br><input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>");
                                 }
 
