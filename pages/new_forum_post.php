@@ -1,6 +1,8 @@
 <?php
     session_start();
 
+    include_once "../scripts/new_post_email.php";
+
     if(!isset($_SESSION['logged_in'])){
         header('Location: https://pbsclp.info');
         exit();
@@ -28,9 +30,17 @@
         
         //check to see if the insert was successful
         if ($stmt->execute(['title' => $title, 'content' => $content, 'user_id' => $user_id])) {
-            exit('*new_post_created_successfully*');
+            try{
+                if(sendEmail($title, $content) == "*email_sent_successfully*") {
+                    echo '*new_post_created_successfully*';
+                } else {
+                    echo '*error_sending_email*';
+                }
+            } catch (Exception $e) {
+                echo 'Caught exception: ',  $e->getMessage(), "\n";
+            }
         } else {
-            exit('Error: ' . $connectionPDO->error);
+            echo 'Error: ' . $connectionPDO->error;
         }
 
         // $stmt = null;
@@ -85,7 +95,7 @@
                     <label for="title">Title: </label><br />
                     <input type="text" id="title" class="pbs-form-text-box" placeholder="Enter post title..."><br /><br />
                     <label for="content">Content: </label><br />
-                    <textarea id="content" class="pbs-form-text-box" placeholder="Enter post content..."></textarea><br />
+                    <textarea id="content" class="pbs-form-text-box text-area-large" placeholder="Enter post content..."></textarea><br />
                     
                     <div class="button-wrapper">
                         <input type="button" id="new-post-cancel" class="pbs-button pbs-button-red" value="Cancel"> 
@@ -131,11 +141,13 @@
                                     var successHTML = "<h3>Your post was submitted succesfully. Please allow X days for the post to be reviewed and published. Click the button below to return to the landing page.</h3><br> " +
                                         "<input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>";
 
-                                    $('.main-content').html(successHTML);
+                                    $('.form-wrapper').html(successHTML);
+
+                                    
 
                                 } else {
                                     //display error message if the php could not be executed
-                                    $('.main-content').html("<h3> There was an error processing your request. Please try again </h3><br>Error" + response +
+                                    $('.form-wrapper').html("<h3> There was an error processing your request. Please try again </h3><br>Error" + response +
                                         "<br><input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>");
                                 }
 

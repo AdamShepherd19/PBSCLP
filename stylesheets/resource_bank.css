@@ -2,15 +2,7 @@
     max-width: 60vw;
     align-content: center;
     margin: auto;
-  }
-  
-.inner-wrapper {
-    overflow-y: scroll;
-    width: 100%;
-    height: 70vh;
-    margin-bottom: 40px;
 }
-
 .course-card, .session-card, .file-card {
     cursor: pointer;
     margin-bottom: 10px;

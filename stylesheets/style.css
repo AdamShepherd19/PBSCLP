@@ -113,3 +113,15 @@ h2 {
     margin-top: 20px;
     color: var(--pbs-grey);
 }
+
+.text-area-large {
+    min-height: 30vh;
+    min-width: 60vw;
+}
+
+.inner-wrapper {
+    overflow-y: scroll;
+    width: 100%;
+    height: 70vh;
+    margin-bottom: 40px;
+}

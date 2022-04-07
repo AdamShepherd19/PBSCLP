@@ -36,7 +36,7 @@
         <link rel="stylesheet" href="../stylesheets/style.css">
         <link rel="stylesheet" href="../stylesheets/forum_post.css">
 
-        <title>Approve Forum Post</title>
+        <title>Review Forum Post</title>
         
     </head>
 
@@ -49,7 +49,7 @@
         </div>
 
         <div class="page-header">
-            <h1>Approve Forum Post</h1>
+            <h1>Review Forum Post</h1>
         </div>
 
         <div class="main-content">
@@ -57,9 +57,16 @@
                 <!-- post here -->
             </div>
 
+            <div id='feedback-section'>
+                <form>
+                    <label for="feedback">Feedback: </label><br />
+                    <textarea id="feedback" class="pbs-form-text-box text-area-large" placeholder="Enter feedback for author..."></textarea><br />
+                </form>
+            </div>
+
             <div class="button-wrapper">
-                <input type="button" id="approve-post-cancel" class="pbs-button pbs-button-red" value="Cancel"> 
-                <input type="button" id="approve-post-submit" class="pbs-button pbs-button-green" value="Approve">
+                <input type="button" id="review-post-cancel" class="pbs-button pbs-button-red" value="Cancel"> 
+                <input type="button" id="review-post-submit" class="pbs-button pbs-button-green" value="Approve">
             </div>
         </div>
 
@@ -89,7 +96,8 @@
                             var announcement = "<br><h2>This post does not exist.</h2>";
 
                             $('#post-section').html(announcement);
-                            $(".button-wrapper").hide();
+                            $("#review-post-submit").hide();
+                            $("#feedback-section").hide();
                         } else {
                             if (response[0].approved == '0'){
                                 var post = '<div class="forum-post card" id="thread-id-' + response[0].thread_id + '">' +
@@ -101,43 +109,40 @@
                                 $('#post-section').html(post);
                             } else {
                                 $('#post-section').html("<br><h2>Warning: This post has already been approved.</h2>");
+                                $("#feedback-section").hide();
+                                $("#review-post-submit").hide();
                             }
                         }
                     }
                 });
 
-                $("#approve-post-cancel").on('click', function(){
+                $("#review-post-cancel").on('click', function(){
                     window.location.replace('review_posts.php');
                 });
 
-                $("#approve-post-submit").on('click', function(){
+                $("#review-post-submit").on('click', function(){
+                    var feedback = $('#feedback').val();
+
                     //send data to php
                     $.ajax({
                         method: 'POST',
-                        url: "../scripts/update_approved_status.php",
+                        url: "../scripts/send_feedback.php",
                         data: {
-                            threadIDPHP: thread_id
+                            thread_idPHP: thread_id,
+                            feedbackPHP: feedback
                         },
                         success: function (response) {
-                            //check if the php execution was successful and the data was added to the db
-                            if (response.includes("*post_approved_succesfully*")){
-                                //replace html with success message and button to return to landing page
-                                var successHTML = "<h3>The post was approved succesfully. Please click the button below to return to the landing page.</h3><br> " +
-                                    "<input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>";
-
-                                $('.main-content').html(successHTML);
-
+                            if(response.includes("*feedback_sent_successfully*")) {
+                                $('#post-section').html("<br><h2>Feedback has been successfully sent back to the author for review. Please press the button below to return to the post reviewal page.</h2>");
                             } else {
-                                $('.button-wrapper').hide();
-                                //display error message if the php could not be executed
-                                $('#post-section').html("<h3> There was an error processing your request. Please try again </h3><br>Error" + response +
-                                    "<br><input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>");
+                                $('#post-section').html("<br><h2>There was a problem sending your feedback. Please try again or contact a system administrator if the issue persists.</h2>");
                             }
 
-                            // onclick function for new button to return to landing page
-                            $("#return").on('click', function(){
-                                window.location.replace('landing.php');
-                            });
+                            $("#feedback-section").hide();
+                            $("#review-post-submit").hide();
+                            $("#review-post-cancel").val("Return");
+                            $("#review-post-cancel").removeClass("pbs-button-red");
+                            $("#review-post-cancel").addClass("pbs-button-green");
                         },
                         datatype: 'text'
                     });

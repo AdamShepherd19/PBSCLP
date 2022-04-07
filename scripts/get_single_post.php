@@ -34,8 +34,11 @@
             $title = $row['title'];
             $content = $row['content'];
             $approved = $row['approved'];
+            $feedback_provided = $row['feedback_provided'];
+            $user_id = $row['user_id'];
             $firstname = $names[0]['firstname'];
             $lastname = $names[0]['lastname'];
+            
             
             //add data into array
             $data[] = array(
@@ -43,7 +46,9 @@
                 "content" => $content,
                 "approved" => $approved,
                 "firstname" => $firstname,
-                "lastname" => $lastname
+                "lastname" => $lastname,
+                "feedback_provided" => $feedback_provided,
+                "user_id" => $user_id
             );
         }
         //encode the array into jason

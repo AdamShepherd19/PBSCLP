@@ -16,7 +16,7 @@
     if(isset($_POST['emailPHP'])) {
 
         $pass = file_get_contents('../../pass.txt', true);
-        $e_pass = file_get_contents('../../e-pass.txt', true);
+        $e_pass = file_get_contents('../../p-e-pass.txt', true);
 
         //connect to database
         try {

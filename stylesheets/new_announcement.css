@@ -1,15 +1,14 @@
 .main-content {
-    display: flex;
+    /* display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center; */
+    max-width: 60vw;
+    align-content: center;
+    margin: auto;
 }
 
 .pbs-form-text-box {
     min-width: 60vw;
-}
-
-#content {
-    min-height: 30vh;
 }
 
 .button-wrapper {
@@ -24,4 +23,8 @@
 
 #answer {
     min-height: 20vh;
+}
+
+.form-wrapper {
+    width: 60vw;
 }
