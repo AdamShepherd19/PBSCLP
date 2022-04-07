@@ -37,9 +37,9 @@
         $mail->Subject  =  'Forum Post Feedback';
         $mail->IsHTML(true);
 
-        $mail->Body    = '<h1> Forum Post Feedback </h1> <br> A forum post you submitted has received some feedback. Please log into the PBSCLP platform to review the post. <br><br> <h4> Post Title </h4>' . $post_title . '<br><br> <h4> Post Content </h4>' . $post_content . '<br><br> <h4> Post Feedback </h4>' . $post_feedback;
+        $mail->Body    = '<h1> Forum Post Feedback </h1> <br> A forum post you submitted has received some feedback. Please log into the PBSCLP platform to review the post.';
 
-        $mail->AltBody = 'New Forum Post. A new post has been submitted for approval. Please log in to the PBSCLP platform to review the new post. Post Title: ' . $post_title . 'Post Content: ' . $post_content . 'Post Feedback: ' . $post_feedback;
+        $mail->AltBody = 'New Forum Post. A new post has been submitted for approval. Please log in to the PBSCLP platform to review the new post.';
 
         if($mail->Send())
         {
