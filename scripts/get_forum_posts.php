@@ -22,7 +22,7 @@
         $sql = "SELECT * FROM threads WHERE approved=:approved AND feedback_provided=:feedback_provided AND user_id=:user_id ORDER BY post_time DESC";
 
         $stmt = $connectionPDO->prepare($sql);
-        $stmt->execute(['approved' => $approved, 'feedback_provided' => $feedback_provided, 'user_id' = $user_id]);
+        $stmt->execute(['approved' => $approved, 'feedback_provided' => $feedback_provided, 'user_id' => $user_id]);
         $result = $stmt->fetchAll();
 
     } else if(isset($_GET['approvedPHP']) && isset($_GET['feedback_providedPHP'])) {
