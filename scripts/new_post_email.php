@@ -34,7 +34,8 @@
         }
         else
         {
-            return "Mail Error - >" . $mail->ErrorInfo;
+            $msg = "Mail Error - >" . $mail->ErrorInfo;
+            return $msg;
         }
     }
 
