@@ -77,7 +77,7 @@
                         if (response.includes("*warning_no_posts_found*")) {
                             var message = "<div class='card'><h4 class='card-header'> There are no posts that need reviewed!</div>"
 
-                            $(".forum-wrapper").append(message);
+                            $(".inner-wrapper").append(message);
                         } else {
                             for(var x = 0; x < response.length; x++) {
                                 var message = '<div class="forum-post no-pointer-change card" id="thread-id-' + response[x].thread_id + '">' +
@@ -88,7 +88,7 @@
                                         // '<input type="button" id="approve-post-' + response[x].thread_id + '" class="pbs-button pbs-button-green approve-button" value="Approve">' +
                                     '</div></div><br>';
 
-                                $(".forum-wrapper").append(message);
+                                $(".inner-wrapper").append(message);
                             }
 
                             // $(document).on("click", ".approve-button" , function() {
