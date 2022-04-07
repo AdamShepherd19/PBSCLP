@@ -19,10 +19,10 @@
         $stmt->execute([$thread_id]);
         $result = $stmt->fetch();
 
-        if ($result){
-            exit($result['current_feedback']);
-        } else {
+        if ($result == ""){
             exit("*warning_no_feedback_found*");
+        } else {
+            exit($result['current_feedback']);
         }
 
         // close connection to db
