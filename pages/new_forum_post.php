@@ -32,9 +32,9 @@
         if ($stmt->execute(['title' => $title, 'content' => $content, 'user_id' => $user_id])) {
             try{
                 if(sendEmail($title, $content) == "*email_sent_successfully*") {
-                    exit('*new_post_created_successfully*');
+                    echo '*new_post_created_successfully*';
                 } else {
-                    exit('*error_sending_email*');
+                    echo '*error_sending_email*';
                 }
             } catch (Exception $e) {
                 echo 'Caught exception: ',  $e->getMessage(), "\n";
@@ -42,7 +42,7 @@
             
             
         } else {
-            exit('Error: ' . $connectionPDO->error);
+            echo 'Error: ' . $connectionPDO->error;
         }
 
         // $stmt = null;
