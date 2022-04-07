@@ -177,7 +177,8 @@
                             url: "../scripts/update_forum_post.php",
                             data: {
                                 new_titlePHP: new_title,
-                                new_contentPHP: new_content
+                                new_contentPHP: new_content,
+                                thread_idPHP: thread_id
                             },
                             success: function (response) {
                                 //check if the php execution was successful and the data was added to the db

@@ -20,14 +20,14 @@
         //retrieve title, content and author for the new post
         $new_title = $_POST['new_titlePHP'];
         $new_content = $_POST['new_contentPHP'];
-        $user_id = $_SESSION['user_id'];
+        $thread_id = $_POST['thread_id'];
 
         // query database and insert the new announcement into the announcements table
-        $sql = "UPDATE threads SET title=:title, content=:content, feedback_provided=0, current_feedback=NULL WHERE user_id=:user_id;";
+        $sql = "UPDATE threads SET title=:title, content=:content, feedback_provided=0, current_feedback=NULL WHERE thread_id=:thread_id;";
         $stmt = $connectionPDO->prepare($sql);
         
         //check to see if the insert was successful
-        if ($stmt->execute(['title' => $title, 'content' => $content, 'user_id' => $user_id])) {
+        if ($stmt->execute(['title' => $new_title, 'content' => $new_content, 'thread_id' => $thread_id])) {
             exit('*post_updated_successfully*');
         } else {
             exit('Error: ' . $connectionPDO->error);
