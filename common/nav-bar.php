@@ -40,9 +40,9 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item nav-link" href="key_people.php">Key People</a>
                         <a class="dropdown-item nav-link" href="faq.php">FAQ</a>
-                    <!-- <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div> -->
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item nav-link" href="terms_and_conditions.php">T's and C's</a>
+                    </div>
                 </li>
             </ul>
 
