@@ -42,6 +42,7 @@
                         <a class="dropdown-item nav-link" href="faq.php">FAQ</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item nav-link" href="terms_and_conditions.php">T's and C's</a>
+                        <a class="dropdown-item nav-link" href="privacy_statement.php">Privacy Statement</a>
                     </div>
                 </li>
             </ul>
