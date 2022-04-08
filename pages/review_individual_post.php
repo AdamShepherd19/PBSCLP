@@ -66,7 +66,7 @@
 
             <div class="button-wrapper">
                 <input type="button" id="review-post-cancel" class="pbs-button pbs-button-red" value="Cancel"> 
-                <input type="button" id="review-post-submit" class="pbs-button pbs-button-green" value="Approve">
+                <input type="button" id="review-post-submit" class="pbs-button pbs-button-green" value="Submit">
             </div>
         </div>
 

@@ -139,7 +139,7 @@
                                 if (response.includes("*new_post_created_successfully*")){
                                     //replace html with success message and button to return to landing page
                                     var successHTML = "<h3>Your post was submitted succesfully. Please allow X days for the post to be reviewed and published. Click the button below to return to the landing page.</h3><br> " +
-                                        "<input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>";
+                                        "<div class='button-wrapper'><input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'></div>";
 
                                     $('.form-wrapper').html(successHTML);
 
@@ -148,7 +148,7 @@
                                 } else {
                                     //display error message if the php could not be executed
                                     $('.form-wrapper').html("<h3> There was an error processing your request. Please try again </h3><br>Error" + response +
-                                        "<br><input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>");
+                                        "<br><div class='button-wrapper'><input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'></div>");
                                 }
 
                                 // onclick function for new button to return to landing page
