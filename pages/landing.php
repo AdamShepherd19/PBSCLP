@@ -140,11 +140,11 @@
                         feedback_providedPHP: '0'
                     },
                     success: function(response) {
-                        if(response.length > 0) {
+                        if(response.includes("*warning_no_posts_found*")) {
+                            $('#review-forum-posts').hide();
+                        } else {
                             number_of_new_posts = response.length;
                             $('#review-forum-posts').val('New Posts (' + number_of_new_posts + ')');
-                        } else {
-                            $('#review-forum-posts').hide();
                         }
                     }
                 });
