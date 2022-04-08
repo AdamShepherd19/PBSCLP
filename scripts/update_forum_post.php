@@ -1,5 +1,6 @@
 <?php
     session_start();
+    include_once "../scripts/post_amended_email.php";
 
     if(!isset($_SESSION['logged_in'])){
         header('Location: https://pbsclp.info');
@@ -28,7 +29,15 @@
         
         //check to see if the insert was successful
         if ($stmt->execute(['title' => $new_title, 'content' => $new_content, 'thread_id' => $thread_id])) {
-            exit('*post_updated_successfully*');
+            try{
+                if(sendEmail($new_title, $new_content) == "*email_sent_successfully*") {
+                    exit('*post_updated_successfully*');
+                } else {
+                    exit('*error_sending_email*');
+                }
+            } catch (Exception $e) {
+                echo 'Caught exception: ',  $e->getMessage(), "\n";
+            }
         } else {
             exit('Error: ' . $connectionPDO->error);
         }
