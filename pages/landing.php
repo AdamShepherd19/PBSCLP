@@ -160,7 +160,8 @@
                     dataType: 'JSON',
                     data: {
                         approvedPHP: '0',
-                        feedback_providedPHP: '1'
+                        feedback_providedPHP: '1',
+                        review_posts: '1'
                     },
                     success: function(response) {
                         if(response.includes("*warning_no_posts_found*")) {
