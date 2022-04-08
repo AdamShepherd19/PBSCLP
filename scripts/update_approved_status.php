@@ -35,7 +35,7 @@
                 $name_to = $result['firstname'] . " " . $result['lastname'];
 
                 if(sendEmail($email_to, $name_to) == "*email_sent_successfully*") {
-                    exit('*feedback_sent_successfully*');
+                    exit('*post_approved_succesfully*');
                 } else {
                     exit('*error_sending_email*');
                 }
