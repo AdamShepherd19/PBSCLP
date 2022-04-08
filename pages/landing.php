@@ -66,6 +66,7 @@
             <div class="landing-nav-box-wrapper">
                 <input type="button" id="review-forum-posts" class="pbs-button pbs-button-orange admin-only" value="New Forum Posts"> <br/>
                 <input type="button" id="new-announcement" class="pbs-button pbs-button-blue admin-only" value="New Announcement"> <br/>
+                <input type="button" id="amend-posts" class="pbs-button pbs-button-orange" value="Amend Posts"> <br/>
                 <input type="button" id="forum" class="pbs-button pbs-button-white" value="Forum"> <br />
                 <input type="button" id="resource-bank" class="pbs-button pbs-button-blue" value="Resource Bank"> <br />
                 <input type="button" id="profile" class="pbs-button pbs-button-grey" value="Profile"> <br />
@@ -80,6 +81,10 @@
 
                 $("#review-forum-posts").on('click', function(){
                     window.location.href = 'review_posts.php';
+                });
+
+                $("#amend-posts").on('click', function(){
+                    window.location.href = 'amend_posts.php';
                 });
 
                 $("#forum").on('click', function(){
@@ -143,8 +148,26 @@
                         if(response.includes("*warning_no_posts_found*")) {
                             $('#review-forum-posts').hide();
                         } else {
-                            number_of_new_posts = response.length;
+                            var number_of_new_posts = response.length;
                             $('#review-forum-posts').val('New Posts (' + number_of_new_posts + ')');
+                        }
+                    }
+                });
+
+                $.ajax({
+                    url: '../scripts/get_forum_posts.php',
+                    type: 'get',
+                    dataType: 'JSON',
+                    data: {
+                        approvedPHP: '0',
+                        feedback_providedPHP: '1'
+                    },
+                    success: function(response) {
+                        if(response.includes("*warning_no_posts_found*")) {
+                            $('#amend-posts').hide();
+                        } else {
+                            var number_of_new_posts = response.length;
+                            $('#amend-posts').val('Amend Posts (' + number_of_new_posts + ')');
                         }
                     }
                 });
