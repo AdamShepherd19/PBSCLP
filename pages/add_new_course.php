@@ -1,11 +1,25 @@
+<!--
+    ============================================
+        - PBSCLP | add_new_course
+        - Adam Shepherd
+        - PBSCLP
+        - April 2022
+
+        This file contains the page for an admin
+        to add a new course to the resource bank
+    ============================================
+-->
+
 <?php
     session_start();
 
+    // check for logged in user
     if(!isset($_SESSION['logged_in'])){
         header('Location: https://pbsclp.info');
         exit();
     }
 
+    // check that logged in user is an admin
     if($_SESSION['account_type'] != 'administrator'){
         header('Location: landing.php');
         exit();
@@ -33,6 +47,7 @@
         <!-- include jQuery -->
         <script src="../includes/jquery.js"></script>
 
+        <!-- links to stylesheets -->
         <link rel="stylesheet" href="../stylesheets/style.css">
         <link rel="stylesheet" href="../stylesheets/new_announcement.css">
 
@@ -41,13 +56,14 @@
     </head>
 
     <body>
-
+        <!-- import nav bar -->
         <div id="pbs-nav-bar">
             <?php
                 include "../common/nav-bar.php";
             ?>
         </div>
 
+        <!-- page title -->
         <div class="page-header">
             <h1>New Course</h1>
         </div>
@@ -55,11 +71,13 @@
         <div class="main-content">
             <div class="form-wrapper">
                 <form>
+                    <!-- form to receive new course name and description -->
                     <label for="name">Course Name: </label><br />
                     <input type="text" id="name" class="pbs-form-text-box" placeholder="Enter the course name..."><br /><br />
                     <label for="description">Description: </label><br />
                     <textarea id="description" class="pbs-form-text-box text-area-large" placeholder="Enter course description..."></textarea><br />
                     
+                    <!-- cancel and create buttons for form -->
                     <div class="button-wrapper">
                         <input type="button" id="course-cancel" class="pbs-button pbs-button-red" value="Cancel"> 
                         <input type="button" id="course-create" class="pbs-button pbs-button-green" value="Create">
@@ -94,6 +112,7 @@
                             method: 'POST',
                             url: "../scripts/new_course.php",
                             data: {
+                                // pass data to php script
                                 course_namePHP: course_name,
                                 descriptionPHP: description
                             },
@@ -106,6 +125,7 @@
 
                                     $('.main-content').html(successHTML);
                                 } else if (response.includes("*warning_course_already_exists*")){
+                                    // tell user their email address is alrady in use
                                     alert("A course with this name already exists. Please enter a different name.");
                                 } else {
                                     //display error message if the php could not be executed
@@ -118,6 +138,7 @@
                                     window.location.replace('resource_bank_home.php');
                                 });
                             },
+                            // expect string back from php script
                             datatype: 'text'
                         });
                     };
