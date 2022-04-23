@@ -125,7 +125,7 @@
 
                                     $('.main-content').html(successHTML);
                                 } else if (response.includes("*warning_course_already_exists*")){
-                                    // tell user their email address is alrady in use
+                                    // alert user if course name already exists
                                     alert("A course with this name already exists. Please enter a different name.");
                                 } else {
                                     //display error message if the php could not be executed
