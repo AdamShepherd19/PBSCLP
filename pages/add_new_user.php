@@ -1,16 +1,35 @@
+<!--
+    ============================================
+        - PBSCLP | add_new_user
+        - Adam Shepherd
+        - PBSCLP
+        - April 2022
+
+        This file contains the page for an admin
+        to add a new practitioner account to
+        the platform. Account details are added
+        to the database and an email is sent to
+        the practitioners email telling them to
+        create a password for their account.
+    ============================================
+-->
+
 <?php
     session_start();
 
+    // ensure user is logged in
     if(!isset($_SESSION['logged_in'])){
         header('Location: login.php');
         exit();
     }
 
+    // ensure logged in user is an administrator
     if($_SESSION['account_type'] != 'administrator'){
         header('Location: landing.php');
         exit();
     }
 
+    // retrieve database password from file
     $pass = file_get_contents('../../pass.txt', true);
 
     //connect to database
@@ -21,21 +40,23 @@
         exit('*database_connection_error*');
     }
 
+    // retrieve email from post request
     $new_email = $_POST['email'];
 
-    //perform query
+    //construct, prepare and execute query to select all emails from users table
     $sql = "SELECT email FROM users";
     $stmt = $connectionPDO->prepare($sql);
     $stmt->execute();
     $result = $stmt->fetchAll();
 
+    // check if query returned results
     if ($result){
         //initialise array
         $data = array();
 
-        // output data of each row
+        // filter through each row in result
         foreach($result as $row) {
-            //retrieve data from query
+            // check if email entered for new user already exists
             if ($new_email == $row['email']){
                 exit("*account_already_exists*");
             }
@@ -69,6 +90,7 @@
         <!-- include jQuery -->
         <script src="../includes/jquery.js"></script>
 
+        <!-- links to stylesheets -->
         <link rel="stylesheet" href="../stylesheets/style.css">
         <link rel="stylesheet" href="../stylesheets/add_new_user.css">
 
@@ -77,44 +99,53 @@
     </head>
 
     <body>
+        <!-- import nav bar -->
         <div id="pbs-nav-bar">
             <?php
                 include "../common/nav-bar.php";
             ?>
         </div>
 
+        <!-- page header -->
         <div class="page-header">
             <h1>Add New User</h1>
         </div>
 
         <div class="main-content">
+            <!-- form for user to enter details of new user account -->
             <div class="form-wrapper">
                 <table>
+                    <!-- first name -->
                     <tr>
                         <td class="caption">First Name(s):</td>
                         <td><input type="text" id="firstname" class="pbs-form-text-box" placeholder="First Name(s)..."></td>
                     </tr>
                     
+                    <!-- last name -->
                     <tr>
                         <td class="caption">Last Name:</td>
                         <td><input type="text" id="lastname" class="pbs-form-text-box" placeholder="Last Name..."></td>
                     </tr>
             
+                    <!-- email address -->
                     <tr>
                         <td class="caption">Email Address:</td>
                         <td><input type="text" id="email" class="pbs-form-text-box" placeholder="Email Address..."></td>
                     </tr>
                     
+                    <!-- contact number -->
                     <tr>
                         <td class="caption">Contact Number:</td>
                         <td><input type="text" id="contact-number" class="pbs-form-text-box" placeholder="Contact Number..."></td>
                     </tr>
                     
+                    <!-- organisation/company -->
                     <tr>
                         <td class="caption">Organisation:</td>
                         <td><input type="text" id="organisation" class="pbs-form-text-box" placeholder="Organisation..."></td>
                     </tr>
             
+                    <!-- drop down for account type (practitioner/administrator) -->
                     <tr>
                         <td class="caption">Account Type:</td>
                         <td>
@@ -125,6 +156,7 @@
                         </td>
                     </tr>
 
+                    <!-- list of courses  -->
                     <tr id="course-list">
                         <td class="caption">Courses:</td>
                         <td>
@@ -140,6 +172,7 @@
                     </tr>
                 </table>
         
+                <!-- cancel and add buttons -->
                 <div class="button-wrapper">
                     <input type="button" id="cancel" class="pbs-button pbs-button-red" value="Cancel">
                     <input type="button" id="add-new-user" class="pbs-button pbs-button-green" value="Add">
@@ -151,10 +184,13 @@
         
         <script type="text/javascript">
             $(document).ready(function () {
+
+                // action for cancel button
                 $("#cancel").on('click', function(){
                     window.location.replace('manage_users.php');
                 });
                 
+                // 
                 $('#account-type').change( function () {
                     if($('#account-type').val() == "administrator") {
                         $('#course-list').hide();
@@ -197,12 +233,13 @@
                                 email: email,
                             },
                             success: function (response) {
-                                //check if the php execution was successful and the data was added to the db
+                                //check if email address doesnt already exist
                                 if (response.includes("*no_existing_accounts*")){
                                     $.ajax({
                                         method: 'POST',
                                         url: "../scripts/insert_new_user.php",
                                         data: {
+                                            // data to pass to PHP script to insert new user to db
                                             firstnamePHP: firstname,
                                             lastnamePHP: lastname,
                                             emailPHP: email,
@@ -212,15 +249,17 @@
                                             list_of_coursesPHP: list_of_courses
                                         },
                                         success: function (response) {
+                                            // check if user account added successfully to db
                                             if (response.includes("*user_added_successfully*")){
                                                 $.ajax({
                                                     method: 'POST',
                                                     url: "../scripts/create_password.php",
                                                     data: {
+                                                        // send email to PHP to send create password email 
                                                         emailPHP: email
                                                     },
                                                     success: function (response) {
-                                                        //check if the php execution was successful and the data was added to the db
+                                                        // checks if email sent successfully
                                                         if (response.includes("*email_sent_successfully*")){
                                                             //replace html with success message and button to return to landing page
                                                             var successHTML = "<h3>The new user was added succesfully and an email has been sent to them to create their password. Please click the button below to return to the landing page.</h3><br> " +
@@ -234,7 +273,7 @@
                                                                 "<br><input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>");
                                                         }
 
-                                                        // onclick function for new button to return to landing page
+                                                        // onclick function for new button to return to manage users
                                                         $("#return").on('click', function(){
                                                             window.location.replace('manage_users.php');
                                                         });
@@ -243,8 +282,10 @@
                                                     datatype: 'text'
                                                 });
                                             } else {
+                                                // display error message if there was an error adding user account to db
                                                 $('.main-content').html("<h3> There was an error processing your request. Please try again </h3><br>Error" + response + "<br><input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>");
                                                 
+                                                // button to return to manage users page
                                                 $("#return").on('click', function(){
                                                     window.location.replace('manage_users.php');
                                                 });
@@ -254,6 +295,7 @@
                                     });
 
                                 } else {
+                                    // tell user email already in use
                                     alert("That email address is already in use. Please enter another.");
                                 }
                             },
