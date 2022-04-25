@@ -1,6 +1,22 @@
+<!--
+    ============================================
+        - PBSCLP | amend_individual_post
+        - Adam Shepherd
+        - PBSCLP
+        - April 2022
+
+        This file contains the page for a
+        practitioner to view a forum post that
+        has been reviewed and feedback left by
+        an administrator and make any relevant
+        changes, sending back for approval
+    ============================================
+-->
+
 <?php
     session_start();
 
+    // check that user is logged in
     if(!isset($_SESSION['logged_in'])){
         header('Location: https://pbsclp.info');
         exit();
@@ -28,6 +44,7 @@
         <!-- include jQuery -->
         <script src="../includes/jquery.js"></script>
 
+        <!-- links to stylesheets -->
         <link rel="stylesheet" href="../stylesheets/style.css">
         <link rel="stylesheet" href="../stylesheets/forum_post.css">
 
@@ -37,12 +54,14 @@
 
     <body>
 
+        <!-- include nav bar -->
         <div id="pbs-nav-bar">
             <?php
                 include "../common/nav-bar.php";
             ?>
         </div>
 
+        <!-- page header -->
         <div class="page-header">
             <h1>Amend Post</h1>
         </div>
@@ -53,6 +72,7 @@
                 <!-- post here -->
             </div>
 
+            <!-- feedback section (feedback on post by admin) -->
             <div id='feedback-section'>
                 <h4>Feedback:</h4>
                 <div class="card">
@@ -62,6 +82,7 @@
                 </div>
             </div>
 
+            <!-- form where practitioner can amend their post based on feedback -->
             <div id="post-amendmend-section">
                 <br>
                 <h4>Amend Post:</h4>
@@ -76,6 +97,7 @@
                 </div>
             </div>
 
+            <!-- button section -->
             <div class="button-wrapper">
                 <input type="button" id="amend-post-cancel" class="pbs-button pbs-button-red" value="Cancel"> 
                 <input type="button" id="amend-post-submit" class="pbs-button pbs-button-green" value="Submit">
@@ -96,18 +118,22 @@
                     $('.admin-only').show();
                 }
 
+                // retrieve required id's from php and store in js variables
                 var thread_id = "<?php echo $_GET['threadId']; ?>";
                 var current_user_id = "<?php echo $_SESSION['user_id']; ?>";
 
+                // get post information from db
                 $.ajax({
                     url: '../scripts/get_single_post.php',
                     type: 'get',
                     dataType: 'JSON',
                     data: {
+                        // id of post to retrieve
                         threadIDPHP: thread_id
                     },
                     success: function(response) {
                         if (response.includes("*warning_no_post_found*")) {
+                            // message if post not found
                             var announcement = "<br><h2>This post does not exist.</h2>";
 
                             $('#post-section').html(announcement);
@@ -116,6 +142,7 @@
                             $("#post-amendmend-section").hide();
                         } else {
                             if (response[0].user_id != current_user_id) {
+                                // error message if user not authorised to view this post (they are not the author)
                                 var announcement = "<br><h2>You are not authorised to amend this post.</h2>";
 
                                 $('#post-section').html(announcement);
@@ -124,6 +151,7 @@
                                 $("#post-amendmend-section").hide();
                             } else {
                                 if (response[0].feedback_provided == 0) {
+                                    // case where feedback has not been provided yet
                                     var announcement = "<br><h2>Please wait for feedback to be provided by an administrator.</h2>";
 
                                     $('#post-section').html(announcement);
@@ -131,17 +159,21 @@
                                     $("#feedback-section").hide();
                                     $("#post-amendmend-section").hide();
                                 } else if (response[0].approved == '0'){
+                                    // display thread if user is authorised to view and feedback has been given
                                     var post = '<div class="forum-post card" id="thread-id-' + response[0].thread_id + '">' +
                                         '<div class="card-header">' + response[0].title + '<br><span class="post-name"><i> - ' + response[0].firstname + ' ' + response[0].lastname + '</i></span>' + '</div>' +
                                         '<div class="card-body">' +
                                             '<p>' + response[0].content + '</p>' +
                                         '</div></div><br>';
 
+                                    // populate form values with forum post
                                     $('#amend-title').val(response[0].title);
                                     $('#amend-content').text(response[0].content);
 
+                                    // add post to DOM
                                     $('#post-section').html(post);
 
+                                    // get feedback on forum post
                                     $.ajax({
                                         url: '../scripts/get_feedback.php',
                                         type: 'get',
@@ -151,13 +183,16 @@
                                         },
                                         success: function(response) {
                                             if (response.includes("*warning_no_feedback_found*")) {
+                                                // error message if no feedback given yet
                                                 $("#feedback-text").text("There is no current feedback for this post.");
                                             } else {
+                                                // add feedback to DOM
                                                 $("#feedback-text").text(response);
                                             }
                                         }
                                     });
                                 } else {
+                                    // error message if the post has already been approved by an admin
                                     $('#post-section').html("<br><h2>Warning: This post has already been approved.</h2>");
                                     $("#feedback-section").hide();
                                     $("#post-amendmend-section").hide();
@@ -168,9 +203,7 @@
                     }
                 });
 
-                // $('#name').text(name);
-                // $('#email-address').text(email);
-
+                // cancel button action
                 $("#amend-post-cancel").on('click', function(){
                     window.location.replace('amend_posts.php');
                 });
