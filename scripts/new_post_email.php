@@ -1,4 +1,15 @@
 <?php
+    // ============================================
+    //     - PBSCLP | new_post_email
+    //     - Adam Shepherd
+    //     - PBSCLP
+    //     - April 2022
+
+    //     This script sends an email alerting an
+    //     admin there is a new post to be reviewed
+    // ============================================
+
+
     // Reference Links:
     // https://laratutorials.com/php-send-reset-password-link-email/
     // https://github.com/PHPMailer/PHPMailer
