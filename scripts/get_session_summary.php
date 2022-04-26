@@ -1,3 +1,15 @@
+<!--
+    ============================================
+        - PBSCLP | get_session_summary
+        - Adam Shepherd
+        - PBSCLP
+        - April 2022
+
+        This script queries and returns the 
+        information about a specific session
+    ============================================
+-->
+
 <?php
     session_start();
 
