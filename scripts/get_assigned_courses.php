@@ -6,7 +6,7 @@
         - April 2022
 
         This script queries and returns a list of
-        courses assigned to a specified user
+        course_id's assigned to a specified user
     ============================================
 -->
 

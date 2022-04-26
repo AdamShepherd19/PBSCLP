@@ -1,3 +1,16 @@
+<!--
+    ============================================
+        - PBSCLP | get_course_summary
+        - Adam Shepherd
+        - PBSCLP
+        - April 2022
+
+        This script queries and returns all the
+        information regarding a specific list
+        of courses that a user is enrolled on
+    ============================================
+-->
+
 <?php
     session_start();
     // https://makitweb.com/return-json-response-ajax-using-jquery-php
