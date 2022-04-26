@@ -1,3 +1,15 @@
+<!--
+    ============================================
+        - PBSCLP | get_assigned_courses
+        - Adam Shepherd
+        - PBSCLP
+        - April 2022
+
+        This script queries and returns a list of
+        courses assigned to a specified user
+    ============================================
+-->
+
 <?php
     // https://makitweb.com/return-json-response-ajax-using-jquery-php
     $pass = file_get_contents('../../pass.txt', true);
