@@ -1,3 +1,15 @@
+<!--
+    ============================================
+        - PBSCLP | new_course
+        - Adam Shepherd
+        - PBSCLP
+        - April 2022
+
+        This script adds a new course to the
+        database
+    ============================================
+-->
+
 <?php
     session_start();
     
