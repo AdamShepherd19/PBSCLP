@@ -1,4 +1,15 @@
 <?php
+    // ============================================
+    //     - PBSCLP | remove_account
+    //     - Adam Shepherd
+    //     - PBSCLP
+    //     - April 2022
+
+    //     This script removes a user account from
+    //     the database
+    // ============================================
+
+
     session_start();
 
     if(!isset($_SESSION['logged_in'])){
