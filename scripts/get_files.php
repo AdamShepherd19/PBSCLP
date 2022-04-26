@@ -1,3 +1,15 @@
+<!--
+    ============================================
+        - PBSCLP | get_files
+        - Adam Shepherd
+        - PBSCLP
+        - April 2022
+
+        This script queries and returns a list of
+        all files in a particular session
+    ============================================
+-->
+
 <?php
     session_start();
     // https://makitweb.com/return-json-response-ajax-using-jquery-php
