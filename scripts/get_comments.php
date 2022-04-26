@@ -1,3 +1,15 @@
+<!--
+    ============================================
+        - PBSCLP | get_comments
+        - Adam Shepherd
+        - PBSCLP
+        - April 2022
+
+        This script queries and returns all the
+        comments for a specific forum post
+    ============================================
+-->
+
 <?php
     $thread_id = $_GET['threadIDPHP'];
 
