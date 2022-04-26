@@ -1,3 +1,16 @@
+<!--
+    ============================================
+        - PBSCLP | login
+        - Adam Shepherd
+        - PBSCLP
+        - April 2022
+
+        This file contains the login page which
+        allows practitioners to acces the
+        platform or the password reset system
+    ============================================
+-->
+
 <?php
     session_start();
 
