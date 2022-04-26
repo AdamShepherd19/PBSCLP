@@ -1,5 +1,17 @@
 <?php
 
+    // ============================================
+    //     - PBSCLP | password-reset-token
+    //     - Adam Shepherd
+    //     - PBSCLP
+    //     - April 2022
+
+    //     This script sends an email to the user
+    //     with a link to change their password
+    //     using a unique key that is stored in the
+    //     database and expires in after 20 mins
+    // ============================================
+
     // Reference Links:
     // https://laratutorials.com/php-send-reset-password-link-email/
     // https://github.com/PHPMailer/PHPMailer
