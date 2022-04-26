@@ -13,12 +13,12 @@
         exit('*database_connection_error*');
     }
 
-    //perform query and sort into newest first
+    //perform query and sort alphabetically by first name
     $sql = "SELECT user_id, firstname, lastname, email, contact_number, organisation, admin_locked FROM `users` WHERE user_id<>? ORDER BY firstname ASC";
     
-    $stmt = $connectionPDO->prepare($sql);
-    $stmt->execute([$_SESSION['user_id']]);
-    $result = $stmt->fetchAll();
+    $stmt = $connectionPDO->prepare($sql); //prepare query
+    $stmt->execute([$_SESSION['user_id']]); //execute query using data provided
+    $result = $stmt->fetchAll(); //fetch results from query
 
     //check that there were announcements to show
     if ($result) {
