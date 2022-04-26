@@ -1,3 +1,18 @@
+<!--
+    ============================================
+        - PBSCLP | delete_account
+        - Adam Shepherd
+        - PBSCLP
+        - April 2022
+
+        This file contains the page for an admin
+        to confirm if they would like to delete
+        a practitioners account and they must
+        provide a reason before they permanently
+        delete the account
+    ============================================
+-->
+
 <?php
     session_start();
 
