@@ -1,3 +1,19 @@
+<!--
+    ============================================
+        - PBSCLP | individual_session
+        - Adam Shepherd
+        - PBSCLP
+        - April 2022
+
+        This file contains the page for a
+        practitioner to view the files contained
+        within a specific session of the resouce
+        bank. They can click a file and it will
+        either be opened in a new window for
+        viewing or prompt a download
+    ============================================
+-->
+
 <?php
     session_start();
 
