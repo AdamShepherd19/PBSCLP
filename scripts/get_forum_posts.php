@@ -1,3 +1,17 @@
+<!--
+    ============================================
+        - PBSCLP | get_forum_posts
+        - Adam Shepherd
+        - PBSCLP
+        - April 2022
+
+        This script queries and returns a list 
+        of all forum posts - takes a parameter
+        if they have been approved, awaiting 
+        amendment or awaiting admin feedback
+    ============================================
+-->
+
 <?php
 
     session_start();
