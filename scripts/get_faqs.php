@@ -1,16 +1,14 @@
-<!--
-    ============================================
-        - PBSCLP | get_faqs
-        - Adam Shepherd
-        - PBSCLP
-        - April 2022
-
-        This script queries and returns all the 
-        FAQ's for the platform
-    ============================================
--->
-
 <?php
+    // ============================================
+    //     - PBSCLP | get_faqs
+    //     - Adam Shepherd
+    //     - PBSCLP
+    //     - April 2022
+
+    //     This script queries and returns all the 
+    //     FAQ's for the platform
+    // ============================================
+
     // https://makitweb.com/return-json-response-ajax-using-jquery-php
     $pass = file_get_contents('../../pass.txt', true);
 

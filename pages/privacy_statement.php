@@ -1,17 +1,15 @@
-<!--
-    ============================================
-        - PBSCLP | privacy_statement
-        - Adam Shepherd
-        - PBSCLP
-        - April 2022
-
-        This file contains the page for a
-        practitioner to view the privacy statement
-        of the platform
-    ============================================
--->
-
 <?php
+    // ============================================
+    //     - PBSCLP | privacy_statement
+    //     - Adam Shepherd
+    //     - PBSCLP
+    //     - April 2022
+
+    //     This file contains the page for a
+    //     practitioner to view the privacy statement
+    //     of the platform
+    // ============================================
+
     session_start();
 
     if(!isset($_SESSION['logged_in'])){

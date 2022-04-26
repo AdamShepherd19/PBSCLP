@@ -1,17 +1,14 @@
-<!--
-    ============================================
-        - PBSCLP | reset_password_expired
-        - Adam Shepherd
-        - PBSCLP
-        - April 2022
-
-        This file contains the page for a
-        practitioner to be told that the link to 
-        reset their password has expired
-    ============================================
--->
-
 <?php
+    // ============================================
+    //     - PBSCLP | reset_password_expired
+    //     - Adam Shepherd
+    //     - PBSCLP
+    //     - April 2022
+
+    //     This file contains the page for a
+    //     practitioner to be told that the link to 
+    //     reset their password has expired
+    // ============================================
     session_start();
 
     // if already logged in

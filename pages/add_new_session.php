@@ -1,16 +1,13 @@
-<!--
-    ============================================
-        - PBSCLP | add_new_session
-        - Adam Shepherd
-        - PBSCLP
-        - April 2022
-
-        This file contains the page for an admin
-        to add a new session to the resource bank
-    ============================================
--->
-
 <?php
+    // ============================================
+    //     - PBSCLP | add_new_session
+    //     - Adam Shepherd
+    //     - PBSCLP
+    //     - April 2022
+
+    //     This file contains the page for an admin
+    //     to add a new session to the resource bank
+    // ============================================
     session_start();
 
     // make sure user is logged in

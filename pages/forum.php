@@ -1,20 +1,18 @@
-<!--
-    ============================================
-        - PBSCLP | forum
-        - Adam Shepherd
-        - PBSCLP
-        - April 2022
-
-        This file contains the page for a
-        practitioner to view the forum system.
-        They will be presented with a list of all
-        approved forum posts and they can select
-        one to view the individual page for it
-        and view the comments
-    ============================================
--->
-
 <?php
+    // ============================================
+    //     - PBSCLP | forum
+    //     - Adam Shepherd
+    //     - PBSCLP
+    //     - April 2022
+
+    //     This file contains the page for a
+    //     practitioner to view the forum system.
+    //     They will be presented with a list of all
+    //     approved forum posts and they can select
+    //     one to view the individual page for it
+    //     and view the comments
+    // ============================================
+
     session_start();
 
     if(!isset($_SESSION['logged_in'])){

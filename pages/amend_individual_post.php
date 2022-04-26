@@ -1,19 +1,17 @@
-<!--
-    ============================================
-        - PBSCLP | amend_individual_post
-        - Adam Shepherd
-        - PBSCLP
-        - April 2022
-
-        This file contains the page for a
-        practitioner to view a forum post that
-        has been reviewed and feedback left by
-        an administrator and make any relevant
-        changes, sending back for approval
-    ============================================
--->
-
 <?php
+    // ============================================
+    //     - PBSCLP | amend_individual_post
+    //     - Adam Shepherd
+    //     - PBSCLP
+    //     - April 2022
+
+    //     This file contains the page for a
+    //     practitioner to view a forum post that
+    //     has been reviewed and feedback left by
+    //     an administrator and make any relevant
+    //     changes, sending back for approval
+    // ============================================
+
     session_start();
 
     // check that user is logged in

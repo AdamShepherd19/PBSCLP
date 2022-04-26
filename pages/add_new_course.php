@@ -1,16 +1,14 @@
-<!--
-    ============================================
-        - PBSCLP | add_new_course
-        - Adam Shepherd
-        - PBSCLP
-        - April 2022
-
-        This file contains the page for an admin
-        to add a new course to the resource bank
-    ============================================
--->
-
 <?php
+    // ============================================
+    //     - PBSCLP | add_new_course
+    //     - Adam Shepherd
+    //     - PBSCLP
+    //     - April 2022
+
+    //     This file contains the page for an admin
+    //     to add a new course to the resource bank
+    // ============================================
+
     session_start();
 
     // check for logged in user

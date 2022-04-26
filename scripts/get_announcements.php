@@ -1,16 +1,14 @@
-<!--
-    ============================================
-        - PBSCLP | get_announcements
-        - Adam Shepherd
-        - PBSCLP
-        - April 2022
-
-        This script queries and returns all the
-        announcements available
-    ============================================
--->
-
 <?php
+    // ============================================
+    //     - PBSCLP | get_announcements
+    //     - Adam Shepherd
+    //     - PBSCLP
+    //     - April 2022
+
+    //     This script queries and returns all the
+    //     announcements available
+    // ============================================
+
     // https://makitweb.com/return-json-response-ajax-using-jquery-php
     $pass = file_get_contents('../../pass.txt', true);
 

@@ -1,17 +1,15 @@
-<!--
-    ============================================
-        - PBSCLP | amend_posts
-        - Adam Shepherd
-        - PBSCLP
-        - April 2022
-
-        This file contains the page that displays
-        a list of posts that are ready to be
-        amended (feedback has been given)
-    ============================================
--->
-
 <?php
+    // ============================================
+    //     - PBSCLP | amend_posts
+    //     - Adam Shepherd
+    //     - PBSCLP
+    //     - April 2022
+
+    //     This file contains the page that displays
+    //     a list of posts that are ready to be
+    //     amended (feedback has been given)
+    // ============================================
+
     session_start();
 
     // check user us logged in

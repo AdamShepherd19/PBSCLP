@@ -1,17 +1,14 @@
-<!--
-    ============================================
-        - PBSCLP | get_feedback
-        - Adam Shepherd
-        - PBSCLP
-        - April 2022
-
-        This script queries and returns the
-        feedback provided by an admin for a 
-        specific forum post
-    ============================================
--->
-
 <?php
+    // ============================================
+    //     - PBSCLP | get_feedback
+    //     - Adam Shepherd
+    //     - PBSCLP
+    //     - April 2022
+
+    //     This script queries and returns the
+    //     feedback provided by an admin for a 
+    //     specific forum post
+    // ============================================
     if(isset($_GET['threadIDPHP'])){
         $thread_id = $_GET['threadIDPHP'];
 

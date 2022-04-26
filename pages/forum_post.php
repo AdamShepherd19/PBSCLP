@@ -1,19 +1,17 @@
-<!--
-    ============================================
-        - PBSCLP | forum_post
-        - Adam Shepherd
-        - PBSCLP
-        - April 2022
-
-        This file contains the page for a
-        practitioner to view an individual forum
-        post and view the comments left on it.
-        They can also make new comments of their
-        own.
-    ============================================
--->
-
 <?php
+    // ============================================
+    //     - PBSCLP | forum_post
+    //     - Adam Shepherd
+    //     - PBSCLP
+    //     - April 2022
+
+    //     This file contains the page for a
+    //     practitioner to view an individual forum
+    //     post and view the comments left on it.
+    //     They can also make new comments of their
+    //     own.
+    // ============================================
+
     session_start();
 
     if(!isset($_SESSION['logged_in'])){

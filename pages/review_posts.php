@@ -1,17 +1,15 @@
-<!--
-    ============================================
-        - PBSCLP | review_posts
-        - Adam Shepherd
-        - PBSCLP
-        - April 2022
-
-        This file contains the page for an admin
-        to view a list of posts available to be
-        reviewed or approved
-    ============================================
--->
-
 <?php
+    // ============================================
+    //     - PBSCLP | review_posts
+    //     - Adam Shepherd
+    //     - PBSCLP
+    //     - April 2022
+
+    //     This file contains the page for an admin
+    //     to view a list of posts available to be
+    //     reviewed or approved
+    // ============================================
+
     session_start();
 
     if(!isset($_SESSION['logged_in'])){

@@ -1,17 +1,15 @@
-<!--
-    ============================================
-        - PBSCLP | video
-        - Adam Shepherd
-        - PBSCLP
-        - April 2022
-
-        This file contains the page for a
-        practitioner to view a video in the
-        resource bank
-    ============================================
--->
-
 <?php
+    // ============================================
+    //     - PBSCLP | video
+    //     - Adam Shepherd
+    //     - PBSCLP
+    //     - April 2022
+
+    //     This file contains the page for a
+    //     practitioner to view a video in the
+    //     resource bank
+    // ============================================
+
     session_start();
 
     if(!isset($_SESSION['logged_in'])){

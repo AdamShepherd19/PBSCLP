@@ -1,17 +1,15 @@
-<!--
-    ============================================
-        - PBSCLP | approve_forum_post
-        - Adam Shepherd
-        - PBSCLP
-        - April 2022
-
-        This file contains the page for an admin
-        to confirm if they would like to approve
-        the chosed forum post and make it public
-    ============================================
--->
-
 <?php
+    // ============================================
+    //     - PBSCLP | approve_forum_post
+    //     - Adam Shepherd
+    //     - PBSCLP
+    //     - April 2022
+
+    //     This file contains the page for an admin
+    //     to confirm if they would like to approve
+    //     the chosed forum post and make it public
+    // ============================================
+
     session_start();
 
     if(!isset($_SESSION['logged_in'])){

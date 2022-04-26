@@ -1,19 +1,17 @@
-<!--
-    ============================================
-        - PBSCLP | all_sessions
-        - Adam Shepherd
-        - PBSCLP
-        - April 2022
-
-        This file contains the page which shows
-        a list of all the sessions within a 
-        course within the resource bank. Users
-        can select a course and view the material
-        within
-    ============================================
--->
-
 <?php
+    // ============================================
+    //     - PBSCLP | all_sessions
+    //     - Adam Shepherd
+    //     - PBSCLP
+    //     - April 2022
+
+    //     This file contains the page which shows
+    //     a list of all the sessions within a 
+    //     course within the resource bank. Users
+    //     can select a course and view the material
+    //     within
+    // ============================================
+
     session_start();
 
     //check for logged in user

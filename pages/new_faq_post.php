@@ -1,16 +1,14 @@
-<!--
-    ============================================
-        - PBSCLP | new_faq_post
-        - Adam Shepherd
-        - PBSCLP
-        - April 2022
-
-        This file contains the page for an admin
-        to create a new faq post
-    ============================================
--->
-
 <?php
+    // ============================================
+    //     - PBSCLP | new_faq_post
+    //     - Adam Shepherd
+    //     - PBSCLP
+    //     - April 2022
+
+    //     This file contains the page for an admin
+    //     to create a new faq post
+    // ============================================
+    
     session_start();
 
     if(!isset($_SESSION['logged_in'])){

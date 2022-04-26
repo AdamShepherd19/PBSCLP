@@ -1,19 +1,16 @@
-<!--
-    ============================================
-        - PBSCLP | insert_new_user
-        - Adam Shepherd
-        - PBSCLP
-        - April 2022
-
-        This script receives the information
-        about a new user account and adds this
-        to the database, sending an email to
-        the new user in order to create a new
-        password and register their account
-    ============================================
--->
-
 <?php
+    // ============================================
+    //     - PBSCLP | insert_new_user
+    //     - Adam Shepherd
+    //     - PBSCLP
+    //     - April 2022
+
+    //     This script receives the information
+    //     about a new user account and adds this
+    //     to the database, sending an email to
+    //     the new user in order to create a new
+    //     password and register their account
+    // ============================================
     $pass = file_get_contents('../../pass.txt', true);
     
     if(isset($_POST['firstnamePHP'])) {

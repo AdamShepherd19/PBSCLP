@@ -1,20 +1,18 @@
-<!--
-    ============================================
-        - PBSCLP | add_new_user
-        - Adam Shepherd
-        - PBSCLP
-        - April 2022
-
-        This file contains the page for an admin
-        to add a new practitioner account to
-        the platform. Account details are added
-        to the database and an email is sent to
-        the practitioners email telling them to
-        create a password for their account.
-    ============================================
--->
-
 <?php
+    // ============================================
+    //     - PBSCLP | add_new_user
+    //     - Adam Shepherd
+    //     - PBSCLP
+    //     - April 2022
+
+    //     This file contains the page for an admin
+    //     to add a new practitioner account to
+    //     the platform. Account details are added
+    //     to the database and an email is sent to
+    //     the practitioners email telling them to
+    //     create a password for their account.
+    // ============================================
+
     session_start();
 
     // ensure user is logged in

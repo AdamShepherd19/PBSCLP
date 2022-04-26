@@ -1,17 +1,15 @@
-<!--
-    ============================================
-        - PBSCLP | admin_edit_profile
-        - Adam Shepherd
-        - PBSCLP
-        - April 2022
-
-        This file contains the page for an admin
-        to edit the details of a practitioners
-        account and assign them courses.
-    ============================================
--->
-
 <?php
+    // ============================================
+    //     - PBSCLP | admin_edit_profile
+    //     - Adam Shepherd
+    //     - PBSCLP
+    //     - April 2022
+
+    //     This file contains the page for an admin
+    //     to edit the details of a practitioners
+    //     account and assign them courses.
+    // ============================================
+
     session_start();
 
     // ensure user is logged in

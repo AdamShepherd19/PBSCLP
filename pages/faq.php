@@ -1,18 +1,16 @@
-<!--
-    ============================================
-        - PBSCLP | faq
-        - Adam Shepherd
-        - PBSCLP
-        - April 2022
-
-        This file contains the page for 
-        pracititoners to view the FAQ's for the
-        platform. Administrators can view a
-        button to make a new FAQ post
-    ============================================
--->
-
 <?php
+    // ============================================
+    //     - PBSCLP | faq
+    //     - Adam Shepherd
+    //     - PBSCLP
+    //     - April 2022
+
+    //     This file contains the page for 
+    //     pracititoners to view the FAQ's for the
+    //     platform. Administrators can view a
+    //     button to make a new FAQ post
+    // ============================================
+
     session_start();
 
     if(!isset($_SESSION['logged_in'])){

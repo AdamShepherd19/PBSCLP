@@ -1,19 +1,17 @@
-<!--
-    ============================================
-        - PBSCLP | change_password
-        - Adam Shepherd
-        - PBSCLP
-        - April 2022
-
-        This file contains the page for a
-        practitioner to enter and confirm a new
-        password. They will be told if their
-        password is strong enough and must match
-        before being allowed to submit
-    ============================================
--->
-
 <?php
+    // ============================================
+    //     - PBSCLP | change_password
+    //     - Adam Shepherd
+    //     - PBSCLP
+    //     - April 2022
+
+    //     This file contains the page for a
+    //     practitioner to enter and confirm a new
+    //     password. They will be told if their
+    //     password is strong enough and must match
+    //     before being allowed to submit
+    // ============================================
+
     session_start();
 
     // if already logged in

@@ -1,17 +1,15 @@
-<!--
-    ============================================
-        - PBSCLP | get_single_post
-        - Adam Shepherd
-        - PBSCLP
-        - April 2022
-
-        This script queries and returns the
-        information about a single specified
-        forum post
-    ============================================
--->
-
 <?php
+    // ============================================
+    //     - PBSCLP | get_single_post
+    //     - Adam Shepherd
+    //     - PBSCLP
+    //     - April 2022
+
+    //     This script queries and returns the
+    //     information about a single specified
+    //     forum post
+    // ============================================
+
     $thread_id = $_GET['threadIDPHP'];
 
     // https://makitweb.com/return-json-response-ajax-using-jquery-php

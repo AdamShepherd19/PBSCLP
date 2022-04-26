@@ -1,19 +1,17 @@
-<!--
-    ============================================
-        - PBSCLP | create_password
-        - Adam Shepherd
-        - PBSCLP
-        - April 2022
-
-        This script handles the initial stages
-        of resetting a user password and sends
-        them an email with a link with a unique
-        key in order to reset their password with
-        a 20 minute timer
-    ============================================
--->
-
 <?php
+    // ============================================
+    //     - PBSCLP | create_password
+    //     - Adam Shepherd
+    //     - PBSCLP
+    //     - April 2022
+
+    //     This script handles the initial stages
+    //     of resetting a user password and sends
+    //     them an email with a link with a unique
+    //     key in order to reset their password with
+    //     a 20 minute timer
+    // ============================================
+
 
     // Reference Links:
     // https://laratutorials.com/php-send-reset-password-link-email/
