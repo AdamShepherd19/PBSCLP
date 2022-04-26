@@ -1,4 +1,15 @@
 <?php
+    // ============================================
+    //     - PBSCLP | open_file
+    //     - Adam Shepherd
+    //     - PBSCLP
+    //     - April 2022
+
+    //     This script opens a file from the file
+    //     id and opens it in a new tab
+    // ============================================
+
+
     function get_file_path($fid) {
         // https://makitweb.com/return-json-response-ajax-using-jquery-php
         $pass = file_get_contents('../../pass.txt', true);
