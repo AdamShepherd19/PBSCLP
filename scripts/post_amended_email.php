@@ -1,4 +1,16 @@
 <?php
+    // ============================================
+    //     - PBSCLP | post_amended_email
+    //     - Adam Shepherd
+    //     - PBSCLP
+    //     - April 2022
+
+    //     This script alerts the practitioner email
+    //     that a post has been amended after receiving
+    //     feedback
+    // ============================================
+
+
     // Reference Links:
     // https://laratutorials.com/php-send-reset-password-link-email/
     // https://github.com/PHPMailer/PHPMailer
