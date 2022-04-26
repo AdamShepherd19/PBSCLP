@@ -1,4 +1,15 @@
 <?php
+    // ============================================
+    //     - PBSCLP | send_feedback
+    //     - Adam Shepherd
+    //     - PBSCLP
+    //     - April 2022
+
+    //     This script updates the database with
+    //     the feedback provided on a post by an admin
+    // ============================================
+
+
     session_start();
 
     include_once "../scripts/post_feedback_email.php";
