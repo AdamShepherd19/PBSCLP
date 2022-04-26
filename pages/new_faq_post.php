@@ -1,3 +1,15 @@
+<!--
+    ============================================
+        - PBSCLP | new_faq_post
+        - Adam Shepherd
+        - PBSCLP
+        - April 2022
+
+        This file contains the page for an admin
+        to create a new faq post
+    ============================================
+-->
+
 <?php
     session_start();
 
