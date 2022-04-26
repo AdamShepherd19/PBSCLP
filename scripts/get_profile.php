@@ -1,3 +1,15 @@
+<!--
+    ============================================
+        - PBSCLP | get_profile
+        - Adam Shepherd
+        - PBSCLP
+        - April 2022
+
+        This script queries and returns the info
+        about a specified user
+    ============================================
+-->
+
 <?php
     session_start();
 
