@@ -1,6 +1,6 @@
 <!--
     ============================================
-        - PBSCLP | manage_users
+        - PBSCLP | new_forum_post
         - Adam Shepherd
         - PBSCLP
         - April 2022
