@@ -1,3 +1,16 @@
+<!--
+    ============================================
+        - PBSCLP | get_single_post
+        - Adam Shepherd
+        - PBSCLP
+        - April 2022
+
+        This script queries and returns the
+        information about a single specified
+        forum post
+    ============================================
+-->
+
 <?php
     $thread_id = $_GET['threadIDPHP'];
 
