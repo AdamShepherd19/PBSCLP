@@ -1,3 +1,16 @@
+<!--
+    ============================================
+        - PBSCLP | terms_and_conditions
+        - Adam Shepherd
+        - PBSCLP
+        - April 2022
+
+        This file contains the page for a
+        pracititoner to view the terms and
+        conditions of the platform
+    ============================================
+-->
+
 <?php
     session_start();
 
