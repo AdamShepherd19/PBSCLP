@@ -1,3 +1,15 @@
+<!--
+    ============================================
+        - PBSCLP | template
+        - Adam Shepherd
+        - PBSCLP
+        - April 2022
+
+        This file contains the template page
+        used to construct the website
+    ============================================
+-->
+
 <?php
     session_start();
 
