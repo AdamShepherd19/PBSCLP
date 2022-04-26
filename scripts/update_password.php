@@ -1,4 +1,15 @@
 <?php
+    // ============================================
+    //     - PBSCLP | update_password
+    //     - Adam Shepherd
+    //     - PBSCLP
+    //     - April 2022
+
+    //     This script updates the password held in
+    //     the database after it has been reset
+    // ============================================
+
+
     session_start();
 
     // if already logged in
