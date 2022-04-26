@@ -1,3 +1,16 @@
+<!--
+    ============================================
+        - PBSCLP | manage_users
+        - Adam Shepherd
+        - PBSCLP
+        - April 2022
+
+        This file contains the page for a
+        practitioner to view and edit their
+        profile
+    ============================================
+-->
+
 <?php
     session_start();
 
