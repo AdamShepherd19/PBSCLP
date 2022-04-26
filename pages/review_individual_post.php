@@ -1,3 +1,17 @@
+<!--
+    ============================================
+        - PBSCLP | review_individual_post
+        - Adam Shepherd
+        - PBSCLP
+        - April 2022
+
+        This file contains the page for an admin
+        to review and leave feedback on a
+        specific forum post, sending it back to
+        the author to amend
+    ============================================
+-->
+
 <?php
     session_start();
 
