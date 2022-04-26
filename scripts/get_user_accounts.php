@@ -1,3 +1,16 @@
+<!--
+    ============================================
+        - PBSCLP | get_user_accounts
+        - Adam Shepherd
+        - PBSCLP
+        - April 2022
+
+        This script queries and returns a list
+        of all user accounts bar the signed
+        in user
+    ============================================
+-->
+
 <?php
 
     session_start();
