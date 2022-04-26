@@ -1,3 +1,16 @@
+<!--
+    ============================================
+        - PBSCLP | review_posts
+        - Adam Shepherd
+        - PBSCLP
+        - April 2022
+
+        This file contains the page for an admin
+        to view a list of posts available to be
+        reviewed or approved
+    ============================================
+-->
+
 <?php
     session_start();
 
