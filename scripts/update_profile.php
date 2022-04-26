@@ -1,4 +1,15 @@
 <?php
+    // ============================================
+    //     - PBSCLP | update_profile
+    //     - Adam Shepherd
+    //     - PBSCLP
+    //     - April 2022
+
+    //     This script updates the profile info
+    //     in the database after it has been edited
+    // ============================================
+
+
     session_start();
 
     $pass = file_get_contents('../../pass.txt', true);
