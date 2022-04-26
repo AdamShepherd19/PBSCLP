@@ -1,4 +1,14 @@
 <?php
+    // ============================================
+    //     - PBSCLP | update_approved_status
+    //     - Adam Shepherd
+    //     - PBSCLP
+    //     - April 2022
+
+    //     This script updates the status of a forum
+    //     post to say it has been approved by an admin
+    // ============================================
+
     include_once "../scripts/post_approved_email.php";
 
     if(isset($_POST['threadIDPHP'])) {
