@@ -31,8 +31,6 @@
 
     if ($result){
         exit($result[0]);
-    } else {
-        exit("no_comments_found*");
     }
 
 

@@ -122,9 +122,7 @@
                                             thread_idPHP: response[x].thread_id
                                         },
                                         success: function(response) {
-                                            if(response !== "*no_comments_found*") {
-                                                number_of_comments = response;
-                                            }
+                                            number_of_comments = response;
                                         }
                                     });
                                     return tmp;
