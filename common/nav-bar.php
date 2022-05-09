@@ -1,6 +1,21 @@
+<!--
+    ============================================
+        - PBSCLP | nav-bar
+        - Adam Shepherd
+        - PBSCLP
+        - April 2022
+
+        This file contains the template for the
+        nav-bar that will be imported into each
+        page of the platform
+    ============================================
+-->
+
+
 <div class="navbar-wrapper">
     <nav class="navbar navbar-expand-lg navbar-light">
 
+        <!-- PBSuk logo and link to landing page -->
         <a href="landing.php">
             <img src="../images/pbslogo.png" alt="PBSuk Logo">
         </a>
@@ -12,27 +27,32 @@
         <div class="collapse navbar-collapse" id="navbarText">
             
             <ul class="navbar-nav mr-auto" id="nav-options">
-
+                <!-- home button -->
                 <li class="nav-item current-nav" id="landing">
                     <a class="nav-link" href="landing.php" >Home <span class="sr-only">(current)</span></a>
                 </li>
 
+                <!-- forum button -->
                 <li class="nav-item" id="nav-forum">
                     <a class="nav-link" href="forum.php">Forum</a>
                 </li>
 
+                <!-- resource bank button -->
                 <li class="nav-item" id="nav-resource-bank">
                     <a class="nav-link" href="resource_bank_home.php">Resource Bank</a>
                 </li>
 
+                <!-- profile button -->
                 <li class="nav-item" id="nav-profile">
                     <a class="nav-link" href="profile.php">Profile</a>
                 </li>
 
+                <!-- manage users button -->
                 <li class="nav-item admin-only" id="nav-manage-users">
                     <a class="nav-link" href="manage_users.php">Manage Users</a>
                 </li>
 
+                <!-- drop down to hold less vital pages -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         More
@@ -48,7 +68,7 @@
             </ul>
 
             <span class="navbar-text">
-
+                <!-- logout button -->
                 <form action="../scripts/logout.php">
                     <input type="submit" id="logout" value="Log Out" class="pbs-button pbs-button-grey">
                 </form>

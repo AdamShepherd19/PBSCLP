@@ -1,4 +1,16 @@
+
 <?php
+    // ============================================
+    //     - PBSCLP | template
+    //     - Adam Shepherd
+    //     - PBSCLP
+    //     - April 2022
+
+    //     This file contains the template page
+    //     used to construct the website
+    // ============================================
+
+
     session_start();
 
     if(!isset($_SESSION['logged_in'])){

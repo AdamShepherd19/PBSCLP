@@ -1,4 +1,14 @@
 <?php
+    // ============================================
+    //     - PBSCLP | new_course
+    //     - Adam Shepherd
+    //     - PBSCLP
+    //     - April 2022
+
+    //     This script adds a new course to the
+    //     database
+    // ============================================
+
     session_start();
     
     if(isset($_POST['course_namePHP'])) {

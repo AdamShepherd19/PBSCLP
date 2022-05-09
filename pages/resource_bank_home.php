@@ -1,4 +1,17 @@
+
 <?php
+    // ============================================
+    //     - PBSCLP | resource_bank_home
+    //     - Adam Shepherd
+    //     - PBSCLP
+    //     - April 2022
+
+    //     This file contains the page for a
+    //     practitioner to view the courses available
+    //     to them on the resource bank. They can
+    //     select one which takes them to a list
+    //     of sessions within
+    // ============================================
     session_start();
 
     if(!isset($_SESSION['logged_in'])){

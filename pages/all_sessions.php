@@ -1,6 +1,20 @@
 <?php
+    // ============================================
+    //     - PBSCLP | all_sessions
+    //     - Adam Shepherd
+    //     - PBSCLP
+    //     - April 2022
+
+    //     This file contains the page which shows
+    //     a list of all the sessions within a 
+    //     course within the resource bank. Users
+    //     can select a course and view the material
+    //     within
+    // ============================================
+
     session_start();
 
+    //check for logged in user
     if(!isset($_SESSION['logged_in'])){
         header('Location: https://pbsclp.info');
         exit();
@@ -27,6 +41,7 @@
         <!-- include jQuery -->
         <script src="../includes/jquery.js"></script>
 
+        <!-- links to stylesheets -->
         <link rel="stylesheet" href="../stylesheets/style.css">
         <link rel="stylesheet" href="../stylesheets/resource_bank.css">
 
@@ -36,28 +51,33 @@
 
     <body>
 
+        <!-- import nav bar -->
         <div id="pbs-nav-bar">
             <?php
                 include "../common/nav-bar.php";
             ?>
         </div>
 
+        <!-- page heading -->
         <div class="page-header">
             <h1>Resource Bank</h1> <br>
         </div>
 
+        <!-- page subheading (course name) -->
         <div class="page-subheader">
             <h3 id='course-subheading'></h3>
         </div>
 
         <div class="main-content">
 
+            <!-- add new session button if user is an admin -->
             <div class="button-wrapper">
                 <input type="button" id="new-session-button" class="pbs-button pbs-button-green admin-only" value="New Session">
             </div>
 
             <div class="inner-wrapper">
 
+                <!-- session class structure -->
                 <!-- <div class="course-card card">
                     <div class="card-header">Course Name Here</div>
                     <div class="card-body">
@@ -80,33 +100,39 @@
                     $('.admin-only').show();
                 }
 
+                // fetch course id from PHP and return to javascript variable
                 var course_id = "<?php echo $_GET['cid']; ?>";
 
+                // navigate to new session page on button click
                 $("#new-session-button").on('click', function() {
                     window.location.href = 'add_new_session.php?cid=' + course_id;
                 });
 
-                var course_id = "<?php echo $_GET['cid']; ?>";
-
+                // set page subheading to course id (change to course name)
                 $("#course-subheading").html(course_id);
 
+                // get list of all sessions and display as cards
                 $.ajax({
                     url: '../scripts/get_session_summary.php',
                     type: 'post',
                     dataType: 'JSON',
                     data: {
+                        //pass through course id to select sessions for that course
                         course_idPHP: course_id
                     },
                     success: function(response) {
+                        //display message if no sessions found
                         if (response.includes("*warning_no_sessions_found*")) {
                             var message = "<div class='card'><h4 class='card-header'> There is no course content yet!</div>"
 
                             $(".inner-wrapper").html(message);
                         } else if(response.includes("*user_not_authorised_on_this_course*")) {
+                            //display error message if user not assigned the relevant course to view this session
                             var message = "<div class='card'><h4 class='card-header'> You are not authorised to access this course material.</div>"
 
                             $(".inner-wrapper").html(message);
                         } else {
+                            //display a list of courses to the DOM and display on page in card form
                             for(var x = 0; x < response.length; x++) {
 
                                 var message = '<div class="session-card card" id=sid-' + response[x].session_id + '>' +
@@ -117,11 +143,12 @@
 
                                 $(".inner-wrapper").append(message);
                             }
+
+                            //functionality to click on a session card and navigate to individual session page to view material
                             $(document).on("click", ".session-card" , function() {
                                 var contentPanelId = jQuery(this).attr("id");
                                 var session_id = contentPanelId.split(/[-]+/).pop();
                                 window.location.href = 'individual_session.php?sid=' + session_id;
-                                // alert(contentPanelId);
                             });
                         }
 

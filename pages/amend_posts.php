@@ -1,6 +1,18 @@
 <?php
+    // ============================================
+    //     - PBSCLP | amend_posts
+    //     - Adam Shepherd
+    //     - PBSCLP
+    //     - April 2022
+
+    //     This file contains the page that displays
+    //     a list of posts that are ready to be
+    //     amended (feedback has been given)
+    // ============================================
+
     session_start();
 
+    // check user us logged in
     if(!isset($_SESSION['logged_in'])){
         header('Location: https://pbsclp.info');
         exit();
@@ -27,6 +39,7 @@
         <!-- include jQuery -->
         <script src="../includes/jquery.js"></script>
 
+        <!-- links to stylesheets -->
         <link rel="stylesheet" href="../stylesheets/style.css">
         <link rel="stylesheet" href="../stylesheets/forum.css">
 
@@ -36,19 +49,21 @@
 
     <body>
 
+        <!-- import nav bar -->
         <div id="pbs-nav-bar">
             <?php
                 include "../common/nav-bar.php";
             ?>
         </div>
 
+        <!-- page header -->
         <div class="page-header">
             <h1>Amend Posts</h1>
         </div>
 
         <div class="main-content">
             <div class="inner-wrapper">
-
+                <!-- list of posts here -->
             </div>
         </div>
 
@@ -64,21 +79,24 @@
                     $('.admin-only').show();
                 }
 
+                // get list of forum posts that have had feedback provided and are ready to be amended
                 $.ajax({
                     url: '../scripts/get_forum_posts.php',
                     type: 'get',
                     dataType: 'JSON',
                     data: {
-                        approvedPHP: '0',
-                        feedback_providedPHP: '1',
-                        review_posts: '1'
+                        approvedPHP: '0', //post not already reviewed
+                        feedback_providedPHP: '1', //feedback provided: true
+                        review_posts: '1' //review posts: true
                     },
                     success: function(response) {
                         if (response.includes("*warning_no_posts_found*")) {
+                            // message if no posts need amended
                             var message = "<div class='card'><h4 class='card-header'> There are no posts that need reviewed!</div>"
 
                             $(".inner-wrapper").append(message);
                         } else {
+                            // display posts that are available to be amended
                             for(var x = 0; x < response.length; x++) {
                                 var message = '<div class="forum-post card" id="thread-id-' + response[x].thread_id + '">' +
                                     '<div class="card-header">' + response[x].title + '<br><span><i> - ' + response[x].firstname + ' ' + response[x].lastname + '</i></span>' + '</div>' +
@@ -89,6 +107,7 @@
                                 $(".inner-wrapper").append(message);
                             }
 
+                            // navigate to individual amend post page if post is clicked on
                             $(document).on("click", ".forum-post" , function() {
                                 var contentPanelId = jQuery(this).attr("id");
                                 var thread_id = contentPanelId.split(/[-]+/).pop();

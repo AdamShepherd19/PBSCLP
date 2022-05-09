@@ -1,4 +1,15 @@
 <?php
+    // ============================================
+    //     - PBSCLP | post_feedback_email
+    //     - Adam Shepherd
+    //     - PBSCLP
+    //     - April 2022
+
+    //     This script alerts the user their post
+    //     has received feedback from an admin
+    // ============================================
+
+
     // Reference Links:
     // https://laratutorials.com/php-send-reset-password-link-email/
     // https://github.com/PHPMailer/PHPMailer

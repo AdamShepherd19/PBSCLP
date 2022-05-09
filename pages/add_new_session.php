@@ -1,11 +1,22 @@
 <?php
+    // ============================================
+    //     - PBSCLP | add_new_session
+    //     - Adam Shepherd
+    //     - PBSCLP
+    //     - April 2022
+
+    //     This file contains the page for an admin
+    //     to add a new session to the resource bank
+    // ============================================
     session_start();
 
+    // make sure user is logged in
     if(!isset($_SESSION['logged_in'])){
         header('Location: https://pbsclp.info');
         exit();
     }
 
+    // make sure logged in user is an admin
     if($_SESSION['account_type'] != 'administrator'){
         header('Location: landing.php');
         exit();
@@ -33,6 +44,7 @@
         <!-- include jQuery -->
         <script src="../includes/jquery.js"></script>
 
+        <!-- links to stylesheets -->
         <link rel="stylesheet" href="../stylesheets/style.css">
         <link rel="stylesheet" href="../stylesheets/new_announcement.css">
 
@@ -41,13 +53,14 @@
     </head>
 
     <body>
-
+        <!-- import nav bar -->
         <div id="pbs-nav-bar">
             <?php
                 include "../common/nav-bar.php";
             ?>
         </div>
 
+        <!-- page header -->
         <div class="page-header">
             <h1>New Session</h1>
         </div>
@@ -55,11 +68,13 @@
         <div class="main-content">
             <div class="form-wrapper">
                 <form>
+                    <!-- form to receive new session name and description -->
                     <label for="name">Session Name: </label><br />
                     <input type="text" id="name" class="pbs-form-text-box" placeholder="Enter the course name..."><br /><br />
                     <label for="description">Description: </label><br />
                     <textarea id="description" class="pbs-form-text-box text-area-large" placeholder="Enter course description..."></textarea><br />
                     
+                    <!-- cancel and create buttons -->
                     <div class="button-wrapper">
                         <input type="button" id="session-cancel" class="pbs-button pbs-button-red" value="Cancel"> 
                         <input type="button" id="session-create" class="pbs-button pbs-button-green" value="Create">
@@ -73,6 +88,7 @@
         <script type="text/javascript">
             $(document).ready(function () {
 
+                // receive course id from get request and return to javascript
                 var course_id = "<?php echo $_GET['cid']; ?>"
                 
                 //onclick function for the cancel button
@@ -96,6 +112,7 @@
                             method: 'POST',
                             url: "../scripts/new_session.php",
                             data: {
+                                // pass session info to PHP script
                                 session_namePHP: session_name,
                                 descriptionPHP: description,
                                 course_idPHP: course_id
@@ -109,6 +126,7 @@
 
                                     $('.main-content').html(successHTML);
                                 } else if (response.includes("*warning_session_already_exists*")){
+                                    // alert user if new session name already exists
                                     alert("A session with this name already exists. Please enter a different name.");
                                 } else {
                                     //display error message if the php could not be executed
@@ -121,6 +139,7 @@
                                     window.location.replace('resource_bank_home.php');
                                 });
                             },
+                            // expect string back from PHP
                             datatype: 'text'
                         });
                     };

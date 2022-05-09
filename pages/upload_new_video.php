@@ -1,4 +1,15 @@
 <?php
+    // ============================================
+    //     - PBSCLP | upload_new_video
+    //     - Adam Shepherd
+    //     - PBSCLP
+    //     - April 2022
+
+    //     This file contains the page for an admin
+    //     to upload and name a new video (from 
+    //     youtube) that will be added to the
+    //     resource bank
+    // ============================================
     session_start();
 
     if(!isset($_SESSION['logged_in'])){

@@ -1,4 +1,14 @@
 <?php
+    // ============================================
+    //     - PBSCLP | new_comment
+    //     - Adam Shepherd
+    //     - PBSCLP
+    //     - April 2022
+
+    //     This script inserts a new comment to
+    //     the database
+    // ============================================
+
     session_start();
     
     if(isset($_POST['commentPHP'])) {

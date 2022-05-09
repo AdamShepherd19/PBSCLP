@@ -1,4 +1,16 @@
 <?php
+    // ============================================
+    // //     - PBSCLP | new_forum_post
+    // //     - Adam Shepherd
+    // //     - PBSCLP
+    // //     - April 2022
+
+    // //     This file contains the page for a
+    // //     practitioner to submit a new forum post
+    // //     for approval which will be sent to
+    // //     an admin to be reviewed
+    // // ============================================
+
     session_start();
 
     include_once "../scripts/new_post_email.php";

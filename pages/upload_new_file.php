@@ -1,4 +1,14 @@
 <?php
+    // ============================================
+    //     - PBSCLP | upload_new_file
+    //     - Adam Shepherd
+    //     - PBSCLP
+    //     - April 2022
+
+    //     This file contains the page for an admin
+    //     to upload a new file to a session in
+    //     the resource bank and name it
+    // ============================================
     session_start();
 
     if(!isset($_SESSION['logged_in'])){

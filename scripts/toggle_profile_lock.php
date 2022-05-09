@@ -1,4 +1,14 @@
 <?php
+    // ============================================
+    //     - PBSCLP | toggle_profile_lock
+    //     - Adam Shepherd
+    //     - PBSCLP
+    //     - April 2022
+
+    //     This script locks or unlocks the user
+    //     profile
+    // ============================================
+
     if(isset($_POST['user_idPHP'])) {
         
         $pass = file_get_contents('../../pass.txt', true);

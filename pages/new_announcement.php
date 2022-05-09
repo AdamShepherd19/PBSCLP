@@ -1,4 +1,15 @@
 <?php
+    // ============================================
+    //     - PBSCLP | new_announcement
+    //     - Adam Shepherd
+    //     - PBSCLP
+    //     - April 2022
+
+    //     This file contains the page for an admin
+    //     to create a new announcement for the
+    //     landing page
+    // ============================================
+
     session_start();
 
     if(!isset($_SESSION['logged_in'])){

@@ -1,4 +1,15 @@
 <?php
+    // ============================================
+    //     - PBSCLP | upload_video
+    //     - Adam Shepherd
+    //     - PBSCLP
+    //     - April 2022
+
+    //     This script uploads a new video name and
+    //     youtube url to the database
+    // ============================================
+
+
     session_start();
     if(isset($_POST['video_namePHP'])) {
         

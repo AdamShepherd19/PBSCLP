@@ -1,4 +1,14 @@
 <?php
+    // ============================================
+    //     - PBSCLP | get_profile
+    //     - Adam Shepherd
+    //     - PBSCLP
+    //     - April 2022
+
+    //     This script queries and returns the info
+    //     about a specified user
+    // ============================================
+
     session_start();
 
     // https://makitweb.com/return-json-response-ajax-using-jquery-php

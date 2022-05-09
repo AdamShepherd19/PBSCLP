@@ -1,11 +1,24 @@
 <?php
+    // ============================================
+    //     - PBSCLP | admin_edit_profile
+    //     - Adam Shepherd
+    //     - PBSCLP
+    //     - April 2022
+
+    //     This file contains the page for an admin
+    //     to edit the details of a practitioners
+    //     account and assign them courses.
+    // ============================================
+
     session_start();
 
+    // ensure user is logged in
     if(!isset($_SESSION['logged_in'])){
         header('Location: https://pbsclp.info');
         exit();
     }
 
+    // ensure logged in user is an admin
     if($_SESSION['account_type'] != 'administrator'){
         header('Location: landing.php');
         exit();
@@ -33,6 +46,7 @@
         <!-- include jQuery -->
         <script src="../includes/jquery.js"></script>
 
+        <!-- links to stylesheets -->
         <link rel="stylesheet" href="../stylesheets/style.css">
         <link rel="stylesheet" href="../stylesheets/profile.css">
 
@@ -42,17 +56,20 @@
 
     <body>
 
+        <!-- import nav bar -->
         <div id="pbs-nav-bar">
             <?php
                 include "../common/nav-bar.php";
             ?>
         </div>
 
+        <!-- page header -->
         <h1 class="page-header">Edit Practitioner Profile</h1>
 
         <div class="main-content">
             <div class="profile-wrapper">
               
+                <!-- table to display the details of the pracititoner account -->
                 <table>
                     <tr>
                         <td class="caption">Name:</td>
@@ -79,6 +96,7 @@
                         <td id="courses"><ul id="course-list"></ul></td>
                     </tr>
                     
+                    <!-- buttons for edit profile page -->
                     <tr>
                         <td></td>
                         <td id="buttons">
@@ -97,32 +115,40 @@
 
         <script type="text/javascript">
             $(document).ready(function () {
+                // retrieve user id from get request and return to javascript
                 var user_id_to_edit = "<?php echo $_GET['userId']; ?>";
 
+                // initialise variables
                 var name, email, contact_number, organisation;
                 
                 // hide save and cancel edit profile buttons
                 $("#cancel-edit").hide();
                 $("#save-profile").hide();
 
+                // action for cancel button
                 $("#cancel-profile").on('click', function() {
                     window.location.href = 'manage_users.php';
                 });
 
+                // action for edit button
                 $("#edit-profile").on('click', function(){
+                    // swap visibility of buttons
                     $("#edit-profile").hide();
                     $("#cancel-profile").hide();
                     $("#cancel-edit").show();
                     $("#save-profile").show();
                     
+                    // retrieve list of courses
                     $.ajax({
                         url: '../scripts/get_all_courses.php',
                         type: 'get',
                         dataType: 'JSON',
                         success: function(response) {
+                            //check if there are no courses
                             if(response.includes("*warning_no_courses_found*")){
-                                console.log("temp");
+                                console.log("no courses found");
                             } else {
+                                //add courses to dom if found
                                 $("#courses").html("");
                                 for (let i = 0; i < response.length; i++) {
                                     let output = '<input type="checkbox" id="edit-cid-' + response[i].course_id + '" class="pbs-form-check-box" value="' + response[i].course_name + '"><label for="edit-cid-' + response[i].course_id + '">' + response[i].course_name + '</label><br>';
@@ -130,7 +156,7 @@
                                     $("#courses").append(output);
                                 }
                                 
-                                
+                                //get list of assigned courses
                                 $.ajax({
                                     url: '../scripts/get_assigned_courses.php',
                                     type: 'post',
@@ -142,6 +168,7 @@
                                         if(response.includes("*warning_no_courses_found*")){
                                             console.log("temp");
                                         } else {
+                                            //checks courses that are already assigned
                                             for (let j = 0; j < response.length; j++) {
                                                 let temp_id = "#edit-cid-" + response[j];
                                                 $(temp_id).prop('checked', true);
@@ -155,23 +182,28 @@
                         }
                     });
                     
+                    // creat form for user details
                     $("#name").html('<input type="text" id="new-name" class="pbs-form-text-box" value="' + name + '"/>');
                     $("#email-address").html('<input type="text" id="new-email" class="pbs-form-text-box" value="' + email + '"/>');
                     $("#contact-number").html('<input type="text" id="new-contact-number" class="pbs-form-text-box" value="' + contact_number + '"/>');
                     $("#organisation").html('<input type="text" id="new-organisation" class="pbs-form-text-box" value="' + organisation + '"/>');
                 });
 
+                //cancel button action
                 $("#cancel-edit").on('click', function() {
+                    //toggle visibility of buttons
                     $("#cancel-edit").hide();
                     $("#save-profile").hide();
                     $("#edit-profile").show();
                     $("#cancel-profile").show();
 
+                    //set profile details to original values
                     $("#name").html(name);
                     $("#email-address").html(email);
                     $("#contact-number").html(contact_number);
                     $("#organisation").html(organisation);
                     $("#courses").html('<ul id="course-list"></ul>');
+                    //display list of courses
                     for (let x = 0; x < list_of_course_id.length; x++){
                         let output = "<li id='cid-" + list_of_course_id[x] + "'>" + list_of_course_names[x] + "</li>";
                         $('#course-list').append(output);
@@ -179,28 +211,30 @@
 
                 });
 
+                //save button action
                 $("#save-profile").on('click', function() {
+                    //retrieve forum values after updated
                     var new_name = $("#new-name").val();
                     var new_email = $("#new-email").val();
                     var new_contact_number = $("#new-contact-number").val();
                     var new_organisation = $("#new-organisation").val();
 
+                    //retrieve list of checked courses
                     var new_list_of_courses = $("#courses input:checkbox:checked").map(function(){
                         return $(this).attr('id').split(/[-]+/).pop();
                     }).get();
 
+                    //name string handling to separate first and last names
                     var index = new_name.lastIndexOf(" ");
                     var lastname = new_name.slice(index + 1);
                     var firstname = new_name.substring(0, index);
 
-
-                    // console.log(firstname + " " + lastname);
-                    console.log(new_list_of_courses);
-
+                    //function to update database with new profile details
                     $.ajax({
                         method: 'POST',
                         url: "../scripts/update_profile.php",
                         data: {
+                            //new profile information passed to PHP script
                             user_idPHP: user_id_to_edit,
                             firstnamePHP: firstname,
                             lastnamePHP: lastname,
@@ -233,19 +267,23 @@
                     });
                 });
 
+                //fetch user profile details from database
                 $.ajax({
                     url: '../scripts/get_profile.php',
                     type: 'post',
                     dataType: 'JSON',
                     data: {
+                        //id of user to fetch
                         user_id_PHP: user_id_to_edit
                     },
                     success: function(response) {
+                        //message if no user found
                         if (response.includes("*warning_no_user_found*")) {
                             var message = "<h3>That user does not exist</h3><br> ";
 
                                 $('.main-content').html(message);
                         } else {
+                            //retrieve user detauls from response and store in variables
                             name = response[0].name;
                             email = response[0].email;
                             contact_number = response[0].contact_number;
@@ -253,6 +291,7 @@
                             list_of_course_id = response[0].list_of_course_id;
                             list_of_course_names = response[0].list_of_course_names;
 
+                            //set profile detauls to DOM elements to display on page
                             $('#name').text(name);
                             $('#email-address').text(email);
                             $('#contact-number').text(contact_number);

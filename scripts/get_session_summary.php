@@ -1,4 +1,14 @@
 <?php
+    // ============================================
+    //     - PBSCLP | get_session_summary
+    //     - Adam Shepherd
+    //     - PBSCLP
+    //     - April 2022
+
+    //     This script queries and returns the 
+    //     information about a specific session
+    // ============================================
+
     session_start();
 
     // https://makitweb.com/return-json-response-ajax-using-jquery-php

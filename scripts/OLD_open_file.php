@@ -1,4 +1,15 @@
 <?php
+    // ============================================
+    //     - PBSCLP | old_open_file
+    //     - Adam Shepherd
+    //     - PBSCLP
+    //     - April 2022
+
+    //     This script is an old version of the open
+    //     file code that was not secure
+    // ============================================
+
+
     // https://makitweb.com/return-json-response-ajax-using-jquery-php
     $pass = file_get_contents('../../pass.txt', true);
 

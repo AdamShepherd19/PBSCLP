@@ -1,4 +1,14 @@
 <?php
+    // ============================================
+    //     - PBSCLP | new_session
+    //     - Adam Shepherd
+    //     - PBSCLP
+    //     - April 2022
+
+    //     This script adds a new session to the
+    //     database
+    // ============================================
+    
     session_start();
     
     if(isset($_POST['session_namePHP'])) {

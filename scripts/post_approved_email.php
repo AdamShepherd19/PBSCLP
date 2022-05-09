@@ -1,4 +1,15 @@
 <?php
+    // ============================================
+    //     - PBSCLP | post_approved_email
+    //     - Adam Shepherd
+    //     - PBSCLP
+    //     - April 2022
+
+    //     This script sends an email to the user
+    //     alerting them their post has been approved
+    // ============================================
+
+
     // Reference Links:
     // https://laratutorials.com/php-send-reset-password-link-email/
     // https://github.com/PHPMailer/PHPMailer

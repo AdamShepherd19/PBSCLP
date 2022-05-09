@@ -1,4 +1,18 @@
 <?php
+    // ============================================
+    //     - PBSCLP | upload_file
+    //     - Adam Shepherd
+    //     - PBSCLP
+    //     - April 2022
+
+    //     This script uploads a new file to the
+    //     file server within the session specified
+    //     and holds a record in the database of
+    //     what the filename is and which session it
+    //     belongs to
+    // ============================================
+
+
     session_start();
     if(isset($_POST['filename'])) {
         

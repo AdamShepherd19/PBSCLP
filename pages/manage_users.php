@@ -1,4 +1,16 @@
 <?php
+    // ============================================
+    //     - PBSCLP | manage_users
+    //     - Adam Shepherd
+    //     - PBSCLP
+    //     - April 2022
+
+    //     This file contains the page for an admin
+    //     to manage the practitioner accounts on
+    //     the platform. They can lock/unlock,
+    //     edit and remove the accounts
+    // ============================================
+
     session_start();
 
     if(!isset($_SESSION['logged_in'])){

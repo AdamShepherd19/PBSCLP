@@ -1,4 +1,14 @@
 <?php
+    // ============================================
+    //     - PBSCLP | profile
+    //     - Adam Shepherd
+    //     - PBSCLP
+    //     - April 2022
+
+    //     This file contains the page for a
+    //     practitioner to view and edit their
+    //     profile
+    // ============================================
     session_start();
 
     if(!isset($_SESSION['logged_in'])){

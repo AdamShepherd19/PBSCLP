@@ -1,4 +1,15 @@
 <?php
+    // ============================================
+    //     - PBSCLP | password_reset
+    //     - Adam Shepherd
+    //     - PBSCLP
+    //     - April 2022
+
+    //     This file contains the page for a
+    //     practitioner to submit their email
+    //     address and reset their password
+    // ============================================
+
     session_start();
 
     // if already logged in

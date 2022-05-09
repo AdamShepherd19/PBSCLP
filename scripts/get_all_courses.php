@@ -1,4 +1,14 @@
 <?php
+    // ============================================
+    //     - PBSCLP | get_all_courses
+    //     - Adam Shepherd
+    //     - PBSCLP
+    //     - April 2022
+
+    //     This script queries and returns a list
+    //     of all courses available
+    // ============================================
+
     // https://makitweb.com/return-json-response-ajax-using-jquery-php
     $pass = file_get_contents('../../pass.txt', true);
 

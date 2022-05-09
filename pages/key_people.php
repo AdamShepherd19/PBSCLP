@@ -1,4 +1,16 @@
 <?php
+    // ============================================
+    //     - PBSCLP | key_people
+    //     - Adam Shepherd
+    //     - PBSCLP
+    //     - April 2022
+
+    //     This file contains the page for a
+    //     practitioner to view the key people for
+    //     the platform so they can conact any of
+    //     them in case of any issues
+    // ============================================
+
     session_start();
 
     if(!isset($_SESSION['logged_in'])){

@@ -1,4 +1,16 @@
 <?php
+    // ============================================
+    //     - PBSCLP | update_forum_post
+    //     - Adam Shepherd
+    //     - PBSCLP
+    //     - April 2022
+
+    //     This script updates a forum post in the
+    //     database after it has been amended by the
+    //     author after receiving admin feedback
+    // ============================================
+
+
     session_start();
     include_once "../scripts/post_amended_email.php";
 
