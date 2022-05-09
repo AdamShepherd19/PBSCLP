@@ -111,15 +111,32 @@
                             $(".forum-wrapper").append(message);
                         } else {
                             for(var x = 0; x < response.length; x++) {
-                                var message = '<div class="forum-post card" id="thread-id-' + response[x].thread_id + '">' +
-                                    '<div class="card-header">' + response[x].title + '<br><span><i> - ' + response[x].firstname + ' ' + response[x].lastname + '</i></span>' + '</div>' +
-                                    '<div class="card-body">' +
-                                        '<p>' + response[x].content + '</p>' +
-                                        '<span><i>Comments (x)</i></span>' +
-                                    '</div></div><br>';
+                                $.ajax({
+                                    url: '../scripts/get_number_of_comments.php',
+                                    type: 'get',
+                                    dataType: 'JSON',
+                                    data: {
+                                        thread_idPHP: response[x].thread_id
+                                    },
+                                    success: function(response) {
+                                        var number_of_comments = 0;
+                                        if(!result.includes("*no_comments_found*")) {
+                                            number_of_comments = response;
+                                        }
 
-                                $(".forum-wrapper").append(message);
+                                        var message = '<div class="forum-post card" id="thread-id-' + response[x].thread_id + '">' +
+                                            '<div class="card-header">' + response[x].title + '<br><span><i> - ' + response[x].firstname + ' ' + response[x].lastname + '</i></span>' + '</div>' +
+                                            '<div class="card-body">' +
+                                                '<p>' + response[x].content + '</p>' +
+                                                '<span><i>Comments (' + number_of_comments + ')</i></span>' +
+                                            '</div></div><br>';
+
+                                        $(".forum-wrapper").append(message);
+
+                                    }
+                                });
                             }
+
                             $(document).on("click", ".forum-post" , function() {
                                 var contentPanelId = jQuery(this).attr("id");
                                 var thread_id = contentPanelId.split(/[-]+/).pop();
