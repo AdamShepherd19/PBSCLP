@@ -120,7 +120,7 @@
                                     },
                                     success: function(response) {
                                         var number_of_comments = 0;
-                                        if(!result.includes("*no_comments_found*")) {
+                                        if(!response.includes("*no_comments_found*")) {
                                             number_of_comments = response;
                                         }
 
