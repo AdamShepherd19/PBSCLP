@@ -111,6 +111,7 @@
                             $(".forum-wrapper").append(message);
                         } else {
                             for(var x = 0; x < response.length; x++) {
+
                                 $.ajax({
                                     url: '../scripts/get_number_of_comments.php',
                                     type: 'get',
@@ -118,10 +119,10 @@
                                     data: {
                                         thread_idPHP: response[x].thread_id
                                     },
-                                    success: function(response) {
+                                    success: function(no_of_comments) {
                                         var number_of_comments = 0;
                                         if(!response.includes("*no_comments_found*")) {
-                                            number_of_comments = response;
+                                            number_of_comments = no_of_comments;
                                         }
 
                                         var message = '<div class="forum-post card" id="thread-id-' + response[x].thread_id + '">' +
