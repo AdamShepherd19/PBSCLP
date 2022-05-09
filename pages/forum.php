@@ -117,7 +117,7 @@
                                     $.ajax({
                                         url: '../scripts/get_number_of_comments.php',
                                         type: 'get',
-                                        dataType: 'JSON',
+                                        dataType: 'text',
                                         data: {
                                             thread_idPHP: response[x].thread_id
                                         },
