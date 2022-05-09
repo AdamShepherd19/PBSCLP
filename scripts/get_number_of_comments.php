@@ -30,8 +30,7 @@
 
 
     if ($result){
-        print_r($result);
-        exit($result);
+        exit($result[0]);
     } else {
         exit("no_comments_found*");
     }
