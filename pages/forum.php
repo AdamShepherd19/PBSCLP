@@ -121,7 +121,7 @@
                                         thread_idPHP: response[x].thread_id
                                     },
                                     success: function(response) {
-                                        if(!response.includes("*no_comments_found*")) {
+                                        if(!response == "*no_comments_found*") {
                                             number_of_comments = response;
                                         }
                                     }
