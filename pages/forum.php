@@ -123,6 +123,7 @@
                                         },
                                         success: function(response) {
                                             tmp = response;
+                                            console.log(tmp);
                                         }
                                     });
                                     console.log(tmp);
