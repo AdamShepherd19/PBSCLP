@@ -43,6 +43,9 @@
         //check to see if the insert was successful
         if ($stmt->execute(['firstname' => $firstname, 'lastname' => $lastname, 'email' => $email, 'organisation' => $organisation, 'contact_number' => $contact_number, 'user_id' => $user_id])) {
             echo 'profile updated';
+            $_SESSION['firstname'] = $firstname;
+            $_SESSION['lastname'] = $lastname;
+            $_SESSION['email'] = $email;
         } else {
             exit('Error: ' . $connection->error);
         }
