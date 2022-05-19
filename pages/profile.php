@@ -161,10 +161,12 @@
                                     "<br><input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>";
 
                                 $('.main-content').html(successHTML);
-
-                                $_SESSION['firstname'] = firstname;
-                                $_SESSION['lastname'] = lastname;
-                                $_SESSION['email'] = email;
+                                
+                                <?php
+                                    $_SESSION['firstname'] = firstname;
+                                    $_SESSION['lastname'] = lastname;
+                                    $_SESSION['email'] = email;
+                                ?>
 
                             } else {
                                 //display error message if the php could not be executed
