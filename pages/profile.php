@@ -142,7 +142,6 @@
                     var lastname = new_name.slice(index + 1);
                     var firstname = new_name.substring(0, index);
 
-                    console.log(firstname + " " + lastname);
 
                     $.ajax({
                         method: 'POST',
@@ -162,6 +161,10 @@
                                     "<br><input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>";
 
                                 $('.main-content').html(successHTML);
+
+                                $_SESSION['firstname'] = firstname;
+                                $_SESSION['lastname'] = lastname;
+                                $_SESSION['email'] = email;
 
                             } else {
                                 //display error message if the php could not be executed
