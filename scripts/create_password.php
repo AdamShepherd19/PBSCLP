@@ -28,12 +28,12 @@
 
     if(isset($_POST['emailPHP'])) {
 
-        $e_pass = file_get_contents('../../f-e-pass.txt', true);
-        $e_pass = file_get_contents('../../e-pass.txt', true);
+        $pass = file_get_contents('../../pass.txt', true);
+        $e_pass = file_get_contents('../../p-e-pass.txt', true);
 
         //connect to database
         try {
-            $connectionPDO = new PDO('mysql:host=localhost;dbname=pbsclp_pbsclp', 'pbsclp', $e_pass);
+            $connectionPDO = new PDO('mysql:host=localhost;dbname=pbsclp_pbsclp', 'pbsclp', $pass);
             $connectionPDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch(PDOException $e) {
             exit('*database_connection_error*');
@@ -68,7 +68,7 @@
 
             $mail = new PHPMailer();
             $mail->CharSet =  "utf-8";
-            $mail->IsSMTP();
+            // $mail->IsSMTP();
             
             $mail->SMTPAuth = true; // enable SMTP authentication
 
