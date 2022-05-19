@@ -68,7 +68,7 @@
 
             $mail = new PHPMailer();
             $mail->CharSet =  "utf-8";
-            // $mail->IsSMTP();
+            $mail->IsSMTP();
             
             $mail->SMTPAuth = true; // enable SMTP authentication
 
