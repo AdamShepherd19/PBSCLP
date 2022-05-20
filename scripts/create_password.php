@@ -91,10 +91,11 @@
             $message = file_get_contents('../email_templates/create_password_email_template.html');
             $message = str_replace('%link%', $link, $message);
             $mail->MsgHTML($message);
-
+            $mail->AddEmbeddedImage('../images/pbslogo.png', 'pbslogo');
+            
             $mail->AltBody = 'Click on this link to choose the password for your new account https://pbsclp.info/pages/change_password.php?key='.$email.'&token='.$token.'';
 
-            $mail->AddEmbeddedImage('../images/pbslogo.png', 'pbslogo');
+            
 
             if($mail->Send())
             {
