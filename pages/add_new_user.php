@@ -157,15 +157,18 @@
                     <!-- list of courses  -->
                     <tr id="course-list">
                         <td class="caption">Courses:</td>
-                        <td>
-                            <input type="checkbox" id="cid-1" class="pbs-form-check-box" value="course 1">
+                        <td id='course-list-checkboxes'>
+
+                            <!-- courses fetched from js -->
+
+                            <!-- <input type="checkbox" id="cid-1" class="pbs-form-check-box" value="course 1">
                             <label for="course1">Course 1</label><br>
 
                             <input type="checkbox" id="cid-2" class="pbs-form-check-box" value="course 2">
                             <label for="course2">Course 2</label><br>
 
                             <input type="checkbox" id="cid-3" class="pbs-form-check-box" value="course 3">
-                            <label for="course3">Course 3</label><br>
+                            <label for="course3">Course 3</label><br> -->
                         </td>
                     </tr>
                 </table>
@@ -186,6 +189,28 @@
                 // action for cancel button
                 $("#cancel").on('click', function(){
                     window.location.replace('manage_users.php');
+                });
+
+                // retrieve list of courses
+                $.ajax({
+                    url: '../scripts/get_all_courses.php',
+                    type: 'get',
+                    dataType: 'JSON',
+                    success: function(response) {
+                        //check if there are no courses
+                        if(response.includes("*warning_no_courses_found*")){
+                            console.log("no courses found");
+                        } else {
+                            //add courses to dom if found
+                            $("#courses").html("");
+                            for (let i = 0; i < response.length; i++) {
+                                let output = '<input type="checkbox" id="cid-' + response[i].course_id + '" class="pbs-form-check-box" value="' + response[i].course_name + '">' + 
+                                '<label for="cid-' + response[i].course_id + '">' + response[i].course_name + '</label><br>';
+
+                                $("#course-list-checkboxes").append(output);
+                            }
+                        }
+                    }
                 });
                 
                 // 
@@ -213,9 +238,15 @@
                     var contact_number = $('#contact-number').val();
                     var organisation = $('#organisation').val();
                     var account_type = $('#account-type').val(); 
-                    var list_of_courses = $("#course-list input:checkbox:checked").map(function(){
-                        return $(this).attr('id').split(/[-]+/).pop();
-                    }).get();
+                    if(account_type == "practitioner") {
+                        var list_of_courses = $("#course-list input:checkbox:checked").map(function(){
+                            return $(this).attr('id').split(/[-]+/).pop();
+                        }).get();
+                    } else if (account_type == "administrator") {
+                        // var list_of_courses = 
+                        // all courses
+                    }
+                    
 
                     //check data not empty
                     if(firstname == "" || lastname == "" || email == "" || contact_number == "" || organisation == ""){
