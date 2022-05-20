@@ -29,7 +29,7 @@
     if(isset($_POST['emailPHP'])) {
 
         $pass = file_get_contents('../../pass.txt', true);
-        $e_pass = file_get_contents('../../e-pass.txt', true);
+        $e_pass = file_get_contents('../../p-e-pass.txt', true);
 
         //connect to database
         try {
@@ -51,7 +51,7 @@
             $name = $data['firstname'] . $data['lastname'];
 
             $token = md5($email).rand(10,9999);
-            $expFormat = mktime(date("H"), date("i"), date("s"), date("m") ,date("d")+1, date("Y"));
+            $expFormat = mktime(date("H"), date("i"), date("s"), date("m") ,date("d")+2, date("Y"));
             $expDate = date("Y-m-d H:i:s",$expFormat);
 
             $sql = "UPDATE users set reset_link_token=:token, exp_date=:expDate WHERE email=:email";
@@ -64,7 +64,7 @@
                 exit("*failed_to_create_token*");
             }
             
-            $link = "<a href='https://pbsclp.info/pages/change_password.php?key=".$email."&token=".$token."'>Click To Reset password</a>";
+            $link = "<a href='https://pbsclp.info/pages/change_password.php?key=".$email."&token=".$token."'>Click To Set Password</a>";
 
             $mail = new PHPMailer();
             $mail->CharSet =  "utf-8";
@@ -87,9 +87,9 @@
             $mail->Subject  =  'Set Password';
             $mail->IsHTML(true);
 
-            $mail->Body    = '<h1> Choose a Password </h1> <br><br>Click On This Link to choose the password for your new account: ' . $link . '';
+            $mail->Body    = '<h1> Choose a Password </h1> <br><br>Please click on this link to choose the password for your new account: ' . $link . '';
 
-            $mail->AltBody = 'Click On This Link to choose the password for your new account https://pbsclp.info/pages/change_password.php?key='.$email.'&token='.$token.'';
+            $mail->AltBody = 'Click on this link to choose the password for your new account https://pbsclp.info/pages/change_password.php?key='.$email.'&token='.$token.'';
 
             if($mail->Send())
             {

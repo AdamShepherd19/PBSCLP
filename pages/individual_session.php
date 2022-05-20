@@ -109,37 +109,43 @@
                     window.location.href = 'upload_new_video.php?sid=' + session_id;
                 });
 
-                var any_videos = false;
+                
 
                 //get videos
-                $.ajax({
-                    url: '../scripts/get_videos.php',
-                    type: 'post',
-                    dataType: 'JSON',
-                    data: {
-                        session_idPHP: session_id
-                    },
-                    success: function(response) {
-                        if (response.includes("*warning_no_videos_found*")) {
-                            any_videos = false;
-                        } else if(response.includes("*user_not_authorised_on_this_course*")) {
-                            var message = "<div class='card'><h4 class='card-header'> You are not authorised to access this course material.</div>"
+                var any_videos = function () {
+                    var temp = null;
+                    $.ajax({
+                        url: '../scripts/get_videos.php',
+                        async: false,
+                        type: 'post',
+                        dataType: 'JSON',
+                        data: {
+                            session_idPHP: session_id
+                        },
+                        success: function(response) {
+                            if (response.includes("*warning_no_videos_found*")) {
+                                temp = false;
+                            } else if(response.includes("*user_not_authorised_on_this_course*")) {
+                                var message = "<div class='card'><h4 class='card-header'> You are not authorised to access this course material.</div>"
 
-                            $(".inner-wrapper").html(message);
-                        } else {
-                            any_videos = true;
-                            for(var x = 0; x < response.length; x++) {
+                                $(".inner-wrapper").html(message);
+                            } else {
+                                temp = true;
+                                for(var x = 0; x < response.length; x++) {
 
-                                var message = '<a href="../pages/video.php?video_id=' + response[x].video_id + '"><div class="file-card card" id="vid-' + response[x].video_id + '">' +
-                                    '<div class="card-body">' +
-                                        '<h5 class="filename_header">' + response[x].video_name + '</h5>' +
-                                    '</div></div></a>';
+                                    var message = '<a href="../pages/video.php?video_id=' + response[x].video_id + '"><div class="file-card card" id="vid-' + response[x].video_id + '">' +
+                                        '<div class="card-body">' +
+                                            '<h5 class="filename_header">' + response[x].video_name + '</h5>' +
+                                        '</div></div></a>';
 
-                                $(".inner-wrapper").append(message);
+                                    $(".inner-wrapper").append(message);
+                                }
                             }
+                            
                         }
-                    }
-                });
+                    });
+                    return temp;
+                }();
 
                 //get other files
                 $.ajax({
@@ -154,6 +160,8 @@
                             var message = "<div class='card'><h4 class='card-header'> There are no supporting files relating to this session yet!</div>"
 
                             $(".inner-wrapper").html(message);
+                        } else if (response.includes("*warning_no_files_found*") && any_videos) {
+                            //do nothing if there are videos and no files - videos will be displayed
                         } else if(response.includes("*user_not_authorised_on_this_course*")) {
                             var message = "<div class='card'><h4 class='card-header'> You are not authorised to access this course material.</div>"
 

@@ -36,6 +36,17 @@
         $contact_number = $_POST['contact_numberPHP'];
         $organisation = $_POST['organisationPHP'];
 
+        //check if email exists
+        $checkEmailQuery = "SELECT user_id FROM users WHERE email=? LIMIT 1";
+        $stmt = $connectionPDO->prepare($checkEmailQuery);
+        $stmt->execute([$email]);
+        $email_result = $stmt->fetch();
+
+        if ($email_result) {
+            exit("*email_already_exists*");
+        }
+
+
         // query database and insert the new announcement into the announcements table
         $sql = "UPDATE users SET firstname=:firstname, lastname=:lastname, email=:email, organisation=:organisation, contact_number=:contact_number WHERE user_id=:user_id";
         $stmt = $connectionPDO->prepare($sql);
@@ -43,20 +54,34 @@
         //check to see if the insert was successful
         if ($stmt->execute(['firstname' => $firstname, 'lastname' => $lastname, 'email' => $email, 'organisation' => $organisation, 'contact_number' => $contact_number, 'user_id' => $user_id])) {
             echo 'profile updated';
+            $_SESSION['firstname'] = $firstname;
+            $_SESSION['lastname'] = $lastname;
+            $_SESSION['email'] = $email;
         } else {
             exit('Error: ' . $connection->error);
         }
 
-        if (isset($_POST['new_list_of_coursesPHP'])) {
+        if (isset($_POST['new_list_of_coursesPHP']) || isset($_POST['old_list_of_coursesPHP'])) {
             // difference between old and new = to be removed
             // difference between new and old = to be added
 
             $new_list_of_courses = $_POST['new_list_of_coursesPHP'];
             $old_list_of_courses = $_POST['old_list_of_coursesPHP'];
 
-            $courses_to_add = array_values(array_diff($new_list_of_courses, $old_list_of_courses));
-            $courses_to_remove = array_values(array_diff($old_list_of_courses, $new_list_of_courses));
+            if ($old_list_of_courses != null) {
+                $courses_to_add = array_values(array_diff($new_list_of_courses, $old_list_of_courses));
+            } else {
+                $courses_to_add = $new_list_of_courses;
+            }
 
+            if ($new_list_of_courses != null) {
+                $courses_to_remove = array_values(array_diff($old_list_of_courses, $new_list_of_courses));
+            } else {
+                $courses_to_remove = $old_list_of_courses;
+            }
+
+            print_r($courses_to_remove);
+            
             if(count($courses_to_remove) > 0){
                 $courses_to_remove_string = "";
                 for ($x = 0; $x < count($courses_to_remove); $x++) {
@@ -67,8 +92,8 @@
                 }
 
                 $remove_query = "DELETE FROM users_on_courses WHERE user_id=? AND course_id IN (" . $courses_to_remove_string . ");";
+                echo $remove_query;
                 $stmt = $connectionPDO->prepare($remove_query);
-                
                 if (!$stmt->execute([$user_id])) {
                     exit('Error: ' . $connection->error);
                 }
@@ -84,6 +109,8 @@
                         $insertquery .= ";";
                     }
                 }
+
+                echo $insertquery;
 
                 $stmt = $connectionPDO->prepare($insertquery);
                 
