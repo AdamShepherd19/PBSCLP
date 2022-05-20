@@ -48,9 +48,17 @@
         $mail->Subject  =  'Forum Post Update';
         $mail->IsHTML(true);
 
-        $mail->Body    = '<h1> New Forum Post </h1> <br> A new post has been submitted for approval. Please log in to the PBSCLP platform to review the new post. <br><br> <h4> Post Title </h4>' . $post_title . '<br><br> <h4> Post Content </h4>' . $post_content;
+        $message = file_get_contents('../email_templates/new_post_email_template.html');
+        $message = str_replace('%post_title%', $post_title, $message);
+        $message = str_replace('%post_content%', $post_content, $message);
+        
+        $mail->MsgHTML($message);
+
+        $mail->AddEmbeddedImage('../images/pbslogo.png', 'pbslogo');
 
         $mail->AltBody = 'New Forum Post. A new post has been submitted for approval. Please log in to the PBSCLP platform to review the new post. Post Title: ' . $post_title . 'Post Content: ' . $post_content;
+
+        
 
         if($mail->Send())
         {
