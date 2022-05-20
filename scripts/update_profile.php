@@ -61,7 +61,7 @@
             exit('Error: ' . $connection->error);
         }
 
-        if (isset($_POST['new_list_of_coursesPHP'])) {
+        if (isset($_POST['new_list_of_coursesPHP']) || isset($_POST['new_list_of_coursesPHP'])) {
             // difference between old and new = to be removed
             // difference between new and old = to be added
 
