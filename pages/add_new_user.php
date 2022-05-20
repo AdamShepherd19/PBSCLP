@@ -222,7 +222,6 @@
                 }();
 
                 console.log(list_of_courses)
-                
                 // 
                 $('#account-type').change( function () {
                     if($('#account-type').val() == "administrator") {
