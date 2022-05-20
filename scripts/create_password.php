@@ -87,9 +87,14 @@
             $mail->Subject  =  'Set Password';
             $mail->IsHTML(true);
 
-            $mail->Body    = '<h1> Choose a Password </h1> <br><br>Please click on this link to choose the password for your new account: ' . $link . '';
+
+            $message = file_get_contents('../email_templates/create_password_email_template.html');
+            $message = str_replace('%link%', $link, $message);
+            $mail->MsgHTML($message);
 
             $mail->AltBody = 'Click on this link to choose the password for your new account https://pbsclp.info/pages/change_password.php?key='.$email.'&token='.$token.'';
+
+            $mail->AddEmbeddedImage('../images/pbslogo.png', 'pbslogo');
 
             if($mail->Send())
             {
