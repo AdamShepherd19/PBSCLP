@@ -192,7 +192,7 @@
                 });
 
                 // retrieve list of courses
-                var list_of_courses = function () {
+                var list_of_all_courses = function () {
                     var temp = null;
 
                     $.ajax({
@@ -221,7 +221,7 @@
                     return temp;
                 }();
 
-                console.log(list_of_courses)
+                console.log(list_of_all_courses)
                 // 
                 $('#account-type').change( function () {
                     if($('#account-type').val() == "administrator") {
@@ -247,14 +247,21 @@
                     var contact_number = $('#contact-number').val();
                     var organisation = $('#organisation').val();
                     var account_type = $('#account-type').val(); 
+
+                    var list_of_courses;
+                    
                     if(account_type == "practitioner") {
-                        var list_of_courses = $("#course-list input:checkbox:checked").map(function(){
+                        list_of_courses = $("#course-list input:checkbox:checked").map(function(){
                             return $(this).attr('id').split(/[-]+/).pop();
                         }).get();
                     } else if (account_type == "administrator") {
                         // var list_of_courses = 
                         // all courses
+
+                        list_of_courses = list_of_all_courses.map( a => a.id);
                     }
+
+                    console.log(list_of_courses);
                     
 
                     //check data not empty
