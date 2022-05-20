@@ -79,6 +79,8 @@
             } else {
                 $courses_to_remove = $old_list_of_courses;
             }
+
+            print_r($courses_to_remove);
             
             if(count($courses_to_remove) > 0){
                 $courses_to_remove_string = "";
@@ -90,7 +92,7 @@
                 }
 
                 $remove_query = "DELETE FROM users_on_courses WHERE user_id=? AND course_id IN (" . $courses_to_remove_string . ");";
-                
+                echo $remove_query
                 $stmt = $connectionPDO->prepare($remove_query);
                 if (!$stmt->execute([$user_id])) {
                     exit('Error: ' . $connection->error);
