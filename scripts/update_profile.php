@@ -42,6 +42,7 @@
         $result = $stmt->execute([$email]);
 
         if ($result) {
+            echo $result;
             exit("*email_already_exists*");
         }
 
