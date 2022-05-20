@@ -187,85 +187,87 @@
                     $("#email-address").html('<input type="text" id="new-email" class="pbs-form-text-box" value="' + email + '"/>');
                     $("#contact-number").html('<input type="text" id="new-contact-number" class="pbs-form-text-box" value="' + contact_number + '"/>');
                     $("#organisation").html('<input type="text" id="new-organisation" class="pbs-form-text-box" value="' + organisation + '"/>');
-                });
 
-                //cancel button action
-                $("#cancel-edit").on('click', function() {
-                    //toggle visibility of buttons
-                    $("#cancel-edit").hide();
-                    $("#save-profile").hide();
-                    $("#edit-profile").show();
-                    $("#cancel-profile").show();
+                    //cancel button action
+                    $("#cancel-edit").on('click', function() {
+                        //toggle visibility of buttons
+                        $("#cancel-edit").hide();
+                        $("#save-profile").hide();
+                        $("#edit-profile").show();
+                        $("#cancel-profile").show();
 
-                    //set profile details to original values
-                    $("#name").html(name);
-                    $("#email-address").html(email);
-                    $("#contact-number").html(contact_number);
-                    $("#organisation").html(organisation);
-                    $("#courses").html('<ul id="course-list"></ul>');
-                    //display list of courses
-                    for (let x = 0; x < list_of_course_id.length; x++){
-                        let output = "<li id='cid-" + list_of_course_id[x] + "'>" + list_of_course_names[x] + "</li>";
-                        $('#course-list').append(output);
-                    }
+                        //set profile details to original values
+                        $("#name").html(name);
+                        $("#email-address").html(email);
+                        $("#contact-number").html(contact_number);
+                        $("#organisation").html(organisation);
+                        $("#courses").html('<ul id="course-list"></ul>');
+                        //display list of courses
+                        for (let x = 0; x < list_of_course_id.length; x++){
+                            let output = "<li id='cid-" + list_of_course_id[x] + "'>" + list_of_course_names[x] + "</li>";
+                            $('#course-list').append(output);
+                        }
 
-                });
+                    });
 
-                //save button action
-                $("#save-profile").on('click', function() {
-                    //retrieve forum values after updated
-                    var new_name = $("#new-name").val();
-                    var new_email = $("#new-email").val();
-                    var new_contact_number = $("#new-contact-number").val();
-                    var new_organisation = $("#new-organisation").val();
+                    //save button action
+                    $("#save-profile").on('click', function() {
+                        //retrieve forum values after updated
+                        var new_name = $("#new-name").val();
+                        var new_email = $("#new-email").val();
+                        var new_contact_number = $("#new-contact-number").val();
+                        var new_organisation = $("#new-organisation").val();
 
-                    //retrieve list of checked courses
-                    var new_list_of_courses = $("#courses input:checkbox:checked").map(function(){
-                        return $(this).attr('id').split(/[-]+/).pop();
-                    }).get();
+                        //retrieve list of checked courses
+                        var new_list_of_courses = $("#courses input:checkbox:checked").map(function(){
+                            return $(this).attr('id').split(/[-]+/).pop();
+                        }).get();
 
-                    //name string handling to separate first and last names
-                    var index = new_name.lastIndexOf(" ");
-                    var lastname = new_name.slice(index + 1);
-                    var firstname = new_name.substring(0, index);
+                        //name string handling to separate first and last names
+                        var index = new_name.lastIndexOf(" ");
+                        var lastname = new_name.slice(index + 1);
+                        var firstname = new_name.substring(0, index);
 
-                    //function to update database with new profile details
-                    $.ajax({
-                        method: 'POST',
-                        url: "../scripts/update_profile.php",
-                        data: {
-                            //new profile information passed to PHP script
-                            user_idPHP: user_id_to_edit,
-                            firstnamePHP: firstname,
-                            lastnamePHP: lastname,
-                            emailPHP: new_email,
-                            contact_numberPHP: new_contact_number,
-                            organisationPHP: new_organisation,
-                            old_list_of_coursesPHP: list_of_course_id,
-                            new_list_of_coursesPHP: new_list_of_courses
-                        },
-                        success: function (response) {
-                            //check if the php execution was successful and the data was added to the db
-                            if (response.includes("*account_updated_successfully*")){
-                                //replace html with success message and button to return to landing page
-                                var successHTML = "<h3>Your profile was updated succesfully. Please click the button below to return to the user management page.</h3><br> " + "<br><input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>";
+                        //function to update database with new profile details
+                        $.ajax({
+                            method: 'POST',
+                            url: "../scripts/update_profile.php",
+                            data: {
+                                //new profile information passed to PHP script
+                                user_idPHP: user_id_to_edit,
+                                firstnamePHP: firstname,
+                                lastnamePHP: lastname,
+                                emailPHP: new_email,
+                                contact_numberPHP: new_contact_number,
+                                organisationPHP: new_organisation,
+                                old_list_of_coursesPHP: list_of_course_id,
+                                new_list_of_coursesPHP: new_list_of_courses
+                            },
+                            success: function (response) {
+                                //check if the php execution was successful and the data was added to the db
+                                if (response.includes("*account_updated_successfully*")){
+                                    //replace html with success message and button to return to landing page
+                                    var successHTML = "<h3>Your profile was updated succesfully. Please click the button below to return to the user management page.</h3><br> " + "<br><input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>";
 
-                                $('.main-content').html(successHTML);
+                                    $('.main-content').html(successHTML);
 
-                            } else {
-                                //display error message if the php could not be executed
-                                $('.main-content').html("<h3> There was an error processing your request. Please try again </h3><br>Error" + response +"<br><input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>");
-                            }
+                                } else {
+                                    //display error message if the php could not be executed
+                                    $('.main-content').html("<h3> There was an error processing your request. Please try again </h3><br>Error" + response +"<br><input type='button' id='return' class='pbs-button pbs-button-green' value='Confirm'>");
+                                }
 
-                            // onclick function for new button to return to landing page
-                            $("#return").on('click', function(){
-                                window.location.replace('manage_users.php');
-                            });
+                                // onclick function for new button to return to landing page
+                                $("#return").on('click', function(){
+                                    window.location.replace('manage_users.php');
+                                });
 
-                        },
-                        datatype: 'text'
+                            },
+                            datatype: 'text'
+                        });
                     });
                 });
+
+                
 
                 //fetch user profile details from database
                 $.ajax({
