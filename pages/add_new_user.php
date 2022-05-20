@@ -192,26 +192,36 @@
                 });
 
                 // retrieve list of courses
-                $.ajax({
-                    url: '../scripts/get_all_courses.php',
-                    type: 'get',
-                    dataType: 'JSON',
-                    success: function(response) {
-                        //check if there are no courses
-                        if(response.includes("*warning_no_courses_found*")){
-                            console.log("no courses found");
-                        } else {
-                            //add courses to dom if found
-                            $("#courses").html("");
-                            for (let i = 0; i < response.length; i++) {
-                                let output = '<input type="checkbox" id="cid-' + response[i].course_id + '" class="pbs-form-check-box" value="' + response[i].course_name + '">' + 
-                                '<label for="cid-' + response[i].course_id + '">' + response[i].course_name + '</label><br>';
+                var list_of_courses = function () {
+                    var temp = null;
 
-                                $("#course-list-checkboxes").append(output);
+                    $.ajax({
+                        url: '../scripts/get_all_courses.php',
+                        async: false,
+                        type: 'get',
+                        dataType: 'JSON',
+                        success: function(response) {
+                            //check if there are no courses
+                            if(response.includes("*warning_no_courses_found*")){
+                                console.log("no courses found");
+                            } else {
+                                temp = response;
+                                //add courses to dom if found
+                                $("#courses").html("");
+                                for (let i = 0; i < response.length; i++) {
+                                    let output = '<input type="checkbox" id="cid-' + response[i].course_id + '" class="pbs-form-check-box" value="' + response[i].course_name + '">' + 
+                                    '<label for="cid-' + response[i].course_id + '">' + response[i].course_name + '</label><br>';
+
+                                    $("#course-list-checkboxes").append(output);
+                                }
                             }
                         }
-                    }
-                });
+                    });
+
+                    return temp;
+                }();
+
+                console.log(list_of_courses)
                 
                 // 
                 $('#account-type').change( function () {
