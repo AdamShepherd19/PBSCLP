@@ -48,7 +48,9 @@
         $mail->Subject  =  'Forum Post Feedback';
         $mail->IsHTML(true);
 
-        $mail->Body    = '<h1> Forum Post Feedback </h1> <br> A forum post you submitted has received some feedback. Please log into the PBSCLP platform to review the post.';
+        $message = file_get_contents('../email_templates/post_feedback_email_template.html');
+        $mail->MsgHTML($message);
+        $mail->AddEmbeddedImage('../images/pbslogo.png', 'pbslogo');
 
         $mail->AltBody = 'New Forum Post. A new post has been submitted for approval. Please log in to the PBSCLP platform to review the new post.';
 
