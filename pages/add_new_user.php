@@ -249,7 +249,7 @@
                     var account_type = $('#account-type').val(); 
 
                     var list_of_courses;
-                    
+
                     if(account_type == "practitioner") {
                         list_of_courses = $("#course-list input:checkbox:checked").map(function(){
                             return $(this).attr('id').split(/[-]+/).pop();
@@ -258,7 +258,7 @@
                         // var list_of_courses = 
                         // all courses
 
-                        list_of_courses = list_of_all_courses.map( a => a.id);
+                        list_of_courses = list_of_all_courses.map( a => a.course_id);
                     }
 
                     console.log(list_of_courses);
