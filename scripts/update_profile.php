@@ -36,6 +36,16 @@
         $contact_number = $_POST['contact_numberPHP'];
         $organisation = $_POST['organisationPHP'];
 
+        //check if email exists
+        $checkEmailQuery = "SELECT user_id FROM users WHERE email=?";
+        $stmt = $connectionPDO->prepare($checkEmailQuery);
+        $result = $stmt->execute([$email]);
+
+        if ($result) {
+            exit("*email_already_exists*");
+        }
+
+
         // query database and insert the new announcement into the announcements table
         $sql = "UPDATE users SET firstname=:firstname, lastname=:lastname, email=:email, organisation=:organisation, contact_number=:contact_number WHERE user_id=:user_id";
         $stmt = $connectionPDO->prepare($sql);

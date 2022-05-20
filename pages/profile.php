@@ -162,6 +162,8 @@
 
                                 $('.main-content').html(successHTML);
 
+                            } else if (response.includes("*email_already_exists*")) {
+                                alert("That email is already exists. Please enter a different email address or contact a system administrator.");
                             } else {
                                 //display error message if the php could not be executed
                                 $('.main-content').html("<h3> There was an error processing your request. Please try again </h3><br>Error" + response +
