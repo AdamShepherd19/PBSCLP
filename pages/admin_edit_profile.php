@@ -204,7 +204,7 @@
                     $("#organisation").html(organisation);
                     $("#courses").html('<ul id="course-list"></ul>');
                     //display list of courses
-                    if (list_of_course_id.length != null) {
+                    if (list_of_course_id != null) {
                         for (let x = 0; x < list_of_course_id.length; x++){
                             let output = "<li id='cid-" + list_of_course_id[x] + "'>" + list_of_course_names[x] + "</li>";
                             $('#course-list').append(output);
@@ -297,7 +297,7 @@
                             $('#email-address').text(email);
                             $('#contact-number').text(contact_number);
                             $('#organisation').text(organisation);
-                            if (list_of_course_id.length != null) {
+                            if (list_of_course_id != null) {
                                 for (let x = 0; x < list_of_course_id.length; x++){
                                     let output = "<li id='cid-" + list_of_course_id[x] + "'>" + list_of_course_names[x] + "</li>";
                                     $('#course-list').append(output);
