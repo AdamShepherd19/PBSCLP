@@ -67,8 +67,14 @@
 
             $new_list_of_courses = $_POST['new_list_of_coursesPHP'];
             $old_list_of_courses = $_POST['old_list_of_coursesPHP'];
+            if ($old_list_of_courses != null) {
+                $courses_to_add = array_values(array_diff($new_list_of_courses, $old_list_of_courses));
+            } else {
+                $courses_to_add = $new_list_of_courses;
+            }
 
-            $courses_to_add = array_values(array_diff($new_list_of_courses, $old_list_of_courses));
+            // $courses_to_add = array_values(array_diff($new_list_of_courses, $old_list_of_courses));
+            echo $courses_to_add;
             $courses_to_remove = array_values(array_diff($old_list_of_courses, $new_list_of_courses));
 
             if(count($courses_to_remove) > 0){
