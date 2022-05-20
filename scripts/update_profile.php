@@ -91,7 +91,7 @@
     
                     $remove_query = "DELETE FROM users_on_courses WHERE user_id=? AND course_id IN (" . $courses_to_remove_string . ");";
                 } else {
-                    $remove_query = "DELETE FROM users_on_courses WHERE user_id=?);";
+                    $remove_query = "DELETE FROM users_on_courses WHERE user_id=?;";
                 }
                 
                 $stmt = $connectionPDO->prepare($remove_query);
