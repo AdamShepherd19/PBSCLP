@@ -160,6 +160,8 @@
                             var message = "<div class='card'><h4 class='card-header'> There are no supporting files relating to this session yet!</div>"
 
                             $(".inner-wrapper").html(message);
+                        } else if (response.includes("*warning_no_files_found*") && any_videos) {
+                            
                         } else if(response.includes("*user_not_authorised_on_this_course*")) {
                             var message = "<div class='card'><h4 class='card-header'> You are not authorised to access this course material.</div>"
 
