@@ -161,7 +161,7 @@
 
                             $(".inner-wrapper").html(message);
                         } else if (response.includes("*warning_no_files_found*") && any_videos) {
-                            
+                            //do nothing if there are videos and no files - videos will be displayed
                         } else if(response.includes("*user_not_authorised_on_this_course*")) {
                             var message = "<div class='card'><h4 class='card-header'> You are not authorised to access this course material.</div>"
 
