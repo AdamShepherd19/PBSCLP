@@ -99,6 +99,8 @@
                     }
                 }
 
+                echo $insertquery;
+
                 $stmt = $connectionPDO->prepare($insertquery);
                 
                 if (!$stmt->execute()) {
