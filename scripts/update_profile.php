@@ -37,13 +37,12 @@
         $organisation = $_POST['organisationPHP'];
 
         //check if email exists
-        $checkEmailQuery = "SELECT user_id FROM users WHERE email=?";
+        $checkEmailQuery = "SELECT user_id FROM users WHERE email=? LIMIT 1";
         $stmt = $connectionPDO->prepare($checkEmailQuery);
-        $result = $stmt->execute([$email]);
+        $stmt->execute([$email]);
+        $email_result = $stmt->fetch();
 
-        if ($result) {
-            echo $email;
-            echo $result;
+        if ($email_result) {
             exit("*email_already_exists*");
         }
 
