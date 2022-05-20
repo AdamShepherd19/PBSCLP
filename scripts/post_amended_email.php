@@ -51,6 +51,12 @@
 
         $mail->Body    = '<h1> Amended Forum Post </h1> <br> A post has been amended based on administrator feedback. Please log in to the PBSCLP platform to review the amended post. <br><br> <h4> New Title </h4>' . $post_title . '<br><br> <h4> New Content </h4>' . $post_content;
 
+        $message = file_get_contents('../email_templates/post_amended_email_template.html');
+        $message = str_replace('%post_title%', $post_title, $message);
+        $message = str_replace('%post_content%', $post_content, $message);
+        $mail->MsgHTML($message);
+        $mail->AddEmbeddedImage('../images/pbslogo.png', 'pbslogo');
+
         $mail->AltBody = 'Amended Forum Post. A post has been amended based on administrator feedback. Please log in to the PBSCLP platform to review the amended post. New Title: ' . $post_title . 'New Content: ' . $post_content;
 
         if($mail->Send())

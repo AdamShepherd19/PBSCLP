@@ -86,7 +86,10 @@
             $mail->Subject  =  'Reset Password';
             $mail->IsHTML(true);
 
-            $mail->Body    = '<h1> Password Reset Email </h1> <br><br>Click On This Link to reset your password: ' . $link . '';
+            $message = file_get_contents('../email_templates/password_reset_email_template.html');
+            $message = str_replace('%link%', $link, $message);
+            $mail->MsgHTML($message);
+            $mail->AddEmbeddedImage('../images/pbslogo.png', 'pbslogo');
 
             $mail->AltBody = 'Click On This Link to Reset Password https://pbsclp.info/pages/change_password.php?key='.$email.'&token='.$token.'';
 
