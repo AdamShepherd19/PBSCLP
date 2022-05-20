@@ -76,6 +76,8 @@
 
             if ($new_list_of_courses != null) {
                 $courses_to_remove = array_values(array_diff($old_list_of_courses, $new_list_of_courses));
+            } else {
+                $courses_to_remove = null;
             }
             
 
