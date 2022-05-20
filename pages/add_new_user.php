@@ -221,8 +221,6 @@
                     return temp;
                 }();
 
-                console.log(list_of_all_courses)
-                // 
                 $('#account-type').change( function () {
                     if($('#account-type').val() == "administrator") {
                         $('#course-list').hide();
@@ -230,14 +228,6 @@
                         $('#course-list').show();
                     }
                 });
-
-                // $("#test-button").click(function(event){
-                //     event.preventDefault();
-                //     var searchIDs = $("#course-list input:checkbox:checked").map(function(){
-                //         return $(this).val();
-                //     }).get();
-                //     console.log(searchIDs);
-                // });
 
                 $("#add-new-user").on('click', function(){
                     //retrieve data from form
@@ -249,19 +239,17 @@
                     var account_type = $('#account-type').val(); 
 
                     var list_of_courses;
-
-                    if(account_type == "practitioner") {
-                        list_of_courses = $("#course-list input:checkbox:checked").map(function(){
-                            return $(this).attr('id').split(/[-]+/).pop();
-                        }).get();
-                    } else if (account_type == "administrator") {
-                        // var list_of_courses = 
-                        // all courses
-
-                        list_of_courses = list_of_all_courses.map( a => a.course_id);
+                    if (list_of_all_courses != null) {
+                        if(account_type == "practitioner") {
+                            list_of_courses = $("#course-list input:checkbox:checked").map(function(){
+                                return $(this).attr('id').split(/[-]+/).pop();
+                            }).get();
+                        } else if (account_type == "administrator") {
+                            list_of_courses = list_of_all_courses.map( a => a.course_id);
+                        }
+                    } else {
+                        list_of_courses = null;
                     }
-
-                    console.log(list_of_courses);
                     
 
                     //check data not empty
