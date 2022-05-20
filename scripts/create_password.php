@@ -64,7 +64,7 @@
                 exit("*failed_to_create_token*");
             }
             
-            $link = "<a href='https://pbsclp.info/pages/change_password.php?key=".$email."&token=".$token."'>Click To Reset password</a>";
+            $link = "<a href='https://pbsclp.info/pages/change_password.php?key=".$email."&token=".$token."'>Click To Set Password</a>";
 
             $mail = new PHPMailer();
             $mail->CharSet =  "utf-8";
@@ -87,9 +87,9 @@
             $mail->Subject  =  'Set Password';
             $mail->IsHTML(true);
 
-            $mail->Body    = '<h1> Choose a Password </h1> <br><br>Click On This Link to choose the password for your new account: ' . $link . '';
+            $mail->Body    = '<h1> Choose a Password </h1> <br><br>Please click on this link to choose the password for your new account: ' . $link . '';
 
-            $mail->AltBody = 'Click On This Link to choose the password for your new account https://pbsclp.info/pages/change_password.php?key='.$email.'&token='.$token.'';
+            $mail->AltBody = 'Click on this link to choose the password for your new account https://pbsclp.info/pages/change_password.php?key='.$email.'&token='.$token.'';
 
             if($mail->Send())
             {
