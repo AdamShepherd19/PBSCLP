@@ -86,7 +86,7 @@
             $mail->Subject  =  'Reset Password';
             $mail->IsHTML(true);
 
-            $message = file_get_contents('../email_templates/password_reset_password_email_template.html');
+            $message = file_get_contents('../email_templates/password_reset_email_template.html');
             $message = str_replace('%link%', $link, $message);
             $mail->MsgHTML($message);
             $mail->AddEmbeddedImage('../images/pbslogo.png', 'pbslogo');
