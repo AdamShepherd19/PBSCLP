@@ -77,7 +77,7 @@
             if ($new_list_of_courses != null) {
                 $courses_to_remove = array_values(array_diff($old_list_of_courses, $new_list_of_courses));
             } else {
-                $courses_to_remove = null;
+                $courses_to_remove = $old_list_of_courses;
             }
             
 
@@ -99,13 +99,6 @@
                     if (!$stmt->execute([$user_id])) {
                         exit('Error: ' . $connection->error);
                     }
-                }
-            } else {
-                $remove_query = "DELETE FROM users_on_courses WHERE user_id=?;";
-
-                $stmt = $connectionPDO->prepare($remove_query);
-                if (!$stmt->execute([$user_id])) {
-                    exit('Error: ' . $connection->error);
                 }
             }
 
