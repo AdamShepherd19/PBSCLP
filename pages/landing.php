@@ -117,7 +117,7 @@
                     window.location.href = 'new_announcement.php';
                 });
 
-                $("#new-announcement").on('click', function(){
+                $("#emailtestbutton").on('click', function(){
                     window.location.href = '../scripts/sendinblue/register_account.php';
                 });
 
