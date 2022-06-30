@@ -83,6 +83,7 @@
                 <input type="button" id="forum" class="pbs-button pbs-button-white landing-nav-box-button" value="Forum">
                 <input type="button" id="resource-bank" class="pbs-button pbs-button-blue landing-nav-box-button" value="Resource Bank">
                 <input type="button" id="profile" class="pbs-button pbs-button-grey landing-nav-box-button" value="Profile">
+                <input type="button" id="emailtestbutton" class="pbs-button pbs-button-grey landing-nav-box-button" value="testButton">
             </div>
 
         </div>
@@ -114,6 +115,10 @@
 
                 $("#new-announcement").on('click', function(){
                     window.location.href = 'new_announcement.php';
+                });
+
+                $("#new-announcement").on('click', function(){
+                    window.location.href = '../scripts/sendinblue/register_account.php';
                 });
 
                 //https://makitweb.com/return-json-response-ajax-using-jquery-php/

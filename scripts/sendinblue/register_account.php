@@ -6,11 +6,11 @@
 
     $sendSmtpEmail = new \SendinBlue\Client\Model\SendSmtpEmail([
         'subject' => 'from the PHP SDK!',
-        'sender' => ['name' => 'Sendinblue', 'email' => 'contact@sendinblue.com'],
-        'replyTo' => ['name' => 'Sendinblue', 'email' => 'contact@sendinblue.com'],
-        'to' => [[ 'name' => 'Max Mustermann', 'email' => 'example@example.com']],
+        'sender' => ['name' => 'PBSclp Account Setup', 'email' => 'passwordreset@pbsclp.info'],
+        'replyTo' => ['name' => 'PBSclp Account Setup', 'email' => 'passwordreset@pbsclp.info'],
+        'to' => [[ 'name' => 'Adam', 'email' => 'shepherd.adam.2000@gmail.com']],
         'htmlContent' => '<html><body><h1>This is a transactional email {{params.bodyMessage}}</h1></body></html>',
-        'params' => ['bodyMessage' => 'made just for you!']
+        'params' => ['bodyMessage' => 'made just for you! (sendinblue api test)']
     ]);
 
     try {
