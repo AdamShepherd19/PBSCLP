@@ -1,7 +1,7 @@
 <?php
 require_once('../../includes/vendor/autoload.php');
 
-$config = SendinBlue\Client\Configuration::getDefaultConfiguration()->setApiKey('testkey', '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');
+$config = SendinBlue\Client\Configuration::getDefaultConfiguration()->setApiKey('testkey', '');
 
 $apiInstance = new SendinBlue\Client\Api\TransactionalEmailsApi(
     new GuzzleHttp\Client(),
