@@ -10,9 +10,9 @@ $apiInstance = new SendinBlue\Client\Api\TransactionalEmailsApi(
 $sendSmtpEmail = new \SendinBlue\Client\Model\SendSmtpEmail();
 $sendSmtpEmail['subject'] = 'My {{params.subject}}';
 $sendSmtpEmail['htmlContent'] = '<html><body><h1>This is a transactional email {{params.parameter}}</h1></body></html>';
-$sendSmtpEmail['sender'] = array('name' => 'pbsuk', 'email' => 'passwordreset@pbsclp.info');
+$sendSmtpEmail['sender'] = array('name' => 'donald-pbsuk', 'email' => 'dmartin@pbsuk.org');
 $sendSmtpEmail['to'] = array(
-    array('email' => 'shepherd.adam.2000@gmail.com', 'name' => 'Adam')
+    array('email' => 'djm@martell-scot.co.uk', 'name' => 'Donald-martell')
 );
 // $sendSmtpEmail['cc'] = array(
 //     array('email' => 'example2@example2.com', 'name' => 'Janice Doe')
