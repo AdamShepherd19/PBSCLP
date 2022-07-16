@@ -2,7 +2,7 @@
 require_once('../../includes/vendor/autoload.php');
 
 // Configure API key authorization: api-key
-$config = SendinBlue\Client\Configuration::getDefaultConfiguration()->setApiKey('api-key', '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');
+$config = SendinBlue\Client\Configuration::getDefaultConfiguration()->setApiKey('api-key', '');
 
 // Uncomment below line to configure authorization using: partner-key
 // $config = SendinBlue\Client\Configuration::getDefaultConfiguration()->setApiKey('partner-key', 'YOUR_API_KEY');
