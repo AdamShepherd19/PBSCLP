@@ -1,28 +1,23 @@
 <?php
 require_once('../../includes/vendor/autoload.php');
 
-$config = SendinBlue\Client\Configuration::getDefaultConfiguration()->setApiKey('testkey', '');
+// Configure API key authorization: api-key
+$config = SendinBlue\Client\Configuration::getDefaultConfiguration()->setApiKey('api-key', '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');
+
+// Uncomment below line to configure authorization using: partner-key
+// $config = SendinBlue\Client\Configuration::getDefaultConfiguration()->setApiKey('partner-key', 'YOUR_API_KEY');
 
 $apiInstance = new SendinBlue\Client\Api\TransactionalEmailsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$sendSmtpEmail = new \SendinBlue\Client\Model\SendSmtpEmail();
-$sendSmtpEmail['subject'] = 'My {{params.subject}}';
-$sendSmtpEmail['htmlContent'] = '<html><body><h1>This is a transactional email {{params.parameter}}</h1></body></html>';
-$sendSmtpEmail['sender'] = array('name' => 'donald-pbsuk', 'email' => 'dmartin@pbsuk.org');
-$sendSmtpEmail['to'] = array(
-    array('email' => 'djm@martell-scot.co.uk', 'name' => 'Donald-martell')
-);
-// $sendSmtpEmail['cc'] = array(
-//     array('email' => 'example2@example2.com', 'name' => 'Janice Doe')
-// );
-// $sendSmtpEmail['bcc'] = array(
-//     array('email' => 'example@example.com', 'name' => 'John Doe')
-// );
-$sendSmtpEmail['replyTo'] = array('email' => 'passwordreset@pbsclp.info', 'name' => 'pbsuk');
-$sendSmtpEmail['headers'] = array('Some-Custom-Name' => 'unique-id-1234');
-$sendSmtpEmail['params'] = array('parameter' => 'My param value', 'subject' => 'New Subject');
+$sendSmtpEmail = new \SendinBlue\Client\Model\SendSmtpEmail(); // \SendinBlue\Client\Model\SendSmtpEmail | Values to send a transactional email
+$sendSmtpEmail['to'] = array(array('email'=>'niamh.martin@tayside.nhs.scot', 'name'=>'Niamh'));
+$sendSmtpEmail['templateId'] = 1;
+$sendSmtpEmail['params'] = array('name'=>'Niamh', 'surname'=>'Martin');
+$sendSmtpEmail['headers'] = array('X-Mailin-custom'=>'custom_header_1:custom_value_1|custom_header_2:custom_value_2');
 
 try {
     $result = $apiInstance->sendTransacEmail($sendSmtpEmail);
