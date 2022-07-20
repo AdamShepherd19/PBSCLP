@@ -59,7 +59,7 @@
 
             $insertquery = "INSERT INTO users_on_courses (user_id, course_id) VALUES ";
             for ($y = 0; $y < count($list_of_admins); $y++) {
-                $insertquery .= "(" . $$list_of_admins[$y] . ", " . $course_id . ")";
+                $insertquery .= "(" . $list_of_admins[$y] . ", " . $course_id . ")";
                 if ($y < (count($list_of_admins) - 1)) {
                     $insertquery .= ", ";
                 } else {
