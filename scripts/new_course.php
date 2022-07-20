@@ -57,7 +57,23 @@
                 $list_of_admins[] = $list_of_admins_result[$z]['user_id'];
             }
 
-            print_r($list_of_admins);
+            $insertquery = "INSERT INTO users_on_courses (user_id, course_id) VALUES ";
+            for ($y = 0; $y < count($list_of_admins); $y++) {
+                $insertquery .= "(" . $$list_of_admins[$y] . ", " . $course_id . ")";
+                if ($y < (count($list_of_admins) - 1)) {
+                    $insertquery .= ", ";
+                } else {
+                    $insertquery .= ";";
+                }
+            }
+
+            echo $insertquery;
+
+            // $stmt = $connectionPDO->prepare($insertquery);
+            
+            // if (!$stmt->execute()) {
+            //     exit('Error: ' . $connection->error);
+            // }
 
 
             exit('*course_created_successfully*');
@@ -72,21 +88,7 @@
         
 
 
-        // $insertquery = "INSERT INTO users_on_courses (user_id, course_id) VALUES ";
-        // for ($y = 0; $y < count($users_to_add); $y++) {
-        //     $insertquery .= "(" . $$users_to_add[$y] . ", " . $course_id . ")";
-        //     if ($y < (count($users_to_add) - 1)) {
-        //         $insertquery .= ", ";
-        //     } else {
-        //         $insertquery .= ";";
-        //     }
-        // }
-
-        // $stmt = $connectionPDO->prepare($insertquery);
         
-        // if (!$stmt->execute()) {
-        //     exit('Error: ' . $connection->error);
-        // }
 
         $stmt = null;
         $connectionPDO = null;
