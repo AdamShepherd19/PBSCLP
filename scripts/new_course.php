@@ -40,6 +40,17 @@
 
         try {
             $stmt->execute(['name' => $course_name, 'description' => $_POST['descriptionPHP'], 'directory_name' => $directory_name]);
+
+            //get course id
+            $get_course_id_query = "SELECT * FROM courses ORDER BY course_id DESC LIMIT 1";
+            $stmt = $connectionPDO->prepare($get_course_id_query);
+            $stmt->execute();
+            $course_id_result = $stmt->fetch();
+            $course_id = $course_id_result['course_id'];
+
+            echo $course_id;
+
+            
             exit('*course_created_successfully*');
         } catch (Exception $e) {
             rmdir("../../resource_bank/" . $directory_name);
@@ -47,14 +58,7 @@
         }
         
         
-        //get course id
-        $get_course_id_query = "SELECT * FROM courses ORDER BY course_id DESC LIMIT 1";
-        $stmt = $connectionPDO->prepare($get_course_id_query);
-        $stmt->execute();
-        $course_id_result = $stmt->fetch();
-        $course_id = $course_id_result['course_id'];
-
-        echo $course_id;
+        
 
         //get list of admins
         // $get_list_of_admins_query = "SELECT * FROM users WHERE account_type='administrator' ORDER BY user_id ASC";
