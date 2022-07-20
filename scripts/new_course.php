@@ -45,6 +45,38 @@
             rmdir("../../resource_bank/" . $directory_name);
             echo 'Caught exception: ',  $e->getMessage(), "\n";
         }
+        
+        
+        //get course id
+        $get_course_id_query = "SELECT * FROM courses ORDER BY course_id DESC LIMIT 1";
+        $stmt = $connectionPDO->prepare($get_course_id_query);
+        $stmt->execute();
+        $course_id_result = $stmt->fetch();
+        $course_id = $course_id_result['course_id'];
+
+        echo $course_id;
+
+        //get list of admins
+        // $get_list_of_admins_query = "SELECT * FROM users WHERE account_type='administrator' ORDER BY user_id ASC";
+        // $stmt = $connectionPDO->prepare($get_list_of_admins_query);
+        // $stmt->execute();
+
+
+        // $insertquery = "INSERT INTO users_on_courses (user_id, course_id) VALUES ";
+        // for ($y = 0; $y < count($users_to_add); $y++) {
+        //     $insertquery .= "(" . $$users_to_add[$y] . ", " . $course_id . ")";
+        //     if ($y < (count($users_to_add) - 1)) {
+        //         $insertquery .= ", ";
+        //     } else {
+        //         $insertquery .= ";";
+        //     }
+        // }
+
+        // $stmt = $connectionPDO->prepare($insertquery);
+        
+        // if (!$stmt->execute()) {
+        //     exit('Error: ' . $connection->error);
+        // }
 
         $stmt = null;
         $connectionPDO = null;
