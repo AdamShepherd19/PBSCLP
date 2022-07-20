@@ -67,28 +67,17 @@
                 }
             }
 
-            echo $insertquery;
-
-            // $stmt = $connectionPDO->prepare($insertquery);
+            $stmt = $connectionPDO->prepare($insertquery);
             
-            // if (!$stmt->execute()) {
-            //     exit('Error: ' . $connection->error);
-            // }
-
+            if (!$stmt->execute()) {
+                exit('Error: ' . $connection->error);
+            }
 
             exit('*course_created_successfully*');
         } catch (Exception $e) {
             rmdir("../../resource_bank/" . $directory_name);
             echo 'Caught exception: ',  $e->getMessage(), "\n";
         }
-        
-        
-        
-
-        
-
-
-        
 
         $stmt = null;
         $connectionPDO = null;
