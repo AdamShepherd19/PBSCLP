@@ -48,9 +48,18 @@
             $course_id_result = $stmt->fetch();
             $course_id = $course_id_result['course_id'];
 
-            echo $course_id;
+            //get list of admins
+            $get_list_of_admins_query = "SELECT * FROM users WHERE account_type='administrator' ORDER BY user_id ASC";
+            $stmt = $connectionPDO->prepare($get_list_of_admins_query);
+            $stmt->execute();
+            $list_of_admins_result = $stmt->fetchAll();
+            for ($z = 0; $z < count($list_of_admins_result); $z++) {
+                $list_of_admins[] = $list_of_admins_result[$z]['user_id'];
+            }
 
-            
+            print_r($list_of_admins);
+
+
             exit('*course_created_successfully*');
         } catch (Exception $e) {
             rmdir("../../resource_bank/" . $directory_name);
@@ -60,10 +69,7 @@
         
         
 
-        //get list of admins
-        // $get_list_of_admins_query = "SELECT * FROM users WHERE account_type='administrator' ORDER BY user_id ASC";
-        // $stmt = $connectionPDO->prepare($get_list_of_admins_query);
-        // $stmt->execute();
+        
 
 
         // $insertquery = "INSERT INTO users_on_courses (user_id, course_id) VALUES ";
