@@ -25,7 +25,7 @@
 
 
     function sendEmail($email_to, $name_to) {
-        $e_pass = file_get_contents('../../f-e-pass.txt', true);
+        $e_pass = file_get_contents('../../e-pass.txt', true);
 
         $mail = new PHPMailer();
         $mail->CharSet =  "utf-8";
@@ -33,19 +33,19 @@
         
         $mail->SMTPAuth = true; // enable SMTP authentication
 
-        $mail->Username = "forumposts@pbsclp.info";
+        $mail->Username = "info@pbsclp.info";
         $mail->Password = $e_pass;
 
-        $mail->SMTPSecure = "ssl";
+        $mail->SMTPSecure = "tls";
         
-        $mail->Host = "mail.pbsclp.info"; // sets pbsclp mail server as the SMTP server
-        $mail->Port = "465"; // set the SMTP port for the pbsclp server
+        $mail->Host = "smtp-relay.sendinblue.com"; // sets pbsclp mail server as the SMTP server
+        $mail->Port = "587"; // set the SMTP port for the pbsclp server
 
         $mail->From='forumposts@pbsclp.info';
         $mail->FromName='PBSCLP Forum Post System';
 
         $mail->AddAddress($email_to, $name_to);
-        $mail->Subject  =  'Forum Post Feedback';
+        $mail->Subject  =  'Forum Post Approved';
         $mail->IsHTML(true);
 
         $message = file_get_contents('../email_templates/post_approved_email_template.html');
