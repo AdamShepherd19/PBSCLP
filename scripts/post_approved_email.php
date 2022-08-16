@@ -45,7 +45,7 @@
         $mail->FromName='PBSCLP Forum Post System';
 
         $mail->AddAddress($email_to, $name_to);
-        $mail->Subject  =  'Forum Post Feedback';
+        $mail->Subject  =  'Forum Post Approved';
         $mail->IsHTML(true);
 
         $message = file_get_contents('../email_templates/post_approved_email_template.html');
