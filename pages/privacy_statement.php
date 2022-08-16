@@ -59,11 +59,127 @@
 
         <div class="main-content">
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultricies quis lacus quis euismod. Nullam porttitor orci nec tortor placerat, et imperdiet felis bibendum. Fusce eget lobortis felis. Ut rhoncus neque id ligula molestie, eu rutrum nisi porta. Suspendisse potenti. Donec et consequat justo. Sed eu metus arcu. Aliquam in varius lorem. Aliquam eget eros quis enim maximus vehicula vel eget ipsum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla commodo velit in diam vestibulum semper. Vivamus auctor, tellus nec condimentum ullamcorper, nisl ante faucibus elit, vel maximus nisl dui ac est. In ultricies sagittis orci, at pellentesque justo consectetur eget. Suspendisse cursus justo ligula, ut ultricies lacus rhoncus ut.
                 <br><br>
-                Ut augue massa, fringilla vel ante et, iaculis egestas massa. Vivamus tellus nibh, malesuada nec massa et, interdum suscipit orci. Nulla faucibus massa vel fermentum blandit. Aenean a felis ac mi venenatis venenatis. Fusce gravida, purus efficitur gravida ultrices, ligula libero aliquet tortor, a imperdiet velit nibh ac lorem. Etiam in ultrices nulla, id porta sapien. Fusce bibendum ornare leo non lacinia. Morbi nec turpis ut purus aliquam tempor. Suspendisse egestas massa vel dui imperdiet accumsan. Aenean id sem eu nulla volutpat iaculis. Curabitur sagittis orci eu odio molestie porta.
+                
+                This privacy policy sets out how we use and protect any information that you give PBSUK
+                Limited when you use this portal.
+
                 <br><br>
-                Quisque dapibus vulputate mauris eu tempus. Sed non facilisis tellus. Ut finibus erat non orci lacinia, ac rhoncus nunc scelerisque. Mauris accumsan neque ut erat congue blandit. Fusce quam lorem, varius at enim nec, dapibus viverra ante. Phasellus eleifend commodo aliquam. Proin tincidunt sem non mi condimentum, sit amet sodales leo fringilla. Maecenas sit amet velit auctor, fermentum turpis eu, consectetur massa. Aliquam auctor elementum lectus eget euismod. Suspendisse at suscipit nisi. Donec a molestie nulla, nec egestas orci. Fusce convallis pharetra velit, vehicula mattis lacus fermentum vel. Sed non dignissim mauris. Cras a vehicula mi, eget elementum arcu. In euismod quam ut velit rhoncus, ac porttitor risus posuere.
+
+                PBSUK Limited is committed to ensuring that your privacy is protected. Should we ask you to
+                provide certain information by which you can be identified when using this portal, then you
+                can be assured that it will only be used in accordance with this privacy statement.
+                
+                <br><br>
+
+                PBSUK Limited may change this policy from time to time by updating this page. Registered
+                users will be informed by email of any changes. If you are not a registered site user, you
+                should check this page from time to time to ensure that you are happy with any changes.
+                This policy is effective from 1 st August 2022.
+
+                <br><br>
+
+                PBSUK Ltd is registered as a Data Controller with the Information Commissioner&#39;s Office
+                (Ref: ZA196510.)
+
+                <br><br>
+
+                <strong>What we collect</strong>
+
+                <br><br>
+
+                We may collect the following information:
+                <br>
+
+                <ul>
+                    <li>name and job title</li>
+                    <li>contact information including email address</li>
+                    <li>demographic information such as postcode, preferences and interests</li>                        
+                </ul>
+
+                <br>
+
+                <strong>What we do with the information we gather</strong>
+
+                <br><br>
+
+                We require this information to understand your needs and provide you with a better
+                service, and in particular for the following reasons:
+
+                <br>
+
+                <ul>
+                    <li>Internal record keeping.</li>
+                    <li>We may use the information to improve our products and services.</li>
+                    <li>We may periodically send promotional emails about new products,
+                        special offers or other information which we think you may find
+                        interesting using the email address that you have provided.</li>
+                </ul>
+
+                <br>
+
+                From time to time, we may also use your information to contact you for market research
+                purposes. We may contact you by email, phone, fax or mail. We may use the information to
+                customise the website according to your interests.
+
+                <br><br>
+                
+                <strong>Security</strong>
+
+                <br><br>
+
+                We are committed to ensuring that your information is secure. In order to prevent
+                unauthorised access or disclosure, we have put in place suitable physical, electronic and
+                managerial procedures to safeguard and secure the information we collect online.
+
+                <br><br>
+
+                <strong>Links to other websites</strong>
+                
+                <br><br>
+
+                Our portal may contain links to other websites of interest. However, once you have used
+                these links to leave our site, you should note that we do not have any control over that
+                other website. Therefore, we cannot be responsible for the protection and privacy of any
+                information which you provide whilst visiting such sites and such sites are not governed by
+                this privacy statement. You should exercise caution and look at the privacy statement
+                applicable to the website in question.
+
+                <br><br>
+
+                <strong>Controlling your personal information</strong>
+
+                <br><br>
+
+                You may choose to restrict the collection or use of your personal information in the
+                following ways:
+                We will not sell, distribute or lease your personal information to third parties unless we
+                have your permission or are required by law to do so. We may use your personal
+                information to send you promotional information about third parties which we think you
+                may find interesting if you tell us that you wish this to happen, for example, by subscribing
+                to our newsletter.
+                You may request details of personal information which we hold about you under the Data
+                Protection Act 2018. A small fee may be payable. If you would like a copy of the information
+                held about you, please use the contact form on this site, our website or write to our
+                registered address.
+                If you believe that any information we are holding on you is incorrect or incomplete, please
+                write to us at our registered address or email us as soon as possible. We will promptly
+                correct any information found to be incorrect.
+
+                <br><br>
+
+                <strong>Controlling your business information</strong>
+
+                <br><br>
+
+                As part of our service, we necessarily collect and store information relating to your use of
+                the service.
+                No director or employee of PBSUK Limited will access this information except where necessary to
+                diagnose and resolve problems with the technology or in order to provide feedback to any
+                questions you are raising.
+                The service has been designed so that individual responses remain anonymous and as such
+                these will not be disclosed unless we are required to do so by law.
+
                 <br><br>
             </p>
         </div>
