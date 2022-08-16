@@ -59,6 +59,8 @@
 
         <div class="main-content">
             <p>
+                <br><br>
+                
                 This privacy policy sets out how we use and protect any information that you give PBSUK
                 Limited when you use this portal.
 

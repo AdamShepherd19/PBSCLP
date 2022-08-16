@@ -59,6 +59,9 @@
 
         <div class="main-content">
             <p>
+
+                <br><br>
+            
                 <strong>The use of this portal is subject to the following terms of use:</strong>
 
                 <br>Welcome to our collaboration portal.<br>
