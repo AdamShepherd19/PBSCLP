@@ -59,11 +59,79 @@
 
         <div class="main-content">
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultricies quis lacus quis euismod. Nullam porttitor orci nec tortor placerat, et imperdiet felis bibendum. Fusce eget lobortis felis. Ut rhoncus neque id ligula molestie, eu rutrum nisi porta. Suspendisse potenti. Donec et consequat justo. Sed eu metus arcu. Aliquam in varius lorem. Aliquam eget eros quis enim maximus vehicula vel eget ipsum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla commodo velit in diam vestibulum semper. Vivamus auctor, tellus nec condimentum ullamcorper, nisl ante faucibus elit, vel maximus nisl dui ac est. In ultricies sagittis orci, at pellentesque justo consectetur eget. Suspendisse cursus justo ligula, ut ultricies lacus rhoncus ut.
+                <strong>The use of this portal is subject to the following terms of use:</strong>
+
+                <br>Welcome to our collaboration portal.<br>
+
+                If you continue to browse and use this portal, you are agreeing to comply with and be
+                bound by the following terms and conditions of use, which together with our privacy policy
+                govern PBSUK's relationship with you in relation to this service.
+
                 <br><br>
-                Ut augue massa, fringilla vel ante et, iaculis egestas massa. Vivamus tellus nibh, malesuada nec massa et, interdum suscipit orci. Nulla faucibus massa vel fermentum blandit. Aenean a felis ac mi venenatis venenatis. Fusce gravida, purus efficitur gravida ultrices, ligula libero aliquet tortor, a imperdiet velit nibh ac lorem. Etiam in ultrices nulla, id porta sapien. Fusce bibendum ornare leo non lacinia. Morbi nec turpis ut purus aliquam tempor. Suspendisse egestas massa vel dui imperdiet accumsan. Aenean id sem eu nulla volutpat iaculis. Curabitur sagittis orci eu odio molestie porta.
+
+                If you disagree with any part of these terms and conditions, please do not continue unless
+                you have sought permission from PBSUK in writing in advance.
+
                 <br><br>
-                Quisque dapibus vulputate mauris eu tempus. Sed non facilisis tellus. Ut finibus erat non orci lacinia, ac rhoncus nunc scelerisque. Mauris accumsan neque ut erat congue blandit. Fusce quam lorem, varius at enim nec, dapibus viverra ante. Phasellus eleifend commodo aliquam. Proin tincidunt sem non mi condimentum, sit amet sodales leo fringilla. Maecenas sit amet velit auctor, fermentum turpis eu, consectetur massa. Aliquam auctor elementum lectus eget euismod. Suspendisse at suscipit nisi. Donec a molestie nulla, nec egestas orci. Fusce convallis pharetra velit, vehicula mattis lacus fermentum vel. Sed non dignissim mauris. Cras a vehicula mi, eget elementum arcu. In euismod quam ut velit rhoncus, ac porttitor risus posuere.
+
+                The term 'PBSCLP' or 'PBSUK' 'us' or 'we' or 'our' refers to the owner of this portal, PBSUK
+                Ltd. a company registered in Scotland with company number SC540834, registered address
+                24 Lauder Crescent Perth PH1 1SU
+                
+                <br><br>
+                
+                The term 'you' refers to the user or viewer of our collaboration portal.
+
+                <br><br>
+
+                <strong>The use of this portal is subject to the following terms of use:</strong>
+                
+                <br><br>
+
+                The content of this portal is for your general information and use only. It is subject to
+                change without notice. At this point in time the site does not make use of cookies.
+                Neither we nor any third parties provide any warranty or guarantee as to the accuracy,
+                timeliness, performance, completeness or suitability of the information and materials found
+                or offered on this website for any particular purpose. You acknowledge that such
+                information and materials may contain inaccuracies or errors and we expressly exclude
+                liability for any such inaccuracies or errors to the fullest extent permitted by law.
+                Your use of any information or materials on this website is entirely at your own risk, for
+                which we shall not be liable. It shall be your own responsibility to ensure that any products,
+                services or information available through this website meet your specific requirements.
+                This portal contains material which is owned by or licensed to us. This material includes, but
+                is not limited to, the design, layout, look, appearance and graphics. Reproduction is
+                prohibited without our express written consent. Please report any copyright or trademark
+                infringements to us by writing to our registered address, which is available on this site.
+                All trademarks reproduced in this portal, which are not the property of, or licensed to us,
+                are acknowledged on the portal.
+
+                <br><br>
+
+                You must not attempt to access parts of the site where we have not specifically granted
+                such access.
+
+                <br><br>
+
+                Unauthorised use of this portal may give rise to a claim for damages and/or be a criminal
+                offence.
+
+                <br><br>
+
+                This portal may also include links to other websites. These links are provided for your
+                convenience to provide further information. They do not signify that we endorse the
+                website(s) or the information contained therein. We have no responsibility for the content
+                of any linked website(s).
+
+                <br><br>
+
+                Your use of this portal and any dispute arising out of such use of the portal is subject to the
+                laws of Scotland and the jurisdiction of Scottish courts.
+
+                <br><br>
+
+                If you become a registered user of the portal, you will be issued with a username and
+                password for which you will be solely responsible.
+
                 <br><br>
             </p>
         </div>
