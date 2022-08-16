@@ -28,7 +28,7 @@
     if(isset($_POST['emailPHP'])) {
 
         $pass = file_get_contents('../../pass.txt', true);
-        $e_pass = file_get_contents('../../p-e-pass.txt', true);
+        $e_pass = file_get_contents('../../e-pass.txt', true);
 
         //connect to database
         try {
@@ -71,13 +71,13 @@
             
             $mail->SMTPAuth = true; // enable SMTP authentication
 
-            $mail->Username = "passwordreset@pbsclp.info";
+            $mail->Username = "info@pbsclp.info";
             $mail->Password = $e_pass;
 
-            $mail->SMTPSecure = "ssl";
+            $mail->SMTPSecure = "tls";
             
-            $mail->Host = "mail.pbsclp.info"; // sets pbsclp mail server as the SMTP server
-            $mail->Port = "465"; // set the SMTP port for the pbsclp server
+            $mail->Host = "smtp-relay.sendinblue.com"; // sets pbsclp mail server as the SMTP server
+            $mail->Port = "587"; // set the SMTP port for the pbsclp server
 
             $mail->From='passwordreset@pbsclp.info';
             $mail->FromName='PBSCLP Password Reset System';
