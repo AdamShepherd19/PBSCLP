@@ -42,7 +42,7 @@
         $stmt->execute([$email]);
         $email_result = $stmt->fetch();
         print_r($email_result);
-        if ($email_result && $email_result != $user_id) {
+        if ($email_result && $email_result['user_id'] != $user_id) {
             exit("*email_already_exists*");
         }
 
