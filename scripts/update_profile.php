@@ -41,8 +41,8 @@
         $stmt = $connectionPDO->prepare($checkEmailQuery);
         $stmt->execute([$email]);
         $email_result = $stmt->fetch();
-
-        if ($email_result) {
+        
+        if ($email_result && $email_result['user_id'] != $user_id) {
             exit("*email_already_exists*");
         }
 
