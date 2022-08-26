@@ -61,7 +61,7 @@
         <div class="main-content">
             <div class="card key-person">
                 <div class="card-header">
-                    <h3> Firstname Lastname </h3>
+                    <h3> Hannah Newcombe </h3>
                 </div>
                 <div class="card-body key-person-profile">
                     <div class="key-person-photo">
@@ -69,16 +69,16 @@
                     </div>
 
                     <div class="key-person-info">
-                        <h4> email@email.com </h4>
+                        <h4> hnewcombe@pbsuk.org </h4>
                         <br>
-                        <h4> 071234567890 </h4>
+                        <h4> 07904 599591 </h4>
                     </div>
                 </div>
             </div>
 
             <div class="card key-person">
                 <div class="card-header">
-                    <h3> Firstname Lastname </h3>
+                    <h3> Huw Price </h3>
                 </div>
                 <div class="card-body key-person-profile">
                     <div class="key-person-photo">
@@ -86,16 +86,16 @@
                     </div>
 
                     <div class="key-person-info">
-                        <h4> email@email.com </h4>
+                        <h4> hprice@pbsuk.org </h4>
                         <br>
-                        <h4> 071234567890 </h4>
+                        <h4> 07946 475075 </h4>
                     </div>
                 </div>
             </div>
 
             <div class="card key-person">
                 <div class="card-header">
-                    <h3> Firstname Lastname </h3>
+                    <h3> Katy O’Donnell </h3>
                 </div>
                 <div class="card-body key-person-profile">
                     <div class="key-person-photo">
@@ -103,9 +103,9 @@
                     </div>
 
                     <div class="key-person-info">
-                        <h4> email@email.com </h4>
+                        <h4> kodonnell@pbsuk.org </h4>
                         <br>
-                        <h4> 071234567890 </h4>
+                        <h4> 07961 215856 </h4>
                     </div>
                 </div>
             </div>
