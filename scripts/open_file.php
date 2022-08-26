@@ -97,6 +97,8 @@
         exit("*not_authorised_to_view_content*");
     }
 
+    // File types:
+    // https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types
     switch($file_extension) {
         case ".pdf":
             $content_type = "application/pdf";
@@ -125,7 +127,12 @@
         case ".svg":
             $content_type = "image/svg+xml";
             break;
-        
+        case ".ppt":
+            $content_type = "application/vnd.ms-powerpoint";
+            break;
+        case ".pptx":
+            $content_type = "application/vnd.openxmlformats-officedocument.presentationml.presentation";
+            break;
 
     }
 
