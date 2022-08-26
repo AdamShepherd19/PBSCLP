@@ -65,7 +65,7 @@
                 </div>
                 <div class="card-body key-person-profile">
                     <div class="key-person-photo">
-                        <img src="https://picsum.photos/200" alt="Profile Picture">
+                        <img src="../images/hannah_newcombe.jpg" alt="Hannah Newcombe">
                     </div>
 
                     <div class="key-person-info">
@@ -82,7 +82,7 @@
                 </div>
                 <div class="card-body key-person-profile">
                     <div class="key-person-photo">
-                        <img src="https://picsum.photos/200" alt="Profile Picture">
+                        <img src="../images/huw_price.jpg" alt="Huw Price">
                     </div>
 
                     <div class="key-person-info">
@@ -95,11 +95,11 @@
 
             <div class="card key-person">
                 <div class="card-header">
-                    <h3> Katy O’Donnell </h3>
+                    <h3> Katy O'Donnell </h3>
                 </div>
                 <div class="card-body key-person-profile">
                     <div class="key-person-photo">
-                        <img src="https://picsum.photos/200" alt="Profile Picture">
+                        <img src="../images/katy_odonnell.jpg" alt="Katy O'Donnell">
                     </div>
 
                     <div class="key-person-info">
