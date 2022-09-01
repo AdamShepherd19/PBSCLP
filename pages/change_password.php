@@ -105,6 +105,7 @@
             <div class="login-form-container" id="form-container">
                 <h2>Change Password</h2>
                 <p>Please enter and confirm your new password below:</p>
+                <p>Passwords should be 8 or more characters long, contain at least one upper case letter, one lower case letter, one number and a special character or symbol.</p>
 
                 <form>
                     <label for="new-password">New Password: </label>
