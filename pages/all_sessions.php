@@ -19,6 +19,38 @@
         header('Location: https://pbsclp.info');
         exit();
     }
+
+    function getCourseName($courseId) {
+
+        // https://makitweb.com/return-json-response-ajax-using-jquery-php
+        $pass = file_get_contents('../../pass.txt', true);
+
+            //connect to database
+            try {
+                $connectionPDO = new PDO('mysql:host=localhost;dbname=pbsclp_pbsclp', 'pbsclp', $pass);
+                $connectionPDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            } catch(PDOException $e) {
+                exit('*database_connection_error*');
+            }
+
+        //perform query and sort into newest first
+        $sql = "SELECT name FROM courses WHERE course_id=? LIMIT 1";
+        $stmt = $connectionPDO->prepare($sql);
+        $stmt->execute([$courseId]);
+        $result = $stmt->fetch();
+
+
+        if ($result){
+            $courseName = $result[0];
+        }
+
+
+        // close connection to db
+        $stmt = null;
+        $connectionPDO = null;
+
+        return $courseName;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -101,7 +133,7 @@
                 }
 
                 // fetch course id from PHP and return to javascript variable
-                var course_id = "<?php echo $_GET['cid']; ?>";
+                var course_id = "<?php echo getCourseName($_GET['cid']); ?>";
 
                 // navigate to new session page on button click
                 $("#new-session-button").on('click', function() {
