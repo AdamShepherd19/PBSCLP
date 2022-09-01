@@ -133,7 +133,8 @@
                 }
 
                 // fetch course id from PHP and return to javascript variable
-                var course_id = "<?php echo getCourseName($_GET['cid']); ?>";
+                var course_id = "<?php echo $_GET['cid']; ?>";
+                var course_name = "<?php echo getCourseName($_GET['cid']); ?>";
 
                 // navigate to new session page on button click
                 $("#new-session-button").on('click', function() {
@@ -141,7 +142,7 @@
                 });
 
                 // set page subheading to course id (change to course name)
-                $("#course-subheading").html(course_id);
+                $("#course-subheading").html(course_name);
 
                 // get list of all sessions and display as cards
                 $.ajax({
