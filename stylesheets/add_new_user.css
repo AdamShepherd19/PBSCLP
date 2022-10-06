@@ -8,7 +8,7 @@
     min-width: 40vw;
 }
 
-#account-type {
+#account-type, #organisation {
   height: 40px;  
 }
 

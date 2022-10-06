@@ -140,7 +140,19 @@
                     <!-- organisation/company -->
                     <tr>
                         <td class="caption">Organisation:</td>
-                        <td><input type="text" id="organisation" class="pbs-form-text-box" placeholder="Organisation..."></td>
+                        <td>
+                            <!-- <input type="text" id="organisation" class="pbs-form-text-box" placeholder="Organisation..."> -->
+                            <!-- <input list="organisations" name="organisation" autocomplete="off" class="pbs-form-text-box">
+                                <datalist id="organisations">
+                                    <option value="PBSuk"></option>
+                                    <option value="Norfolk"></option>
+                                </datalist> -->
+
+                            <select id="organisation" name="organisation" class="pbs-form-text-box">
+                                <option value="pbsuk">PBSuk</option>
+                                <option value="norfolk">Norfolk</option>
+                            </select>
+                        </td>
                     </tr>
             
                     <!-- drop down for account type (practitioner/administrator) -->
