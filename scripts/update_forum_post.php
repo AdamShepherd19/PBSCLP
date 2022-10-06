@@ -15,7 +15,7 @@
     include_once "../scripts/post_amended_email.php";
 
     if(!isset($_SESSION['logged_in'])){
-        header('Location: https://pbsclp.info');
+        header('Location: localhost/PBSCLP/');
         exit();
     }
 
