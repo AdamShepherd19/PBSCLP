@@ -33,12 +33,12 @@
 
 
         // query database and insert the new announcement into the announcements table
-        $sql = "INSERT INTO users (firstname, lastname, email, contact_number, organisation, account_type) VALUES (:firstname, :lastname, :email, :contact_number, :organisation, :account_type);";
-        // INSERT INTO users (firstname, lastname, email, contact_number, organisation, account_type) VALUES ('adam', 'ldf', 'email', '1232', 'ardasf', 'practitioner')
+        $sql = "BEGIN; INSERT INTO users (firstname, lastname, email, contact_number,  account_type) VALUES (:firstname, :lastname, :email, :contact_number, :account_type); INSERT INTO users_in_organisation (user_id, organisation_id) VALUES (LAST_INSERT_ID(), :organisation_id); COMMIT;";
+        // INSERT INTO users (firstname, lastname, email, contact_number,  account_type) VALUES ('adam', 'ldf', 'email', '1232', 'ardasf', 'practitioner')
         $stmt = $connectionPDO->prepare($sql);
         
         //check to see if the insert was successful
-        if ($stmt->execute(['firstname' => $firstname, 'lastname' => $lastname, 'email' => $email, 'contact_number' => $contact_number, 'organisation' => $organisation, 'account_type' => $account_type])) {
+        if ($stmt->execute(['firstname' => $firstname, 'lastname' => $lastname, 'email' => $email, 'contact_number' => $contact_number, 'account_type' => $account_type, 'organisation_id' => $organisation])) {
             $sql = "SELECT user_id FROM users WHERE email=? LIMIT 1";
             $stmt = $connectionPDO->prepare($sql);
             $stmt->execute([$email]);
