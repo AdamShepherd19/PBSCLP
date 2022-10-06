@@ -149,8 +149,8 @@
                                 </datalist> -->
 
                             <select id="organisation" name="organisation" class="pbs-form-text-box">
-                                <option value="pbsuk">PBSuk</option>
-                                <option value="norfolk">Norfolk</option>
+                                <!-- <option value="1">PBSuk</option>
+                                <option value="2">Norfolk</option> -->
                             </select>
                         </td>
                     </tr>
@@ -225,6 +225,38 @@
                                     '<label for="cid-' + response[i].course_id + '">' + response[i].course_name + '</label><br>';
 
                                     $("#course-list-checkboxes").append(output);
+                                }
+                            }
+                        }
+                    });
+
+                    return temp;
+                }();
+
+                // retrieve list of courses
+                var list_of_all_organisations = function () {
+                    var temp = null;
+
+                    $.ajax({
+                        url: '../scripts/get_all_organisations.php',
+                        async: false,
+                        type: 'get',
+                        dataType: 'JSON',
+                        success: function(response) {
+                            //check if there are no courses
+                            if(response.includes("*warning_no_organisations_found*")){
+                                console.log("no organisations found");
+                            } else {
+                                temp = response;
+                                //add courses to dom if found
+                                $("#organisation").html("");
+                                for (let i = 0; i < response.length; i++) {
+                                    // let output = '<input type="checkbox" id="cid-' + response[i].course_id + '" class="pbs-form-check-box" value="' + response[i].course_name + '">' + 
+                                    // '<label for="cid-' + response[i].course_id + '">' + response[i].course_name + '</label><br>';
+
+                                    let output = '<option value="' + response[i].organisation_id + '">' + response[i].organisation_name + '</option>';
+
+                                    $("#organisation").append(output);
                                 }
                             }
                         }
