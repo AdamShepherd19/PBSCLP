@@ -8,8 +8,8 @@
     min-width: 40vw;
 }
 
-#account-type {
-  height: 40px;  
+#account-type, #organisation {
+  height: 50px;  
 }
 
 .button-wrapper {

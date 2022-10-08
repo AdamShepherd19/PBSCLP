@@ -29,7 +29,7 @@
     }
 
     //perform query and sort into newest first
-    $sql = "SELECT firstname, lastname, email, organisation, contact_number FROM users WHERE user_id=? LIMIT 1";
+    $sql = "SELECT users.firstname, users.lastname, users.email, organisations.organisation_name, organisations.organisation_id, users.contact_number FROM users, organisations, users_in_organisation WHERE users.user_id=? AND users.user_id = users_in_organisation.user_id AND users_in_organisation.organisation_id = organisations.organisation_id LIMIT 1";
     $stmt = $connectionPDO->prepare($sql);
     $stmt->execute([$user_id]);
     $result = $stmt->fetch();
@@ -72,14 +72,16 @@
         //retrieve data from query
         $name = $result['firstname'] . " " . $result['lastname'];
         $email = $result['email'];
-        $organisation = $result['organisation'];
+        $organisation_name = $result['organisation_name'];
+        $organisation_id = $result['organisation_id'];
         $contact_number = $result['contact_number'];
         
         //add data into array
         $data[] = array(
             "name" => $name,
             "email" => $email,
-            "organisation" => $organisation,
+            "organisation_name" => $organisation_name,
+            "organisation_id" => $organisation_id,
             "contact_number" => $contact_number,
             "list_of_course_id" => $listOfCourseID,
             "list_of_course_names" => $list_of_course_name
