@@ -47,14 +47,22 @@
         $stmt->execute(['approved' => $approved, 'feedback_provided' => $feedback_provided]);
         $result = $stmt->fetchAll();
 
+    } else if(isset($_GET['approvedPHP']) && isset($_GET['organisationPHP'])) {
+        $approved = $_GET['approvedPHP'];
+        $organisation_id = $_GET['organisationPHP'];
+        $sql = "SELECT * FROM threads WHERE approved=:approved AND organisation_id=:organisation_id ORDER BY post_time DESC";
+
+        $stmt = $connectionPDO->prepare($sql);
+        $stmt->execute(['approved' => $approved, 'organisation_id' => $organisation_id]);
+        $result = $stmt->fetchAll();
     } else {
 
         if (isset($_GET['approvedPHP'])) {
             $approved = $_GET['approvedPHP'];
-            $sql = "SELECT * FROM threads WHERE approved=? ORDER BY post_time DESC";
+            $sql = "SELECT * FROM threads WHERE approved=? AND organisation_id is NULL ORDER BY post_time DESC";
         } else {
             $approved = '0';
-            $sql = "SELECT * FROM threads WHERE approved=? ORDER BY post_time DESC";
+            $sql = "SELECT * FROM threads WHERE approved=? AND organisation_id is NULL ORDER BY post_time DESC";
         }
 
         $stmt = $connectionPDO->prepare($sql);
