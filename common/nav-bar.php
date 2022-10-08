@@ -33,8 +33,19 @@
                 </li>
 
                 <!-- forum button -->
-                <li class="nav-item" id="nav-forum">
+                <!-- <li class="nav-item" id="nav-forum">
                     <a class="nav-link" href="forum.php">Forum</a>
+                </li> -->
+
+                <!-- drop down to hold less vital pages -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="forum.php" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Forums
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item nav-link" href="forum.php">Public</a>
+                        <div class="dropdown-divider"></div>
+                    </div>
                 </li>
 
                 <!-- resource bank button -->

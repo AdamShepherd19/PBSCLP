@@ -57,7 +57,7 @@
         </div>
 
         <div class="page-header">
-            <h1>Forum</h1>
+            <h1>Public Forum</h1>
         </div>
 
         <div class="main-content">
