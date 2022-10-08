@@ -87,6 +87,8 @@
 
                 // only show administrator content if an admin logged in
                 var accountType = '<?php echo $_SESSION['account_type']; ?>';
+                var organisationID = '<?php echo $_SESSION['organisation_id']; ?>';
+
                 if (accountType != 'administrator') {
                     $('.admin-only').hide();
                 } else {
@@ -102,7 +104,8 @@
                     type: 'get',
                     dataType: 'JSON',
                     data: {
-                        approvedPHP: '1'
+                        approvedPHP: '1',
+                        organisationPHP: organisationID
                     },
                     success: function(response) {
                         if (response.includes("*warning_no_posts_found*")) {
