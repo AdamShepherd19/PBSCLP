@@ -32,9 +32,9 @@
         $email = $_POST['emailPHP'];
         $password = $_POST['passwordPHP'];
  
-        $sql = "SELECT user_id, account_type, firstname, lastname, password, admin_locked, password_attempts, password_locked FROM users WHERE email=?";
+        $sql = "SELECT users.user_id, users.account_type, users.firstname, users.lastname, users.password, users.admin_locked, users.password_attempts, users.password_locked, users_in_organisation.organisation_id FROM users, users_in_organisation WHERE users.email=? AND users_in_organisation.user_id = (SELECT user_id FROM users WHERE email=?)";
         $stmt = $connectionPDO->prepare($sql);
-        $stmt->execute([$email]);
+        $stmt->execute([$email, $email]);
         $data = $stmt->fetch();
 
         //check if login details provided match a user profile in the db
@@ -51,6 +51,7 @@
                 $_SESSION['account_type'] = $data['account_type'];
                 $_SESSION['firstname'] = $data['firstname'];
                 $_SESSION['lastname'] = $data['lastname'];
+                $_SESSION['organisation_id'] = $data['organisation_id'];
 
                 exit('*login_success*');
             }
