@@ -96,6 +96,43 @@
 
 
 <script type="text/javascript">
+    var accountType = '<?php echo $_SESSION['account_type']; ?>';
     var organisationID = '<?php echo $_SESSION['organisation_id']; ?>';
-    $("#forum-dropdown").append('<a class="dropdown-item nav-link" href="organisation_forum.php?orgid=' + organisationID + '">' + organisationID + '</a>');
+
+    // retrieve list of courses
+    var list_of_all_organisations = function () {
+        var temp = null;
+
+        $.ajax({
+            url: '../scripts/get_all_organisations.php',
+            async: false,
+            type: 'get',
+            dataType: 'JSON',
+            success: function(response) {
+                //check if there are no courses
+                if(response.includes("*warning_no_organisations_found*")){
+                    console.log("no organisations found");
+                } else {
+                    temp = response;
+                }
+            }
+        });
+
+        return temp;
+    }();
+
+    if (accountType == 'administrator') {
+        for(let x = 0; x < list_of_all_organisations.length; x++) {
+            $("#forum-dropdown").append('<a class="dropdown-item nav-link" href="organisation_forum.php?orgid=' + list_of_all_organisations[x]["organisation_id"] + '">' + list_of_all_organisations[x]["organisation_name"] + '</a>');
+        }
+    } else {
+        for (let y = 0; y < list_of_all_organisations.length; y++) {
+            if(list_of_all_organisations[y].organisation_id == organisationID){
+                organisationName = list_of_all_organisations[y].organisation_name;
+                break;
+            }
+        }
+        $("#forum-dropdown").append('<a class="dropdown-item nav-link" href="organisation_forum.php?orgid=' + organisationID + '">' + organisationName + '</a>');
+    }
+
 </script> 
