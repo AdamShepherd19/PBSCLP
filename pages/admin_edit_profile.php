@@ -195,14 +195,14 @@
                                 console.log("no courses found");
                             } else {
                                 //add organisations to dom if found
-                                $("#organisation").html('<select id="organisation_list" name=organisation>');
+                                $("#organisation").html('<select id="organisation-list" name=organisation class="pbs-form-text-box">');
                                 for (let i = 0; i < response.length; i++) {
 
                                     let output = '<option value="' + response[i].organisation_id + '">' + response[i].organisation_name + '</option>';
 
-                                    $("#organisation_list").append(output);
+                                    $("#organisation-list").append(output);
                                 }
-                                $("#organisation_list").val(organisation_id);
+                                $("#organisation-list").val(organisation_id);
                             }
                         }
                     });
@@ -243,7 +243,7 @@
                     var new_name = $("#new-name").val();
                     var new_email = $("#new-email").val();
                     var new_contact_number = $("#new-contact-number").val();
-                    var new_organisation_id = $("#organisation_list").val();
+                    var new_organisation_id = $("#organisation-list").val();
 
                     //retrieve list of checked courses
                     var new_list_of_courses = $("#courses input:checkbox:checked").map(function(){
