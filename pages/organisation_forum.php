@@ -19,6 +19,11 @@
         header('Location: localhost/PBSCLP/');
         exit();
     }
+    
+    if(($_SESSION['account_type'] != 'administrator') && ($_GET['orgid'] != $_SESSION['organisation_id'])){
+        header('Location: landing.php');
+        exit();
+    }
 ?>
 
 <!DOCTYPE html>
@@ -87,7 +92,7 @@
 
                 // only show administrator content if an admin logged in
                 var accountType = '<?php echo $_SESSION['account_type']; ?>';
-                var organisationID = '<?php echo $_SESSION['organisation_id']; ?>';
+                var organisationID = '<?php echo $_GET['orgid']; ?>';
 
                 if (accountType != 'administrator') {
                     $('.admin-only').hide();

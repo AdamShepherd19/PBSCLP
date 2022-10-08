@@ -12,6 +12,9 @@
 -->
 
 
+
+
+
 <div class="navbar-wrapper">
     <nav class="navbar navbar-expand-lg navbar-light">
 
@@ -42,7 +45,7 @@
                     <a class="nav-link dropdown-toggle" href="forum.php" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Forums
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="forum-dropdown">
                         <a class="dropdown-item nav-link" href="forum.php">Public</a>
                         <div class="dropdown-divider"></div>
                     </div>
@@ -89,3 +92,10 @@
         </div>
     </nav>
 </div>
+
+
+
+<script type="text/javascript">
+    var organisationID = '<?php echo $_SESSION['organisation_id']; ?>';
+    $("#forum-dropdown").append('<a class="dropdown-item nav-link" href="organisation_forum.php?orgid=' + organisationID + '">' + organisationID + '</a>');
+</script> 
