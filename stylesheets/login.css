@@ -19,6 +19,7 @@
     background-color: var(--pbs-green);
     padding: 50px;
     text-align: right;
+    margin-bottom: 20px;
 }
 
 .login-form-container label, h2, h4, p {

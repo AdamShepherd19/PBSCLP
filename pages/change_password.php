@@ -42,7 +42,6 @@
         $data = $stmt->fetch();
         
         if ($data) {
-            echo gettype($data['exp_date']);
             if($data['exp_date'] < $curDate){
                 header('Location: https://pbsclp.info/pages/reset_password_expired.php');
             }
@@ -105,6 +104,7 @@
             <div class="login-form-container" id="form-container">
                 <h2>Change Password</h2>
                 <p>Please enter and confirm your new password below:</p>
+                <p>Passwords should be 8 or more characters long, contain at least one upper case letter, one lower case letter, one number and a symbol.</p>
 
                 <form>
                     <label for="new-password">New Password: </label>
