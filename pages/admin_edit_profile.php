@@ -102,6 +102,7 @@
                         <td id="buttons">
                             <input type="button" id="cancel-profile" class="pbs-button pbs-button-red" value="Cancel">
                             <input type="button" id="edit-profile" class="pbs-button pbs-button-green table-button" value="Edit">
+                            <input type="button" id="password-link" class="pbs-button pbs-button-blue" value="Password Link">
                             <input type="button" id="cancel-edit" class="pbs-button pbs-button-red" value="Cancel">
                             <input type="button" id="save-profile" class="pbs-button pbs-button-green" value="Save">
                         </td>
