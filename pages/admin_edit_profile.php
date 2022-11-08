@@ -130,6 +130,28 @@
                     window.location.href = 'manage_users.php';
                 });
 
+                                // action for password link button
+                $("#password-link").on('click', function() {
+                    // retrieve list of courses
+                    $.ajax({
+                        url: '../scripts/generate_password_token.php',
+                        type: 'post',
+                        dataType: 'JSON',
+                        data: {
+                            userId: user_id_to_edit
+                        },
+                        success: function(data) {
+                            if(data.includes("*no_user_found*") || data.includes("*failed_to_create_token*")) {
+                                console.log(data);
+                                alert("There was a system error. Please try again...");
+                            } else {
+                                alert("Link: " + data);
+                            }
+                            
+                        }
+                    });
+                });
+
                 // action for edit button
                 $("#edit-profile").on('click', function(){
                     // swap visibility of buttons
