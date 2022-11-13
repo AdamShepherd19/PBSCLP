@@ -37,7 +37,7 @@ if (isset($_POST['userId'])) {
             exit("*failed_to_create_token*");
         }
 
-        $link = "localhost/PBSCLP/pages/change_password.php?key=" . $email . "&token=" . $token;
+        $link = "https://www.pbsclp.info/pages/change_password.php?key=" . $email . "&token=" . $token;
 
 
     } else {
