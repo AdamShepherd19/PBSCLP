@@ -37,6 +37,7 @@ if (isset($_POST['titlePHP'])) {
     $title = $_POST['titlePHP'];
     $content = $_POST['contentPHP'];
     $link = $_POST['linkPHP'];
+    
     $user_id = $_SESSION['user_id'];
 
     // query database and insert the new announcement into the announcements table
@@ -95,8 +96,8 @@ if (isset($_POST['titlePHP'])) {
 
     <div id="pbs-nav-bar">
         <?php
-            include "../common/nav-bar.php";
-            ?>
+        include "../common/nav-bar.php";
+        ?>
     </div>
 
     <div class="page-header">
@@ -139,11 +140,16 @@ if (isset($_POST['titlePHP'])) {
                 //retrieve data from form
                 var title = $("#title").val();
                 var content = $('#content').val();
-                var link = $('#link').val();
+                var link;
 
-                let url_regex = /https?:\/\//;
-                if(url_regex.test(String(link).toLowerCase()) == false) {
-                    link = "https://" + link;
+                const isEmpty = str => !str.trim().length;
+
+                if(!isEmpty($('#link').val())){
+                    link = $('#link').val();
+                    let url_regex = /https?:\/\//;
+                    if (url_regex.test(String(link).toLowerCase()) == false) {
+                        link = "https://" + link;
+                    }
                 }
 
                 //check data not empty
