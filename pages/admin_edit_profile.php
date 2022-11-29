@@ -92,6 +92,11 @@
                     </tr>
 
                     <tr>
+                        <td class="caption">Last Login:</td>
+                        <td id="last-login"></td>
+                    </tr>
+
+                    <tr>
                         <td class="caption">Courses:</td>
                         <td id="courses"><ul id="course-list"></ul></td>
                     </tr>
@@ -131,7 +136,7 @@
                     window.location.href = 'manage_users.php';
                 });
 
-                                // action for password link button
+                // action for password link button
                 $("#password-link").on('click', function() {
                     // retrieve list of courses
                     $.ajax({
@@ -316,12 +321,14 @@
                             organisation = response[0].organisation;
                             list_of_course_id = response[0].list_of_course_id;
                             list_of_course_names = response[0].list_of_course_names;
+                            last_login = response[0].last_login;
 
                             //set profile detauls to DOM elements to display on page
                             $('#name').text(name);
                             $('#email-address').text(email);
                             $('#contact-number').text(contact_number);
                             $('#organisation').text(organisation);
+                            $('#last-login').text(last_login);
                             if (list_of_course_id != null) {
                                 for (let x = 0; x < list_of_course_id.length; x++){
                                     let output = "<li id='cid-" + list_of_course_id[x] + "'>" + list_of_course_names[x] + "</li>";

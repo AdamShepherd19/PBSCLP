@@ -29,7 +29,7 @@
     }
 
     //perform query and sort into newest first
-    $sql = "SELECT firstname, lastname, email, organisation, contact_number FROM users WHERE user_id=? LIMIT 1";
+    $sql = "SELECT firstname, lastname, email, organisation, contact_number, last_login FROM users WHERE user_id=? LIMIT 1";
     $stmt = $connectionPDO->prepare($sql);
     $stmt->execute([$user_id]);
     $result = $stmt->fetch();
@@ -74,6 +74,7 @@
         $email = $result['email'];
         $organisation = $result['organisation'];
         $contact_number = $result['contact_number'];
+        $last_login = $result['last_login'];
         
         //add data into array
         $data[] = array(
@@ -82,7 +83,8 @@
             "organisation" => $organisation,
             "contact_number" => $contact_number,
             "list_of_course_id" => $listOfCourseID,
-            "list_of_course_names" => $list_of_course_name
+            "list_of_course_names" => $list_of_course_name,
+            "last_login" => $last_login
         );
 
         //encode the array into jason
