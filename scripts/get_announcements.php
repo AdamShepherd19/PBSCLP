@@ -43,6 +43,7 @@
             $content = $row['content'];
             $firstname = $names[0]['firstname'];
             $lastname = $names[0]['lastname'];
+            $link = $row['link'];
                 
             //add data into array
             $data[] = array(
@@ -51,6 +52,7 @@
                 "content" => $content,
                 "firstname" => $firstname,
                 "lastname" => $lastname,
+                "link" => $link
             );
         }
         
