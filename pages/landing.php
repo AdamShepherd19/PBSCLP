@@ -144,7 +144,7 @@ if (!isset($_SESSION['logged_in'])) {
                         for (var x = 0; x < response.length; x++) {
                             var announcement;
                             if (response[x].link != null) {
-                                announcement = "<a href='" + response[x].link + "'><div class='card'>" +
+                                announcement = "<a href='" + response[x].link + "' target='_blank' rel='noopener noreferrer'><div class='card'>" +
                                     "<div class='card-header'>" +
                                     "<span class='announcement-header'>" + response[x].title + "</span>" +
                                     "</div>" +
