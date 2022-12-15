@@ -13,7 +13,7 @@
 
     // if already logged in
     if (isset($_SESSION['logged_in'])){
-        header('Location: localhost/PBSCLP/scripts/logout.php');
+        header('Location: https://pbsclp.info/scripts/logout.php');
         exit();
     }
 
@@ -74,7 +74,7 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $("#return-home").on('click', function(){
-                window.location.href = "localhost/PBSCLP/";
+                window.location.href = "https://pbsclp.info/";
             });
         });
     </script>

@@ -14,7 +14,7 @@
 
     // if already logged in
     if (isset($_SESSION['logged_in'])){
-        header('Location: localhost/PBSCLP/pages/landing.php');
+        header('Location: https://pbsclp.info/pages/landing.php');
         exit();
     }
 

@@ -63,7 +63,7 @@
                 echo 'Error: ' . $connectionPDO->error;
             }
             
-            $link = "<a href='localhost/PBSCLP/pages/change_password.php?key=".$email."&token=".$token."'>Click To Reset password</a>";
+            $link = "<a href='https://pbsclp.info/pages/change_password.php?key=".$email."&token=".$token."'>Click To Reset password</a>";
 
             $mail = new PHPMailer();
             $mail->CharSet =  "utf-8";
@@ -91,7 +91,7 @@
             $mail->MsgHTML($message);
             $mail->AddEmbeddedImage('../images/pbslogo.png', 'pbslogo');
 
-            $mail->AltBody = 'Click On This Link to Reset Password localhost/PBSCLP/pages/change_password.php?key='.$email.'&token='.$token.'';
+            $mail->AltBody = 'Click On This Link to Reset Password https://pbsclp.info/pages/change_password.php?key='.$email.'&token='.$token.'';
 
             if($mail->Send())
             {

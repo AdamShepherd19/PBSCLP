@@ -13,7 +13,7 @@
 
     // check for logged in user
     if(!isset($_SESSION['logged_in'])){
-        header('Location: localhost/PBSCLP/');
+        header('Location: https://pbsclp.info/');
         exit();
     }
 

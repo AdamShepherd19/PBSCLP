@@ -64,7 +64,7 @@
                 exit("*failed_to_create_token*");
             }
             
-            $link = "<a href='localhost/PBSCLP/pages/change_password.php?key=".$email."&token=".$token."'>Click To Set Password</a>";
+            $link = "<a href='https://pbsclp.info/pages/change_password.php?key=".$email."&token=".$token."'>Click To Set Password</a>";
 
             $mail = new PHPMailer();
             $mail->CharSet =  "utf-8";
@@ -93,7 +93,7 @@
             $mail->MsgHTML($message);
             $mail->AddEmbeddedImage('../images/pbslogo.png', 'pbslogo');
             
-            $mail->AltBody = 'Click on this link to choose the password for your new account localhost/PBSCLP/pages/change_password.php?key='.$email.'&token='.$token.'';
+            $mail->AltBody = 'Click on this link to choose the password for your new account https://pbsclp.info/pages/change_password.php?key='.$email.'&token='.$token.'';
 
             
 

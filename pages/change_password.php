@@ -16,7 +16,7 @@
 
     // if already logged in
     if (isset($_SESSION['logged_in'])){
-        header('Location: localhost/PBSCLP/scripts/logout.php');
+        header('Location: https://pbsclp.info/scripts/logout.php');
         exit();
     }
 
@@ -43,10 +43,10 @@
         
         if ($data) {
             if($data['exp_date'] < $curDate){
-                header('Location: localhost/PBSCLP/pages/reset_password_expired.php');
+                header('Location: https://pbsclp.info/pages/reset_password_expired.php');
             }
         } else {
-            header('Location: localhost/PBSCLP/pages/reset_password_expired.php');
+            header('Location: https://pbsclp.info/pages/reset_password_expired.php');
             exit();
         }
 
@@ -54,7 +54,7 @@
         $connectionPDO = null;
 
     } else{
-        header('Location: localhost/PBSCLP/');
+        header('Location: https://pbsclp.info/');
         exit();
     }
 
@@ -209,7 +209,7 @@
                             }
 
                             $("#return-home").on('click', function(){
-                                window.location.href = "localhost/PBSCLP/";
+                                window.location.href = "https://pbsclp.info/";
                             });
                         },
                         datatype: 'text'
