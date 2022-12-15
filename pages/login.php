@@ -18,7 +18,17 @@ if (isset($_SESSION['logged_in'])) {
     exit();
 }
 
-if (isset($_POST['emailPHP'])) {
+$pass = file_get_contents('../../pass.txt', true);
+
+if (isset($_POST['login'])) {
+    //connect to database
+    try {
+        $connectionPDO = new PDO('mysql:host=localhost;dbname=pbsclp_pbsclp', 'pbsclp', $pass);
+        $connectionPDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    } catch (PDOException $e) {
+        exit('*database_connection_error*');
+    }
+
 
     $email = $_POST['emailPHP'];
     $password = $_POST['passwordPHP'];
