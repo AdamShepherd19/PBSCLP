@@ -1,23 +1,23 @@
 <?php
-// ============================================
-//     - PBSCLP | landing
-//     - Adam Shepherd
-//     - PBSCLP
-//     - April 2022
+    // ============================================
+    //     - PBSCLP | landing
+    //     - Adam Shepherd
+    //     - PBSCLP
+    //     - April 2022
 
-//     This file contains the landing page of
-//     the platform. This is the home page where
-//     the rest of the platform can be navigated
-//     to and this page shows a list of
-//     announcements to the practitioners
-// ============================================
+    //     This file contains the landing page of
+    //     the platform. This is the home page where
+    //     the rest of the platform can be navigated
+    //     to and this page shows a list of
+    //     announcements to the practitioners
+    // ============================================
 
-session_start();
+    session_start();
 
-if (!isset($_SESSION['logged_in'])) {
-    header('Location: https://pbsclp.info');
-    exit();
-}
+    if(!isset($_SESSION['logged_in'])){
+        header('Location: localhost/PBSCLP/');
+        exit();
+    }
 
 ?>
 

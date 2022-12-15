@@ -16,7 +16,7 @@
     session_start();
 
     if(!isset($_SESSION['logged_in'])){
-        header('Location: https://pbsclp.info');
+        header('Location: localhost/PBSCLP/');
         exit();
     }
 ?>
@@ -57,7 +57,7 @@
         </div>
 
         <div class="page-header">
-            <h1>Forum</h1>
+            <h1>Public Forum</h1>
         </div>
 
         <div class="main-content">

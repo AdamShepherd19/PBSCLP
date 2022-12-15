@@ -12,7 +12,7 @@
     session_start();
 
     if(!isset($_SESSION['logged_in'])){
-        header('Location: https://pbsclp.info');
+        header('Location: localhost/PBSCLP/');
         exit();
     }
 
@@ -102,7 +102,7 @@
 
         <script type="text/javascript">
             $(document).ready(function () {
-                var name, email, contact_number, organisation;
+                var name, email, contact_number, organisation_name, organisation_id;
                 
                 // hide save and cancel edit profile buttons
                 $("#cancel-profile").hide();
@@ -116,7 +116,7 @@
                     $("#name").html('<input type="text" id="new-name" class="pbs-form-text-box" value="' + name + '"/>');
                     $("#email-address").html('<input type="text" id="new-email" class="pbs-form-text-box" value="' + email + '"/>');
                     $("#contact-number").html('<input type="text" id="new-contact-number" class="pbs-form-text-box" value="' + contact_number + '"/>');
-                    $("#organisation").html('<input type="text" id="new-organisation" class="pbs-form-text-box" value="' + organisation + '"/>');
+                    // $("#organisation").html('<input type="text" id="new-organisation" class="pbs-form-text-box" value="' + organisation + '"/>');
                 });
 
                 $("#cancel-profile").on('click', function() {
@@ -127,7 +127,7 @@
                     $("#name").html(name);
                     $("#email-address").html(email);
                     $("#contact-number").html(contact_number);
-                    $("#organisation").html(organisation);
+                    // $("#organisation").html(organisation);
 
                 });
 
@@ -135,7 +135,7 @@
                     var new_name = $("#new-name").val();
                     var new_email = $("#new-email").val();
                     var new_contact_number = $("#new-contact-number").val();
-                    var new_organisation = $("#new-organisation").val();
+                    // var new_organisation = $("#new-organisation").val();
                     
 
                     var index = new_name.lastIndexOf(" ");
@@ -151,7 +151,7 @@
                             lastnamePHP: lastname,
                             emailPHP: new_email,
                             contact_numberPHP: new_contact_number,
-                            organisationPHP: new_organisation
+                            // organisationPHP: new_organisation
                         },
                         success: function (response) {
                             //check if the php execution was successful and the data was added to the db
@@ -193,14 +193,16 @@
                             name = response[0].name;
                             email = response[0].email;
                             contact_number = response[0].contact_number;
-                            organisation = response[0].organisation;
+                            organisation_name = response[0].organisation_name;
+                            organisation_id = response[0].organisation_id;
                             list_of_course_id = response[0].list_of_course_id;
                             list_of_course_names = response[0].list_of_course_names;
 
                             $('#name').text(name);
                             $('#email-address').text(email);
                             $('#contact-number').text(contact_number);
-                            $('#organisation').text(organisation);
+                            $('#organisation').text(organisation_name);
+
                             for (let x = 0; x < list_of_course_id.length; x++){
                                 let output = "<li id='cid-" + list_of_course_id[x] + "'>" + list_of_course_names[x] + "</li>";
                                 $('#course-list').append(output);

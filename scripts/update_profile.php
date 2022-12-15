@@ -34,7 +34,9 @@
         $lastname = $_POST['lastnamePHP'];
         $email = $_POST['emailPHP'];
         $contact_number = $_POST['contact_numberPHP'];
-        $organisation = $_POST['organisationPHP'];
+        if(isset($_POST['organisationPHP'])) {
+            $organisation_id = $_POST['organisationPHP'];
+        }
 
         //check if email exists
         $checkEmailQuery = "SELECT user_id FROM users WHERE email=? LIMIT 1";
@@ -46,20 +48,36 @@
             exit("*email_already_exists*");
         }
 
-
-        // query database and insert the new announcement into the announcements table
-        $sql = "UPDATE users SET firstname=:firstname, lastname=:lastname, email=:email, organisation=:organisation, contact_number=:contact_number WHERE user_id=:user_id";
-        $stmt = $connectionPDO->prepare($sql);
-        
-        //check to see if the insert was successful
-        if ($stmt->execute(['firstname' => $firstname, 'lastname' => $lastname, 'email' => $email, 'organisation' => $organisation, 'contact_number' => $contact_number, 'user_id' => $user_id])) {
-            echo 'profile updated';
-            $_SESSION['firstname'] = $firstname;
-            $_SESSION['lastname'] = $lastname;
-            $_SESSION['email'] = $email;
+        if(isset($organisation_id)) {
+            // query database and insert the new announcement into the announcements table
+            $sql = "BEGIN; UPDATE users SET firstname=:firstname, lastname=:lastname, email=:email, contact_number=:contact_number WHERE user_id=:u_user_id; UPDATE users_in_organisation SET organisation_id = :organisation_id WHERE user_id = :o_user_id; COMMIT;";
+            $stmt = $connectionPDO->prepare($sql);
+            
+            //check to see if the insert was successful
+            if ($stmt->execute(['firstname' => $firstname, 'lastname' => $lastname, 'email' => $email, 'contact_number' => $contact_number, 'u_user_id' => $user_id, 'organisation_id' => $organisation_id, 'o_user_id' => $user_id])) {
+                echo 'profile updated';
+                $_SESSION['firstname'] = $firstname;
+                $_SESSION['lastname'] = $lastname;
+                $_SESSION['email'] = $email;
+            } else {
+                exit('Error: ' . $connection->error);
+            }
         } else {
-            exit('Error: ' . $connection->error);
+            // query database and insert the new announcement into the announcements table
+            $sql = "UPDATE users SET firstname=:firstname, lastname=:lastname, email=:email, contact_number=:contact_number WHERE user_id=:u_user_id;";
+            $stmt = $connectionPDO->prepare($sql);
+            
+            //check to see if the insert was successful
+            if ($stmt->execute(['firstname' => $firstname, 'lastname' => $lastname, 'email' => $email, 'contact_number' => $contact_number, 'u_user_id' => $user_id])) {
+                echo 'profile updated';
+                $_SESSION['firstname'] = $firstname;
+                $_SESSION['lastname'] = $lastname;
+                $_SESSION['email'] = $email;
+            } else {
+                exit('Error: ' . $connection->error);
+            }
         }
+        
 
         if (isset($_POST['new_list_of_coursesPHP']) || isset($_POST['old_list_of_coursesPHP'])) {
             // difference between old and new = to be removed
@@ -79,8 +97,6 @@
             } else {
                 $courses_to_remove = $old_list_of_courses;
             }
-
-            print_r($courses_to_remove);
             
             if(count($courses_to_remove) > 0){
                 $courses_to_remove_string = "";
