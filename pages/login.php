@@ -32,7 +32,7 @@
         $email = $_POST['emailPHP'];
         $password = $_POST['passwordPHP'];
  
-        $sql = "SELECT users.user_id, users.account_type, users.firstname, users.lastname, users.password, users.admin_locked, users.password_attempts, users.password_locked, users_in_organisation.organisation_id FROM users, users_in_organisation WHERE users.email=? AND users_in_organisation.user_id = (SELECT user_id FROM users WHERE email=?)";
+        $sql = "SELECT users.user_id, users.account_type, users.firstname, users.lastname, users.password, users.admin_locked, users.password_attempts, users.password_locked, users_in_organisation.organisation_id, organisations.organisation_name FROM users, users_in_organisation, organisations WHERE users.email=? AND users_in_organisation.user_id = (SELECT user_id FROM users WHERE email=?) AND users_in_organisation.organisation_id = organisations.organisation_id LIMIT 1";
         $stmt = $connectionPDO->prepare($sql);
         $stmt->execute([$email, $email]);
         $data = $stmt->fetch();
@@ -52,6 +52,7 @@
                 $_SESSION['firstname'] = $data['firstname'];
                 $_SESSION['lastname'] = $data['lastname'];
                 $_SESSION['organisation_id'] = $data['organisation_id'];
+                $_SESSION['organisation_name'] = $data['orgnisation_name'];
 
                 exit('*login_success*');
             }
