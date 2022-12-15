@@ -94,6 +94,11 @@
                     </tr>
 
                     <tr>
+                        <td class="caption">Last Login:</td>
+                        <td id="last-login"></td>
+                    </tr>
+
+                    <tr>
                         <td class="caption">Courses:</td>
                         <td id="courses"><ul id="course-list"></ul></td>
                     </tr>
@@ -104,6 +109,7 @@
                         <td id="buttons">
                             <input type="button" id="cancel-profile" class="pbs-button pbs-button-red" value="Cancel">
                             <input type="button" id="edit-profile" class="pbs-button pbs-button-green table-button" value="Edit">
+                            <input type="button" id="password-link" class="pbs-button pbs-button-blue" value="Password Link">
                             <input type="button" id="cancel-edit" class="pbs-button pbs-button-red" value="Cancel">
                             <input type="button" id="save-profile" class="pbs-button pbs-button-green" value="Save">
                         </td>
@@ -130,6 +136,28 @@
                 // action for cancel button
                 $("#cancel-profile").on('click', function() {
                     window.location.href = 'manage_users.php';
+                });
+
+                // action for password link button
+                $("#password-link").on('click', function() {
+                    // retrieve list of courses
+                    $.ajax({
+                        url: '../scripts/generate_password_token.php',
+                        type: 'post',
+                        dataType: 'JSON',
+                        data: {
+                            userId: user_id_to_edit
+                        },
+                        success: function(data) {
+                            if(data.includes("*no_user_found*") || data.includes("*failed_to_create_token*")) {
+                                console.log(data);
+                                alert("There was a system error. Please try again...");
+                            } else {
+                                alert("Link: " + data);
+                            }
+                            
+                        }
+                    });
                 });
 
                 // action for edit button
@@ -319,12 +347,14 @@
                             organisation_id = response[0].organisation_id;
                             list_of_course_id = response[0].list_of_course_id;
                             list_of_course_names = response[0].list_of_course_names;
+                            last_login = response[0].last_login;
 
                             //set profile detauls to DOM elements to display on page
                             $('#name').text(name);
                             $('#email-address').text(email);
                             $('#contact-number').text(contact_number);
-                            $('#organisation').text(organisation_name);
+                            $('#organisation').text(organisation);
+                            $('#last-login').text(last_login);
                             if (list_of_course_id != null) {
                                 for (let x = 0; x < list_of_course_id.length; x++){
                                     let output = "<li id='cid-" + list_of_course_id[x] + "'>" + list_of_course_names[x] + "</li>";

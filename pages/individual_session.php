@@ -19,6 +19,38 @@
         header('Location: localhost/PBSCLP/');
         exit();
     }
+
+    function getSessionName($sessionId) {
+
+        // https://makitweb.com/return-json-response-ajax-using-jquery-php
+        $pass = file_get_contents('../../pass.txt', true);
+
+            //connect to database
+            try {
+                $connectionPDO = new PDO('mysql:host=localhost;dbname=pbsclp_pbsclp', 'pbsclp', $pass);
+                $connectionPDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            } catch(PDOException $e) {
+                exit('*database_connection_error*');
+            }
+
+        //perform query and sort into newest first
+        $sql = "SELECT name FROM sessions WHERE session_id=? LIMIT 1";
+        $stmt = $connectionPDO->prepare($sql);
+        $stmt->execute([$sessionId]);
+        $result = $stmt->fetch();
+
+
+        if ($result){
+            $sessionName = $result[0];
+        }
+
+
+        // close connection to db
+        $stmt = null;
+        $connectionPDO = null;
+
+        return $sessionName;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -98,8 +130,10 @@
                 }
 
                 var session_id = "<?php echo $_GET['sid']; ?>";
+                var session_name = "<?php echo getSessionName($_GET['sid']); ?>";
 
-                $("#session-subheading").html(session_id);
+                $("#session-subheading").html(session_name);
+
 
                 $("#new-file-button").on('click', function() {
                     window.location.href = 'upload_new_file.php?sid=' + session_id;

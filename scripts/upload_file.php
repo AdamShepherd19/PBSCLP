@@ -75,7 +75,7 @@
         }
 
         /* Valid extensions */
-        $valid_extensions = array("jpg","jpeg","png", "gif", "svg", "pdf", "doc", "docx", "txt");
+        $valid_extensions = array("jpg","jpeg","png", "gif", "svg", "pdf", "doc", "docx", "txt", "ppt", "pptx");
         
         /* Check file extension */
         if(in_array(strtolower($file_extension), $valid_extensions)) {

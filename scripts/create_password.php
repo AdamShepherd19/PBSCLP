@@ -51,7 +51,7 @@
             $name = $data['firstname'] . $data['lastname'];
 
             $token = md5($email).rand(10,9999);
-            $expFormat = mktime(date("H"), date("i"), date("s"), date("m") ,date("d")+2, date("Y"));
+            $expFormat = mktime(date("H"), date("i"), date("s"), date("m") ,date("d")+3, date("Y"));
             $expDate = date("Y-m-d H:i:s",$expFormat);
 
             $sql = "UPDATE users set reset_link_token=:token, exp_date=:expDate WHERE email=:email";

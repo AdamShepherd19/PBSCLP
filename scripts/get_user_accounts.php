@@ -24,7 +24,9 @@
     }
 
     //perform query and sort alphabetically by first name
+    
     $sql = "SELECT users.user_id, users.firstname, users.lastname, users.email, users.contact_number, organisations.organisation_name, users.admin_locked FROM users, organisations, users_in_organisation WHERE users.user_id<>? AND users.user_id = users_in_organisation.user_id AND users_in_organisation.organisation_id = organisations.organisation_id ORDER BY firstname ASC";
+
     
     $stmt = $connectionPDO->prepare($sql); //prepare query
     $stmt->execute([$_SESSION['user_id']]); //execute query using data provided
@@ -46,6 +48,7 @@
             $contact_number = $row['contact_number'];
             $organisation = $row['organisation_name'];
             $admin_locked = $row['admin_locked'];
+            $last_login = $row['last_login'];
             
             //add data into array
             $data[] = array(
@@ -55,7 +58,8 @@
                 "email" => $email,
                 "contact_number" => $contact_number,
                 "organisation" => $organisation,
-                "admin_locked" => $admin_locked
+                "admin_locked" => $admin_locked,
+                "last_login" => $last_login
             );
         }
 
