@@ -23,18 +23,24 @@ try {
     exit('*database_connection_error*');
 }
 
-try{
+try {
     $usersMemberOrganisations = getUsersWithMemberOrganisation($connectionPDO);
 
-    foreach($usersMemberOrganisations as $user) {
+    foreach ($usersMemberOrganisations as $user) {
         $userIdsNoMemberOrg .= $user['user_id'] .= ",";
     }
     $userIdsNoMemberOrg = substr($userIdsNoMemberOrg, 0, -1);
-    
-    $userWithNoMeberOrganisation = getUsersWithNoMemberOrganisation($connectionPDO, $userIdsNoMemberOrg);
 
-    $allUsers = array_merge($usersMemberOrganisations, $userWithNoMeberOrganisation);
-    
+    $userWithNoMemberOrganisation = getUsersWithNoMemberOrganisation($connectionPDO, $userIdsNoMemberOrg);
+
+    $allUsers = array_merge($usersMemberOrganisations, $userWithNoMemberOrganisation);
+
+    try {
+        usort($allUsers, fn($a, $b) => $a['firstname'] <=> $b['firstname']);
+    } catch (PDOException $e) {
+        exit($e);
+    }
+
 } catch (PDOException $e) {
     exit($e);
 }
@@ -78,7 +84,12 @@ function getUsersWithMemberOrganisation($connectionPDO)
 
 function getUsersWithNoMemberOrganisation($connectionPDO, $listOfUsersWithMemberOrganisation)
 {
-    $sql = "SELECT users.user_id, users.firstname, users.lastname, users.email, users.contact_number, users.organisation, users.admin_locked, users.last_login FROM users WHERE users.user_id<>? AND users.user_id NOT IN (" . $listOfUsersWithMemberOrganisation . ") ORDER BY `users`.`user_id` ASC";
+    if ($listOfUsersWithMemberOrganisation) {
+        $sql = "SELECT users.user_id, users.firstname, users.lastname, users.email, users.contact_number, users.organisation, users.admin_locked, users.last_login FROM users WHERE users.user_id<>? AND users.user_id NOT IN (" . $listOfUsersWithMemberOrganisation . ") ORDER BY `users`.`user_id` ASC";
+    } else {
+        $sql = "SELECT users.user_id, users.firstname, users.lastname, users.email, users.contact_number, users.organisation, users.admin_locked, users.last_login FROM users WHERE users.user_id<>? ORDER BY `users`.`user_id` ASC";
+    }
+
 
 
     $stmt = $connectionPDO->prepare($sql); //prepare query

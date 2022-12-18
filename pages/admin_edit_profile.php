@@ -92,6 +92,12 @@
                             <!-- <select id="organisation_list" name=organisation> -->
                         </td>
                     </tr>
+                    <tr>
+                        <td class="caption">Member Organisation:</td>
+                        <td id="member-organisation">
+                            <!-- <select id="organisation_list" name=organisation> -->
+                        </td>
+                    </tr>
 
                     <tr>
                         <td class="caption">Last Login:</td>
@@ -127,7 +133,7 @@
                 var user_id_to_edit = "<?php echo $_GET['userId']; ?>";
 
                 // initialise variables
-                var name, email, contact_number, organisation_name, organisation_id;
+                var name, email, contact_number, organisation_name, organisation_id, noMemberOrganisation;
                 
                 // hide save and cancel edit profile buttons
                 $("#cancel-edit").hide();
@@ -165,6 +171,7 @@
                     // swap visibility of buttons
                     $("#edit-profile").hide();
                     $("#cancel-profile").hide();
+                    $("#password-link").hide();
                     $("#cancel-edit").show();
                     $("#save-profile").show();
                     
@@ -223,7 +230,10 @@
                                 console.log("no courses found");
                             } else {
                                 //add organisations to dom if found
-                                $("#organisation").html('<select id="organisation-list" name=organisation class="pbs-form-text-box">');
+                                $("#member-organisation").html('<select id="organisation-list" name=organisation class="pbs-form-text-box">');
+
+                                $("#organisation-list").append('<option value="-1"></option>');
+                                
                                 for (let i = 0; i < response.length; i++) {
 
                                     let output = '<option value="' + response[i].organisation_id + '">' + response[i].organisation_name + '</option>';
@@ -239,6 +249,7 @@
                     $("#name").html('<input type="text" id="new-name" class="pbs-form-text-box" value="' + name + '"/>');
                     $("#email-address").html('<input type="text" id="new-email" class="pbs-form-text-box" value="' + email + '"/>');
                     $("#contact-number").html('<input type="text" id="new-contact-number" class="pbs-form-text-box" value="' + contact_number + '"/>');
+                    $("#organisation").html('<input type="text" id="new-organisation" class="pbs-form-text-box" value="' + (organisation || '' )+ '"/>');
                 });
 
                 //cancel button action
@@ -248,13 +259,16 @@
                     $("#save-profile").hide();
                     $("#edit-profile").show();
                     $("#cancel-profile").show();
+                    $("#password-link").show();
 
                     //set profile details to original values
                     $("#name").html(name);
                     $("#email-address").html(email);
                     $("#contact-number").html(contact_number);
                     // $("#organisation").html("");
-                    $("#organisation").html(organisation_name);
+                    $("#organisation").html(organisation);
+                    $("#member-organisation").html(organisation_name);
+
                     $("#courses").html('<ul id="course-list"></ul>');
                     //display list of courses
                     if (list_of_course_id != null) {
@@ -269,6 +283,7 @@
                 $("#save-profile").on('click', function() {
                     //retrieve forum values after updated
                     var new_name = $("#new-name").val();
+                    var new_organisation = $("#new-organisation").val();
                     var new_email = $("#new-email").val();
                     var new_contact_number = $("#new-contact-number").val();
                     var new_organisation_id = $("#organisation-list").val();
@@ -293,10 +308,12 @@
                             firstnamePHP: firstname,
                             lastnamePHP: lastname,
                             emailPHP: new_email,
+                            organisationPHP: new_organisation,
                             contact_numberPHP: new_contact_number,
-                            organisationPHP: new_organisation_id,
+                            organisationIdPHP: new_organisation_id,
                             old_list_of_coursesPHP: list_of_course_id,
-                            new_list_of_coursesPHP: new_list_of_courses
+                            new_list_of_coursesPHP: new_list_of_courses,
+                            noMemberOrganisationPHP: noMemberOrganisation
                         },
                         success: function (response) {
                             //check if the php execution was successful and the data was added to the db
@@ -345,15 +362,21 @@
                             contact_number = response[0].contact_number;
                             organisation_name = response[0].organisation_name;
                             organisation_id = response[0].organisation_id;
+                            organisation = response[0].organisation;
                             list_of_course_id = response[0].list_of_course_id;
                             list_of_course_names = response[0].list_of_course_names;
                             last_login = response[0].last_login;
+
+                            if(!organisation_id) {
+                                noMemberOrganisation = 1;
+                            }
 
                             //set profile detauls to DOM elements to display on page
                             $('#name').text(name);
                             $('#email-address').text(email);
                             $('#contact-number').text(contact_number);
                             $('#organisation').text(organisation);
+                            $('#member-organisation').text(organisation_name);
                             $('#last-login').text(last_login);
                             if (list_of_course_id != null) {
                                 for (let x = 0; x < list_of_course_id.length; x++){
