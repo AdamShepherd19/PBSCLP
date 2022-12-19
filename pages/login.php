@@ -29,63 +29,70 @@ if (isset($_POST['login'])) {
         exit('*database_connection_error*');
     }
 
-
     $email = $_POST['emailPHP'];
     $password = $_POST['passwordPHP'];
 
-    $sql = "SELECT users.user_id, users.account_type, users.firstname, users.lastname, users.password, users.admin_locked, users.password_attempts, users.password_locked, users_in_organisation.organisation_id, organisations.organisation_name FROM users, users_in_organisation, organisations WHERE users.email=? AND users_in_organisation.user_id = (SELECT user_id FROM users WHERE email=?) AND users_in_organisation.organisation_id = organisations.organisation_id LIMIT 1";
+    $sqlUser = "SELECT users.user_id, users.account_type, users.firstname, users.lastname, users.password, users.admin_locked, users.password_attempts, users.password_locked FROM users WHERE users.email=? LIMIT 1";
     $stmt = $connectionPDO->prepare($sql);
-    $stmt->execute([$email, $email]);
-    $data = $stmt->fetch();
+    $stmt->execute([$email]);
+    $dataUser = $stmt->fetch();
 
-    //check if login details provided match a user profile in the db
-    if ($data['password_locked'] == 1) {
-        exit("*account_password_locked*");
-    } else if ($data && password_verify($password, $data['password'])) {
-        if ($data['admin_locked'] == 1) {
-            exit("*account_locked_by_administrator*");
-        } else {
-            $loginTimestamp = date("Y-m-d H:i:s");
-            $loginTimeSql = "UPDATE users SET last_login=:login_timestamp WHERE email=:email";
-            $stmt = $connectionPDO->prepare($loginTimeSql);
-            if ($stmt->execute(['login_timestamp' => $loginTimestamp, 'email' => $email])) {
-                //store session variables
-                $_SESSION['logged_in'] = True;
-                $_SESSION['user_id'] = $data['user_id'];
-                $_SESSION['email'] = $email;
-                $_SESSION['account_type'] = $data['account_type'];
-                $_SESSION['firstname'] = $data['firstname'];
-                $_SESSION['lastname'] = $data['lastname'];
-                $_SESSION['organisation_id'] = $data['organisation_id'];
-                $_SESSION['organisation_name'] = $data['orgnisation_name'];
+    if ($dataUser) {
 
-                exit('*login_success*');
-            } else {
-                exit('*issue_creating_timestamp*');
-            }
-            // exit('*login_success*');
-        }
-    } else {
-        $account_locked = 0;
-        if ($data['password_attempts'] == 0) {
-            $attempts = 1;
-        } else if ($data['password_attempts'] == 1) {
-            $attempts = 2;
-        } else if ($data['password_attempts'] == 2) {
-            $attempts = 3;
-            $account_locked = 1;
-        }
-
-        // query database and insert the new announcement into the announcements table
-        $sql = "UPDATE users SET password_attempts=:attempts, password_locked=:locked WHERE email=:email";
+        $sqlOrganisation = "SELECT users_in_organisation.organisation_id, organisations.organisation_name FROM users_in_organisation, organisations WHERE users_in_organisation.user_id = ? AND organisations.organisation_id = users_in_organisation.organisation_id LIMIT 1";
         $stmt = $connectionPDO->prepare($sql);
+        $stmt->execute([$data['user_id']]);
+        $dataOrganisation = $stmt->fetch();
 
-        //check to see if the insert was successful
-        if (!$stmt->execute(['attempts' => $attempts, 'locked' => $account_locked, 'email' => $email])) {
-            exit('Error: ' . $connection->error);
+        //check if login details provided match a user profile in the db
+        if ($dataUser['password_locked'] == 1) {
+            exit("*account_password_locked*");
+        } else if ($dataUser && password_verify($password, $dataUser['password'])) {
+            if ($dataUser['admin_locked'] == 1) {
+                exit("*account_locked_by_administrator*");
+            } else {
+                $loginTimestamp = date("Y-m-d H:i:s");
+                $loginTimeSql = "UPDATE users SET last_login=:login_timestamp WHERE email=:email";
+                $stmt = $connectionPDO->prepare($loginTimeSql);
+                if ($stmt->execute(['login_timestamp' => $loginTimestamp, 'email' => $email])) {
+                    //store session variables
+                    $_SESSION['logged_in'] = True;
+                    $_SESSION['user_id'] = $dataUser['user_id'];
+                    $_SESSION['email'] = $email;
+                    $_SESSION['account_type'] = $dataUser['account_type'];
+                    $_SESSION['firstname'] = $dataUser['firstname'];
+                    $_SESSION['lastname'] = $dataUser['lastname'];
+                    $_SESSION['organisation_id'] = $dataOrganisation['organisation_id'] || null;
+                    $_SESSION['organisation_name'] = $dataOrganisation['orgnisation_name'] || null;
+
+                    exit('*login_success*');
+                } else {
+                    exit('*issue_creating_timestamp*');
+                }
+                // exit('*login_success*');
+            }
+        } else {
+            $account_locked = 0;
+            if ($dataUser['password_attempts'] == 0) {
+                $attempts = 1;
+            } else if ($dataUser['password_attempts'] == 1) {
+                $attempts = 2;
+            } else if ($dataUser['password_attempts'] == 2) {
+                $attempts = 3;
+                $account_locked = 1;
+            }
+
+            // query database and insert the new announcement into the announcements table
+            $sql = "UPDATE users SET password_attempts=:attempts, password_locked=:locked WHERE email=:email";
+            $stmt = $connectionPDO->prepare($sql);
+
+            //check to see if the insert was successful
+            if (!$stmt->execute(['attempts' => $attempts, 'locked' => $account_locked, 'email' => $email])) {
+                exit('Error: ' . $connection->error);
+            }
+
+            exit('*login_failed*');
         }
-
-        exit('*login_failed*');
     }
 
     // close connection to db
