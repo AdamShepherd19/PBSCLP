@@ -21,3 +21,7 @@
 .caption {
     padding-right: 20px;
 }
+
+#organisation-list {
+    height: 50px;
+}

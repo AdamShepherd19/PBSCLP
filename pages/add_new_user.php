@@ -136,22 +136,19 @@
                         <td class="caption">Contact Number:</td>
                         <td><input type="text" id="contact-number" class="pbs-form-text-box" placeholder="Contact Number..."></td>
                     </tr>
-                    
-                    <!-- organisation/company -->
-                    <tr>
-                        <td class="caption">Organisation:</td>
-                        <td>
-                            <!-- <input type="text" id="organisation" class="pbs-form-text-box" placeholder="Organisation..."> -->
-                            <!-- <input list="organisations" name="organisation" autocomplete="off" class="pbs-form-text-box">
-                                <datalist id="organisations">
-                                    <option value="PBSuk"></option>
-                                    <option value="Norfolk"></option>
-                                </datalist> -->
 
-                            <select id="organisation" name="organisation" class="pbs-form-text-box">
-                                <!-- <option value="1">PBSuk</option>
-                                <option value="2">Norfolk</option> -->
-                            </select>
+                    <!-- individual organisation -->
+                    <tr>
+                        <td class="caption">Individual Organisation:</td>
+                        <td><input type="text" id="individual-organisation" class="pbs-form-text-box" placeholder="Organisation..."></td>
+                    </tr>
+                    
+                    <!-- member organisation -->
+                    <tr>
+                        <td class="caption">Member Organisation:</td>
+                        <td id="member-organisation">
+                            <!-- <select id="member-organisation" name="member-organisation" class="pbs-form-text-box">
+                            </select> -->
                         </td>
                     </tr>
             
@@ -197,6 +194,7 @@
         
         <script type="text/javascript">
             $(document).ready(function () {
+                var name, email, contact_number, organisation_name, organisation_id, noMemberOrganisation;
 
                 // action for cancel button
                 $("#cancel").on('click', function(){
@@ -249,14 +247,20 @@
                             } else {
                                 temp = response;
                                 //add courses to dom if found
-                                $("#organisation").html("");
+                                $("#member-organisation").html("");
                                 for (let i = 0; i < response.length; i++) {
-                                    // let output = '<input type="checkbox" id="cid-' + response[i].course_id + '" class="pbs-form-check-box" value="' + response[i].course_name + '">' + 
-                                    // '<label for="cid-' + response[i].course_id + '">' + response[i].course_name + '</label><br>';
+                                //add organisations to dom if found
+                                $("#member-organisation").html('<select id="organisation-list" name=organisation class="pbs-form-text-box">');
+
+                                $("#organisation-list").append('<option value="-1"></option>');
+                                
+                                for (let i = 0; i < response.length; i++) {
 
                                     let output = '<option value="' + response[i].organisation_id + '">' + response[i].organisation_name + '</option>';
 
-                                    $("#organisation").append(output);
+                                    $("#organisation-list").append(output);
+                                }
+                                $("#organisation-list").val(organisation_id);
                                 }
                             }
                         }
@@ -279,8 +283,9 @@
                     var lastname = $('#lastname').val();
                     var email = $('#email').val();
                     var contact_number = $('#contact-number').val();
-                    var organisation = $('#organisation').val();
-                    var account_type = $('#account-type').val(); 
+                    var member_organisation = $('#organisation-list').val();
+                    var account_type = $('#account-type').val();
+                    var individual_organisation = $('#individual-organisation').val();
 
                     var list_of_courses;
                     if (list_of_all_courses != null) {
@@ -297,7 +302,7 @@
                     
 
                     //check data not empty
-                    if(firstname == "" || lastname == "" || email == "" || contact_number == "" || organisation == ""){
+                    if(firstname == "" || lastname == "" || email == "" || contact_number == "" || member_organisation == "" || individual_organisation == ""){
                         //prompt user to fill in all data
                         alert("Please fill out all the fields in the form.");
                     } else {
@@ -321,7 +326,8 @@
                                             lastnamePHP: lastname,
                                             emailPHP: email,
                                             contact_numberPHP: contact_number,
-                                            organisationPHP: organisation,
+                                            individual_organisationPHP: individual_organisation,
+                                            member_organisationPHP: member_organisation,
                                             account_typePHP: account_type,
                                             list_of_coursesPHP: list_of_courses
                                         },

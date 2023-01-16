@@ -54,7 +54,7 @@ if (isset($_POST['login'])) {
                     exit("*account_locked_by_administrator*");
                 } else {
                     $loginTimestamp = date("Y-m-d H:i:s");
-                    $loginTimeSql = "UPDATE users SET last_login=:login_timestamp WHERE email=:email";
+                    $loginTimeSql = "UPDATE users SET last_login=:login_timestamp, password_attempts='0' WHERE email=:email";
                     $stmt = $connectionPDO->prepare($loginTimeSql);
                     if ($stmt->execute(['login_timestamp' => $loginTimestamp, 'email' => $email])) {
                         //store session variables
