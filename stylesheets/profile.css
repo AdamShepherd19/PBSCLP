@@ -9,6 +9,7 @@
     border: 1px solid var(--pbs-blue);
     border-radius: 20px;
     padding: 20px;
+    margin-bottom: 20px;
 }
 
 table {
@@ -30,4 +31,8 @@ td {
     display: flex;
     align-items: flex-end;
     width: 100%;
+}
+
+#organisation-list {
+    height: 50px;
 }

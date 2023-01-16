@@ -16,7 +16,7 @@
 
     //check for logged in user
     if(!isset($_SESSION['logged_in'])){
-        header('Location: https://pbsclp.info');
+        header('Location: https://pbsclp.info/');
         exit();
     }
 

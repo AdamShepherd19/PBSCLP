@@ -54,7 +54,7 @@
         $connectionPDO = null;
 
     } else{
-        header('Location: https://pbsclp.info');
+        header('Location: https://pbsclp.info/');
         exit();
     }
 
@@ -209,7 +209,7 @@
                             }
 
                             $("#return-home").on('click', function(){
-                                window.location.href = "https://pbsclp.info";
+                                window.location.href = "https://pbsclp.info/";
                             });
                         },
                         datatype: 'text'

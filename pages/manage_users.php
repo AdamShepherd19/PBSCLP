@@ -91,6 +91,13 @@
                                     <td class="table-labels">Organisation:</td>
                                     <td>Organisation</td>
                                 </tr>
+
+                                <tr>
+                                    <td class="table-labels">Member Organisation:</td>
+                                    <td>Organisation</td>
+                                </tr>
+
+
                             </table>
                         </div>
                         
@@ -139,6 +146,8 @@
                                             '<tr><td class="table-labels">Contact Number:</td><td id="contact-number-content">' + response[x].contact_number + '</td></tr>'+
                                     
                                             '<tr><td class="table-labels">Organisation:</td><td id="organisation-content">' + (response[x].organisation || '') + '</td></tr>'+
+
+                                            '<tr><td class="table-labels">Member Organisation:</td><td id="member-organisation-content">' + (response[x].member_organisation || '') + '</td></tr>'+
 
                                             '<td class="table-labels">Last Login:</td><td id="last-login">' + (response[x].last_login || '') + '</td></tr>'+
                                         '</table>'+
