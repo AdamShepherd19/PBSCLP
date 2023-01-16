@@ -27,18 +27,19 @@
         $lastname = $_POST['lastnamePHP'];
         $email = $_POST['emailPHP'];
         $contact_number = $_POST['contact_numberPHP'];
-        $organisation = $_POST['organisationPHP'];
+        $individual_organisation = $_POST['individual_organisationPHP'];
+        $member_organisation = $_POST['member_organisationPHP'];
         $account_type = $_POST['account_typePHP'];
         $list_of_courses = $_POST['list_of_coursesPHP'];
 
 
         // query database and insert the new announcement into the announcements table
-        $sql = "BEGIN; INSERT INTO users (firstname, lastname, email, contact_number,  account_type) VALUES (:firstname, :lastname, :email, :contact_number, :account_type); INSERT INTO users_in_organisation (user_id, organisation_id) VALUES (LAST_INSERT_ID(), :organisation_id); COMMIT;";
+        $sql = "BEGIN; INSERT INTO users (firstname, lastname, email, contact_number,  account_type, organisation) VALUES (:firstname, :lastname, :email, :contact_number, :account_type, :individual_organisation); INSERT INTO users_in_organisation (user_id, organisation_id) VALUES (LAST_INSERT_ID(), :member_organisation_id); COMMIT;";
         // INSERT INTO users (firstname, lastname, email, contact_number,  account_type) VALUES ('adam', 'ldf', 'email', '1232', 'ardasf', 'practitioner')
         $stmt = $connectionPDO->prepare($sql);
         
         //check to see if the insert was successful
-        if ($stmt->execute(['firstname' => $firstname, 'lastname' => $lastname, 'email' => $email, 'contact_number' => $contact_number, 'account_type' => $account_type, 'organisation_id' => $organisation])) {
+        if ($stmt->execute(['firstname' => $firstname, 'lastname' => $lastname, 'email' => $email, 'contact_number' => $contact_number, 'account_type' => $account_type, 'individual_organisation' => $individual_organisation, 'member_organisation_id' => $member_organisation])) {
             $sql = "SELECT user_id FROM users WHERE email=? LIMIT 1";
             $stmt = $connectionPDO->prepare($sql);
             $stmt->execute([$email]);
