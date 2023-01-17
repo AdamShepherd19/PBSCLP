@@ -144,20 +144,30 @@
                         for (var x = 0; x < response.length; x++) {
                             var announcement;
                             if (response[x].link != null) {
-                                announcement = "<a href='" + response[x].link + "' target='_blank' rel='noopener noreferrer'><div class='card'>" +
-                                    "<div class='card-header'>" +
-                                    "<span class='announcement-header'>" + response[x].title + "</span>" +
+                                announcement = "<div class='card'>" +
+                                "<div class='card-header'>" +
+                                        " <span class='announcement-header'><div class='row'>" +
+                                            "<div class='col-7'>" + response[x].title + " </div>" +
+                                            "<div class='col-2'> <input type='button' id='edit-announcement' class='pbs-button pbs-button-yellow' value='Edit'> </div>" +
+                                            "<div class='col-2'>" +
+                                                "<a href='" + response[x].link + "' target='_blank' rel='noopener noreferrer'>" +
+                                                "<input type='button' id='view-announcement-link' class='pbs-button pbs-button-blue' value='View Link'></a>" +
+                                            "</div>" +
+                                        "</div></span>" +
                                     "</div>" +
                                     "<div class='card-body'>" +
                                     "<blockquote class='blockquote mb-0'>" +
                                     "<p>" + response[x].content + "</p>" +
                                     "<footer class='blockquote-footer'>" + response[x].firstname + " " + response[x].lastname + "</footer>" +
                                     "</blockquote>" +
-                                    "</div></div> </a>";
+                                    "</div></div>";
                             } else {
                                 announcement = "<div class='card'>" +
                                     "<div class='card-header'>" +
-                                    "<span class='announcement-header'>" + response[x].title + "</span>" +
+                                        " <span class='announcement-header'><div class='row'>" +
+                                            "<div class='col-7'>" + response[x].title + " </div>" +
+                                            "<div class='col-2'> <input type='button' id='edit-announcement' class='pbs-button pbs-button-yellow' value='Edit'> </div>" +
+                                        "</div></span>" +
                                     "</div>" +
                                     "<div class='card-body'>" +
                                     "<blockquote class='blockquote mb-0'>" +

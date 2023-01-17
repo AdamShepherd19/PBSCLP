@@ -30,6 +30,7 @@
 
 .announcement-header {
     font-size: 20px;
+    vertical-align: middle;
 }
 
 .card-body p {
@@ -49,4 +50,8 @@
 
 .landing-nav-box-button {
     margin-bottom: 20px;
+}
+
+.button-right {
+    float: right;
 }
