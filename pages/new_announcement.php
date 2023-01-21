@@ -112,7 +112,7 @@ if (isset($_POST['titlePHP'])) {
     <link rel="stylesheet" href="../stylesheets/style.css">
     <link rel="stylesheet" href="../stylesheets/new_announcement.css">
 
-    <title>New Announcement</title>
+    <title>Announcement</title>
 
 </head>
 
@@ -125,7 +125,7 @@ if (isset($_POST['titlePHP'])) {
     </div>
 
     <div class="page-header">
-        <h1>New Announcement</h1>
+        <h1 id='page-title'>New Announcement</h1>
     </div>
 
     <div class="main-content">
@@ -158,6 +158,7 @@ if (isset($_POST['titlePHP'])) {
             var title, content, link;
 
             if(announcement_id){
+                $("#page-title").html("Edit Announcement");
                 console.log(announcement_id);
 
                 $.ajax({
