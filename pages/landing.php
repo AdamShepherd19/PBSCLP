@@ -1,23 +1,23 @@
 <?php
-    // ============================================
-    //     - PBSCLP | landing
-    //     - Adam Shepherd
-    //     - PBSCLP
-    //     - April 2022
+// ============================================
+//     - PBSCLP | landing
+//     - Adam Shepherd
+//     - PBSCLP
+//     - April 2022
 
-    //     This file contains the landing page of
-    //     the platform. This is the home page where
-    //     the rest of the platform can be navigated
-    //     to and this page shows a list of
-    //     announcements to the practitioners
-    // ============================================
+//     This file contains the landing page of
+//     the platform. This is the home page where
+//     the rest of the platform can be navigated
+//     to and this page shows a list of
+//     announcements to the practitioners
+// ============================================
 
-    session_start();
+session_start();
 
-    if(!isset($_SESSION['logged_in'])){
-        header('Location: https://pbsclp.info/');
-        exit();
-    }
+if (!isset($_SESSION['logged_in'])) {
+    header('Location: https://pbsclp.info/');
+    exit();
+}
 
 ?>
 
@@ -102,6 +102,7 @@
     <script type="text/javascript">
 
         $(document).ready(function () {
+            var title_size;
 
             $("#review-forum-posts").on('click', function () {
                 window.location.href = 'review_posts.php';
@@ -127,6 +128,8 @@
                 window.location.href = 'new_announcement.php';
             });
 
+            var account_type = "<?php print($_SESSION['account_type']); ?>";
+
             //https://makitweb.com/return-json-response-ajax-using-jquery-php/
             $.ajax({
                 url: '../scripts/get_announcements.php',
@@ -143,21 +146,18 @@
                     } else {
                         for (var x = 0; x < response.length; x++) {
                             var announcement;
+
                             if (response[x].link != null) {
-                                announcement = "<a href='" + response[x].link + "' target='_blank' rel='noopener noreferrer'><div class='card'>" +
-                                    "<div class='card-header'>" +
-                                    "<span class='announcement-header'>" + response[x].title + "</span>" +
-                                    "</div>" +
-                                    "<div class='card-body'>" +
-                                    "<blockquote class='blockquote mb-0'>" +
-                                    "<p>" + response[x].content + "</p>" +
-                                    "<footer class='blockquote-footer'>" + response[x].firstname + " " + response[x].lastname + "</footer>" +
-                                    "</blockquote>" +
-                                    "</div></div> </a>";
-                            } else {
                                 announcement = "<div class='card'>" +
                                     "<div class='card-header'>" +
-                                    "<span class='announcement-header'>" + response[x].title + "</span>" +
+                                    " <span class='announcement-header'><div class='row'>" +
+                                    "<div class='col-" + title_size + "'>" + response[x].title + " </div>" +
+                                    "<div class='col-2'>" +
+                                    "<a href='" + response[x].link + "' target='_blank' rel='noopener noreferrer'>" +
+                                    "<input type='button' id='view-announcement-link' class='pbs-button pbs-button-blue' value='View Link'></a>" +
+                                    "</div>" +
+                                    "<div class='col-2 admin-only'> <input type='button' id='edit-announcement-" + response[x].id + "' class='pbs-button pbs-button-yellow edit-announcement' value='Edit'> </div>" +
+                                    "</div></span>" +
                                     "</div>" +
                                     "<div class='card-body'>" +
                                     "<blockquote class='blockquote mb-0'>" +
@@ -165,11 +165,34 @@
                                     "<footer class='blockquote-footer'>" + response[x].firstname + " " + response[x].lastname + "</footer>" +
                                     "</blockquote>" +
                                     "</div></div>";
+                            } else {
+                                announcement = "<div class='card'>" +
+                                    "<div class='card-header'>" +
+                                    " <span class='announcement-header'><div class='row'>" +
+                                    "<div class='col-" + (title_size+2) + "'>" + response[x].title + " </div>" +
+                                    "<div class='col-2 admin-only'> <input type='button' id='edit-announcement-" + response[x].id + "' class='pbs-button pbs-button-yellow edit-announcement ' value='Edit'> </div>" +
+                                    "</div></span>" +
+                                    "</div>" +
+                                    "<div class='card-body'>" +
+                                    "<blockquote class='blockquote mb-0'>" +
+                                    "<p>" + response[x].content + "</p>" +
+                                    "<footer class='blockquote-footer'>" + response[x].firstname + " " + response[x].lastname + "</footer>" +
+                                    "</blockquote>" +
+                                    "</div></div>";
+
                             }
                             $("#announcement-wrapper").append(announcement);
                         }
                     }
 
+                }
+            }).then(() => {
+                // only show administrator content if an admin logged in
+                var accountType = '<?php echo $_SESSION['account_type']; ?>';
+                if (accountType != 'administrator') {
+                    $('.admin-only').hide();
+                } else {
+                    $('.admin-only').show();
                 }
             });
 
@@ -210,12 +233,21 @@
                 }
             });
 
+            $(document).on("click", ".edit-announcement", function () {
+                var contentPanelId = jQuery(this).attr("id");
+                var announcement_id = contentPanelId.split(/[-]+/).pop();
+                // alert(contentPanelId);
+                window.location.href = 'new_announcement.php?aid=' + announcement_id;
+            })
+
             // only show administrator content if an admin logged in
             var accountType = '<?php echo $_SESSION['account_type']; ?>';
             if (accountType != 'administrator') {
                 $('.admin-only').hide();
+                title_size=9;
             } else {
                 $('.admin-only').show();
+                title_size=7;
             }
         });
     </script>
