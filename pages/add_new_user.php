@@ -283,9 +283,19 @@
                     var lastname = $('#lastname').val();
                     var email = $('#email').val();
                     var contact_number = $('#contact-number').val();
-                    var member_organisation = $('#organisation-list').val();
+                    var member_organisation = $('#member-organisation').val();
                     var account_type = $('#account-type').val();
                     var individual_organisation = $('#individual-organisation').val();
+
+                    console.log(member_organisation);
+                    if(member_organisation == null) {
+                        console.log("null")
+                    } else if (member_organisation == undefined) {
+                        console.log("undefined")
+                    } else if (member_organisation == "") {
+                        console.log('""');
+                    }
+                    // console.log(individual_organisation)
 
                     var list_of_courses;
                     if (list_of_all_courses != null) {
@@ -302,7 +312,7 @@
                     
 
                     //check data not empty
-                    if(firstname == "" || lastname == "" || email == "" || contact_number == "" || member_organisation == "" || individual_organisation == ""){
+                    if(firstname == "" || lastname == "" || email == "" || contact_number == "" || individual_organisation == ""){
                         //prompt user to fill in all data
                         alert("Please fill out all the fields in the form.");
                     } else {
@@ -327,7 +337,7 @@
                                             emailPHP: email,
                                             contact_numberPHP: contact_number,
                                             individual_organisationPHP: individual_organisation,
-                                            member_organisationPHP: member_organisation,
+                                            member_organisationPHP: member_organisation != "" ? member_organisation : undefined,
                                             account_typePHP: account_type,
                                             list_of_coursesPHP: list_of_courses
                                         },
