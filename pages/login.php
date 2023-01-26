@@ -57,6 +57,14 @@ if (isset($_POST['login'])) {
                     $loginTimeSql = "UPDATE users SET last_login=:login_timestamp, password_attempts='0' WHERE email=:email";
                     $stmt = $connectionPDO->prepare($loginTimeSql);
                     if ($stmt->execute(['login_timestamp' => $loginTimestamp, 'email' => $email])) {
+
+                        if ($dataOrganisation['organisation_id'] > 0) {
+                            $_SESSION['organisation_id'] = $dataOrganisation['organisation_id'];
+                            $_SESSION['organisation_name'] = $dataOrganisation['orgnisation_name'];
+                        } else {
+                            $_SESSION['organisation_id'] = null;
+                            $_SESSION['organisation_name'] = null;
+                        }
                         //store session variables
                         $_SESSION['logged_in'] = True;
                         $_SESSION['user_id'] = $dataUser['user_id'];
@@ -64,14 +72,11 @@ if (isset($_POST['login'])) {
                         $_SESSION['account_type'] = $dataUser['account_type'];
                         $_SESSION['firstname'] = $dataUser['firstname'];
                         $_SESSION['lastname'] = $dataUser['lastname'];
-                        $_SESSION['organisation_id'] = $dataOrganisation['organisation_id'] || null;
-                        $_SESSION['organisation_name'] = $dataOrganisation['orgnisation_name'] || null;
 
                         exit('*login_success*');
                     } else {
                         exit('*issue_creating_timestamp*');
                     }
-                    // exit('*login_success*');
                 }
             } else {
                 $account_locked = 0;
