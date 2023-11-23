@@ -88,7 +88,7 @@ if (isset($_POST['firstnamePHP'])) {
 
     } else {
         // query database and insert the new announcement into the announcements table
-        $sql = "UPDATE users SET firstname=:firstname, lastname=:lastname, email=:email, contact_number=:contact_number WHERE user_id=:u_user_id;";
+        $sql = "BEGIN; UPDATE users SET firstname=:firstname, lastname=:lastname, email=:email, contact_number=:contact_number WHERE user_id=:u_user_id; COMMIT;";
         $stmt = $connectionPDO->prepare($sql);
 
         //check to see if the insert was successful
@@ -106,7 +106,7 @@ if (isset($_POST['firstnamePHP'])) {
     if (isset($_POST['new_list_of_coursesPHP']) || isset($_POST['old_list_of_coursesPHP'])) {
         // difference between old and new = to be removed
         // difference between new and old = to be added
-
+        
         $new_list_of_courses = $_POST['new_list_of_coursesPHP'];
         $old_list_of_courses = $_POST['old_list_of_coursesPHP'];
 
@@ -131,22 +131,24 @@ if (isset($_POST['firstnamePHP'])) {
                 }
             }
 
-            $remove_query = "DELETE FROM users_on_courses WHERE user_id=? AND course_id IN (" . $courses_to_remove_string . ");";
+            $remove_query = "BEGIN; DELETE FROM users_on_courses WHERE user_id=:user_id AND course_id IN (" . $courses_to_remove_string . "); COMMIT";
             echo $remove_query;
+
             $stmt = $connectionPDO->prepare($remove_query);
-            if (!$stmt->execute([$user_id])) {
+            
+            if (!$stmt->execute(['user_id' => $user_id])) {
                 exit('Error: ' . $connection->error);
             }
         }
 
         if (count($courses_to_add) > 0) {
-            $insertquery = "INSERT INTO users_on_courses (user_id, course_id) VALUES ";
+            $insertquery = "BEGIN; INSERT INTO users_on_courses (user_id, course_id) VALUES ";
             for ($y = 0; $y < count($courses_to_add); $y++) {
                 $insertquery .= "(" . $user_id . ", " . $courses_to_add[$y] . ")";
                 if ($y < (count($courses_to_add) - 1)) {
                     $insertquery .= ", ";
                 } else {
-                    $insertquery .= ";";
+                    $insertquery .= "; COMMIT";
                 }
             }
 
